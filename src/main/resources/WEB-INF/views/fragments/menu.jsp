@@ -23,6 +23,7 @@
 			<acme:menu-suboption code="master.menu.anonymous.maria-favourite-link" action="http://www.google.com/"/>
 			<acme:menu-suboption code="master.menu.anonymous.guillermo-favourite-link" action="https://www.github.com"/>
 			<acme:menu-suboption code="master.menu.anonymous.alejandro-favourite-link" action="https://magic.wizards.com/en"/>
+			<acme:menu-suboption code="master.menu.anonymous.daniel-favourite-link" action="https://www.taylorswift.com"/>
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.administrator" access="hasRealm('Administrator')">
