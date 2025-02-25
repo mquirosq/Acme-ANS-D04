@@ -37,7 +37,7 @@ public class Airline extends AbstractEntity {
 	@ValidString(pattern = "^[A-Z]{3}$")
 	//(where the last letter is typically an “X”)
 	@Automapped
-	private String				IATA_code;
+	private String				IATACode;
 
 	@Mandatory
 	@ValidUrl
@@ -62,6 +62,6 @@ public class Airline extends AbstractEntity {
 	@Optional
 	@ValidString(pattern = "^\\+?\\d{6,15}$")
 	@Automapped
-	private String				phone_number;
+	private String				phoneNumber;
 
 }
