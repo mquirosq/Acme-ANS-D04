@@ -1,11 +1,10 @@
 
 package acme.entities;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.validation.Valid;
-
-import org.checkerframework.common.aliasing.qual.Unique;
 
 import acme.client.components.basis.AbstractEntity;
 import acme.client.components.mappings.Automapped;
@@ -13,6 +12,7 @@ import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidNumber;
 import acme.client.components.validation.ValidString;
+import acme.datatypes.AircraftStatus;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -24,14 +24,14 @@ public class Aircraft extends AbstractEntity {
 	public static final long	serialVersionUID	= 1L;
 
 	@Mandatory
-	@Automapped
 	@ValidString(max = 50)
+	@Automapped
 	private String				model;
 
-	@Unique
 	@Mandatory
-	@Automapped
+	@Column(unique = true)
 	@ValidString(max = 50)
+	@Automapped
 	private String				registrationNumber;
 
 	@Mandatory
@@ -39,8 +39,8 @@ public class Aircraft extends AbstractEntity {
 	private Integer				capacity;
 
 	@Mandatory
-	@Automapped
 	@ValidNumber(min = 2000, max = 50000)
+	@Automapped
 	private Integer				cargoWeight;
 
 	@Valid
@@ -49,12 +49,12 @@ public class Aircraft extends AbstractEntity {
 	private AircraftStatus		status;
 
 	@Optional
-	@Automapped
 	@ValidString(max = 255)
+	@Automapped
 	private String				details;
 
+	@Valid
 	@Mandatory
-	@Automapped
 	@ManyToOne(optional = false)
 	private Airline				airline;
 
