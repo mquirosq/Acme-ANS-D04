@@ -4,6 +4,8 @@ package acme.entities;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.Valid;
 
 import acme.client.components.basis.AbstractEntity;
@@ -24,32 +26,32 @@ public class Review extends AbstractEntity {
 	private static final long	serialVersionUID	= 1L;
 
 	@Mandatory
-	@Automapped
 	@ValidString(max = 50)
+	@Automapped
 	private String				name;
 
 	@Mandatory
-	@Automapped
 	@ValidMoment(past = true)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date				postedAt;
 
 	@Mandatory
-	@Automapped
 	@ValidString(max = 50)
+	@Automapped
 	private String				subject;
 
 	@Mandatory
-	@Automapped
 	@ValidString(max = 255)
+	@Automapped
 	private String				text;
 
 	@Optional
-	@Automapped
 	@ValidNumber(min = 0, max = 10)
+	@Automapped
 	private Double				score;
 
 	@Mandatory
-	@Automapped
 	@Valid
+	@Automapped
 	private Boolean				recommended;
 }
