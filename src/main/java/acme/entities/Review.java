@@ -4,14 +4,15 @@ package acme.entities;
 import java.util.Date;
 
 import javax.persistence.Entity;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.Past;
-import javax.validation.constraints.Size;
+import javax.validation.Valid;
 
 import acme.client.components.basis.AbstractEntity;
+import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
+import acme.client.components.validation.ValidMoment;
+import acme.client.components.validation.ValidNumber;
+import acme.client.components.validation.ValidString;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -23,26 +24,32 @@ public class Review extends AbstractEntity {
 	private static final long	serialVersionUID	= 1L;
 
 	@Mandatory
-	@Size(max = 50)
+	@Automapped
+	@ValidString(max = 50)
 	private String				name;
 
 	@Mandatory
-	@Past
+	@Automapped
+	@ValidMoment(past = true)
 	private Date				postedAt;
 
 	@Mandatory
-	@Size(max = 50)
+	@Automapped
+	@ValidString(max = 50)
 	private String				subject;
 
 	@Mandatory
-	@Size(max = 255)
+	@Automapped
+	@ValidString(max = 255)
 	private String				text;
 
-	@Min(0)
-	@Max(10)
 	@Optional
+	@Automapped
+	@ValidNumber(min = 0, max = 10)
 	private Double				score;
 
 	@Mandatory
+	@Automapped
+	@Valid
 	private Boolean				recommended;
 }
