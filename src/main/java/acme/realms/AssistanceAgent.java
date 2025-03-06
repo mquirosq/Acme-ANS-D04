@@ -1,5 +1,5 @@
 
-package acme.entities;
+package acme.realms;
 
 import java.util.Date;
 
@@ -10,7 +10,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
 
-import acme.client.components.basis.AbstractEntity;
+import acme.client.components.basis.AbstractRole;
 import acme.client.components.datatypes.Money;
 import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
@@ -19,13 +19,16 @@ import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidMoney;
 import acme.client.components.validation.ValidString;
 import acme.client.components.validation.ValidUrl;
+import acme.constraints.ValidAssistanceAgent;
+import acme.entities.Airline;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
-public class AssistanceAgent extends AbstractEntity {
+@ValidAssistanceAgent
+public class AssistanceAgent extends AbstractRole {
 
 	public static final long	serialVersionUID	= 1L;
 
@@ -35,7 +38,7 @@ public class AssistanceAgent extends AbstractEntity {
 	private String				employeeCode;
 
 	@Mandatory
-	@ValidString(max = 255)
+	@ValidString(min = 1, max = 255)
 	@Automapped
 	private String				spokenLanguages;
 
@@ -50,7 +53,7 @@ public class AssistanceAgent extends AbstractEntity {
 	private Date				workBeginning;
 
 	@Optional
-	@ValidString(max = 255)
+	@ValidString(min = 0, max = 255)
 	@Automapped
 	private String				bio;
 
