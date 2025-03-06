@@ -1,6 +1,7 @@
 
 package acme.entities;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.validation.Valid;
 
@@ -23,13 +24,13 @@ public class Airport extends AbstractEntity {
 	private static final long	serialVersionUID	= 1L;
 
 	@Mandatory
-	@ValidString(max = 50)
+	@ValidString(min = 1, max = 50)
 	@Automapped
 	private String				name;
 
 	@Mandatory
 	@ValidString(pattern = "^[A-Z]{3}$")
-	@Automapped
+	@Column(unique = true)
 	private String				IATA;
 
 	@Mandatory
@@ -38,12 +39,12 @@ public class Airport extends AbstractEntity {
 	private AirportScope		scope;
 
 	@Mandatory
-	@ValidString(max = 50)
+	@ValidString(min = 1, max = 50)
 	@Automapped
 	private String				city;
 
 	@Mandatory
-	@ValidString(max = 50)
+	@ValidString(min = 1, max = 50)
 	@Automapped
 	private String				country;
 
