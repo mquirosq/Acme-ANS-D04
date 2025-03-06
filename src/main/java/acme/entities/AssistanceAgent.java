@@ -30,12 +30,12 @@ public class AssistanceAgent extends AbstractEntity {
 	public static final long	serialVersionUID	= 1L;
 
 	@Mandatory
-	@ValidString(pattern = "^[A-Z]{2-3}\\d{6}$")
+	@ValidString(min = 8, max = 9, pattern = "^[A-Z]{2-3}\\d{6}$")
 	@Column(unique = true)
 	private String				employeeCode;
 
 	@Mandatory
-	@ValidString(max = 255)
+	@ValidString(min = 1, max = 255)
 	@Automapped
 	private String				spokenLanguages;
 
@@ -50,7 +50,7 @@ public class AssistanceAgent extends AbstractEntity {
 	private Date				workBeginning;
 
 	@Optional
-	@ValidString(max = 255)
+	@ValidString(min = 0, max = 255)
 	@Automapped
 	private String				bio;
 
