@@ -1,1 +1,4 @@
+# validation-en.i18n
+#
+acme.validation.acme.validation.customer.identifier.message = The identifier must start with the initials of the customer
 acme.validation.assistanceAgent.employeeCode.message	= The first two or three letters must match the employee's initials
