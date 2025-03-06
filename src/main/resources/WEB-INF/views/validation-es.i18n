@@ -1,4 +1,4 @@
 # validation-es.i18n
 #
-acme.validation.acme.validation.customer.identifier.message = El identificador debe comenzar con las iniciales del cliente
+acme.validation.customer.identifier.message = El identificador debe comenzar con las iniciales del cliente
 acme.validation.assistanceAgent.employeeCode.message	= Las primeras dos o tres letras deben coincidir con las iniciales del empleado
