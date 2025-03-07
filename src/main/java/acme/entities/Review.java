@@ -26,14 +26,14 @@ public class Review extends AbstractEntity {
 	private static final long	serialVersionUID	= 1L;
 
 	@Mandatory
-	@ValidString(max = 50)
+	@ValidString(min = 1, max = 50)
 	@Automapped
 	private String				name;
 
 	@Mandatory
 	@ValidMoment(past = true)
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date				postedAt;
+	private Date				moment;
 
 	@Mandatory
 	@ValidString(max = 50)

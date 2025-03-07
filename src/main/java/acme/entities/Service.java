@@ -3,23 +3,24 @@ package acme.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.validation.Valid;
 
 import acme.client.components.basis.AbstractEntity;
 import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
-import acme.client.components.validation.ValidEmail;
+import acme.client.components.validation.ValidNumber;
+import acme.client.components.validation.ValidScore;
 import acme.client.components.validation.ValidString;
 import acme.client.components.validation.ValidUrl;
-import acme.datatypes.AirportScope;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
-public class Airport extends AbstractEntity {
+public class Service extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
 
@@ -29,38 +30,29 @@ public class Airport extends AbstractEntity {
 	private String				name;
 
 	@Mandatory
-	@ValidString(pattern = "^[A-Z]{3}$")
+	@ValidUrl
+	@Automapped
+	private String				pictureLink;
+
+	@Mandatory
+	@ValidNumber(min = 1, max = 100, integer = 3, fraction = 2)
+	@Automapped
+	private Double				avgDwellTime;
+
+	@Optional
+	@ValidString(pattern = "^[A-Z]{4}-[0-9]{2}$")
 	@Column(unique = true)
-	private String				IATA;
+	private String				promotionCode;
+
+	@Optional
+	@ValidScore
+	@Automapped
+	private Double				money;
+
+	// Relationships ---------------------------------------------------------------------
 
 	@Mandatory
 	@Valid
-	@Automapped
-	private AirportScope		scope;
-
-	@Mandatory
-	@ValidString(min = 1, max = 50)
-	@Automapped
-	private String				city;
-
-	@Mandatory
-	@ValidString(min = 1, max = 50)
-	@Automapped
-	private String				country;
-
-	@Optional
-	@ValidUrl
-	@Automapped
-	private String				website;
-
-	@Optional
-	@ValidEmail
-	@Automapped
-	private String				email;
-
-	@Optional
-	@ValidString(pattern = "^\\+?\\d{6,15}$")
-	@Automapped
-	private String				phoneNumber;
-
+	@ManyToOne(optional = false)
+	private Airport				airport;
 }
