@@ -1,23 +1,25 @@
 
-package acme.entities;
+package acme.realms;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.validation.Valid;
 
-import acme.client.components.basis.AbstractEntity;
+import acme.client.components.basis.AbstractRole;
 import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidNumber;
 import acme.client.components.validation.ValidString;
+import acme.constraints.ValidTechnician;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
-public class technician extends AbstractEntity {
+@ValidTechnician
+public class Technician extends AbstractRole {
 
 	private static final long	serialVersionUID	= 1L;
 
