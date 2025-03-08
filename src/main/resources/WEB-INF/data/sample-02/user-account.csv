@@ -1,0 +1,3 @@
+key,enabled,identity,password,username
+user-account-customer-01,true,"UserIdentity{name: 'María', surname: 'Customer', email: 'maria@acme.com'}",customer1,customer1
+user-account-customer-02,true,"UserIdentity{name: 'Curro', surname: '貸んい建濯よ芝弾テソ Λορεμ ιπσθμ', email: 'curro@acme.com'}",customer2,customer2
