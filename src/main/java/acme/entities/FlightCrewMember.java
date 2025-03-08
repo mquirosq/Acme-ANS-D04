@@ -26,7 +26,7 @@ public class FlightCrewMember extends AbstractEntity {
 	private static final long	serialVersionUID	= 1L;
 
 	@Mandatory
-	@ValidString(pattern = "^[A-Z]{2-3}\\d{6}$")
+	@ValidString(pattern = "^[A-Z]{2,3}\\d{6}$")
 	@Column(unique = true)
 	private String				employeeCode;
 
@@ -51,7 +51,7 @@ public class FlightCrewMember extends AbstractEntity {
 	private Money				salary;
 
 	@Optional
-	@ValidNumber(max = 120)
+	@ValidNumber(min = 0, max = 120)
 	@Automapped
 	private Integer				yearsOfExperience;
 
