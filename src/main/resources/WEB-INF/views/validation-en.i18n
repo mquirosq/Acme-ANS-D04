@@ -2,3 +2,8 @@
 #
 acme.validation.customer.identifier.message = The identifier must start with the initials of the customer
 acme.validation.assistanceAgent.employeeCode.message	= The first two or three letters must match the employee's initials
+
+acme.validation.trackingLog.notPendingStatus.message 		= The status must not be pending if the resolution percentage has reached 100%
+acme.validation.trackingLog.pendingStatus.message			= The status must be pending if the resolution percentage has not reached 100%
+acme.validation.trackingLog.resolution.message				= The resolution is mandatory if the claim has already been accepted or rejected
+acme.validation.trackingLog.resolutionPercentage.message 	= The resolution percentage must be monotonically increasing
