@@ -8,7 +8,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
 
-import acme.client.components.basis.AbstractEntity;
+import org.dom4j.tree.AbstractEntity;
+
 import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
@@ -28,7 +29,7 @@ public class Review extends AbstractEntity {
 	@Mandatory
 	@ValidString(min = 1, max = 50)
 	@Automapped
-	private String				name;
+	private String				alias;
 
 	@Mandatory
 	@ValidMoment(past = true)
