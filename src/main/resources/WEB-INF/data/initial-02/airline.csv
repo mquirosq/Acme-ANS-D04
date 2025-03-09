@@ -1,0 +1,82 @@
+key,name,iata-code,website,type,foundation,email,phone-number
+# Base entity
+airline-01,Lorem ipsum dolor sit ame,ESP,http://lorem.com/ipsum,STANDARD,02/07/2012 0:00,acme@lorem-ipsum.org,78657687
+# name - standard variations
+airline-01,L,ESP,http://lorem.com/ipsum,STANDARD,02/07/2012 0:00,acme@lorem-ipsum.org,78657687
+airline-01,Lo,ESP,http://lorem.com/ipsum,STANDARD,02/07/2012 0:00,acme@lorem-ipsum.org,78657687
+airline-01,"Lorem ipsum dolor sit amet, consectetur adipiscin",ESP,http://lorem.com/ipsum,STANDARD,02/07/2012 0:00,acme@lorem-ipsum.org,78657687
+airline-01,"Lorem ipsum dolor sit amet, consectetur adipiscing",ESP,http://lorem.com/ipsum,STANDARD,02/07/2012 0:00,acme@lorem-ipsum.org,78657687
+airline-01,โลเร็ม อิปซัม,ESP,http://lorem.com/ipsum,STANDARD,02/07/2012 0:00,acme@lorem-ipsum.org,78657687
+airline-01,لوريم إيبسوم,ESP,http://lorem.com/ipsum,STANDARD,02/07/2012 0:00,acme@lorem-ipsum.org,78657687
+airline-01,洛伦·伊普森,ESP,http://lorem.com/ipsum,STANDARD,02/07/2012 0:00,acme@lorem-ipsum.org,78657687
+airline-01,"<marquee>Hacked</marquee>",ESP,http://lorem.com/ipsum,STANDARD,02/07/2012 0:00,acme@lorem-ipsum.org,78657687
+airline-01,"<script>alert(‘Hacked!’);</script>",ESP,http://lorem.com/ipsum,STANDARD,02/07/2012 0:00,acme@lorem-ipsum.org,78657687
+airline-01,"' or 'A' = 'A ",ESP,http://lorem.com/ipsum,STANDARD,02/07/2012 0:00,acme@lorem-ipsum.org,78657687
+# name - no singular values
+# iata-code - standard variations / singular values
+airline-01,Lorem ipsum dolor sit ame,AAA,http://lorem.com/ipsum,STANDARD,02/07/2012 0:00,acme@lorem-ipsum.org,78657687
+airline-01,Lorem ipsum dolor sit ame,ZZZ,http://lorem.com/ipsum,STANDARD,02/07/2012 0:00,acme@lorem-ipsum.org,78657687
+airline-01,Lorem ipsum dolor sit ame,MVG,http://lorem.com/ipsum,STANDARD,02/07/2012 0:00,acme@lorem-ipsum.org,78657687
+# website - standard variations
+airline-01,Lorem ipsum dolor sit ame,ESP,ftp://a,STANDARD,02/07/2012 0:00,acme@lorem-ipsum.org,78657687
+airline-01,Lorem ipsum dolor sit ame,ESP,ftp://a.b,STANDARD,02/07/2012 0:00,acme@lorem-ipsum.org,78657687
+airline-01,Lorem ipsum dolor sit ame,ESP,http://www.lorem-ipsum.org/dolor/sit/amet,/consectetur/adipiscing/elit,/sed/do/eiusmod/tempor/incididunt/ut/labore/et/dolore/magna/aliqua/Ut/enim/ad/minim/veniam/quis/nostrud/exercitation/ullamco/laboris/nisi/ut/aliquip/ex/ea/commodo/consequat/duis/aute/,STANDARD,02/07/2012 0:00,acme@lorem-ipsum.org,78657687
+airline-01,Lorem ipsum dolor sit ame,ESP,http://www.lorem-ipsum.org/dolor/sit/amet,/consectetur/adipiscing/elit,/sed/do/eiusmod/tempor/incididunt/ut/labore/et/dolore/magna/aliqua/Ut/enim/ad/minim/veniam/quis/nostrud/exercitation/ullamco/laboris/nisi/ut/aliquip/ex/ea/commodo/consequat/duis/aute/X,STANDARD,02/07/2012 0:00,acme@lorem-ipsum.org,78657687
+airline-01,Lorem ipsum dolor sit ame,ESP,https://www.lorem-ipsum.org,STANDARD,02/07/2012 0:00,acme@lorem-ipsum.org,78657687
+airline-01,Lorem ipsum dolor sit ame,ESP,ftp://www.lorem-ipsum.org,STANDARD,02/07/2012 0:00,acme@lorem-ipsum.org,78657687
+airline-01,Lorem ipsum dolor sit ame,ESP,http://www.lorem-ipsum.org/dolor/sit.html,STANDARD,02/07/2012 0:00,acme@lorem-ipsum.org,78657687
+airline-01,Lorem ipsum dolor sit ame,ESP,http://www.lorem-ipsum.org/dolor/sit.html#dolor,STANDARD,02/07/2012 0:00,acme@lorem-ipsum.org,78657687
+airline-01,Lorem ipsum dolor sit ame,ESP,http://example.org?a=1&b=2,STANDARD,02/07/2012 0:00,acme@lorem-ipsum.org,78657687
+airline-01,Lorem ipsum dolor sit ame,ESP,http://example.org?,STANDARD,02/07/2012 0:00,acme@lorem-ipsum.org,78657687
+airline-01,Lorem ipsum dolor sit ame,ESP,http://example.org?a,STANDARD,02/07/2012 0:00,acme@lorem-ipsum.org,78657687
+airline-01,Lorem ipsum dolor sit ame,ESP,http://example.org?a&b,STANDARD,02/07/2012 0:00,acme@lorem-ipsum.org,78657687
+airline-01,Lorem ipsum dolor sit ame,ESP,http://example.org/,STANDARD,02/07/2012 0:00,acme@lorem-ipsum.org,78657687
+airline-01,Lorem ipsum dolor sit ame,ESP,http://example.org/a,STANDARD,02/07/2012 0:00,acme@lorem-ipsum.org,78657687
+airline-01,Lorem ipsum dolor sit ame,ESP,http://example.org/a/b,STANDARD,02/07/2012 0:00,acme@lorem-ipsum.org,78657687
+airline-01,Lorem ipsum dolor sit ame,ESP,http://example.org/a/b?,STANDARD,02/07/2012 0:00,acme@lorem-ipsum.org,78657687
+airline-01,Lorem ipsum dolor sit ame,ESP,http://example.org/a/b?a&b,STANDARD,02/07/2012 0:00,acme@lorem-ipsum.org,78657687
+# website - no singular values
+# type - standard variations
+airline-01,Lorem ipsum dolor sit ame,ESP,http://lorem.com/ipsum,LUXURY,02/07/2012 0:00,acme@lorem-ipsum.org,78657687
+airline-01,Lorem ipsum dolor sit ame,ESP,http://lorem.com/ipsum,LOW_COST,02/07/2012 0:00,acme@lorem-ipsum.org,78657687
+# type - no singular values
+# foundation - standard variations
+airline-01,Lorem ipsum dolor sit ame,ESP,http://lorem.com/ipsum,STANDARD,01/01/2000 0:00,acme@lorem-ipsum.org,78657687
+airline-01,Lorem ipsum dolor sit ame,ESP,http://lorem.com/ipsum,STANDARD,01/01/2000 0:01,acme@lorem-ipsum.org,78657687
+airline-01,Lorem ipsum dolor sit ame,ESP,http://lorem.com/ipsum,STANDARD,31/12/2024 23:59,acme@lorem-ipsum.org,78657687
+airline-01,Lorem ipsum dolor sit ame,ESP,http://lorem.com/ipsum,STANDARD,01/01/2025 0:00,acme@lorem-ipsum.org,78657687
+# foundation - singular values
+airline-01,Lorem ipsum dolor sit ame,ESP,http://lorem.com/ipsum,STANDARD,29/02/2004 0:00,acme@lorem-ipsum.org,78657687
+airline-01,Lorem ipsum dolor sit ame,ESP,http://lorem.com/ipsum,STANDARD,28/02/2005 0:00,acme@lorem-ipsum.org,78657687
+# email - standard variations
+airline-01,Lorem ipsum dolor sit ame,ESP,http://lorem.com/ipsum,STANDARD,02/07/2012 0:00,null,78657687
+airline-01,Lorem ipsum dolor sit ame,ESP,http://lorem.com/ipsum,STANDARD,02/07/2012 0:00,acme:password@lorem-ipsum.org,78657687
+airline-01,Lorem ipsum dolor sit ame,ESP,http://lorem.com/ipsum,STANDARD,02/07/2012 0:00,a@b.e,78657687
+airline-01,Lorem ipsum dolor sit ame,ESP,http://lorem.com/ipsum,STANDARD,02/07/2012 0:00,a@b.es,78657687
+airline-01,Lorem ipsum dolor sit ame,ESP,http://lorem.com/ipsum,STANDARD,02/07/2012 0:00,a@b.esx,78657687
+airline-01,Lorem ipsum dolor sit ame,ESP,http://lorem.com/ipsum,STANDARD,02/07/2012 0:00,lorem-ipsum@dolor.sit.amet.consectetur.adipiscing.elit.sed.do.eiusmod.tempor.incididunt.ut.labore.et.dolore.magna.aliqua.Ut.enim.ad.minim.veniam.quis.nostrud.exercitation.ullamco.laboris.nisi.ut.aliquip.ex.ea.commodo.consequat.duis.aute.irure.doloris.edu,78657687
+airline-01,Lorem ipsum dolor sit ame,ESP,http://lorem.com/ipsum,STANDARD,02/07/2012 0:00,lorem-ipsum@dolor.sit.amet.consectetur.adipiscing.elit.sed.do.eiusmod.tempor.incididunt.ut.labore.et.dolore.magna.aliqua.Ut.enim.ad.minim.veniam.quis.nostrud.exercitation.ullamco.laboris.nisi.ut.aliquip.ex.ea.commodo.consequat.duis.aute.irure.dolor.es.org,78657687
+# email - no singular values
+# phone-number - standard variations
+airline-01,Lorem ipsum dolor sit ame,ESP,http://lorem.com/ipsum,STANDARD,02/07/2012 0:00,acme@lorem-ipsum.org,null
+airline-01,Lorem ipsum dolor sit ame,ESP,http://lorem.com/ipsum,STANDARD,02/07/2012 0:00,acme@lorem-ipsum.org,123456
+airline-01,Lorem ipsum dolor sit ame,ESP,http://lorem.com/ipsum,STANDARD,02/07/2012 0:00,acme@lorem-ipsum.org,+654321
+airline-01,Lorem ipsum dolor sit ame,ESP,http://lorem.com/ipsum,STANDARD,02/07/2012 0:00,acme@lorem-ipsum.org,1237654
+airline-01,Lorem ipsum dolor sit ame,ESP,http://lorem.com/ipsum,STANDARD,02/07/2012 0:00,acme@lorem-ipsum.org,+7809267
+airline-01,Lorem ipsum dolor sit ame,ESP,http://lorem.com/ipsum,STANDARD,02/07/2012 0:00,acme@lorem-ipsum.org,12345678
+airline-01,Lorem ipsum dolor sit ame,ESP,http://lorem.com/ipsum,STANDARD,02/07/2012 0:00,acme@lorem-ipsum.org,+90863782
+airline-01,Lorem ipsum dolor sit ame,ESP,http://lorem.com/ipsum,STANDARD,02/07/2012 0:00,acme@lorem-ipsum.org,111111111
+airline-01,Lorem ipsum dolor sit ame,ESP,http://lorem.com/ipsum,STANDARD,02/07/2012 0:00,acme@lorem-ipsum.org,+000000000
+airline-01,Lorem ipsum dolor sit ame,ESP,http://lorem.com/ipsum,STANDARD,02/07/2012 0:00,acme@lorem-ipsum.org,1010104444
+airline-01,Lorem ipsum dolor sit ame,ESP,http://lorem.com/ipsum,STANDARD,02/07/2012 0:00,acme@lorem-ipsum.org,+1111122222
+airline-01,Lorem ipsum dolor sit ame,ESP,http://lorem.com/ipsum,STANDARD,02/07/2012 0:00,acme@lorem-ipsum.org,99999999999
+airline-01,Lorem ipsum dolor sit ame,ESP,http://lorem.com/ipsum,STANDARD,02/07/2012 0:00,acme@lorem-ipsum.org,+11223344556
+airline-01,Lorem ipsum dolor sit ame,ESP,http://lorem.com/ipsum,STANDARD,02/07/2012 0:00,acme@lorem-ipsum.org,145627129373
+airline-01,Lorem ipsum dolor sit ame,ESP,http://lorem.com/ipsum,STANDARD,02/07/2012 0:00,acme@lorem-ipsum.org,+998877665544
+airline-01,Lorem ipsum dolor sit ame,ESP,http://lorem.com/ipsum,STANDARD,02/07/2012 0:00,acme@lorem-ipsum.org,5673492873828
+airline-01,Lorem ipsum dolor sit ame,ESP,http://lorem.com/ipsum,STANDARD,02/07/2012 0:00,acme@lorem-ipsum.org,+9999999999999
+airline-01,Lorem ipsum dolor sit ame,ESP,http://lorem.com/ipsum,STANDARD,02/07/2012 0:00,acme@lorem-ipsum.org,99999999999999
+airline-01,Lorem ipsum dolor sit ame,ESP,http://lorem.com/ipsum,STANDARD,02/07/2012 0:00,acme@lorem-ipsum.org,+89767264738338
+airline-01,Lorem ipsum dolor sit ame,ESP,http://lorem.com/ipsum,STANDARD,02/07/2012 0:00,acme@lorem-ipsum.org,012345678912345
+airline-01,Lorem ipsum dolor sit ame,ESP,http://lorem.com/ipsum,STANDARD,02/07/2012 0:00,acme@lorem-ipsum.org,+987654321098765
+# phone-number - no singular values
