@@ -8,6 +8,7 @@ import javax.validation.Valid;
 import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.ValidNumber;
+import acme.client.components.validation.ValidString;
 import acme.datatypes.TaskType;
 import acme.realms.Technician;
 import lombok.Getter;
@@ -36,12 +37,17 @@ public class Task {
 	private TaskType			type;
 
 	@Mandatory
+	@ValidString(min = 1, max = 255)
+	@Automapped
+	private String				description;
+
+	@Mandatory
 	@ValidNumber(min = 0, max = 10)
 	@Automapped
 	private Integer				priority;
 
 	@Mandatory
-	@ValidNumber(min = 0)
+	@ValidNumber(min = 1)
 	@Automapped
 	private Integer				hourEstimate;
 }
