@@ -1,3 +1,71 @@
 key,key:userAccount,identifier,phone-number,address,city,country,earned-points
+# Base customer
 customer-01,user-account-customer-01,MC123456,+123456789,Long Street 32,Seville,Spain,2000
-customer-02,user-account-customer-02,CSN000000,123456789,L,S,S,null
+# identifier variations
+customer-02,user-account-customer-02,CSN000000,+123456789,Long Street 32,Seville,Spain,2000
+customer-03,user-account-customer-03,CAS123456,+123456789,Long Street 32,Seville,Spain,2000
+# phoneNumber variations
+customer-04,user-account-customer-04,NS000000,123456,Long Street 32,Seville,Spain,2000
+customer-05,user-account-customer-05,NS000001,+123456,Long Street 32,Seville,Spain,2000
+customer-06,user-account-customer-06,NS000002,1234567,Long Street 32,Seville,Spain,2000
+customer-07,user-account-customer-07,NS000003,+1234567,Long Street 32,Seville,Spain,2000
+customer-08,user-account-customer-08,NS000004,12345678,Long Street 32,Seville,Spain,2000
+customer-09,user-account-customer-09,NS000005,+12345678,Long Street 32,Seville,Spain,2000
+customer-10,user-account-customer-10,NS000006,123456789,Long Street 32,Seville,Spain,2000
+customer-11,user-account-customer-11,NS000007,+123456789,Long Street 32,Seville,Spain,2000
+customer-12,user-account-customer-12,NS000008,1234567890,Long Street 32,Seville,Spain,2000
+customer-13,user-account-customer-13,NS000009,+1234567890,Long Street 32,Seville,Spain,2000
+customer-14,user-account-customer-14,NS000010,12345678901,Long Street 32,Seville,Spain,2000
+customer-15,user-account-customer-15,NS000011,+12345678901,Long Street 32,Seville,Spain,2000
+customer-16,user-account-customer-16,NS000012,123456789012,Long Street 32,Seville,Spain,2000
+customer-17,user-account-customer-17,NS000013,+123456789012,Long Street 32,Seville,Spain,2000
+customer-18,user-account-customer-18,NS000014,1234567890123,Long Street 32,Seville,Spain,2000
+customer-19,user-account-customer-19,NS000015,+1234567890123,Long Street 32,Seville,Spain,2000
+customer-20,user-account-customer-20,NS000016,12345678901234,Long Street 32,Seville,Spain,2000
+customer-21,user-account-customer-21,NS000017,+12345678901234,Long Street 32,Seville,Spain,2000
+customer-22,user-account-customer-22,NS000018,123456789012345,Long Street 32,Seville,Spain,2000
+customer-23,user-account-customer-23,NS000019,+123456789012345,Long Street 32,Seville,Spain,2000
+# phonenNumber singular values
+customer-24,user-account-customer-24,NS000020,00000000,Long Street 32,Seville,Spain,2000
+customer-25,user-account-customer-25,NS000021,99999999,Long Street 32,Seville,Spain,2000
+# address variations
+customer-26,user-account-customer-26,NS000022,+123456789,L,Seville,Spain,2000
+customer-27,user-account-customer-27,NS000023,+123456789,Lo,Seville,Spain,2000
+customer-28,user-account-customer-28,NS000024,+123456789,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor",Seville,Spain,2000
+customer-29,user-account-customer-29,NS000025,+123456789,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor*",Seville,Spain,2000
+customer-30,user-account-customer-30,NS000026,+123456789,โลเร็ม อิปซัม,Seville,Spain,2000
+customer-31,user-account-customer-31,NS000027,+123456789,لوريم إيبسوم,Seville,Spain,2000
+customer-32,user-account-customer-32,NS000028,+123456789,洛伦·伊普森,Seville,Spain,2000
+customer-33,user-account-customer-33,NS000029,+123456789,<marquee>Hacked</marquee>,Seville,Spain,2000
+customer-34,user-account-customer-34,NS000030,+123456789,<script>alert(‘Hacked!’);</script>,Seville,Spain,2000
+customer-35,user-account-customer-35,NS000031,+123456789,' or 'A' = 'A ,Seville,Spain,2000
+# address no singular values
+# city - standard variations
+customer-36,user-account-customer-36,NS000032,+123456789,Long Street 32,L,Spain,2000
+customer-37,user-account-customer-37,NS000033,+123456789,Long Street 32,Lo,Spain,2000
+customer-38,user-account-customer-38,NS000034,+123456789,Long Street 32,"Lorem ipsum dolor sit amet, consectetur adipiscin",Spain,2000
+customer-39,user-account-customer-39,NS000035,+123456789,Long Street 32,"Lorem ipsum dolor sit amet, consectetur adipiscing",Spain,2000
+customer-40,user-account-customer-40,NS000036,+123456789,Long Street 32,โลเร็ม อิปซัม,Spain,2000
+customer-41,user-account-customer-41,NS000037,+123456789,Long Street 32,لوريم إيبسوم,Spain,2000
+customer-42,user-account-customer-42,NS000038,+123456789,Long Street 32,洛伦·伊普森,Spain,2000
+customer-43,user-account-customer-43,NS000039,+123456789,Long Street 32,<marquee>Hacked</marquee>,Spain,2000
+customer-44,user-account-customer-44,NS000040,+123456789,Long Street 32,<script>alert(‘Hacked!’);</script>,Spain,2000
+customer-45,user-account-customer-45,NS000041,+123456789,Long Street 32,' or 'A' = 'A ,Spain,2000
+# city - no singular values
+# country - standard variations
+customer-46,user-account-customer-46,NS000042,+123456789,Long Street 32,Seville,L,2000
+customer-47,user-account-customer-47,NS000043,+123456789,Long Street 32,Seville,Lo,2000
+customer-48,user-account-customer-48,NS000044,+123456789,Long Street 32,Seville,"Lorem ipsum dolor sit amet, consectetur adipiscin",2000
+customer-49,user-account-customer-49,NS000045,+123456789,Long Street 32,Seville,"Lorem ipsum dolor sit amet, consectetur adipiscing",2000
+customer-50,user-account-customer-50,NS000046,+123456789,Long Street 32,Seville,โลเร็ม อิปซัม,2000
+customer-51,user-account-customer-51,NS000047,+123456789,Long Street 32,Seville,لوريم إيبسوم,200
+customer-52,user-account-customer-52,NS000048,+123456789,Long Street 32,Seville,洛伦·伊普森,2000
+customer-53,user-account-customer-53,NS000049,+123456789,Long Street 32,Seville,<marquee>Hacked</marquee>,2000
+customer-54,user-account-customer-54,NS000050,+123456789,Long Street 32,Seville,<script>alert(‘Hacked!’);</script>,2000
+customer-55,user-account-customer-55,NS000051,+123456789,Long Street 32,Seville,' or 'A' = 'A ,2000
+# country - no singular values
+# earned-points - standard variations
+customer-56,user-account-customer-56,NS000052,+123456789,Long Street 32,Seville,Spain,0
+customer-57,user-account-customer-57,NS000053,+123456789,Long Street 32,Seville,Spain,1
+customer-58,user-account-customer-58,NS000054,+123456789,Long Street 32,Seville,Spain,500000
+customer-59,user-account-customer-59,NS000055,+123456789,Long Street 32,Seville,Spain,499999
