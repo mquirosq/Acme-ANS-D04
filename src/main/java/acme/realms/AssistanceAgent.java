@@ -44,7 +44,7 @@ public class AssistanceAgent extends AbstractRole {
 
 	@Mandatory
 	@Valid
-	@ManyToOne(optional = false)
+	@ManyToOne(optional = true)
 	private Airline				airline;
 
 	@Mandatory
