@@ -23,16 +23,6 @@ public class Task {
 
 	@Mandatory
 	@Valid
-	@ManyToOne(optional = false)
-	private Technician			technician;
-
-	@Mandatory
-	@Valid
-	@ManyToOne(optional = false)
-	private Aircraft			aircraft;
-
-	@Mandatory
-	@Valid
 	@Automapped
 	private TaskType			type;
 
@@ -50,4 +40,9 @@ public class Task {
 	@ValidNumber(min = 1)
 	@Automapped
 	private Integer				hourEstimate;
+
+	@Mandatory
+	@Valid
+	@ManyToOne(optional = false)
+	private Technician			technician;
 }
