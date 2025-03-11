@@ -69,3 +69,7 @@ user-account-customer-56,true,"UserIdentity{name: 'Name1', surname: 'Surname1', 
 user-account-customer-57,true,"UserIdentity{name: 'Name1', surname: 'Surname1', email: 'name1@acme.com'}",customerV54,customerV54
 user-account-customer-58,true,"UserIdentity{name: 'Name1', surname: 'Surname1', email: 'name1@acme.com'}",customerV55,customerV55
 user-account-customer-59,true,"UserIdentity{name: 'Name1', surname: 'Surname1', email: 'name1@acme.com'}",customerV56,customerV56
+# Technician
+user-account-technician-01,true,"UserIdentity{name: 'Alejandro', surname: 'Technician', email: 'alejandro@acme.com'}",technician1,technician1
+user-account-technician-02,true,"UserIdentity{name: 'Guillermo', surname: 'Sur Name', email: 'guillermo@acme.com'}",technician2,technician2
+user-account-technician-03,true,"UserIdentity{name: 'Daniel', surname: 'A Surname', email: 'daniel@acme.com'}",technician3,technician3

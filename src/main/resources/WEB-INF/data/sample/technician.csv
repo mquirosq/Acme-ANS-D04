@@ -1,0 +1,6 @@
+key,key:userAccount,license,phone-number,specialisation,health-passed,exp-years,certifications
+# Base technician
+technician-01,user-account-technician-01,AT123456,+123456789,"Lorem ipsum",true,50,"Lorem ipsum"
+# identifier variations
+technician-02,user-account-technician-02,GSN000000,+123456789,"Lorem ipsum",true,5,"Lorem ipsum"
+technician-03,user-account-technician-03,DAS654321,+123456789,"Lorem ipsum",true,5,"Lorem ipsum"

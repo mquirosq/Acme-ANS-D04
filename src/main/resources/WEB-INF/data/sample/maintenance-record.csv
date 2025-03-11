@@ -1,0 +1,3 @@
+key,maintenance-date,status,inspection-due,cost,notes,key:technician,key:aircraft
+# Base entity
+maintenance-record-1,
