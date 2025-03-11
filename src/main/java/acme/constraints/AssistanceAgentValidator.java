@@ -27,18 +27,13 @@ public class AssistanceAgentValidator extends AbstractValidator<ValidAssistanceA
 		else {
 			Boolean matches;
 			String initials;
-			String[] surnames;
 			DefaultUserIdentity identity;
 
 			identity = assistanceAgent.getIdentity();
 
-			surnames = identity.getSurname().split(" ");
-
 			initials = "";
 			initials += identity.getName().trim().charAt(0);
-
-			for (String surname : surnames)
-				initials += surname.trim().charAt(0);
+			initials += identity.getSurname().trim().charAt(0);
 
 			matches = assistanceAgent.getEmployeeCode().trim().startsWith(initials);
 			super.state(context, !matches, "employeeCode", "acme.validation.assistanceAgent.employeeCode.message");
