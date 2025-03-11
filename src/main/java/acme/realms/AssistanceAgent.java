@@ -43,11 +43,6 @@ public class AssistanceAgent extends AbstractRole {
 	private String				spokenLanguages;
 
 	@Mandatory
-	@Valid
-	@ManyToOne(optional = true)
-	private Airline				airline;
-
-	@Mandatory
 	@ValidMoment(past = true)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date				workBeginning;
@@ -66,4 +61,9 @@ public class AssistanceAgent extends AbstractRole {
 	@ValidUrl
 	@Automapped
 	private String				photo;
+
+	@Mandatory
+	@Valid
+	@ManyToOne(optional = true)
+	private Airline				airline;
 }
