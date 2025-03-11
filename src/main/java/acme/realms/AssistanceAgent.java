@@ -33,7 +33,7 @@ public class AssistanceAgent extends AbstractRole {
 	public static final long	serialVersionUID	= 1L;
 
 	@Mandatory
-	@ValidString(pattern = "^[A-Z]{2-3}\\d{6}$")
+	@ValidString(pattern = "^[A-Z]{2,3}\\d{6}$")
 	@Column(unique = true)
 	private String				employeeCode;
 
@@ -62,7 +62,7 @@ public class AssistanceAgent extends AbstractRole {
 	@Automapped
 	private String				photo;
 
-	@Mandatory
+	@Optional
 	@Valid
 	@ManyToOne(optional = true)
 	private Airline				airline;
