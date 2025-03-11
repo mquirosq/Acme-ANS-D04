@@ -23,12 +23,12 @@ public class Customer extends AbstractRole {
 	private static final long	serialVersionUID	= 1L;
 
 	@Mandatory
-	@ValidString(pattern = "^[A-Z]{2-3}\\d{6}$")
+	@ValidString(pattern = "^[A-Z]{2,3}\\d{6}$")
 	@Column(unique = true)
 	private String				identifier;
 
 	@Mandatory
-	@ValidString(pattern = "^+?\\d{6,15}$")
+	@ValidString(pattern = "^\\+?\\d{6,15}$")
 	@Automapped
 	private String				phoneNumber;
 
