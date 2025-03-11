@@ -41,18 +41,10 @@ service-31,Lorem Ipsum dolor sit ame,http://lorem.com/ipsum,99.98,ABCD-41,EUR 50
 service-32,Lorem Ipsum dolor sit ame,http://lorem.com/ipsum,50,AAAA-00,EUR 500000.00
 service-33,Lorem Ipsum dolor sit ame,http://lorem.com/ipsum,50,ZZZZ-99,EUR 500000.00
 service-34,Lorem Ipsum dolor sit ame,http://lorem.com/ipsum,50,AZAZ-09,EUR 500000.00
+service-35,Lorem Ipsum dolor sit ame,http://lorem.com/ipsum,50,null,EUR 500000.00
 # promotion-discount - standard variations
-service-35,Lorem Ipsum dolor sit ame,http://lorem.com/ipsum,50,ABCD-42,EUR 0.00
-service-36,Lorem Ipsum dolor sit ame,http://lorem.com/ipsum,50,ABCD-43,EUR 0.01
-service-37,Lorem Ipsum dolor sit ame,http://lorem.com/ipsum,50,ABCD-44,EUR 999999.99
-service-38,Lorem Ipsum dolor sit ame,http://lorem.com/ipsum,50,ABCD-45,EUR 1000000.00
-
-
-
-
-
-
-
-
-
-
+service-36,Lorem Ipsum dolor sit ame,http://lorem.com/ipsum,50,ABCD-42,EUR 0.00
+service-37,Lorem Ipsum dolor sit ame,http://lorem.com/ipsum,50,ABCD-43,EUR 0.01
+service-38,Lorem Ipsum dolor sit ame,http://lorem.com/ipsum,50,ABCD-44,EUR 999999.99
+service-39,Lorem Ipsum dolor sit ame,http://lorem.com/ipsum,50,ABCD-45,EUR 1000000.00
+service-40,Lorem Ipsum dolor sit ame,http://lorem.com/ipsum,50,ABCD-46,null
