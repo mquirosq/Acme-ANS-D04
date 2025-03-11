@@ -35,8 +35,8 @@ public class AssistanceAgentValidator extends AbstractValidator<ValidAssistanceA
 			initials += identity.getName().trim().charAt(0);
 			initials += identity.getSurname().trim().charAt(0);
 
-			matches = assistanceAgent.getEmployeeCode().trim().startsWith(initials);
-			super.state(context, !matches, "employeeCode", "acme.validation.assistanceAgent.employeeCode.message");
+			matches = assistanceAgent.getEmployeeCode().toLowerCase().trim().startsWith(initials.toLowerCase());
+			super.state(context, matches, "employeeCode", "acme.validation.assistanceAgent.employeeCode.message");
 		}
 		result = !super.hasErrors(context);
 		return result;
