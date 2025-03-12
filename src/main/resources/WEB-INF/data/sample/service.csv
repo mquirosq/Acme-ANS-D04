@@ -1,50 +1,50 @@
 key,name,picture-link,avg-dwell-time,promotion-code,promotion-discount
 # Base Entity
-service-01,Lorem Ipsum dolor sit ame,http://lorem.com/ipsum,50,AAAB-25,EUR 500000.00
+service-01,Lorem Ipsum dolor sit ame,http://lorem.com/ipsum,50,AAAB-25,50
 # name - standard variations
-service-02,L,http://lorem.com/ipsum,50,AAAC-25,EUR 500000.00
-service-03,Lo,http://lorem.com/ipsum,50,AAAD-25,EUR 500000.00
-service-04,"Lorem ipsum dolor sit amet,consectetur adipiscin",http://lorem.com/ipsum,50,AAAE-25,EUR 500000.00
-service-05,"Lorem ipsum dolor sit amet,consectetur adipiscing",http://lorem.com/ipsum,50,AAAF-25,EUR 500000.00
-service-06,โลเร็ม อิปซัม,http://lorem.com/ipsum,50,AAAG-25,EUR 500000.00
-service-07,لوريم إيبسوم,http://lorem.com/ipsum,50,AAAH-25,EUR 500000.00
-service-08,洛伦·伊普森,http://lorem.com/ipsum,50,AAAI-25,EUR 500000.00
-service-09,<marquee>Hacked</marquee>,http://lorem.com/ipsum,50,AAAJ-25,EUR 500000.00
-service-10,<script>alert(‘Hacked!’);</script>,http://lorem.com/ipsum,50,AAAK-25,EUR 500000.00
-service-11,' or 'A' = 'A,http://lorem.com/ipsum,50,AAAL-25,EUR 500000.00
+service-02,L,http://lorem.com/ipsum,50,AAAC-25,50
+service-03,Lo,http://lorem.com/ipsum,50,AAAD-25,50
+service-04,"Lorem ipsum dolor sit amet,consectetur adipiscin",http://lorem.com/ipsum,50,AAAE-25,50
+service-05,"Lorem ipsum dolor sit amet,consectetur adipiscing",http://lorem.com/ipsum,50,AAAF-25,50
+service-06,โลเร็ม อิปซัม,http://lorem.com/ipsum,50,AAAG-25,50
+service-07,لوريم إيبسوم,http://lorem.com/ipsum,50,AAAH-25,50
+service-08,洛伦·伊普森,http://lorem.com/ipsum,50,AAAI-25,50
+service-09,<marquee>Hacked</marquee>,http://lorem.com/ipsum,50,AAAJ-25,50
+service-10,<script>alert(‘Hacked!’);</script>,http://lorem.com/ipsum,50,AAAK-25,50
+service-11,' or 'A' = 'A,http://lorem.com/ipsum,50,AAAL-25,50
 # name - no singular values,"","","","","",""
 # picture-link - standard variations
-service-12,Lorem Ipsum dolor sit ame,ftp://a,50,AAAM-25,EUR 500000.00
-service-13,Lorem Ipsum dolor sit ame,ftp://a.b,50,AAAN-25,EUR 500000.00
-service-14,Lorem Ipsum dolor sit ame,"http://www.lorem-ipsum.org/dolor/sit/amet,/consectetur/adipiscing/elit,/sed/do/eiusmod/tempor/incididunt/ut/labore/et/dolore/magna/aliqua/Ut/enim/ad/minim/veniam/quis/nostrud/exercitation/ullamco/laboris/nisi/ut/aliquip/ex/ea/commodo/consequat/duis/aute/",50,AAAO-25,EUR 500000.00
-service-15,Lorem Ipsum dolor sit ame,"http://www.lorem-ipsum.org/dolor/sit/amet,/consectetur/adipiscing/elit,/sed/do/eiusmod/tempor/incididunt/ut/labore/et/dolore/magna/aliqua/Ut/enim/ad/minim/veniam/quis/nostrud/exercitation/ullamco/laboris/nisi/ut/aliquip/ex/ea/commodo/consequat/duis/aute/X",50,AAAP-25,EUR 500000.00
-service-16,Lorem Ipsum dolor sit ame,https://www.lorem-ipsum.org,50,AAAQ-25,EUR 500000.00
-service-17,Lorem Ipsum dolor sit ame,ftp://www.lorem-ipsum.org,50,AAAR-25,EUR 500000.00
-service-18,Lorem Ipsum dolor sit ame,http://www.lorem-ipsum.org/dolor/sit.html,50,AAAS-25,EUR 500000.00
-service-19,Lorem Ipsum dolor sit ame,http://www.lorem-ipsum.org/dolor/sit.html#dolor,50,AAAT-25,EUR 500000.00
-service-20,Lorem Ipsum dolor sit ame,http://example.org?a=1&b=2,50,AAAU-25,EUR 500000.00
-service-21,Lorem Ipsum dolor sit ame,http://example.org?a,50,AAAV-25,EUR 500000.00
-service-22,Lorem Ipsum dolor sit ame,http://example.org?a&b,50,AAAW-25,EUR 500000.00
-service-23,Lorem Ipsum dolor sit ame,http://example.org/,50,AAAX-25,EUR 500000.00
-service-24,Lorem Ipsum dolor sit ame,http://example.org/a,50,AAAY-25,EUR 500000.00
-service-25,Lorem Ipsum dolor sit ame,http://example.org/a/b,50,BBBA-25,EUR 500000.00
-service-26,Lorem Ipsum dolor sit ame,http://example.org/a/b?,50,BBBB-25,EUR 500000.00
-service-27,Lorem Ipsum dolor sit ame,http://example.org/a/b?a&b,50,BBBC-25,EUR 500000.00
+service-12,Lorem Ipsum dolor sit ame,ftp://a,50,AAAM-25,50
+service-13,Lorem Ipsum dolor sit ame,ftp://a.b,50,AAAN-25,50
+service-14,Lorem Ipsum dolor sit ame,"http://www.lorem-ipsum.org/dolor/sit/amet,/consectetur/adipiscing/elit,/sed/do/eiusmod/tempor/incididunt/ut/labore/et/dolore/magna/aliqua/Ut/enim/ad/minim/veniam/quis/nostrud/exercitation/ullamco/laboris/nisi/ut/aliquip/ex/ea/commodo/consequat/duis/aute/",50,AAAO-25,50
+service-15,Lorem Ipsum dolor sit ame,"http://www.lorem-ipsum.org/dolor/sit/amet,/consectetur/adipiscing/elit,/sed/do/eiusmod/tempor/incididunt/ut/labore/et/dolore/magna/aliqua/Ut/enim/ad/minim/veniam/quis/nostrud/exercitation/ullamco/laboris/nisi/ut/aliquip/ex/ea/commodo/consequat/duis/aute/X",50,AAAP-25,50
+service-16,Lorem Ipsum dolor sit ame,https://www.lorem-ipsum.org,50,AAAQ-25,50
+service-17,Lorem Ipsum dolor sit ame,ftp://www.lorem-ipsum.org,50,AAAR-25,50
+service-18,Lorem Ipsum dolor sit ame,http://www.lorem-ipsum.org/dolor/sit.html,50,AAAS-25,50
+service-19,Lorem Ipsum dolor sit ame,http://www.lorem-ipsum.org/dolor/sit.html#dolor,50,AAAT-25,50
+service-20,Lorem Ipsum dolor sit ame,http://example.org?a=1&b=2,50,AAAU-25,50
+service-21,Lorem Ipsum dolor sit ame,http://example.org?a,50,AAAV-25,50
+service-22,Lorem Ipsum dolor sit ame,http://example.org?a&b,50,AAAW-25,50
+service-23,Lorem Ipsum dolor sit ame,http://example.org/,50,AAAX-25,50
+service-24,Lorem Ipsum dolor sit ame,http://example.org/a,50,AAAY-25,50
+service-25,Lorem Ipsum dolor sit ame,http://example.org/a/b,50,BBBA-25,50
+service-26,Lorem Ipsum dolor sit ame,http://example.org/a/b?,50,BBBB-25,50
+service-27,Lorem Ipsum dolor sit ame,http://example.org/a/b?a&b,50,BBBC-25,50
 # picture-link - no singular values
 # avg-dwell-time - standard variations
-service-28,Lorem Ipsum dolor sit ame,http://lorem.com/ipsum,1,BBBD-25,EUR 500000.00
-service-29,Lorem Ipsum dolor sit ame,http://lorem.com/ipsum,1.01,BBBF-25,EUR 500000.00
-service-30,Lorem Ipsum dolor sit ame,http://lorem.com/ipsum,99.99,BBBG-25,EUR 500000.00
-service-31,Lorem Ipsum dolor sit ame,http://lorem.com/ipsum,99.98,BBBH-25,EUR 500000.00
+service-28,Lorem Ipsum dolor sit ame,http://lorem.com/ipsum,1,BBBD-25,50
+service-29,Lorem Ipsum dolor sit ame,http://lorem.com/ipsum,1.01,BBBF-25,50
+service-30,Lorem Ipsum dolor sit ame,http://lorem.com/ipsum,99.99,BBBG-25,50
+service-31,Lorem Ipsum dolor sit ame,http://lorem.com/ipsum,99.98,BBBH-25,50
 # avg-dwell-time - no singular values
 # promotion-code - standard variations / singular values
-service-32,Lorem Ipsum dolor sit ame,http://lorem.com/ipsum,50,AAAA-25,EUR 500000.00
-service-33,Lorem Ipsum dolor sit ame,http://lorem.com/ipsum,50,ZZZZ-25,EUR 500000.00
-service-34,Lorem Ipsum dolor sit ame,http://lorem.com/ipsum,50,AZAZ-25,EUR 500000.00
-service-35,Lorem Ipsum dolor sit ame,http://lorem.com/ipsum,50,null,EUR 500000.00
+service-32,Lorem Ipsum dolor sit ame,http://lorem.com/ipsum,50,AAAA-25,50
+service-33,Lorem Ipsum dolor sit ame,http://lorem.com/ipsum,50,ZZZZ-25,50
+service-34,Lorem Ipsum dolor sit ame,http://lorem.com/ipsum,50,AZAZ-25,50
+service-35,Lorem Ipsum dolor sit ame,http://lorem.com/ipsum,50,null,50
 # promotion-discount - standard variations
-service-36,Lorem Ipsum dolor sit ame,http://lorem.com/ipsum,50,BBBI-25,EUR 0.00
-service-37,Lorem Ipsum dolor sit ame,http://lorem.com/ipsum,50,BBBJ-25,EUR 0.01
-service-38,Lorem Ipsum dolor sit ame,http://lorem.com/ipsum,50,BBBK-25,EUR 999999.99
-service-39,Lorem Ipsum dolor sit ame,http://lorem.com/ipsum,50,BBBL-25,EUR 1000000.00
+service-36,Lorem Ipsum dolor sit ame,http://lorem.com/ipsum,50,BBBI-25,0.00
+service-37,Lorem Ipsum dolor sit ame,http://lorem.com/ipsum,50,BBBJ-25,0.01
+service-38,Lorem Ipsum dolor sit ame,http://lorem.com/ipsum,50,BBBK-25,99.99
+service-39,Lorem Ipsum dolor sit ame,http://lorem.com/ipsum,50,BBBL-25,100.00
 service-40,Lorem Ipsum dolor sit ame,http://lorem.com/ipsum,50,BBBM-25,null
