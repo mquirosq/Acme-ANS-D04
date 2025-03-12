@@ -9,7 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.validation.AbstractValidator;
 import acme.client.components.validation.Validator;
-import acme.datatypes.TrackingLogStatus;
+import acme.client.helpers.StringHelper;
+import acme.datatypes.ClaimStatus;
 import acme.entities.TrackingLog;
 import acme.entities.TrackingLogRepository;
 
@@ -36,13 +37,13 @@ public class TrackingLogValidator extends AbstractValidator<ValidTrackingLog, Tr
 		else {
 			{
 				if (trackingLog.getResolutionPercentage() == 100.0)
-					super.state(context, trackingLog.getStatus() != TrackingLogStatus.PENDING, "*", "acme.validation.trackingLog.notPendingStatus.message");
+					super.state(context, !trackingLog.getStatus().equals(ClaimStatus.PENDING), "*", "acme.validation.trackingLog.notPendingStatus.message");
 				else
-					super.state(context, trackingLog.getStatus() == TrackingLogStatus.PENDING, "*", "acme.validation.trackingLog.pendingStatus.message");
+					super.state(context, trackingLog.getStatus().equals(ClaimStatus.PENDING), "*", "acme.validation.trackingLog.pendingStatus.message");
 			}
 			{
-				if (trackingLog.getStatus() != TrackingLogStatus.PENDING)
-					super.state(context, trackingLog.getResolution() != null, "*", "acme.validation.trackingLog.resolution.message");
+				if (trackingLog.getStatus().equals(ClaimStatus.PENDING))
+					super.state(context, !StringHelper.isBlank(trackingLog.getResolution()), "*", "acme.validation.trackingLog.resolution.message");
 			}
 			{
 				List<TrackingLog> trackingLogs;
