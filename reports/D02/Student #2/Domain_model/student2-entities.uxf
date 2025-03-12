@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1">
+  <zoom_level>11</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1100</x>
+      <y>110</y>
+      <w>110</w>
+      <h>55</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Role&gt;&gt;
+Customer
+
+bg=pink</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>110</y>
+      <w>121</w>
+      <h>55</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Flight
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>275</x>
+      <y>55</y>
+      <w>671</w>
+      <h>165</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Booking
+--
++ locatorCode: String {Mandatory, ValidString(pattern="^[A-Z0-9]{6,8}$"), Column(unique=true)}
++ purchasedAt: Date {Mandatory, ValidMoment(part=true), Temporal(TIMESTAMP)}
++ travelClass: TravelClass {Mandatory, valid, Automapped}
++ price: Money {Mandatory, ValidMoney, Automapped}
++ lastCardNibble: String {Optional, ValidString(pattern = "^\d{4}$"), Automapped}
+
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>935</x>
+      <y>121</y>
+      <w>187</w>
+      <h>55</h>
+    </coordinates>
+    <panel_attributes>Made by &gt;
+lt=&lt;-x
+m1=1
+m2= *</panel_attributes>
+    <additional_attributes>150.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>110</x>
+      <y>121</y>
+      <w>187</w>
+      <h>55</h>
+    </coordinates>
+    <panel_attributes>&lt; Purchased in a
+lt=&lt;-x
+m1=1
+m2= *</panel_attributes>
+    <additional_attributes>10.0;20.0;150.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>550</x>
+      <y>352</y>
+      <w>165</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+BookingRecord
+--
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>627</x>
+      <y>209</y>
+      <w>121</w>
+      <h>165</h>
+    </coordinates>
+    <panel_attributes>Belongs to ^
+lt=&lt;-x
+m1=1
+m2= *</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;130.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>902</x>
+      <y>297</y>
+      <w>605</w>
+      <h>154</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Passenger
+--
++ fullName: String {Mandatory, ValidString(min=1, max=255), Automapped}
++ email: String {Mandatory, ValidEmail, Automapped}
++ passportNumber: {Mandatory, ValidString(pattern="^[A-Z0-9]{6,9}$"), Automapped}
++ birthDate: {Mandatory, ValidMoment(past=true), Temporal(TIMESTAMP)}
++ specialNeeds: {Optional, ValidString(min=0, max=50), Automapped}
+
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>704</x>
+      <y>363</y>
+      <w>220</w>
+      <h>55</h>
+    </coordinates>
+    <panel_attributes>Refers to &gt;
+lt=&lt;-x
+m1=1
+m2= *</panel_attributes>
+    <additional_attributes>180.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+</diagram>
