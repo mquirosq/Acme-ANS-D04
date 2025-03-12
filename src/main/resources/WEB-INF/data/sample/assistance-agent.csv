@@ -1,0 +1,4 @@
+key,key:user-account,employee-code,spoken-languages,key:airline,work-beginning,bio,salary,photo
+assistance-agent-01,user-account-agent-01,AAA000001,"English, Spanish, French",airline-01,2011/11/16 0:00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",EUR 2000.00,null
+assistance-agent-02,user-account-agent-02,AAB000002,"English, Japanese",airline-02,2014/03/01 0:00,null,EUR 2200.00,null
+assistance-agent-03,user-account-agent-03,AAC000003,"English",null,2010/01/01 0:00,null,null,null

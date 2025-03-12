@@ -28,7 +28,7 @@ public class Review extends AbstractEntity {
 	@Mandatory
 	@ValidString(min = 1, max = 50)
 	@Automapped
-	private String				name;
+	private String				alias;
 
 	@Mandatory
 	@ValidMoment(past = true)
@@ -36,12 +36,12 @@ public class Review extends AbstractEntity {
 	private Date				moment;
 
 	@Mandatory
-	@ValidString(max = 50)
+	@ValidString(min = 1, max = 50)
 	@Automapped
 	private String				subject;
 
 	@Mandatory
-	@ValidString(max = 255)
+	@ValidString(min = 1, max = 255)
 	@Automapped
 	private String				text;
 
@@ -50,7 +50,7 @@ public class Review extends AbstractEntity {
 	@Automapped
 	private Double				score;
 
-	@Mandatory
+	@Optional
 	@Valid
 	@Automapped
 	private Boolean				recommended;
