@@ -18,7 +18,7 @@ public class CustomerDashboard extends AbstractForm {
 	List<String>				lastFiveDestionations;
 	Money						moneySpentInBookingDuringLastYear;
 	Map<String, Integer>		numberOfBookingsByTravelClass;
-	Integer						numberOfBookings;
+	Money						totalCostOfBookings;
 	Double						averageCostOfBookings;
 	Double						minimumCostOfBookings;
 	Double						maximumOfCostOfBookings;
