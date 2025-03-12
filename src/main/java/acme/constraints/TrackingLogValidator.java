@@ -42,13 +42,13 @@ public class TrackingLogValidator extends AbstractValidator<ValidTrackingLog, Tr
 					super.state(context, trackingLog.getStatus().equals(ClaimStatus.PENDING), "*", "acme.validation.trackingLog.pendingStatus.message");
 			}
 			{
-				if (trackingLog.getStatus().equals(ClaimStatus.PENDING))
+				if (!trackingLog.getStatus().equals(ClaimStatus.PENDING))
 					super.state(context, !StringHelper.isBlank(trackingLog.getResolution()), "*", "acme.validation.trackingLog.resolution.message");
 			}
 			{
 				List<TrackingLog> trackingLogs;
 
-				trackingLogs = this.repository.findAllByClaimId(trackingLog.getClaim().getId());
+				trackingLogs = this.repository.findAllByClaimIdWithDifferentIdBefore(trackingLog.getClaim().getId(), trackingLog.getId(), trackingLog.getLastUpdateMoment());
 
 				if (!trackingLogs.isEmpty())
 					super.state(context, trackingLogs.get(0).getResolutionPercentage() < trackingLog.getResolutionPercentage(), "*", "acme.validation.trackingLog.resolutionPercentage.message");
