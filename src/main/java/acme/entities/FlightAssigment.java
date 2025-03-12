@@ -54,5 +54,8 @@ public class FlightAssigment extends AbstractEntity {
 	@ManyToOne(optional = false)
 	private FlightCrewMember	allocatedFlightCrewMember;
 
-	//TODO: Many To One Leg relationship
+	@Mandatory
+	@Valid
+	@ManyToOne(optional = false)
+	private FlightLeg			leg;
 }
