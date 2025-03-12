@@ -49,8 +49,6 @@ public class ActivityLog extends AbstractEntity {
 	@Mandatory
 	@Valid
 	@ManyToOne(optional = false)
-	private FlightCrewMember	logger;
-
-	// TODO: Include Many To One relationship with Leg
+	private FlightAssignment	assignment;
 
 }
