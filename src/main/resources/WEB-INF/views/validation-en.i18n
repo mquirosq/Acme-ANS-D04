@@ -7,3 +7,4 @@ acme.validation.trackingLog.notPendingStatus.message 		= The status must not be 
 acme.validation.trackingLog.pendingStatus.message			= The status must be pending if the resolution percentage has not reached 100%
 acme.validation.trackingLog.resolution.message				= The resolution is mandatory if the claim has already been accepted or rejected
 acme.validation.trackingLog.resolutionPercentage.message 	= The resolution percentage must be monotonically increasing
+acme.validation.service.promotioncode.message 				= The promotion code year must be according to the current year

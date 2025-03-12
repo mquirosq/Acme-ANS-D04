@@ -17,7 +17,7 @@ import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidScore;
 import acme.client.components.validation.ValidString;
 import acme.constraints.ValidTrackingLog;
-import acme.datatypes.TrackingLogStatus;
+import acme.datatypes.ClaimStatus;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -30,12 +30,7 @@ public class TrackingLog extends AbstractEntity {
 	public static final long	serialVersionUID	= 1L;
 
 	@Mandatory
-	@Valid
-	@ManyToOne(optional = false)
-	private Claim				claim;
-
-	@Mandatory
-	@ValidMoment
+	@ValidMoment(past = true)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date				lastUpdateMoment;
 
@@ -52,10 +47,15 @@ public class TrackingLog extends AbstractEntity {
 	@Mandatory
 	@Valid
 	@Automapped
-	private TrackingLogStatus	status;
+	private ClaimStatus			status;
 
 	@Optional
 	@ValidString(min = 0, max = 255)
 	@Automapped
 	private String				resolution;
+
+	@Mandatory
+	@Valid
+	@ManyToOne(optional = false)
+	private Claim				claim;
 }

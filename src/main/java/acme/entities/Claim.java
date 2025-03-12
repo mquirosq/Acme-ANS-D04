@@ -29,11 +29,6 @@ public class Claim extends AbstractEntity {
 	public static final long	serialVersionUID	= 1L;
 
 	@Mandatory
-	@Valid
-	@ManyToOne(optional = false)
-	AssistanceAgent				registerer;
-
-	@Mandatory
 	@ValidMoment(past = true)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date				registrationMoment;
@@ -57,4 +52,9 @@ public class Claim extends AbstractEntity {
 	@Valid
 	@Automapped
 	private ClaimStatus			status;
+
+	@Mandatory
+	@Valid
+	@ManyToOne(optional = false)
+	AssistanceAgent				agent;
 }
