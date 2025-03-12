@@ -13,12 +13,14 @@ import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidString;
+import acme.constraints.ValidBannedPassenger;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
+@ValidBannedPassenger
 public class BannedPassenger extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
