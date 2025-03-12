@@ -1,0 +1,37 @@
+key,key:flight,key:customer,locator-code,purchased-at,travel-class,price,last-card-nibble
+# base entity
+booking-01,flight-01,customer-01,A1B2C3D,2012/07/02 0:00,BUSINESS,EUR 100.00,1234
+# locatorCode variations
+booking-02,flight-01,customer-01,A1B2C3,2012/07/02 0:00,BUSINESS,EUR 100.00,1234
+booking-03,flight-01,customer-01,A1B2C3D4,2012/07/02 0:00,BUSINESS,EUR 100.00,1234
+booking-04,flight-01,customer-01,AAAAAAA,2012/07/02 0:00,BUSINESS,EUR 100.00,1234
+booking-05,flight-01,customer-01,0000000,2012/07/02 0:00,BUSINESS,EUR 100.00,1234
+booking-06,flight-01,customer-01,ZZZZZZZ,2012/07/02 0:00,BUSINESS,EUR 100.00,1234
+booking-07,flight-01,customer-01,9999999,2012/07/02 0:00,BUSINESS,EUR 100.00,1234
+booking-08,flight-01,customer-01,193C6AD,2012/07/02 0:00,BUSINESS,EUR 100.00,1234
+booking-09,flight-01,customer-01,1234ABCD,2012/07/02 0:00,BUSINESS,EUR 100.00,1234
+# purchasedAt - standard variations
+booking-10,flight-01,customer-01,ABAAAAA,2000/01/01 0:00,BUSINESS,EUR 100.00,1234
+booking-11,flight-01,customer-01,ACAAAAA,2000/01/01 0:01,BUSINESS,EUR 100.00,1234
+booking-12,flight-01,customer-01,ADAAAAA,2024/12/31 23:59,BUSINESS,EUR 100.00,1234
+booking-13,flight-01,customer-01,AEAAAAA,2025/01/01 0:00,BUSINESS,EUR 100.00,1234
+# purchasedAt - singular values
+booking-14,flight-01,customer-01,AFAAAAA,2004/02/29 0:00,BUSINESS,EUR 100.00,1234
+booking-15,flight-01,customer-01,AGAAAAA,2003/02/28 0:00,BUSINESS,EUR 100.00,1234
+# travelClass - standard variations
+booking-16,flight-01,customer-01,AHAAAAA,2012/07/02 0:00,ECONOMY,EUR 100.00,1234
+# price - standard variations
+booking-17,flight-01,customer-01,AIAAAAA,2012/07/02 0:00,ECONOMY,EUR 500000.00,1234
+booking-18,flight-01,customer-01,AJAAAAA,2012/07/02 0:00,ECONOMY,EUR 0.00,1234
+booking-19,flight-01,customer-01,AKAAAAA,2012/07/02 0:00,ECONOMY,EUR 0.01,1234
+booking-20,flight-01,customer-01,ALAAAAA,2012/07/02 0:00,ECONOMY,EUR 999999.99,1234
+booking-21,flight-01,customer-01,AMAAAAA,2012/07/02 0:00,ECONOMY,EUR 1000000.00,1234
+# lastCardNibble - standard variations
+booking-22,flight-01,customer-01,ANAAAAA,2012/07/02 0:00,BUSINESS,EUR 100.00,0000
+booking-23,flight-01,customer-01,AOAAAAA,2012/07/02 0:00,BUSINESS,EUR 100.00,9999
+booking-24,flight-01,customer-01,APAAAAA,2012/07/02 0:00,BUSINESS,EUR 100.00,1527
+booking-25,flight-01,customer-01,AQAAAAA,2012/07/02 0:00,BUSINESS,EUR 100.00,null
+# flight - standard variations
+booking-26,flight-02,customer-01,ARAAAAA,2012/07/02 0:00,BUSINESS,EUR 100.00,1234
+# customer - standard variations
+booking-27,flight-01,customer-02,ASAAAAA,2012/07/02 0:00,BUSINESS,EUR 100.00,1234

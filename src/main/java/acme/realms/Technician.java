@@ -1,36 +1,32 @@
 
-package acme.entities;
+package acme.realms;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
 import javax.validation.Valid;
 
 import acme.client.components.basis.AbstractRole;
-import acme.client.components.datatypes.Money;
 import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
-import acme.client.components.validation.ValidMoney;
 import acme.client.components.validation.ValidNumber;
 import acme.client.components.validation.ValidString;
-import acme.constraints.ValidFlightCrewMember;
-import acme.datatypes.AvailabilityStatus;
+import acme.constraints.ValidTechnician;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
-@ValidFlightCrewMember
-public class FlightCrewMember extends AbstractRole {
+@ValidTechnician
+public class Technician extends AbstractRole {
 
 	private static final long	serialVersionUID	= 1L;
 
 	@Mandatory
-	@ValidString(pattern = "^[A-Z]{2,3}\\d{6}$")
+	@ValidString(pattern = "^[A-Z]{2-3}\\d{6}$")
 	@Column(unique = true)
-	private String				employeeCode;
+	private String				license;
 
 	@Mandatory
 	@ValidString(pattern = "^\\+?\\d{6,15}$")
@@ -38,30 +34,22 @@ public class FlightCrewMember extends AbstractRole {
 	private String				phoneNumber;
 
 	@Mandatory
-	@ValidString(min = 1, max = 255)
+	@ValidString(min = 1, max = 50)
 	@Automapped
-	private String				languageSkills;
+	private String				specialisation;
 
 	@Mandatory
 	@Valid
 	@Automapped
-	private AvailabilityStatus	availabilityStatus;
+	private Boolean				healthPassed;
 
 	@Mandatory
-	@ValidMoney
-	@Automapped
-	private Money				salary;
-
-	@Optional
 	@ValidNumber(min = 0, max = 120)
 	@Automapped
-	private Integer				yearsOfExperience;
+	private Integer				expYears;
 
-	// Relationships ------------------------------------------------
-
-	@Mandatory
-	@Valid
-	@ManyToOne(optional = false)
-	private Airline				airline;
-
+	@Optional
+	@ValidString(max = 255)
+	@Automapped
+	private String				certifications;
 }
