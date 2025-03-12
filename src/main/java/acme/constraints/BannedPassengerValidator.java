@@ -27,7 +27,7 @@ public class BannedPassengerValidator extends AbstractValidator<ValidBannedPasse
 			boolean liftedAtAfterIssuedAt = bannedPassenger.getIssuedAt().before(bannedPassenger.getLiftedAt());
 			super.state(context, liftedAtAfterIssuedAt, "liftedAt", "acme.validation.customer.liftedAt.message");
 
-			boolean issuedAtAfterBirthDate = bannedPassenger.getIssuedAt().after(bannedPassenger.getLiftedAt());
+			boolean issuedAtAfterBirthDate = bannedPassenger.getIssuedAt().after(bannedPassenger.getDateOfBirth());
 			super.state(context, issuedAtAfterBirthDate, "issuedAt", "acme.validation.customer.issuedAt.message");
 
 		}
