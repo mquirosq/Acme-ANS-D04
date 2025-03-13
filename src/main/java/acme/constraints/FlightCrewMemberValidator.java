@@ -31,7 +31,7 @@ public class FlightCrewMemberValidator extends AbstractValidator<ValidFlightCrew
 
 			check = dui.getName().charAt(0) == employeeCode.charAt(0) && dui.getSurname().charAt(0) == employeeCode.charAt(1);
 
-			super.state(context, check, "promotionCode", "acme.validation.service.promotioncode.message");
+			super.state(context, check, "employeeCode", "acme.validation.flightcrewmember.employeecode.message");
 		}
 
 		result = !super.hasErrors(context);
