@@ -1,0 +1,10 @@
+key, key:maintenanceRecord, key:task
+# base task record
+task-record-01,maintenance-record-01,task-01
+# maintenanceRecord variance
+task-record-02,maintenance-record-01,task-01
+task-record-03,maintenance-record-02,task-01
+# task variance
+task-record-04,maintenance-record-01,task-01
+task-record-05,maintenance-record-01,task-02
+task-record-06,maintenance-record-01,task-03
