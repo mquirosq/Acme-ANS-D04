@@ -1,4 +1,4 @@
-key, key:maintenanceRecord, key:task
+key,key:record,key:task
 # base task record
 task-record-01,maintenance-record-01,task-01
 # maintenanceRecord variance
