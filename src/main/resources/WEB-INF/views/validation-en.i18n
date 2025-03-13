@@ -8,3 +8,4 @@ acme.validation.trackingLog.pendingStatus.message			= The status must be pending
 acme.validation.trackingLog.resolution.message				= The resolution is mandatory if the claim has already been accepted or rejected
 acme.validation.trackingLog.resolutionPercentage.message 	= The resolution percentage must be monotonically increasing
 acme.validation.service.promotioncode.message 				= The promotion code year must be according to the current year
+acme.validation.flightcrewmember.employeecode.message 		= The employee code first two letters must match the employee's name and surname initials
