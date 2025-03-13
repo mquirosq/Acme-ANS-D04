@@ -1,5 +1,38 @@
-key,tag,requires-self-transfer,cost,description
-# Temporary flights to sample Student 2 data (remove them but keep the identifiers)
-flight-01,Loren,TRUE,EUR 100.00,Loren
-flight-02,Loren,TRUE,EUR 100.00,Loren
-flight-03,Loren,TRUE,EUR 100.00,Loren
+key,tag,requires-self-transfer,cost,description,key:manager
+# Base entity
+flight-01,"Lorem ipsum dolor sit ame",false,EUR 100.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-manager-01
+# tag - variations
+flight-02,"L",false,EUR 100.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-manager-01
+flight-03,"Lo",false,EUR 100.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-manager-01
+flight-04,"Lorem ipsum dolor sit amet, consectetur adipiscin",false,EUR 100.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-manager-01
+flight-05,"Lorem ipsum dolor sit amet, consectetur adipiscing",false,EUR 100.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-manager-01
+flight-06,"โลเร็ม อิปซัม",false,EUR 100.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-manager-01
+flight-07,"لوريم إيبسوم",false,EUR 100.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-manager-01
+flight-08,"洛伦·伊普森",false,EUR 100.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-manager-01
+flight-09,"<marquee>Hacked</marquee>",false,EUR 100.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-manager-01
+flight-10,"<script>alert(‘Hacked!’);</script>",false,EUR 100.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-manager-01
+flight-11,"' or 'A' = 'A ",false,EUR 100.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-manager-01
+# requires-self-transfer - variations
+flight-12,"Lorem ipsum dolor sit ame",true,EUR 100.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-manager-01
+# cost - variations
+flight-13,"Lorem ipsum dolor sit ame",false,EUR 0.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-manager-01
+flight-14,"Lorem ipsum dolor sit ame",false,EUR 0.01,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-manager-01
+flight-15,"Lorem ipsum dolor sit ame",false,EUR 1000000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-manager-01
+flight-16,"Lorem ipsum dolor sit ame",false,EUR 999999.99,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-manager-01
+flight-17,"Lorem ipsum dolor sit ame",false,USD 0.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-manager-01
+flight-18,"Lorem ipsum dolor sit ame",false,USD 0.01,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-manager-01
+flight-19,"Lorem ipsum dolor sit ame",false,USD 1000000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-manager-01
+flight-20,"Lorem ipsum dolor sit ame",false,USD 999999.99,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-manager-01
+# description - variations
+flight-21,"Lorem ipsum dolor sit ame",false,EUR 100.00,"",airline-manager-01
+flight-22,"Lorem ipsum dolor sit ame",false,EUR 100.00,"L",airline-manager-01
+flight-23,"Lorem ipsum dolor sit ame",false,EUR 100.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor",airline-manager-01
+flight-24,"Lorem ipsum dolor sit ame",false,EUR 100.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor*",airline-manager-01
+flight-25,"Lorem ipsum dolor sit ame",false,EUR 100.00,"โลเร็ม อิปซัม",airline-manager-01
+flight-26,"Lorem ipsum dolor sit ame",false,EUR 100.00,"لوريم إيبسوم",airline-manager-01
+flight-27,"Lorem ipsum dolor sit ame",false,EUR 100.00,"洛伦·伊普森",airline-manager-01
+flight-28,"Lorem ipsum dolor sit ame",false,EUR 100.00,"<marquee>Hacked</marquee>",airline-manager-01
+flight-29,"Lorem ipsum dolor sit ame",false,EUR 100.00,"<script>alert(‘Hacked!’);</script>",airline-manager-01
+flight-30,"Lorem ipsum dolor sit ame",false,EUR 100.00,"' or 'A' = 'A ",airline-manager-01
+# manager - variations
+flight-31,"Lorem ipsum dolor sit ame",false,EUR 100.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-manager-02
