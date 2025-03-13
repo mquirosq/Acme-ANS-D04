@@ -1,41 +1,48 @@
 
 package acme.features.customer.dashboard;
 
+import java.util.Collection;
+import java.util.Date;
+
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+
 import acme.client.repositories.AbstractRepository;
 
 public interface CustomerDashboardRepository extends AbstractRepository {
 
-	// The last five destinations
-	// @Query("select b.flight.destination from Booking b where b.customer.id = :customerId order by b.purchasedAt desc")
-	// List<String> destinationsOrderByRecent(@Param("customerId") Integer customerId);
+	@Query("select b.flight from Booking b where b.customer.id = :customerId order by b.purchasedAt desc")
+	Collection<String> getFlightsOrderByRecentBooking(@Param("customerId") Integer customerId);
 
-	// The money spent in bookings during the last year
-	// @Query("select sum(b.costValue) from Booking b where b.purchasedAt >= :startDate && b.customer.id = :customerId")
-	// Double totalMoneySpentLastYear(@Param("customerId") Integer customerId, @Param("startDate") LocalDate startDate);
+	@Query("select b.travelClass, count(b) from Booking b where b.customer.id = :customerId group by b.travelClass")
+	Collection<Object[]> getNumberOfBookingsGroupedByTravelClass(@Param("customerId") Integer customerId);
 
-	// The number of bookings grouped by travel class
-	// @Query("select b.travelClass, count(b) from Booking b where b.customer.id = :customerId group by b.travelClass")
-	// List<Object[]> numberOfBookingsGroupedByTravelClass(@Param("customerId") Integer customerId);
+	@Query("select sum(b.price.amount) from Booking b where b.purchasedAt >= :startDate")
+	Double getTotalCostOfBookingsSinceDate(@Param("startDate") Date startDate);
 
-	// Total cost of bookings in last 5 years ??
-	// @Query("select sum(cost) from Booking b")
+	@Query("select avg(b.price.amount) from Booking b where b.purchasedAt >= :startDate")
+	Double getAverageCostOfBookingsSinceDate(@Param("startDate") Date startDate);
 
-	// Average cost of bookings in last 5 years
+	@Query("select min(b.price.amount) from Booking b where b.purchasedAt >= :startDate")
+	Double getMinimumCostOfBookingsSinceDate(@Param("startDate") Date startDate);
 
-	// Minimum cost of bookings in last 5 years
+	@Query("select max(b.price.amount) from Booking b where b.purchasedAt >= :startDate")
+	Double maximumCostOfBookingsSinceDate(@Param("startDate") Date startDate);
 
-	// Maximum cost of bookings in last 5 years
+	@Query("select stddev(b.price.amount) from Booking b where b.purchasedAt >= :startDate")
+	Double standardDeviationCostOfBookingsSinceDate(@Param("startDate") Date startDate);
 
-	// Standard deviation cost of bookings in last 5 years
+	@Query("select count(br) from BookingRecord br where br.booking.customer=:customerId")
+	Long getTotalPassengersInBookings(@Param("customerId") Integer customerId);
 
-	// Total number of passengers in bookings
+	@Query("select avg(select count(br) from BookingRecord br where br.booking.id = b.id) from Booking b where b.customer.id = :customerId")
+	Double getAverageNumberOfPassengersInBooking(@Param("customerId") Integer customerId);
 
-	// Average number of passengers in bookings
+	@Query("select min(select count(br) from BookingRecord br where br.booking.id = b.id) from Booking b where b.customer.id = :customerId")
+	Long getMinimumNumberOfPassengersInBooking(@Param("customerId") Integer customerId);
 
-	// Minimum number of passengers in bookings
-
-	// Maximum number of passengers in bookings
+	@Query("select max(select count(br) from BookingRecord br where br.booking.id = b.id) from Booking b where b.customer.id = :customerId")
+	Long getMaximumNumberOfPassengersInBooking(@Param("customerId") Integer customerId);
 
 	// Standard deviation number of passengers in bookings
-
 }
