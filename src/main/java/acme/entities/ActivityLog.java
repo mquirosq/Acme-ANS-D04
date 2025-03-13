@@ -12,19 +12,16 @@ import javax.validation.Valid;
 import acme.client.components.basis.AbstractEntity;
 import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
-import acme.client.components.validation.ValidEmail;
 import acme.client.components.validation.ValidMoment;
+import acme.client.components.validation.ValidNumber;
 import acme.client.components.validation.ValidString;
-import acme.datatypes.ClaimStatus;
-import acme.datatypes.ClaimType;
-import acme.realms.AssistanceAgent;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
-public class Claim extends AbstractEntity {
+public class ActivityLog extends AbstractEntity {
 
 	public static final long	serialVersionUID	= 1L;
 
@@ -34,27 +31,24 @@ public class Claim extends AbstractEntity {
 	private Date				registrationMoment;
 
 	@Mandatory
-	@ValidEmail
+	@ValidString(max = 50)
 	@Automapped
-	private String				passengerEmail;
+	private String				typeOfIncident;
 
 	@Mandatory
-	@ValidString(min = 1, max = 255)
+	@ValidString(max = 255)
 	@Automapped
 	private String				description;
 
 	@Mandatory
-	@Valid
-	@Automapped
-	private ClaimType			type;
+	@ValidNumber(min = 0, max = 10)
+	private Integer				severityLevel;
 
-	@Mandatory
-	@Valid
-	@Automapped
-	private ClaimStatus			status;
+	// Relationships -------------------------------------------------------
 
 	@Mandatory
 	@Valid
 	@ManyToOne(optional = false)
-	AssistanceAgent				agent;
+	private FlightAssignment	assignment;
+
 }

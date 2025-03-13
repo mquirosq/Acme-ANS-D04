@@ -1,0 +1,5 @@
+key,flight-number,scheduled-departure,scheduled-arrival,status,key:departure-airport,key:arrival-airport,key:deployed-aircraft,key:parent-flight
+# Temporary sample data to test Student 3 entities (delete this but not the key)
+flight-leg-01,1234,2000/01/01 0:00,2000/01/01 0:00, "ON_TIME",airport-01,airport-02,aircraft-01,flight-01
+flight-leg-02,1122,2000/01/01 0:00,2000/01/01 0:00, "ON_TIME",airport-01,airport-02,aircraft-01,flight-01
+flight-leg-03,3344,2000/01/01 0:00,2000/01/01 0:00, "ON_TIME",airport-01,airport-02,aircraft-01,flight-01

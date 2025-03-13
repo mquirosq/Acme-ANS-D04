@@ -1,9 +1,14 @@
 # validation-es.i18n
 #
 acme.validation.customer.identifier.message = El identificador debe comenzar con las iniciales del cliente
+acme.validation.airlineManager.identifier.message = El identificador debe comenzar con las iniciales del gestor
 acme.validation.assistanceAgent.employeeCode.message	= Las primeras dos o tres letras deben coincidir con las iniciales del empleado
 
 acme.validation.trackingLog.notPendingStatus.message 		= El estado no puede ser pendiente si el porcentaje de resolución ha llegado al 100%
 acme.validation.trackingLog.pendingStatus.message			= El estado debe ser pendiente si el porcentaje de resolución no ha llegado al 100%
 acme.validation.trackingLog.resolution.message				= La resolución es obligatoria si la queja ha sido aceptada o rechazada
 acme.validation.trackingLog.resolutionPercentage.message 	= El porcentaje de resolución debe aumentar monotónicamente
+acme.validation.service.promotioncode.message 				= El código de la promoción debe correponder al año actual
+acme.validation.flightcrewmember.employeecode.message       = Las primeras dos letras del código de empleado deben de coincidir con las iniciales del nombre y apellidos del mismo
+acme.validation.customer.issuedAt.message 					= No se puede prohibir el acceso a un pasajero antes de su nacimiento
+acme.validation.customer.liftedAt.message 					= No se puede levantar una prohibición antes de su fecha de creación
