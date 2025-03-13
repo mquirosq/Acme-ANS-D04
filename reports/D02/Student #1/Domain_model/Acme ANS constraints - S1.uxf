@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>380</x>
+      <y>230</y>
+      <w>280</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Constraint&gt;&gt;
+ValidAirlineManager
+--
++ First two digits of the identifier number
+must correspond to the manager's initials
+bg=RED</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>380</x>
+      <y>340</y>
+      <w>280</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Constraint&gt;&gt;
+ValidFlightLeg
+--
++ First three characters of the flight number
+must correspond to the airline's IATA
++ The scheduled departure must be
+before the scheduled arrival
++ Legs belonging to the same flight cannot
+overlap with each other
+bg=RED</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
