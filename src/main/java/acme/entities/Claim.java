@@ -57,4 +57,9 @@ public class Claim extends AbstractEntity {
 	@Valid
 	@ManyToOne(optional = false)
 	AssistanceAgent				agent;
+
+	@Mandatory
+	@Valid
+	@ManyToOne(optional = false)
+	FlightLeg					leg;
 }
