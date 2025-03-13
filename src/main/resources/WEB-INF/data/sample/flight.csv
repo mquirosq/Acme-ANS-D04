@@ -1,4 +1,4 @@
-key,feature,requires-self-transfer,cost,description
+key,tag,requires-self-transfer,cost,description
 # Temporary flights to sample Student 2 data (remove them but keep the identifiers)
 flight-01,Loren,TRUE,EUR 100.00,Loren
 flight-02,Loren,TRUE,EUR 100.00,Loren
