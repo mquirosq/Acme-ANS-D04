@@ -1,0 +1,36 @@
+key,duty,moment,current-status,remarks,key:allocated-flight-crew-member,key:leg
+# Base entity
+flight-assigment-01,"PILOT",2012/07/02 0:00,"CONFIRMED","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",flight-crew-member-01,flight-leg-01
+# Duty & Flight Crew Member - standard variations / singular values 
+flight-assigment-02,"PILOT",2012/07/02 0:00,"CONFIRMED","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",flight-crew-member-01,flight-leg-01
+flight-assigment-03,"COPILOT",2012/07/02 0:00,"CONFIRMED","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",flight-crew-member-02,flight-leg-02
+flight-assigment-04,"LEAD_ATTENDANT",2012/07/02 0:00,"CONFIRMED","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",flight-crew-member-03,flight-leg-02
+flight-assigment-05,"CABIN_ATTENDANT",2012/07/02 0:00,"CONFIRMED","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",flight-crew-member-04,flight-leg-02
+# Moment - standard variations
+flight-assigment-06,"PILOT",2000/01/01 0:00,"CONFIRMED","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",flight-crew-member-01,flight-leg-01
+flight-assigment-07,"PILOT",2000/01/01 0:01,"CONFIRMED","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",flight-crew-member-01,flight-leg-01
+flight-assigment-08,"PILOT",2024/12/31 23:59,"CONFIRMED","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",flight-crew-member-01,flight-leg-01
+flight-assigment-09,"PILOT",2025/01/01 0:00,"CONFIRMED","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",flight-crew-member-01,flight-leg-01
+# Moment - no singular values
+# Current status - standard variations
+flight-assigment-10,"PILOT",2025/01/01 0:00,"PENDING","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",flight-crew-member-01,flight-leg-01
+flight-assigment-11,"PILOT",2025/01/01 0:00,"CANCELLED","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",flight-crew-member-01,flight-leg-01
+# Current status - no singular values
+# Remarks - standard variations
+flight-assigment-12,"PILOT",2025/01/01 0:00,"PENDING","L",flight-crew-member-01,flight-leg-01
+flight-assigment-13,"PILOT",2025/01/01 0:00,"PENDING","Lo",flight-crew-member-01,flight-leg-01
+flight-assigment-14,"PILOT",2025/01/01 0:00,"PENDING","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor",flight-crew-member-01,flight-leg-01
+flight-assigment-15,"PILOT",2025/01/01 0:00,"PENDING","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor*",flight-crew-member-01,flight-leg-01
+flight-assigment-16,"PILOT",2025/01/01 0:00,"PENDING","โลเร็ม อิปซัม",flight-crew-member-01,flight-leg-01
+flight-assigment-17,"PILOT",2025/01/01 0:00,"PENDING","لوريم إيبسوم",flight-crew-member-01,flight-leg-01
+flight-assigment-18,"PILOT",2025/01/01 0:00,"PENDING","洛伦·伊普森",flight-crew-member-01,flight-leg-01
+flight-assigment-19,"PILOT",2025/01/01 0:00,"PENDING","<marquee>Hacked</marquee>",flight-crew-member-01,flight-leg-01
+flight-assigment-20,"PILOT",2025/01/01 0:00,"PENDING","<script>alert(‘Hacked!’);</script>",flight-crew-member-01,flight-leg-01
+flight-assigment-21,"PILOT",2025/01/01 0:00,"PENDING","' or 'A' = 'A",flight-crew-member-01,flight-leg-01
+flight-assigment-22,"PILOT",2025/01/01 0:00,"PENDING",null,flight-crew-member-01,flight-leg-01
+# Remarks - no singular values
+# Leg - standard variations
+flight-assigment-23,"PILOT",2012/07/02 0:00,"CONFIRMED","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",flight-crew-member-01,flight-leg-02
+flight-assigment-24,"PILOT",2012/07/02 0:00,"CONFIRMED","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",flight-crew-member-01,flight-leg-02
+# Leg - no singular values
+
