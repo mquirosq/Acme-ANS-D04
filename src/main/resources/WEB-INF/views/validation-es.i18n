@@ -1,6 +1,7 @@
 # validation-es.i18n
 #
 acme.validation.customer.identifier.message = El identificador debe comenzar con las iniciales del cliente
+acme.validation.airlineManager.identifier.message = El identificador debe comenzar con las iniciales del gestor
 acme.validation.assistanceAgent.employeeCode.message	= Las primeras dos o tres letras deben coincidir con las iniciales del empleado
 
 acme.validation.trackingLog.notPendingStatus.message 		= El estado no puede ser pendiente si el porcentaje de resolución ha llegado al 100%
