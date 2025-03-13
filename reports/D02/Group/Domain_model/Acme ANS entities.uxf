@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1">
+  <zoom_level>7</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>518</x>
+      <y>504</y>
+      <w>532</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+SystemConfiguration
+--
++ systemCurrency: String {Mandatory, ValidString(pattern="[A-Z]{3}$"), Automapped}
++ acceptedCurrencies: String {Mandatory, ValidString(pattern ="([A-Z]{3})(, [A-Z]{3})+", min=1, max=255), Automapped}
+bg=green
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>581</x>
+      <y>84</y>
+      <w>378</w>
+      <h>126</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Airport
+--
++ name: String {Mandatory, ValidString(min=1, max=50), Automapped}
++ IATACode: String {Mandatory, ValidString(pattern="^[A-Z]{3}$"), Column(unique=true)}
++ scope: AirportScope {Mandatory, Valid, Automapped}
++ city: String {Mandatory, ValidString(min=1, max=50), Automapped}
++ country: String {Mandatory, ValidString(min=1, max=50), Automapped}
++ website: String {Optional, ValidUrl, Automapped}
++ email: String {Optional, ValidEmail, Automapped}
++ phoneNumber: String {Optional, ValidString(pattern="^\+?\d{6,15}$"), Automapped}
+bg=green
+
+
+
+  
+  
+  
+  
+  
+  
+  
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>574</x>
+      <y>315</y>
+      <w>392</w>
+      <h>119</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Airline
+--
++ name: String {Mandatory, ValidString(min=1, max=50), Automapped}
++ IATACode: String {Mandatory, ValidString(pattern="^[A-Z]{3}$"), Column(unique=true)}
++ website: String {Mandatory, ValidUrl, Automapped}
++ type: AirlineType {Mandatory, Valid, Automapped}
++ foundation: Date {Mandatory, ValidMoment(past=true), Temporal(TIMESTAMP)}
++ email: String {Optional, ValidEmail, Automapped}
++ phoneNumber: String {Optional, ValidString(pattern="^\+?\d{6,15}$"), Automapped}
+bg=green
+
+
+
+
+  
+  
+  
+  
+  
+  
+  
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>322</y>
+      <w>413</w>
+      <h>105</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Aircraft
+--
++ model: String {Mandatory, ValidString(min=1, max=50), Automapped}
++ registrationNumber: String {Mandatory, ValidString(min=1, max=50), Column(unique=true)}
++ capacity: Integer {Mandatory, ValidNumber(min=1, max=255), Automapped}
++ cargoWeight: Integer {Mandatory, ValidNumber(min=2000, max=50000), Automapped}
++ status: AircraftStatus {Mandatory, Valid, Automapped}
++ details: String {Optional, ValidString(min=0, max=255), Automapped}
+bg=green
+
+
+
+
+  
+  
+  
+  
+  
+  
+  
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1022</x>
+      <y>112</y>
+      <w>476</w>
+      <h>98</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Service {ValidService}
+--
++ name: String {Mandatory, ValidString(min=1, max=50), Automapped}
++ pictureLink: String {Mandatory, ValidUrl, Automapped}
++ avgDwellTime: Double {Mandatory, ValidNumber(min=1, max=100, integer=3, fraction=2), Automapped}
++ promotionCode: String {Optional, ValidString(pattern="^[A-Z]{4}-[0-9]{2}$"), Column(unique=true)}
++ promotionDiscount: Double {Optional, ValidScore, Automapped}
+bg=green
+
+
+
+
+  
+  
+  
+  
+  
+  
+  
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>406</x>
+      <y>364</y>
+      <w>182</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>Belongs to &gt;
+lt=&lt;-x
+m1=1
+m2=0..*</panel_attributes>
+    <additional_attributes>240.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>609</x>
+      <y>252</y>
+      <w>329</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>The relation between airports and airlines will not be explicitly managed
+bg=blue</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>756</x>
+      <y>203</y>
+      <w>21</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>lt=..</panel_attributes>
+    <additional_attributes>10.0;70.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>756</x>
+      <y>266</y>
+      <w>21</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>lt=..</panel_attributes>
+    <additional_attributes>10.0;70.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1043</x>
+      <y>315</y>
+      <w>413</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+BannedPassenger {ValidBannedPassenger}
+--
++ fullName: String {Mandatory, ValidString(min=1, max=50), Automapped}
++ dateOfBirth: Date {Mandatory, ValidMoment(past=true), Temporal(TIMESTAMP)}
++ passportNumber: String {Mandatory, ValidString(pattern="^[A-Z0-9]{6,9}$"), Automapped}
++ nationality: String {Mandatory, ValidString(min=1, max=50), Automapped}
++ reason: String {Mandatory, ValidString(min=1, max=255), Automapped}
++ issuedAt: Date {Mandatory, ValidMoment(past=true), Temporal(TIMESTAMP)}
++ liftedAt: Date {Optional, ValidMoment(past=true), Temporal(TIMESTAMP)}
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>35</x>
+      <y>98</y>
+      <w>350</w>
+      <h>105</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Review
+--
++ name: String {Mandatory, ValidString(min=1, max=50), Automapped}
++ date: Date {Mandatory, ValidMoment(past=true), Temporal(TIMESTAMP)}
++ subject: String {Mandatory, ValidString(min=1, max=50), Automapped}
++ text: String {Mandatory, ValidString(min=1, max=255), Automapped}
++ score: Double {Optional, ValidNumber(min=0, max=10), Automapped}
++ recommended: Boolean {Optional, Valid, Automapped}
+bg=green
+
+
+
+
+  
+  
+  
+  
+  
+  
+  
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
