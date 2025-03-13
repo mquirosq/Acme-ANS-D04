@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>190</x>
+      <y>150</y>
+      <w>480</w>
+      <h>230</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Form&gt;&gt;
+AdministratorDashboard
+--
++ totalNumberOfAirportsByOperationalScope: Map&lt;AirportScope, Long&gt;
++ numberOfAirlinesByType: Map&lt;AirlineType, Long&gt;
++ ratioOfAirlinesWithEmailAddressAndPhoneNumber: Double
++ ratioOfActiveAircrafts: Double
++ ratioOfNonActiveAircrafts: Double
++ ratioOfReviewsWithScoreAboveFive: Double
++ numberOfReviewsPostedInLastTenWeeks: Long
++ averageNumberOfReviewsPostedInLastTenWeeks: Double
++ minimumNumberOfReviewsPostedInLastTenWeeks: Long
++ maximumNumberOfReviewsPostedInLastTenWeeks: Long
++ standardDeviationOfNumberOfReviewsPostedInLastTenWeeks: Double
+bg=cyan</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
