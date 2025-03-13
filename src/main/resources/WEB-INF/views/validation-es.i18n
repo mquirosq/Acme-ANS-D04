@@ -8,3 +8,4 @@ acme.validation.trackingLog.pendingStatus.message			= El estado debe ser pendien
 acme.validation.trackingLog.resolution.message				= La resolución es obligatoria si la queja ha sido aceptada o rechazada
 acme.validation.trackingLog.resolutionPercentage.message 	= El porcentaje de resolución debe aumentar monotónicamente
 acme.validation.service.promotioncode.message 				= El código de la promoción debe correponder al año actual
+acme.validation.flightcrewmember.employeecode.message       = Las primeras dos letras del código de empleado deben de coincidir con las iniciales del nombre y apellidos del mismo
