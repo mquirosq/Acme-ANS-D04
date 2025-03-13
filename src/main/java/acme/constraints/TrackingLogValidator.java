@@ -48,7 +48,7 @@ public class TrackingLogValidator extends AbstractValidator<ValidTrackingLog, Tr
 			{
 				List<TrackingLog> trackingLogs;
 
-				trackingLogs = this.repository.findAllByClaimIdWithDifferentIdBefore(trackingLog.getClaim().getId(), trackingLog.getId(), trackingLog.getLastUpdateMoment());
+				trackingLogs = this.repository.findAllByClaimIdWithDifferentIdBefore(trackingLog.getClaim().getId(), trackingLog.getId(), trackingLog.getCreationMoment());
 
 				if (!trackingLogs.isEmpty())
 					super.state(context, trackingLogs.get(0).getResolutionPercentage() < trackingLog.getResolutionPercentage(), "*", "acme.validation.trackingLog.resolutionPercentage.message");
