@@ -10,3 +10,5 @@ acme.validation.trackingLog.resolution.message				= La resolución es obligatori
 acme.validation.trackingLog.resolutionPercentage.message 	= El porcentaje de resolución debe aumentar monotónicamente
 acme.validation.service.promotioncode.message 				= El código de la promoción debe correponder al año actual
 acme.validation.flightcrewmember.employeecode.message       = Las primeras dos letras del código de empleado deben de coincidir con las iniciales del nombre y apellidos del mismo
+acme.validation.customer.issuedAt.message 					= No se puede prohibir el acceso a un pasajero antes de su nacimiento
+acme.validation.customer.liftedAt.message 					= No se puede levantar una prohibición antes de su fecha de creación
