@@ -34,6 +34,14 @@ public class FlightLegValidator extends AbstractValidator<ValidFlightLeg, Flight
 			super.state(context, false, "*", "javax.validation.constraints.NotNull.message");
 		else {
 			{
+				boolean firstCharsFromIATA;
+
+				String airlineIATA = leg.getParentFlight().getManager().getAirline().getIATACode();
+				firstCharsFromIATA = airlineIATA.equals(leg.getFlightNumber().substring(0, 3));
+
+				super.state(context, firstCharsFromIATA, "flightNumber", "acme.validation.flightLeg.flightNumber.message");
+			}
+			{
 				boolean departureIsBeforeArrival = leg.getScheduledDeparture().compareTo(leg.getScheduledArrival()) < 0;
 
 				super.state(context, departureIsBeforeArrival, "dates", "acme.validation.flightLeg.scheduledDates.message");
@@ -50,7 +58,6 @@ public class FlightLegValidator extends AbstractValidator<ValidFlightLeg, Flight
 					}
 				super.state(context, isNotOverlapping, "dates", "acme.validation.flight.overlappingDates.message");
 			}
-
 		}
 
 		result = !super.hasErrors(context);

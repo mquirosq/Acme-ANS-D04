@@ -30,7 +30,7 @@ public class FlightLeg extends AbstractEntity {
 	private static final long	serialVersionUID	= 1L;
 
 	@Mandatory
-	@ValidString(pattern = "^\\d{4}$")
+	@ValidString(pattern = "^[A-Z]{3}\\d{4}$")
 	@Column(unique = true)
 	private String				flightNumber;
 
