@@ -92,8 +92,8 @@ m2=*
       <w>160</w>
       <h>60</h>
     </coordinates>
-    <panel_attributes>&lt;&lt;Role&gt;&gt;
-AssistanceAgent
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+FlightLeg
 bg=pink</panel_attributes>
     <additional_attributes/>
   </element>
@@ -105,7 +105,7 @@ bg=pink</panel_attributes>
       <w>190</w>
       <h>60</h>
     </coordinates>
-    <panel_attributes>Registered by &gt;
+    <panel_attributes>Is about &gt;
 lt=&lt;-x
 m1=1
 m2=*
