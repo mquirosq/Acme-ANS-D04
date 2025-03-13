@@ -1,0 +1,69 @@
+key,full-name,date-of-birth,passport-number,nationality,reason,issued-at,lifted-at
+# Base banned passenger
+banned-passenger-01,Lorem ipsum dolor sit ame,2021/07/02 0:00,A1B2C3D,Lorem ipsum dolor sit ame,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",2021/07/02 0:01, 2021/07/02 0:02
+# full name - standard variations
+banned-passenger-02,L,2021/07/02 0:00,A1B2C3D,Lorem ipsum dolor sit ame,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",2021/07/02 0:01, 2021/07/02 0:02
+banned-passenger-03,Lo,2021/07/02 0:00,A1B2C3D,Lorem ipsum dolor sit ame,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",2021/07/02 0:01, 2021/07/02 0:02
+banned-passenger-04,"Lorem ipsum dolor sit amet, consectetur adipiscin",2021/07/02 0:00,A1B2C3D,Lorem ipsum dolor sit ame,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",2021/07/02 0:01, 2021/07/02 0:02
+banned-passenger-05,"Lorem ipsum dolor sit amet, consectetur adipiscing",2021/07/02 0:00,A1B2C3D,Lorem ipsum dolor sit ame,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",2021/07/02 0:01, 2021/07/02 0:02
+banned-passenger-06,โลเร็ม อิปซัม,2021/07/02 0:00,A1B2C3D,Lorem ipsum dolor sit ame,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",2021/07/02 0:01, 2021/07/02 0:02
+banned-passenger-07,لوريم إيبسوم,2021/07/02 0:00,A1B2C3D,Lorem ipsum dolor sit ame,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",2021/07/02 0:01, 2021/07/02 0:02
+banned-passenger-08,洛伦·伊普森,2021/07/02 0:00,A1B2C3D,Lorem ipsum dolor sit ame,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",2021/07/02 0:01, 2021/07/02 0:02
+banned-passenger-09,<marquee>Hacked</marquee>,2021/07/02 0:00,A1B2C3D,Lorem ipsum dolor sit ame,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",2021/07/02 0:01, 2021/07/02 0:02
+banned-passenger-10,<script>alert(‘Hacked!’);</script>,2021/07/02 0:00,A1B2C3D,Lorem ipsum dolor sit ame,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",2021/07/02 0:01, 2021/07/02 0:02
+banned-passenger-11,' or 'A' = 'A,2021/07/02 0:00,A1B2C3D,Lorem ipsum dolor sit ame,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",2021/07/02 0:01, 2021/07/02 0:02
+# full name - no singular values
+# date of birth - standard variations
+banned-passenger-12,Lorem ipsum dolor sit ame,2000/01/01 0:00,A1B2C3D,Lorem ipsum dolor sit ame,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",2021/07/02 0:01, 2021/07/02 0:02
+banned-passenger-13,Lorem ipsum dolor sit ame,2000/01/01 0:01,A1B2C3D,Lorem ipsum dolor sit ame,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",2021/07/02 0:01, 2021/07/02 0:02
+banned-passenger-14,Lorem ipsum dolor sit ame,2024/12/31 23:59,A1B2C3D,Lorem ipsum dolor sit ame,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",2025/01/01 0:00, null
+# date of birth - singular values
+banned-passenger-16,Lorem ipsum dolor sit ame,2004/02/29 0:00,A1B2C3D,Lorem ipsum dolor sit ame,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",2021/07/02 0:01, 2021/07/02 0:02
+banned-passenger-17,Lorem ipsum dolor sit ame,2005/02/28 23:59,A1B2C3D,Lorem ipsum dolor sit ame,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",2021/07/02 0:01, 2021/07/02 0:02
+# passport number - variations
+banned-passenger-18,Lorem ipsum dolor sit ame,2021/07/02 0:00,A1B2C3,Lorem ipsum dolor sit ame,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",2021/07/02 0:01, 2021/07/02 0:02
+banned-passenger-19,Lorem ipsum dolor sit ame,2021/07/02 0:00,AAAAAA,Lorem ipsum dolor sit ame,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",2021/07/02 0:01, 2021/07/02 0:02
+banned-passenger-20,Lorem ipsum dolor sit ame,2021/07/02 0:00,000000,Lorem ipsum dolor sit ame,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",2021/07/02 0:01, 2021/07/02 0:02
+banned-passenger-21,Lorem ipsum dolor sit ame,2021/07/02 0:00,ABC1234,Lorem ipsum dolor sit ame,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",2021/07/02 0:01, 2021/07/02 0:02
+banned-passenger-22,Lorem ipsum dolor sit ame,2021/07/02 0:00,BHJ67890,Lorem ipsum dolor sit ame,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",2021/07/02 0:01, 2021/07/02 0:02
+banned-passenger-23,Lorem ipsum dolor sit ame,2021/07/02 0:00,B3256YUIK,Lorem ipsum dolor sit ame,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",2021/07/02 0:01, 2021/07/02 0:02
+# nationality - standard variations
+banned-passenger-24,Lorem ipsum dolor sit ame,2021/07/02 0:00,A1B2C3D,L,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",2021/07/02 0:01, 2021/07/02 0:02
+banned-passenger-25,Lorem ipsum dolor sit ame,2021/07/02 0:00,A1B2C3D,Lo,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",2021/07/02 0:01, 2021/07/02 0:02
+banned-passenger-26,Lorem ipsum dolor sit ame,2021/07/02 0:00,A1B2C3D,"Lorem ipsum dolor sit amet, consectetur adipiscin","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",2021/07/02 0:01, 2021/07/02 0:02
+banned-passenger-27,Lorem ipsum dolor sit ame,2021/07/02 0:00,A1B2C3D,"Lorem ipsum dolor sit amet, consectetur adipiscing","Lorem ipsum dolor sit amet, consectetur adipiscing elit.Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",2021/07/02 0:01, 2021/07/02 0:02
+banned-passenger-28,Lorem ipsum dolor sit ame,2021/07/02 0:00,A1B2C3D,โลเร็ม อิปซัม,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",2021/07/02 0:01, 2021/07/02 0:02
+banned-passenger-29,Lorem ipsum dolor sit ame,2021/07/02 0:00,A1B2C3D,لوريم إيبسوم,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",2021/07/02 0:01, 2021/07/02 0:02
+banned-passenger-30,Lorem ipsum dolor sit ame,2021/07/02 0:00,A1B2C3D,洛伦·伊普森,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",2021/07/02 0:01, 2021/07/02 0:02
+banned-passenger-31,Lorem ipsum dolor sit ame,2021/07/02 0:00,A1B2C3D,<marquee>Hacked</marquee>,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",2021/07/02 0:01, 2021/07/02 0:02
+banned-passenger-32,Lorem ipsum dolor sit ame,2021/07/02 0:00,A1B2C3D,<script>alert(‘Hacked!’);</script>,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",2021/07/02 0:01, 2021/07/02 0:02
+banned-passenger-33,Lorem ipsum dolor sit ame,2021/07/02 0:00,A1B2C3D,' or 'A' = 'A,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",2021/07/02 0:01, 2021/07/02 0:02
+# nationality - no singular values
+# reason - standard variations
+banned-passenger-34,Lorem ipsum dolor sit ame,2021/07/02 0:00,A1B2C3D,Lorem ipsum dolor sit ame,L,2021/07/02 0:01, 2021/07/02 0:02
+banned-passenger-35,Lorem ipsum dolor sit ame,2021/07/02 0:00,A1B2C3D,Lorem ipsum dolor sit ame,Lo,2021/07/02 0:01, 2021/07/02 0:02
+banned-passenger-36,Lorem ipsum dolor sit ame,2021/07/02 0:00,A1B2C3D,Lorem ipsum dolor sit ame,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor",2021/07/02 0:01, 2021/07/02 0:02
+banned-passenger-37,Lorem ipsum dolor sit ame,2021/07/02 0:00,A1B2C3D,Lorem ipsum dolor sit ame,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor*",2021/07/02 0:01, 2021/07/02 0:02
+banned-passenger-38,Lorem ipsum dolor sit ame,2021/07/02 0:00,A1B2C3D,Lorem ipsum dolor sit ame,โลเร็ม อิปซัม,2021/07/02 0:01, 2021/07/02 0:02
+banned-passenger-39,Lorem ipsum dolor sit ame,2021/07/02 0:00,A1B2C3D,Lorem ipsum dolor sit ame,لوريم إيبسوم,2021/07/02 0:01, 2021/07/02 0:02
+banned-passenger-40,Lorem ipsum dolor sit ame,2021/07/02 0:00,A1B2C3D,Lorem ipsum dolor sit ame,洛伦·伊普森,2021/07/02 0:01, 2021/07/02 0:02
+banned-passenger-41,Lorem ipsum dolor sit ame,2021/07/02 0:00,A1B2C3D,Lorem ipsum dolor sit ame,<marquee>Hacked</marquee>,2021/07/02 0:01, 2021/07/02 0:02
+banned-passenger-42,Lorem ipsum dolor sit ame,2021/07/02 0:00,A1B2C3D,Lorem ipsum dolor sit ame,<script>alert(‘Hacked!’);</script>,2021/07/02 0:01, 2021/07/02 0:02
+banned-passenger-43,Lorem ipsum dolor sit ame,2021/07/02 0:00,A1B2C3D,Lorem ipsum dolor sit ame,' or 'A' = 'A,2021/07/02 0:01, 2021/07/02 0:02
+# reason - no singular values
+# issued at - standard variations
+banned-passenger-44,Lorem ipsum dolor sit ame,2000/01/01 0:00,A1B2C3D,Lorem ipsum dolor sit ame,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",2000/01/01 0:01, 2021/07/02 0:00
+banned-passenger-45,Lorem ipsum dolor sit ame,2000/01/01 0:00,A1B2C3D,Lorem ipsum dolor sit ame,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",2000/01/01 0:02, 2021/07/02 0:00
+banned-passenger-46,Lorem ipsum dolor sit ame,2021/07/02 0:00,A1B2C3D,Lorem ipsum dolor sit ame,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",2024/12/31 23:59, 2025/01/01 0:00
+banned-passenger-47,Lorem ipsum dolor sit ame,2021/07/02 0:00,A1B2C3D,Lorem ipsum dolor sit ame,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",2025/01/01 0:00, null
+# issued at - singular values
+banned-passenger-48,Lorem ipsum dolor sit ame,2000/01/01 0:00,A1B2C3D,Lorem ipsum dolor sit ame,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",2004/02/29 0:00, 2021/07/02 0:00
+banned-passenger-49,Lorem ipsum dolor sit ame,2000/01/01 0:00,A1B2C3D,Lorem ipsum dolor sit ame,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",2005/02/28 23:59, 2021/07/02 0:00
+# lifted at - standard variations
+banned-passenger-50,Lorem ipsum dolor sit ame,2021/07/02 0:00,A1B2C3D,Lorem ipsum dolor sit ame,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",2021/07/02 0:01, null
+banned-passenger-51,Lorem ipsum dolor sit ame,2000/01/01 0:00,A1B2C3D,Lorem ipsum dolor sit ame,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",2000/01/01 0:01, 2000/01/01 0:02
+banned-passenger-53,Lorem ipsum dolor sit ame,2021/07/02 0:00,A1B2C3D,Lorem ipsum dolor sit ame,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",2021/07/02 0:01, 2024/12/31 23:59
+banned-passenger-54,Lorem ipsum dolor sit ame,2021/07/02 0:00,A1B2C3D,Lorem ipsum dolor sit ame,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",2021/07/02 0:01, 2025/01/01 0:00
+# lifted at - singular values
+banned-passenger-55,Lorem ipsum dolor sit ame,2021/07/02 0:00,A1B2C3D,Lorem ipsum dolor sit ame,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",2021/07/02 0:01, 2024/02/29 0:00
+banned-passenger-56,Lorem ipsum dolor sit ame,2021/07/02 0:00,A1B2C3D,Lorem ipsum dolor sit ame,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",2021/07/02 0:01, 2023/02/28 23:59

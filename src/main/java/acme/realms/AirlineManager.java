@@ -1,57 +1,53 @@
 
-package acme.entities;
+package acme.realms;
+
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.validation.Valid;
 
-import acme.client.components.basis.AbstractEntity;
+import acme.client.components.basis.AbstractRole;
 import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
+import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidNumber;
 import acme.client.components.validation.ValidString;
-import acme.datatypes.AircraftStatus;
+import acme.client.components.validation.ValidUrl;
+import acme.constraints.ValidAirlineManager;
+import acme.entities.Airline;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
-public class Aircraft extends AbstractEntity {
+@ValidAirlineManager
+public class AirlineManager extends AbstractRole {
 
-	public static final long	serialVersionUID	= 1L;
-
-	@Mandatory
-	@ValidString(min = 1, max = 50)
-	@Automapped
-	private String				model;
+	private static final long	serialVersionUID	= 1L;
 
 	@Mandatory
-	@ValidString(min = 1, max = 50)
+	@ValidString(pattern = "^[A-Z]{2-3}\\d{6}$")
 	@Column(unique = true)
-	private String				registrationNumber;
+	private String				identifierNumber;
 
 	@Mandatory
-	@ValidNumber(min = 1, max = 255)
+	@ValidNumber(min = 0, max = 120)
 	@Automapped
-	private Integer				capacity;
+	private Integer				yearsOfExperience;
 
 	@Mandatory
-	@ValidNumber(min = 2000, max = 50000)
+	@ValidMoment(past = true)
 	@Automapped
-	private Integer				cargoWeight;
-
-	@Mandatory
-	@Valid
-	@Automapped
-	private AircraftStatus		status;
+	private Date				birthDate;
 
 	@Optional
-	@ValidString(min = 0, max = 255)
+	@ValidUrl
 	@Automapped
-	private String				details;
+	private String				pictureLink;
 
 	@Mandatory
 	@Valid
