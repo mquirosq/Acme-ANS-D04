@@ -12,3 +12,6 @@ acme.validation.service.promotioncode.message 				= The promotion code year must
 acme.validation.flightcrewmember.employeecode.message 		= The employee code first two letters must match the employee's name and surname initials
 acme.validation.customer.issuedAt.message 					= The issue date must be after the birth date of the passenger
 acme.validation.customer.liftedAt.message 					= The lifting date must be after the issue date
+
+acme.validation.flightLeg.scheduledDates.message = The scheduled departure must be before the scheduled arrival
+acme.validation.flight.overlappingDates.message = This flight has overlapping dates

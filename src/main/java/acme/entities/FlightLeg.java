@@ -16,6 +16,7 @@ import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidString;
+import acme.constraints.ValidFlightLeg;
 import acme.datatypes.FlightLegStatus;
 import lombok.Getter;
 import lombok.Setter;
@@ -23,6 +24,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+@ValidFlightLeg
 public class FlightLeg extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
