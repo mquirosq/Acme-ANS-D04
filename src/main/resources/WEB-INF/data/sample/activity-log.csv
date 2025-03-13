@@ -1,0 +1,44 @@
+key,registration-moment,type-of-incident,description,severity-level,key:assignment
+# Base activity log
+activity-log-01,2012/07/02 0:00,Lorem ipsum dolor sit ame,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",5,flight-assignment-01
+# Registration moment - standard variations
+activity-log-02,2000/01/01 0:00,Lorem ipsum dolor sit ame,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",5,flight-assignment-01
+activity-log-03,2000/01/01 0:01,Lorem ipsum dolor sit ame,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",5,flight-assignment-01
+activity-log-04,2024/12/31 23:59,Lorem ipsum dolor sit ame,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",5,flight-assignment-01
+activity-log-05,2025/01/01 0:00,Lorem ipsum dolor sit ame,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",5,flight-assignment-01
+# Registration moment - no singular values
+# Type of incident - standard variations
+activity-log-06,2000/01/01 0:00,L,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",5,flight-assignment-01
+activity-log-07,2000/01/01 0:01,Lo,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",5,flight-assignment-01
+activity-log-08,2024/12/31 23:59,"Lorem ipsum dolor sit amet, consectetur adipiscin","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",5,flight-assignment-01
+activity-log-09,2025/01/01 0:00,"Lorem ipsum dolor sit amet, consectetur adipiscing","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",5,flight-assignment-01
+activity-log-10,2000/01/01 0:00,โลเร็ม อิปซัม,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",5,flight-assignment-01
+activity-log-11,2000/01/01 0:01,لوريم إيبسوم,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",5,flight-assignment-01
+activity-log-12,2024/12/31 23:59,洛伦·伊普森,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",5,flight-assignment-01
+activity-log-13,2025/01/01 0:00,<marquee>Hacked</marquee>,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",5,flight-assignment-01
+activity-log-14,2024/12/31 23:59,<script>alert(‘Hacked!’);</script>,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",5,flight-assignment-01
+activity-log-15,2025/01/01 0:00,' or 'A' = 'A,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",5,flight-assignment-01
+# Type of incident - no singular values
+# Description - standard variations
+activity-log-16,2012/07/02 0:00,Lorem ipsum dolor sit ame,L,5,flight-assignment-01
+activity-log-17,2012/07/02 0:00,Lorem ipsum dolor sit ame,Lo,5,flight-assignment-01
+activity-log-18,2012/07/02 0:00,Lorem ipsum dolor sit ame,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor",5,flight-assignment-01
+activity-log-19,2012/07/02 0:00,Lorem ipsum dolor sit ame,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor",5,flight-assignment-01
+activity-log-20,2012/07/02 0:00,Lorem ipsum dolor sit ame,โลเร็ม อิปซัม,5,flight-assignment-01
+activity-log-21,2012/07/02 0:00,Lorem ipsum dolor sit ame,لوريم إيبسوم,5,flight-assignment-01
+activity-log-22,2012/07/02 0:00,Lorem ipsum dolor sit ame,洛伦·伊普森,5,flight-assignment-01
+activity-log-23,2012/07/02 0:00,Lorem ipsum dolor sit ame,<marquee>Hacked</marquee>,5,flight-assignment-01
+activity-log-24,2012/07/02 0:00,Lorem ipsum dolor sit ame,<script>alert(‘Hacked!’);</script>,5,flight-assignment-01
+activity-log-25,2012/07/02 0:00,Lorem ipsum dolor sit ame,' or 'A' = 'A,5,flight-assignment-01
+# Description - no singular values
+# Severity level - standard variations
+activity-log-26,2012/07/02 0:00,Lorem ipsum dolor sit ame,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",0,flight-assignment-01
+activity-log-27,2012/07/02 0:00,Lorem ipsum dolor sit ame,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",1,flight-assignment-01
+activity-log-28,2012/07/02 0:00,Lorem ipsum dolor sit ame,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",9,flight-assignment-01
+activity-log-29,2012/07/02 0:00,Lorem ipsum dolor sit ame,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",10,flight-assignment-01
+# Severity level - no singular values
+# Key assignment - standard variations
+activity-log-30,2012/07/02 0:00,Lorem ipsum dolor sit ame,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",5,flight-assignment-02
+activity-log-31,2012/07/02 0:00,Lorem ipsum dolor sit ame,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",5,flight-assignment-03
+activity-log-32,2012/07/02 0:00,Lorem ipsum dolor sit ame,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",5,flight-assignment-04
+# Key assignments - no singular values
