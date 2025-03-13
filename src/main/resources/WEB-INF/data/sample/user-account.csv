@@ -73,3 +73,9 @@ user-account-customer-59,true,"UserIdentity{name: 'Name1', surname: 'Surname1', 
 user-account-agent-01,true,"UserIdentity{name: 'Agent1', surname: 'Assistance Agent', email: 'agent1@acme.com'}",agent1,agent1
 user-account-agent-02,true,"UserIdentity{name: 'Agent2', surname: 'Assistance Agent', email: 'agent2@acme.com'}",agent2,agent2
 user-account-agent-03,true,"UserIdentity{name: 'Agent3', surname: 'Assistance Agent', email: 'agent3@acme.com'}",agent3,agent3
+#Flight crew members
+user-account-flight-crew-member-01,true,"UserIdentity{name: 'Member1', surname: 'Flight Crew Member', email: 'flightcrewmember1@acme.com'}",member1,member1
+user-account-flight-crew-member-02,true,"UserIdentity{name: 'Member2', surname: 'Flight Crew Member', email: 'flightcrewmember2@acme.com'}",member2,member2
+user-account-flight-crew-member-03,true,"UserIdentity{name: 'Member3', surname: 'Flight Crew Member', email: 'flightcrewmember3@acme.com'}",member3,member3
+user-account-flight-crew-member-04,true,"UserIdentity{name: 'Member4', surname: 'Flight Crew Member', email: 'flightcrewmember4@acme.com'}",member4,member4
+user-account-flight-crew-member-05,true,"UserIdentity{name: 'Member5', surname: 'Flight Crew Member', email: 'flightcrewmember5@acme.com'}",member5,member5
