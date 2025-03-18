@@ -3,12 +3,19 @@ package acme.constraints;
 
 import javax.validation.ConstraintValidatorContext;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import acme.client.components.validation.AbstractValidator;
 import acme.client.components.validation.Validator;
+import acme.entities.CustomerRepository;
 import acme.realms.Customer;
 
 @Validator
 public class CustomerValidator extends AbstractValidator<ValidCustomer, Customer> {
+
+	@Autowired
+	private CustomerRepository repository;
+
 
 	@Override
 	protected void initialise(final ValidCustomer annotation) {
@@ -33,6 +40,12 @@ public class CustomerValidator extends AbstractValidator<ValidCustomer, Customer
 			initialsInIdentifier = customer.getIdentifier().charAt(0) == nameInitial && customer.getIdentifier().charAt(1) == surnameInitial;
 
 			super.state(context, initialsInIdentifier, "identifier", "acme.validation.customer.identifier.message");
+
+			if (customer.getIdentifier() != null) {
+				Customer existingCustomer = this.repository.getCustomerByIdentifier(customer.getIdentifier());
+				boolean uniqueIdentifier = existingCustomer == null || existingCustomer.equals(customer);
+				super.state(context, uniqueIdentifier, "identifier", "acme.validation.customer.identifier.unique.message");
+			}
 
 		}
 

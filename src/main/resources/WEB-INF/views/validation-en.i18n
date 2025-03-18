@@ -6,6 +6,8 @@ acme.validation.phoneNumber.message = The phone number must be composed of 6 to 
 acme.validation.airline.IATACode.message = The IATA Code must be unique
 
 acme.validation.customer.identifier.message = The identifier must start with the initials of the customer
+acme.validation.customer.identifier.unique.message = The identifier must be unique
+
 acme.validation.airlineManager.identifier.message = The identifier must start with the initials of the manager
 acme.validation.assistanceAgent.employeeCode.message	= The first two or three letters must match the employee's initials
 
@@ -16,8 +18,8 @@ acme.validation.trackingLog.resolutionPercentage.message 	= The resolution perce
 acme.validation.trackingLog.lastUpdateMoment.message		= The last update moment must not be before the creation moment
 acme.validation.service.promotioncode.message 				= The promotion code year must be according to the current year
 acme.validation.flightcrewmember.employeecode.message 		= The employee code first two letters must match the employee's name and surname initials
-acme.validation.customer.issuedAt.message 					= The issue date must be after the birth date of the passenger
-acme.validation.customer.liftedAt.message 					= The lifting date must be after the issue date
+acme.validation.bannedPassenger.issuedAt.message 					= The issue date must be after the birth date of the passenger
+acme.validation.bannedPassenger.liftedAt.message 					= The lifting date must be after the issue date
 
 acme.validation.flightLeg.scheduledDates.message = The scheduled departure must be before the scheduled arrival
 acme.validation.flight.overlappingDates.message = This flight has overlapping dates
