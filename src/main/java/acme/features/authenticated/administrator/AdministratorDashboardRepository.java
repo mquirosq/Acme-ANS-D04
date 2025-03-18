@@ -33,18 +33,6 @@ public interface AdministratorDashboardRepository extends AbstractRepository {
 	Double ratioOfReviewsWithScoreAboveFive();
 
 	@Query("select count(r) from Review r where r.moment between :start and :end")
-	Long numberOfReviewsPostedInLastTenWeeks(Date start, Date end);
-
-	@Query("select avg(select count(r) from Review r where r.moment = s.moment) from Review s where s.moment between :start and :end")
-	Double averageNumberOfReviewsPostedInLastTenWeeks(Date start, Date end);
-
-	@Query("select min(select count(r) from Review r where r.moment = s.moment) from Review s where s.moment between :start and :end")
-	Long minimumNumberOfReviewsPostedInLastTenWeeks(Date start, Date end);
-
-	@Query("select max(select count(r) from Review r where r.moment = s.moment) from Review s where s.moment between :start and :end")
-	Long maximumNumberOfReviewsPostedInLastTenWeeks(Date start, Date end);
-
-	// @Query("select stddev(select count(r) from Review r where r.moment = s.moment) from Review s where s.moment between :start and :end")
-	Double standardDeviationOfNumberOfReviewsPostedInLastTenWeeks(Date start, Date end);
+	Long numberOfReviewsPostedInWeek(Date start, Date end);
 
 }
