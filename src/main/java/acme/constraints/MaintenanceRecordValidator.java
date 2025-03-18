@@ -29,13 +29,15 @@ public class MaintenanceRecordValidator extends AbstractValidator<ValidMaintenan
 		else {
 			Boolean check;
 			Date today;
-			Date dueDate;
+			Date dueInspection;
+			Date maintenanceDate;
 
 			today = MomentHelper.getCurrentMoment();
-			dueDate = maintenanceRecord.getMaintenanceDate();
+			dueInspection = maintenanceRecord.getInspectionDue();
+			maintenanceDate = maintenanceRecord.getMaintenanceDate();
 
-			check = dueDate.after(today);
-			super.state(context, !check, "license", "acme.validation.maintenanceRecord.license.message");
+			check = dueInspection.after(today) && maintenanceDate.before(dueInspection);
+			super.state(context, check, "dueInspection", "acme.validation.maintenanceRecord.dueInspection.message");
 		}
 
 		result = !super.hasErrors(context);

@@ -1,17 +1,17 @@
 key,enabled,identity,password,username
-user-account-consumer-01,true,"UserIdentity{name: 'Peter', surname: 'Consumer', email: 'peter@acme.com'}",consumer1,consumer1
-user-account-consumer-02,true,"UserIdentity{name: 'Mary', surname: '貸んい建濯よ芝弾テソ Λορεμ ιπσθμ', email: 'mary@acme.com'}",consumer2,consumer2
-user-account-consumer-03,true,"UserIdentity{name: 'Manolo', surname: '之乎路可良 ᏥᏲᏎᎭ', email: 'manolo@acme.com'}",consumer3,consumer3
-user-account-provider-01,true,"UserIdentity{name: 'Laurel', surname: 'Provider', email: 'laurel@acme.com'}",provider1,provider1
-user-account-provider-02,true,"UserIdentity{name: 'Martina', surname: 'коза თხა', email: 'martina@acme.com'}",provider2,provider2
-user-account-provider-03,true,"UserIdentity{name: 'Antonia', surname: 'אבטיח Æløzå', email: 'antonia@acme.com'}",provider3,provider3
+user-account-consumer-01,true,"UserIdentity{name: 'Peter',surname: 'Consumer',email: 'peter@acme.com'}",consumer1,consumer1
+user-account-consumer-02,true,"UserIdentity{name: 'Mary',surname: '貸んい建濯よ芝弾テソ Λορεμ ιπσθμ',email: 'mary@acme.com'}",consumer2,consumer2
+user-account-consumer-03,true,"UserIdentity{name: 'Manolo',surname: '之乎路可良 ᏥᏲᏎᎭ',email: 'manolo@acme.com'}",consumer3,consumer3
+user-account-provider-01,true,"UserIdentity{name: 'Laurel',surname: 'Provider',email: 'laurel@acme.com'}",provider1,provider1
+user-account-provider-02,true,"UserIdentity{name: 'Martina',surname: 'коза თხა',email: 'martina@acme.com'}",provider2,provider2
+user-account-provider-03,true,"UserIdentity{name: 'Antonia',surname: 'אבטיח Æløzå',email: 'antonia@acme.com'}",provider3,provider3
 # Administrators
-user-account-administrator-02,true,"UserIdentity{name: 'Admin1', surname: 'Administrator', email: 'admin1@acme.com'}",administrator1,administrator1
-user-account-administrator-03,true,"UserIdentity{name: 'Admin2', surname: 'Administrator', email: 'admin2@acme.com'}",administrator2,administrator2
+user-account-administrator-02,true,"UserIdentity{name: 'Admin1',surname: 'Administrator',email: 'admin1@acme.com'}",administrator1,administrator1
+user-account-administrator-03,true,"UserIdentity{name: 'Admin2',surname: 'Administrator',email: 'admin2@acme.com'}",administrator2,administrator2
 # Customer
-user-account-customer-01,true,"UserIdentity{name: 'María', surname: 'Customer', email: 'maria@acme.com'}",customer1,customer1
-user-account-customer-02,true,"UserIdentity{name: 'Curro', surname: 'Sur Name', email: 'curro@acme.com'}",customer2,customer2
-user-account-customer-03,true,"UserIdentity{name: 'César', surname: 'A Surname', email: 'cesar@acme.com'}",customer3,customer3
+user-account-customer-01,true,"UserIdentity{name: 'María',surname: 'Customer',email: 'maria@acme.com'}",customer1,customer1
+user-account-customer-02,true,"UserIdentity{name: 'Curro',surname: 'Sur Name',email: 'curro@acme.com'}",customer2,customer2
+user-account-customer-03,true,"UserIdentity{name: 'César',surname: 'A Surname',email: 'cesar@acme.com'}",customer3,customer3
 #Customers for variations
 user-account-customer-04,true,"UserIdentity{name: 'Name1', surname: 'Surname1', email: 'name1@acme.com'}",customerV01,customerV01
 user-account-customer-05,true,"UserIdentity{name: 'Name1', surname: 'Surname1', email: 'name1@acme.com'}",customerV02,customerV02
@@ -69,13 +69,22 @@ user-account-customer-56,true,"UserIdentity{name: 'Name1', surname: 'Surname1', 
 user-account-customer-57,true,"UserIdentity{name: 'Name1', surname: 'Surname1', email: 'name1@acme.com'}",customerV54,customerV54
 user-account-customer-58,true,"UserIdentity{name: 'Name1', surname: 'Surname1', email: 'name1@acme.com'}",customerV55,customerV55
 user-account-customer-59,true,"UserIdentity{name: 'Name1', surname: 'Surname1', email: 'name1@acme.com'}",customerV56,customerV56
+# Technician
+user-account-technician-01,true,"UserIdentity{name: 'Technician1', surname: 'First Technician', email: 'technician1@acme.com'}",technician1,technician1
+user-account-technician-02,true,"UserIdentity{name: 'Technician2', surname: 'Second Technician', email: 'technician2@acme.com'}",technician2,technician2
+user-account-technician-03,true,"UserIdentity{name: 'Technicnan3', surname: 'Third Technician', email: 'technician3@acme.com'}",technician3,technician3
 # Assistance agents
-user-account-agent-01,true,"UserIdentity{name: 'Agent1', surname: 'Assistance Agent', email: 'agent1@acme.com'}",agent1,agent1
-user-account-agent-02,true,"UserIdentity{name: 'Agent2', surname: 'Assistance Agent', email: 'agent2@acme.com'}",agent2,agent2
-user-account-agent-03,true,"UserIdentity{name: 'Agent3', surname: 'Assistance Agent', email: 'agent3@acme.com'}",agent3,agent3
+user-account-agent-01,true,"UserIdentity{name: 'Agent1',surname: 'Assistance Agent',email: 'agent1@acme.com'}",agent1,agent1
+user-account-agent-02,true,"UserIdentity{name: 'Agent2',surname: 'Assistance Agent',email: 'agent2@acme.com'}",agent2,agent2
+user-account-agent-03,true,"UserIdentity{name: 'Agent3',surname: 'Assistance Agent',email: 'agent3@acme.com'}",agent3,agent3
 #Flight crew members
 user-account-flight-crew-member-01,true,"UserIdentity{name: 'Member1', surname: 'Flight Crew Member', email: 'flightcrewmember1@acme.com'}",member1,member1
 user-account-flight-crew-member-02,true,"UserIdentity{name: 'Member2', surname: 'Flight Crew Member', email: 'flightcrewmember2@acme.com'}",member2,member2
 user-account-flight-crew-member-03,true,"UserIdentity{name: 'Member3', surname: 'Flight Crew Member', email: 'flightcrewmember3@acme.com'}",member3,member3
 user-account-flight-crew-member-04,true,"UserIdentity{name: 'Member4', surname: 'Flight Crew Member', email: 'flightcrewmember4@acme.com'}",member4,member4
 user-account-flight-crew-member-05,true,"UserIdentity{name: 'Member5', surname: 'Flight Crew Member', email: 'flightcrewmember5@acme.com'}",member5,member5
+# Airline managers
+user-account-airline-manager-01,true,"UserIdentity{name: 'Manager1',surname: 'First manager',email: 'airlinemanager1@acme.com'}",manager1,manager1
+user-account-airline-manager-02,true,"UserIdentity{name: 'Manager2',surname: 'Second manager',email: 'airlinemanager2@acme.com'}",manager2,manager2
+user-account-airline-manager-03,true,"UserIdentity{name: 'Manager2',surname: 'Third manager',email: 'airlinemanager3@acme.com'}",manager3,manager3
+

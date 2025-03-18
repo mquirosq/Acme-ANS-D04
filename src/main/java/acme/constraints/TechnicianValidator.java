@@ -27,20 +27,16 @@ public class TechnicianValidator extends AbstractValidator<ValidTechnician, Tech
 		else {
 			Boolean check;
 			String initials;
-			String[] surnames;
 			DefaultUserIdentity identity;
 
 			identity = technician.getIdentity();
-			surnames = identity.getSurname().split(" ");
 
 			initials = "";
 			initials += identity.getName().trim().charAt(0);
+			initials += identity.getSurname().trim().charAt(0);
 
-			for (String surname : surnames)
-				initials += surname.trim().charAt(0);
-
-			check = technician.getLicense().trim().startsWith(initials);
-			super.state(context, !check, "license", "acme.validation.technician.license.message");
+			check = technician.getLicense().toLowerCase().trim().startsWith(initials.toLowerCase());
+			super.state(context, check, "license", "acme.validation.technician.license.message");
 		}
 
 		result = !super.hasErrors(context);
