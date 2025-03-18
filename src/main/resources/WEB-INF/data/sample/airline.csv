@@ -50,7 +50,6 @@ airline-38,Lorem ipsum dolor sit ame,LKJ,http://lorem.com/ipsum,STANDARD,2004/02
 airline-39,Lorem ipsum dolor sit ame,MLK,http://lorem.com/ipsum,STANDARD,2005/02/28 0:00,acme@lorem-ipsum.org,78657687
 # email - standard variations
 airline-40,Lorem ipsum dolor sit ame,NML,http://lorem.com/ipsum,STANDARD,2012/07/02 0:00,null,78657687
-# airline-41,Lorem ipsum dolor sit ame,ONM,http://lorem.com/ipsum,STANDARD,2012/07/02 0:00,acme:password@lorem-ipsum.org,78657687
 airline-42,Lorem ipsum dolor sit ame,PON,http://lorem.com/ipsum,STANDARD,2012/07/02 0:00,a@b.e,78657687
 airline-43,Lorem ipsum dolor sit ame,QPO,http://lorem.com/ipsum,STANDARD,2012/07/02 0:00,a@b.es,78657687
 airline-44,Lorem ipsum dolor sit ame,RQP,http://lorem.com/ipsum,STANDARD,2012/07/02 0:00,a@b.esx,78657687

@@ -1,0 +1,21 @@
+key,flight-number,scheduled-departure,scheduled-arrival,status,key:departure-airport,key:arrival-airport,key:deployed-aircraft,key:parent-flight
+# Base entity
+flight-leg-01,ESP1234,2025/05/05 0:00,2025/05/06 0:00,"ON_TIME",airport-01,airport-02,aircraft-01,flight-01
+# flight-number - variations
+flight-leg-02,ESP0000,2025/05/07 0:00,2025/05/08 0:00,"ON_TIME",airport-02,airport-01,aircraft-01,flight-01
+flight-leg-03,ESP9999,2025/05/09 0:00,2025/05/10 0:00,"ON_TIME",airport-01,airport-02,aircraft-01,flight-01
+flight-leg-04,ESP0909,2025/05/11 0:00,2025/05/12 0:00,"ON_TIME",airport-02,airport-01,aircraft-01,flight-01
+# scheduled-departure and scheduled-arrival - variations
+flight-leg-05,ESP0001,2025/01/06 00:00,2025/01/06 00:01,"ON_TIME",airport-02,airport-01,aircraft-01,flight-01
+flight-leg-06,ESP0002,2200/01/06 23:58,2200/01/06 23:59,"ON_TIME",airport-02,airport-01,aircraft-01,flight-01
+# status - variations
+flight-leg-07,ESP0003,2025/05/13 0:00,2025/05/14 0:00,"DELAYED",airport-01,airport-02,aircraft-01,flight-01
+flight-leg-08,ESP0004,2025/05/15 0:00,2025/05/16 0:00,"CANCELLED",airport-02,airport-01,aircraft-01,flight-01
+flight-leg-09,ESP0005,2025/05/17 0:00,2025/05/18 0:00,"LANDED",airport-01,airport-02,aircraft-01,flight-01
+# departure-airport and arrival-airport - variations
+flight-leg-10,ESP0006,2025/05/19 0:00,2025/05/20 0:00,"ON_TIME",airport-02,airport-03,aircraft-01,flight-01
+flight-leg-11,ESP0007,2025/05/21 0:00,2025/05/22 0:00,"ON_TIME",airport-03,airport-01,aircraft-01,flight-01
+# deployed-aircraft - variations
+flight-leg-12,ESP0008,2025/05/23 0:00,2025/05/24 0:00,"ON_TIME",airport-01,airport-02,aircraft-02,flight-01
+# parent-flight - variations
+flight-leg-13,ESP0009,2025/05/25 0:00,2025/05/26 0:00,"ON_TIME",airport-01,airport-02,aircraft-01,flight-02
