@@ -43,7 +43,6 @@ public interface CustomerDashboardRepository extends AbstractRepository {
 	@Query("select max(select count(br) from BookingRecord br where br.booking.id = b.id) from Booking b where b.customer.id = :customerId")
 	Long getMaximumNumberOfPassengersInBooking(Integer customerId);
 
-	// Standard deviation number of passengers in bookings
 	@Query("select count(br) from BookingRecord br group by br.booking.id")
 	Collection<Long> getPassengersByBooking();
 
