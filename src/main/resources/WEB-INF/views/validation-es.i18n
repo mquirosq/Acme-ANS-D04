@@ -1,5 +1,10 @@
 # validation-es.i18n
 #
+
+acme.validation.phoneNumber.message = El número de teléfono debe estar compuestoi de entre seis y quince dígitos, opcionalmente precedido de "+"
+
+acme.validation.airline.IATACode.message = El código IATA debe ser único
+
 acme.validation.customer.identifier.message = El identificador debe comenzar con las iniciales del cliente
 acme.validation.airlineManager.identifier.message = El identificador debe comenzar con las iniciales del gestor
 acme.validation.assistanceAgent.employeeCode.message	= Las primeras dos o tres letras deben coincidir con las iniciales del empleado
@@ -14,3 +19,7 @@ acme.validation.service.promotioncode.message 				= El código de la promoción 
 acme.validation.flightcrewmember.employeecode.message       = Las primeras dos letras del código de empleado deben de coincidir con las iniciales del nombre y apellidos del mismo
 acme.validation.customer.issuedAt.message 					= No se puede prohibir el acceso a un pasajero antes de su nacimiento
 acme.validation.customer.liftedAt.message 					= No se puede levantar una prohibición antes de su fecha de creación
+
+acme.validation.flightLeg.scheduledDates.message = La fecha de salida programada debe ser antes de la fecha de llegada programada
+acme.validation.flight.overlappingDates.message = Este vuelo tiene tramos solapados
+acme.validation.flightLeg.flightNumber.message = El numero de vuelo debe comenzar con el codigo IATA de la aerolinea

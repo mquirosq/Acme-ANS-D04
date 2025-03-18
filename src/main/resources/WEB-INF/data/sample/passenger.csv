@@ -20,7 +20,6 @@ passenger-15,"M Q Q",acme@lorem-ipsum.org,DBIBF3R,2012/07/02 0:00,Lorem ipsum do
 passenger-16,"X Æ A-12",acme@lorem-ipsum.org,DBIBF3R,2012/07/02 0:00,Lorem ipsum dolor sit amet
 passenger-17,"María de la O",acme@lorem-ipsum.org,DBIBF3R,2012/07/02 0:00,Lorem ipsum dolor sit amet
 # email variants
-# passenger-18,Loren Ipsum,acme:password@lorem-ipsum.org,DBIBF3R,2012/07/02 0:00,Lorem ipsum dolor sit amet
 passenger-19,Loren Ipsum,a@b.e,DBIBF3R,2012/07/02 0:00,Lorem ipsum dolor sit amet
 passenger-20,Loren Ipsum,a@b.es,DBIBF3R,2012/07/02 0:00,Lorem ipsum dolor sit amet
 passenger-21,Loren Ipsum,a@b.esx,DBIBF3R,2012/07/02 0:00,Lorem ipsum dolor sit amet

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>110</x>
+      <y>250</y>
+      <w>660</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Role&gt;&gt;
+AirlineManager {ValidAirlineManager}
+--
++ identifierNumber: String {Mandatory, ValidString(pattern="^[A-Z]{2-3}\\d{6}$"), Column(unique=true)}
++ yearsOfExperience: Integer {Mandatory, ValidNumber(min=0, max=120), Automapped}
++ birthDate: Date {Mandatory, ValidMoment(past=true), Temporal(TIMESTAMP)}
++ pictureLink: String {Optional, ValidUrl, Automapped}
+bg=pink</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>360</x>
+      <y>90</y>
+      <w>180</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Airline
+--
+bg=green
+
+
+
+
+  
+  
+  
+  
+  
+  
+  
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>440</x>
+      <y>120</y>
+      <w>100</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>Works for ^
+lt=&lt;-x
+m1=1
+m2=*
+
+</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;130.0</additional_attributes>
+  </element>
+</diagram>
