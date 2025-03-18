@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>510</x>
+      <y>410</y>
+      <w>490</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Constraint&gt;&gt;
+ValidAssistanceAgent
+--
++ First 2 or 3 letters of employeeCode must match the user's initials
+bg=RED</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>510</x>
+      <y>530</y>
+      <w>490</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Constraint&gt;&gt;
+ValidTrackingLog
+--
++ Status must be pending if resolution percentage is below 100%
++ Status must not be pending if resolution percentage has reached 100%
++ Resolution percentage must be monotonically increasing
++ Resolution message is mandatory if the claim has been resolved
+bg=RED</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
