@@ -49,7 +49,7 @@ public class TrackingLogValidator extends AbstractValidator<ValidTrackingLog, Tr
 					super.state(context, !StringHelper.isBlank(trackingLog.getResolution()), "*", "acme.validation.trackingLog.resolution.message");
 			}
 			{
-				super.state(context, trackingLog.getIsPublished() && !trackingLog.getClaim().getIsPublished(), "*", "acme.validation.trackingLog.isPublished.message");
+				super.state(context, !(trackingLog.getIsPublished() && !trackingLog.getClaim().getIsPublished()), "*", "acme.validation.trackingLog.isPublished.message");
 			}
 			{
 				List<TrackingLog> trackingLogs;
