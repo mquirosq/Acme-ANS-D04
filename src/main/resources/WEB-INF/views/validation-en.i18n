@@ -3,6 +3,8 @@
 
 acme.validation.phoneNumber.message = The phone number must be composed of 6 to 15 digits preceded or not by "+"
 
+acme.validation.airline.IATACode.message = The IATA Code must be unique
+
 acme.validation.customer.identifier.message = The identifier must start with the initials of the customer
 acme.validation.airlineManager.identifier.message = The identifier must start with the initials of the manager
 acme.validation.assistanceAgent.employeeCode.message	= The first two or three letters must match the employee's initials
