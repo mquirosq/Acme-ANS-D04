@@ -5,6 +5,8 @@ acme.validation.phoneNumber.message = El número de teléfono debe estar compues
 
 acme.validation.airline.IATACode.message = El código IATA debe ser único
 
+acme.validation.booking.locatorCode.message = The código de localización debe ser único
+
 acme.validation.customer.identifier.message = El identificador debe comenzar con las iniciales del cliente
 acme.validation.airlineManager.identifier.message = El identificador debe comenzar con las iniciales del gestor
 acme.validation.assistanceAgent.employeeCode.message	= Las primeras dos o tres letras deben coincidir con las iniciales del empleado
