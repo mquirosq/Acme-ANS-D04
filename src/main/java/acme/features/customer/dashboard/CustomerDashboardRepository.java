@@ -16,20 +16,20 @@ public interface CustomerDashboardRepository extends AbstractRepository {
 	@Query("select b.travelClass, count(b) from Booking b where b.customer.id = :customerId group by b.travelClass")
 	Collection<Object[]> getNumberOfBookingsGroupedByTravelClass(Integer customerId);
 
-	@Query("select sum(b.price.amount) from Booking b where b.purchasedAt >= :startDate")
-	Double getTotalCostOfBookingsSinceDate(Date startDate);
+	@Query("select sum(b.price.amount) from Booking b where b.purchasedAt >= :startDate and b.customer.id = :customerId")
+	Double getTotalCostOfBookingsSinceDate(Date startDate, Integer customerId);
 
-	@Query("select avg(b.price.amount) from Booking b where b.purchasedAt >= :startDate")
-	Double getAverageCostOfBookingsSinceDate(Date startDate);
+	@Query("select avg(b.price.amount) from Booking b where b.purchasedAt >= :startDate and b.customer.id = :customerId")
+	Double getAverageCostOfBookingsSinceDate(Date startDate, Integer customerId);
 
-	@Query("select min(b.price.amount) from Booking b where b.purchasedAt >= :startDate")
-	Double getMinimumCostOfBookingsSinceDate(Date startDate);
+	@Query("select min(b.price.amount) from Booking b where b.purchasedAt >= :startDate and b.customer.id = :customerId")
+	Double getMinimumCostOfBookingsSinceDate(Date startDate, Integer customerId);
 
-	@Query("select max(b.price.amount) from Booking b where b.purchasedAt >= :startDate")
-	Double maximumCostOfBookingsSinceDate(Date startDate);
+	@Query("select max(b.price.amount) from Booking b where b.purchasedAt >= :startDate and b.customer.id = :customerId")
+	Double maximumCostOfBookingsSinceDate(Date startDate, Integer customerId);
 
-	@Query("select stddev(b.price.amount) from Booking b where b.purchasedAt >= :startDate")
-	Double standardDeviationCostOfBookingsSinceDate(Date startDate);
+	@Query("select stddev(b.price.amount) from Booking b where b.purchasedAt >= :startDate and b.customer.id = :customerId")
+	Double standardDeviationCostOfBookingsSinceDate(Date startDate, Integer customerId);
 
 	@Query("select count(br) from BookingRecord br where br.booking.customer=:customerId")
 	Long getTotalPassengersInBookings(Integer customerId);
