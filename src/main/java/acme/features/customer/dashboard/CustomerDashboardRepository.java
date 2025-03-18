@@ -43,7 +43,7 @@ public interface CustomerDashboardRepository extends AbstractRepository {
 	@Query("select max(select count(br) from BookingRecord br where br.booking.id = b.id) from Booking b where b.customer.id = :customerId")
 	Long getMaximumNumberOfPassengersInBooking(Integer customerId);
 
-	@Query("select count(br) from BookingRecord br group by br.booking.id")
-	Collection<Long> getPassengersByBooking();
+	@Query("select count(br) from BookingRecord br group by br.booking.id where b.customer.id = :customerId")
+	Collection<Long> getPassengersByBooking(Integer customerId);
 
 }
