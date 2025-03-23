@@ -14,7 +14,7 @@ import acme.datatypes.AirportScope;
 @Repository
 public interface AdministratorDashboardRepository extends AbstractRepository {
 
-	@Query("select a.scope, count(a) from Airport a group by a")
+	@Query("select a.scope, count(a) from Airport a group by a.scope")
 	Map<AirportScope, Long> totalNumberOfAirportsByOperationalScope();
 
 	@Query("select a.type, count(a) from Airline a group by a.type")
