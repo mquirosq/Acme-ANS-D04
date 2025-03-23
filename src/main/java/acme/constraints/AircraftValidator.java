@@ -30,9 +30,14 @@ public class AircraftValidator extends AbstractValidator<ValidAircraft, Aircraft
 
 		if (aircraft == null)
 			super.state(context, false, "*", "javax.validation.constraints.NotNull.message");
-		else if (aircraft.getRegistrationNumber() != null) {
-			Long numAircraftsWithSameRegistrationNumber = this.repository.countWithSameRegistrationNumber(aircraft.getRegistrationNumber());
-			super.state(context, numAircraftsWithSameRegistrationNumber.equals(1L), "*", "javax.validation.aircraft.registrationNumber.message");
+		else {
+			Boolean uniqueAircraft;
+			Aircraft existingAircraft;
+
+			existingAircraft = this.repository.findAircraftByRegistrationNumber(aircraft.getRegistrationNumber());
+			uniqueAircraft = existingAircraft == null || existingAircraft.equals(aircraft);
+
+			super.state(context, uniqueAircraft, "registrationNumber", "javax.validation.aircraft.registrationNumber.message");
 		}
 		result = !super.hasErrors(context);
 		return result;
