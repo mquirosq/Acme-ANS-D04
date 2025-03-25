@@ -17,6 +17,7 @@ import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidString;
 import acme.datatypes.CurrentStatus;
 import acme.datatypes.Duty;
+import acme.realms.FlightCrewMember;
 import lombok.Getter;
 import lombok.Setter;
 
