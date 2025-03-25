@@ -3,6 +3,10 @@
 
 acme.validation.phoneNumber.message = El número de teléfono debe estar compuestoi de entre seis y quince dígitos, opcionalmente precedido de "+"
 
+acme.validation.airline.IATACode.message = El código IATA debe ser único
+
+acme.validation.booking.locatorCode.message = The código de localización debe ser único
+
 acme.validation.customer.identifier.message = El identificador debe comenzar con las iniciales del cliente
 acme.validation.airlineManager.identifier.message = El identificador debe comenzar con las iniciales del gestor
 acme.validation.assistanceAgent.employeeCode.message	= Las primeras dos o tres letras deben coincidir con las iniciales del empleado
@@ -12,11 +16,15 @@ acme.validation.trackingLog.pendingStatus.message			= El estado debe ser pendien
 acme.validation.trackingLog.resolution.message				= La resolución es obligatoria si la queja ha sido aceptada o rechazada
 acme.validation.trackingLog.resolutionPercentage.message 	= El porcentaje de resolución debe aumentar monotónicamente
 acme.validation.trackingLog.lastUpdateMoment.message		= El momento de última actualización no puede ser anterior al momento de creación
+acme.validation.trackingLog.isPublished.message				= No se puede publicar hasta que la queja asociada no esté publicada
 acme.validation.service.promotioncode.message 				= El código de la promoción debe correponder al año actual
 acme.validation.flightcrewmember.employeecode.message       = Las primeras dos letras del código de empleado deben de coincidir con las iniciales del nombre y apellidos del mismo
+acme.validation.flightcrewmember.uniqueemployeecode.message = El código de empleado ya esta en uso
 acme.validation.customer.issuedAt.message 					= No se puede prohibir el acceso a un pasajero antes de su nacimiento
 acme.validation.customer.liftedAt.message 					= No se puede levantar una prohibición antes de su fecha de creación
 
 acme.validation.flightLeg.scheduledDates.message = La fecha de salida programada debe ser antes de la fecha de llegada programada
 acme.validation.flight.overlappingDates.message = Este vuelo tiene tramos solapados
 acme.validation.flightLeg.flightNumber.message = El numero de vuelo debe comenzar con el codigo IATA de la aerolinea
+
+acme.validation.airport.notUniqueIATA.message = Este codigo IATA ya existe
