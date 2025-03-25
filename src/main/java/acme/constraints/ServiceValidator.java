@@ -31,14 +31,20 @@ public class ServiceValidator extends AbstractValidator<ValidService, Service> {
 			super.state(context, false, "*", "javax.validation.constraints.NotNull.message");
 		else if (service.getPromotionCode() != null) {
 			Boolean check;
-			Boolean unique;
+			Boolean uniqueService;
+
 			String promotionCode = service.getPromotionCode();
 			String currentDate = MomentHelper.getCurrentMoment().toString().strip();
 
 			check = promotionCode.endsWith(currentDate.substring(currentDate.length() - 2));
 			super.state(context, check, "promotionCode", "acme.validation.service.promotioncode.message");
-			unique = this.repository.getEqual(service.getPromotionCode()) == 1;
-			super.state(context, unique, "promotionCode", "acme.validation.service.promotioncodeuniqueness.message");
+
+			Service existingService;
+
+			existingService = this.repository.findByPromotionCode(promotionCode);
+			uniqueService = existingService == null || existingService.equals(service);
+
+			super.state(context, uniqueService, "promotionCode", "acme.validation.service.promotioncodeuniqueness.message");
 		}
 
 		result = !super.hasErrors(context);
