@@ -49,12 +49,24 @@ public class TrackingLogValidator extends AbstractValidator<ValidTrackingLog, Tr
 					super.state(context, !StringHelper.isBlank(trackingLog.getResolution()), "*", "acme.validation.trackingLog.resolution.message");
 			}
 			{
+				super.state(context, !(trackingLog.getIsPublished() && !trackingLog.getClaim().getIsPublished()), "*", "acme.validation.trackingLog.isPublished.message");
+			}
+			{
 				List<TrackingLog> trackingLogs;
 
-				trackingLogs = this.repository.findAllByClaimIdWithDifferentIdBefore(trackingLog.getClaim().getId(), trackingLog.getId(), trackingLog.getCreationMoment());
+				trackingLogs = this.repository.findAllByClaimId(trackingLog.getClaim().getId());
 
-				if (!trackingLogs.isEmpty())
-					super.state(context, trackingLogs.get(0).getResolutionPercentage() < trackingLog.getResolutionPercentage(), "*", "acme.validation.trackingLog.resolutionPercentage.message");
+				for (Integer i = 0; i < trackingLogs.size(); i++) {
+					TrackingLog t1;
+					TrackingLog t2;
+
+					t1 = trackingLogs.get(i);
+
+					if (trackingLogs.size() > i + 1) {
+						t2 = trackingLogs.get(i + 1);
+						super.state(context, t1.getResolutionPercentage() < t2.getResolutionPercentage(), "*", "acme.validation.trackingLog.resolutionPercentage.message");
+					}
+				}
 			}
 		}
 		result = !super.hasErrors(context);
