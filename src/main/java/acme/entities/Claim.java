@@ -2,11 +2,13 @@
 package acme.entities;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import javax.validation.Valid;
 
 import acme.client.components.basis.AbstractEntity;
@@ -15,6 +17,7 @@ import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.ValidEmail;
 import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidString;
+import acme.client.helpers.SpringHelper;
 import acme.datatypes.ClaimStatus;
 import acme.datatypes.ClaimType;
 import acme.realms.AssistanceAgent;
@@ -50,11 +53,6 @@ public class Claim extends AbstractEntity {
 
 	@Mandatory
 	@Valid
-	@Automapped
-	private ClaimStatus			status;
-
-	@Mandatory
-	@Valid
 	@ManyToOne(optional = false)
 	AssistanceAgent				agent;
 
@@ -62,4 +60,28 @@ public class Claim extends AbstractEntity {
 	@Valid
 	@ManyToOne(optional = false)
 	FlightLeg					leg;
+
+	@Mandatory
+	@Valid
+	@Automapped
+	Boolean						isPublished;
+
+
+	@Transient
+	private ClaimStatus getStatus() {
+		ClaimStatus out;
+		List<TrackingLog> trackingLogs;
+		TrackingLogRepository trackingLogRepository;
+
+		out = ClaimStatus.PENDING;
+		trackingLogRepository = SpringHelper.getBean(TrackingLogRepository.class);
+		trackingLogs = trackingLogRepository.findAllByClaimId(this.getId());
+
+		if (trackingLogs.stream().anyMatch(log -> log.getStatus().equals(ClaimStatus.ACCEPTED)))
+			out = ClaimStatus.ACCEPTED;
+		else if (trackingLogs.stream().anyMatch(log -> log.getStatus().equals(ClaimStatus.REJECTED)))
+			out = ClaimStatus.REJECTED;
+
+		return out;
+	}
 }
