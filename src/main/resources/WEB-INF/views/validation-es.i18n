@@ -18,6 +18,7 @@ acme.validation.trackingLog.resolutionPercentage.message 	= El porcentaje de res
 acme.validation.trackingLog.lastUpdateMoment.message		= El momento de última actualización no puede ser anterior al momento de creación
 acme.validation.trackingLog.isPublished.message				= No se puede publicar hasta que la queja asociada no esté publicada
 acme.validation.service.promotioncode.message 				= El código de la promoción debe correponder al año actual
+acme.validation.service.promotioncodeuniqueness.message 	= El código de la promoción no es unico
 acme.validation.flightcrewmember.employeecode.message       = Las primeras dos letras del código de empleado deben de coincidir con las iniciales del nombre y apellidos del mismo
 acme.validation.flightcrewmember.uniqueemployeecode.message = El código de empleado ya esta en uso
 acme.validation.customer.issuedAt.message 					= No se puede prohibir el acceso a un pasajero antes de su nacimiento

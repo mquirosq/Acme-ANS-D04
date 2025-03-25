@@ -42,6 +42,7 @@ service-32,Lorem Ipsum dolor sit ame,http://lorem.com/ipsum,50,AAAA-25,50
 service-33,Lorem Ipsum dolor sit ame,http://lorem.com/ipsum,50,ZZZZ-25,50
 service-34,Lorem Ipsum dolor sit ame,http://lorem.com/ipsum,50,AZAZ-25,50
 service-35,Lorem Ipsum dolor sit ame,http://lorem.com/ipsum,50,null,50
+service-41,Lorem Ipsum dolor sit ame,http://lorem.com/ipsum,50,null,50
 # promotion-discount - standard variations
 service-36,Lorem Ipsum dolor sit ame,http://lorem.com/ipsum,50,BBBI-25,0.00
 service-37,Lorem Ipsum dolor sit ame,http://lorem.com/ipsum,50,BBBJ-25,0.01
