@@ -6,7 +6,7 @@ acme.validation.phoneNumber.message = The phone number must be composed of 6 to 
 acme.validation.airline.IATACode.message = The IATA Code must be unique
 
 acme.validation.customer.identifier.message = The identifier must start with the initials of the customer
-
+acme.validation.customer.identifier.unique.message = The identifier must be unique
 acme.validation.booking.locatorCode.message = The Locator Code must be unique
 
 acme.validation.airlineManager.identifier.message = The identifier must start with the initials of the manager
@@ -20,6 +20,9 @@ acme.validation.trackingLog.lastUpdateMoment.message		= The last update moment m
 acme.validation.trackingLog.isPublished.message				= The tracking log cannot be published until its associated claim has been published
 acme.validation.service.promotioncode.message 				= The promotion code year must be according to the current year
 acme.validation.flightcrewmember.employeecode.message 		= The employee code first two letters must match the employee's name and surname initials
+acme.validation.bannedPassenger.issuedAt.message 					= The issue date must be after the birth date of the passenger
+acme.validation.bannedPassenger.liftedAt.message 					= The lifting date must be after the issue date
+
 acme.validation.flightcrewmember.uniqueemployeecode.message = The employee code is already in use
 acme.validation.customer.issuedAt.message 					= The issue date must be after the birth date of the passenger
 acme.validation.customer.liftedAt.message 					= The lifting date must be after the issue date

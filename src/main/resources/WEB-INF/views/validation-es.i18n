@@ -8,6 +8,8 @@ acme.validation.airline.IATACode.message = El código IATA debe ser único
 acme.validation.booking.locatorCode.message = The código de localización debe ser único
 
 acme.validation.customer.identifier.message = El identificador debe comenzar con las iniciales del cliente
+acme.validation.customer.identifier.unique.message = El identificador debe ser único
+
 acme.validation.airlineManager.identifier.message = El identificador debe comenzar con las iniciales del gestor
 acme.validation.assistanceAgent.employeeCode.message	= Las primeras dos o tres letras deben coincidir con las iniciales del empleado
 
@@ -19,6 +21,8 @@ acme.validation.trackingLog.lastUpdateMoment.message		= El momento de última ac
 acme.validation.trackingLog.isPublished.message				= No se puede publicar hasta que la queja asociada no esté publicada
 acme.validation.service.promotioncode.message 				= El código de la promoción debe correponder al año actual
 acme.validation.flightcrewmember.employeecode.message       = Las primeras dos letras del código de empleado deben de coincidir con las iniciales del nombre y apellidos del mismo
+acme.validation.bannedPassenger.issuedAt.message 					= No se puede prohibir el acceso a un pasajero antes de su nacimiento
+acme.validation.bannedPassenger.liftedAt.message 					= No se puede levantar una prohibición antes de su fecha de creación
 acme.validation.flightcrewmember.uniqueemployeecode.message = El código de empleado ya esta en uso
 acme.validation.customer.issuedAt.message 					= No se puede prohibir el acceso a un pasajero antes de su nacimiento
 acme.validation.customer.liftedAt.message 					= No se puede levantar una prohibición antes de su fecha de creación
