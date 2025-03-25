@@ -12,4 +12,7 @@ public interface AirlineRepository extends AbstractRepository {
 	@Query("select count(a) from Airline a where IATACode = :IATACode")
 	Long countSameIATACode(String IATACode);
 
+	@Query("select a from Airline a where IATACode = :IATACode")
+	Airline getByIATACode(String IATACode);
+
 }

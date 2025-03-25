@@ -1,7 +1,6 @@
 
-package acme.entities;
+package acme.realms;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.validation.Valid;
@@ -17,6 +16,7 @@ import acme.client.components.validation.ValidString;
 import acme.constraints.ValidFlightCrewMember;
 import acme.constraints.ValidPhoneNumber;
 import acme.datatypes.AvailabilityStatus;
+import acme.entities.Airline;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -30,7 +30,7 @@ public class FlightCrewMember extends AbstractRole {
 
 	@Mandatory
 	@ValidString(pattern = "^[A-Z]{2,3}\\d{6}$")
-	@Column(unique = true)
+	@Automapped
 	private String				employeeCode;
 
 	@Mandatory
