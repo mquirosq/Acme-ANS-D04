@@ -27,4 +27,5 @@ acme.validation.flightLeg.scheduledDates.message = La fecha de salida programada
 acme.validation.flight.overlappingDates.message = Este vuelo tiene tramos solapados
 acme.validation.flightLeg.flightNumber.message = El numero de vuelo debe comenzar con el codigo IATA de la aerolinea
 
+acme.validation.aircraft.registrationNumber.message			= El número de registro debe ser único
 acme.validation.airport.notUniqueIATA.message = Este codigo IATA ya existe
