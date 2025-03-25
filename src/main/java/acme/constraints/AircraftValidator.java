@@ -30,7 +30,7 @@ public class AircraftValidator extends AbstractValidator<ValidAircraft, Aircraft
 
 		if (aircraft == null)
 			super.state(context, false, "*", "javax.validation.constraints.NotNull.message");
-		else {
+		else if (aircraft.getRegistrationNumber() != null) {
 			Boolean uniqueAircraft;
 			Aircraft existingAircraft;
 
