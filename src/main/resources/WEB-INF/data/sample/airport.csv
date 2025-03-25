@@ -72,7 +72,6 @@ airport-59,"Lorem ipsum dolor sit ame","ABZ",INTERNATIONAL,"Lorem ipsum dolor si
 airport-60,"Lorem ipsum dolor sit ame","ACA",INTERNATIONAL,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit ame",null,"acme@lorem-ipsum.org",78657687
 # website - no singular values
 # email - standard variations
-# airport-61,"Lorem ipsum dolor sit ame","ACB",INTERNATIONAL,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit ame","http://lorem.com/ipsum","acme:password@lorem-ipsum.org",78657687
 airport-62,"Lorem ipsum dolor sit ame","ACC",INTERNATIONAL,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit ame","http://lorem.com/ipsum","a@b.e",78657687
 airport-63,"Lorem ipsum dolor sit ame","ACD",INTERNATIONAL,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit ame","http://lorem.com/ipsum","a@b.es",78657687
 airport-64,"Lorem ipsum dolor sit ame","ACE",INTERNATIONAL,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit ame","http://lorem.com/ipsum","a@b.esx",78657687
