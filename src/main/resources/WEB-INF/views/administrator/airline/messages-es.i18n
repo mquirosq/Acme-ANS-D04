@@ -1,0 +1,6 @@
+
+administrator.airline.list.title = Listado de aerolíneas
+
+administrator.airline.list.label.name = Nombre:
+administrator.airline.list.label.IATACode = Código IATA:
+administrator.airline.list.label.type = Tipo:
