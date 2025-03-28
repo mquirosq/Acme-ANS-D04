@@ -1,0 +1,19 @@
+assistance-agent.claim.list.title						= Claims
+
+assistance-agent.claim.list.completed.subtitle			= Mostrando todas las quejas completadas
+assistance-agent.claim.list.pending.subtitle			= Mostrando todas las quejas pendientes
+
+assistance-agent.claim.list.label.passengerEmail		= Email del pasajero
+assistance-agent.claim.list.label.type					= Tipo
+assistance-agent.claim.list.label.registrationMoment	= Momento de registro
+
+assistance-agent.claim.form.title						= Detalles de la queja
+
+assistance-agent.claim.form.label.registrationMoment	= Momento de registro	
+assistance-agent.claim.form.label.passengerEmail		= Email del pasajero
+assistance-agent.claim.form.label.description			= Descripción
+assistance-agent.claim.form.label.isPublished			= Publicada
+assistance-agent.claim.form.label.type					= Tipo
+assistance-agent.claim.form.label.status				= Estado
+assistance-agent.claim.form.label.leg					= Tramo
+assistance-agent.claim.form.label.agent					= Agente de asistencia
