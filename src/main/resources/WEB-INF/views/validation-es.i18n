@@ -35,3 +35,5 @@ acme.validation.flightLeg.flightNumber.message = El numero de vuelo debe comenza
 
 acme.validation.aircraft.registrationNumber.message			= El número de registro debe ser único
 acme.validation.airport.notUniqueIATA.message = Este codigo IATA ya existe
+
+acme.validation.confirmation.message = Debes confirmar antes de realizar esta operación

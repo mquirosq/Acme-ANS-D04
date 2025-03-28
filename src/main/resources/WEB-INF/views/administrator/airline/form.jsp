@@ -18,7 +18,7 @@
 	
 	<jstl:choose>
 		<jstl:when test="${_command == 'show'}">
-			<acme:button code="administrator.airline.form.button.update" action="/administrator/airline/update"/>
+			<acme:button code="administrator.airline.form.button.edit" action="/administrator/airline/update?id=${id}"/>
 		</jstl:when>
 		<jstl:when test="${_command == 'update'}">
 			<acme:submit code="administrator.airline.form.button.update" action="/administrator/airline/update"/>

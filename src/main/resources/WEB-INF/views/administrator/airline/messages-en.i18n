@@ -15,5 +15,7 @@ administrator.airline.form.label.email = E-mail:
 administrator.airline.form.label.phoneNumber = Phone number:
 
 administrator.airline.list.button.create = Create
+administrator.airline.form.button.create = Create
+administrator.airline.form.button.edit = Edit
 administrator.airline.form.button.update = Update
 administrator.airline.form.label.confirmation = Confirmation
