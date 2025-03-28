@@ -1,6 +1,8 @@
 
 package acme.features.administrator.aircraft;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
@@ -10,6 +12,7 @@ import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.datatypes.AircraftStatus;
 import acme.entities.Aircraft;
+import acme.entities.Airline;
 
 @GuiService
 public class AdministratorAircraftShowService extends AbstractGuiService<Administrator, Aircraft> {
@@ -37,14 +40,21 @@ public class AdministratorAircraftShowService extends AbstractGuiService<Adminis
 	@Override
 	public void unbind(final Aircraft aircraft) {
 		Dataset dataset;
-		SelectChoices choices;
+		Collection<Airline> airlines;
+		SelectChoices statusChoices, airlineChoices;
 
-		choices = SelectChoices.from(AircraftStatus.class, aircraft.getStatus());
+		airlines = this.repository.findAllAirlines();
 
-		dataset = super.unbindObject(aircraft, "model", "registrationNumber", "capacity", "cargoWeight", "details", "airline");
+		statusChoices = SelectChoices.from(AircraftStatus.class, aircraft.getStatus());
+		airlineChoices = SelectChoices.from(airlines, "name", aircraft.getAirline());
+
+		dataset = super.unbindObject(aircraft, "model", "registrationNumber", "capacity", "cargoWeight", "details");
 		dataset.put("confirmation", false);
 		dataset.put("readonly", true);
-		dataset.put("statuses", choices);
+		dataset.put("statuses", statusChoices);
+		dataset.put("status", statusChoices.getSelected().getKey());
+		dataset.put("airlines", airlineChoices);
+		dataset.put("airline", airlineChoices.getSelected().getKey());
 
 		super.getResponse().addData(dataset);
 	}
