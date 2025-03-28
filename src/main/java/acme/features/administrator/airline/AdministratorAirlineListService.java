@@ -41,6 +41,7 @@ public class AdministratorAirlineListService extends AbstractGuiService<Administ
 		Dataset dataset;
 
 		dataset = super.unbindObject(airline, "name", "IATACode", "type");
+		super.addPayload(dataset, airline, "website", "foundation", "email", "phoneNumber");
 
 		super.getResponse().addData(dataset);
 	}
