@@ -14,20 +14,15 @@ import acme.realms.AssistanceAgent;
 public class AssistanceAgentClaimController extends AbstractGuiController<AssistanceAgent, Claim> {
 
 	@Autowired
-	private AssistanceAgentClaimListCompletedService	listCompletedService;
+	private AssistanceAgentClaimListService	listService;
 
 	@Autowired
-	private AssistanceAgentClaimListPendingService		listPendingService;
-
-	@Autowired
-	private AssistanceAgentClaimShowService				showService;
+	private AssistanceAgentClaimShowService	showService;
 
 
 	@PostConstruct
 	protected void initialise() {
-		super.addCustomCommand("list-completed", "list", this.listCompletedService);
-		super.addCustomCommand("list-pending", "list", this.listPendingService);
-
+		super.addBasicCommand("list", this.listService);
 		super.addBasicCommand("show", this.showService);
 	}
 

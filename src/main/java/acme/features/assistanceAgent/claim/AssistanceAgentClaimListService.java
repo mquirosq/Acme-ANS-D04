@@ -8,12 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import acme.client.components.models.Dataset;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
-import acme.datatypes.ClaimStatus;
 import acme.entities.Claim;
 import acme.realms.AssistanceAgent;
 
 @GuiService
-public class AssistanceAgentClaimListCompletedService extends AbstractGuiService<AssistanceAgent, Claim> {
+public class AssistanceAgentClaimListService extends AbstractGuiService<AssistanceAgent, Claim> {
 
 	@Autowired
 	private AssistanceAgentClaimRepository repository;
@@ -30,8 +29,7 @@ public class AssistanceAgentClaimListCompletedService extends AbstractGuiService
 		Collection<Claim> claims;
 
 		assistanceAgentId = super.getRequest().getPrincipal().getActiveRealm().getId();
-		claims = this.repository.findAllClaimsByAssistanceAgentId(assistanceAgentId).stream().filter(claim -> claim.getStatus().equals(ClaimStatus.ACCEPTED) || claim.getStatus().equals(ClaimStatus.REJECTED)).toList();
-
+		claims = this.repository.findAllClaimsByAssistanceAgentId(assistanceAgentId);
 		super.getBuffer().addData(claims);
 	}
 
@@ -40,6 +38,9 @@ public class AssistanceAgentClaimListCompletedService extends AbstractGuiService
 		Dataset dataset;
 
 		dataset = super.unbindObject(claim, "registrationMoment", "passengerEmail", "type");
+		dataset.put("status", claim.getStatus());
+
+		super.addPayload(dataset, claim, "agent.employeeCode", "leg.flightNumber", "isPublished");
 		super.getResponse().addData(dataset);
 	}
 

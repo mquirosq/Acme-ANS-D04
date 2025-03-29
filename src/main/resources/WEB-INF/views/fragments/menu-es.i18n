@@ -30,8 +30,7 @@ master.menu.administrator.shut-system-down = Parar el sistema
 # master.menu.assistance-agent ###################################################
 
 master.menu.assistance-agent 						= Agente de asistencia
-master.menu.assistance-agent.list-completed-claims 	= Ver quejas completadas
-master.menu.assistance-agent.list-pending-claims 	= Ver quejas pendientes
+master.menu.assistance-agent.list-claims 			= Ver quejas
 
 # master.menu.provider ########################################################
 

@@ -1,8 +1,6 @@
 assistance-agent.claim.list.title						= Claims
 
-assistance-agent.claim.list.completed.subtitle			= Showing all completed claims
-assistance-agent.claim.list.pending.subtitle			= Showing all undergoing claims
-
+assistance-agent.claim.list.label.status				= Status
 assistance-agent.claim.list.label.passengerEmail		= Passenger email
 assistance-agent.claim.list.label.type					= Type
 assistance-agent.claim.list.label.registrationMoment	= Registration moment
