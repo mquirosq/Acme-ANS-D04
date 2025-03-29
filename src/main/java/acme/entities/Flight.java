@@ -52,7 +52,12 @@ public class Flight extends AbstractEntity {
 	public Date getScheduledDeparture() {
 		FlightLegRepository repository = SpringHelper.getBean(FlightLegRepository.class);
 		FlightLeg firstLeg = repository.getFirstLegOfFlight(this.getId());
-		return firstLeg.getScheduledDeparture();
+		Date result;
+		if (firstLeg == null)
+			result = null;
+		else
+			result = firstLeg.getScheduledDeparture();
+		return result;
 	}
 
 	@Transient
