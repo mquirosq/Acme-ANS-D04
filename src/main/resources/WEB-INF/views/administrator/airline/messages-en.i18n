@@ -14,3 +14,12 @@ administrator.airline.form.label.foundation = Foundation date:
 administrator.airline.form.label.email = E-mail:
 administrator.airline.form.label.phoneNumber = Phone number:
 
+administrator.airline.list.button.create = Create
+administrator.airline.form.button.create = Create
+administrator.airline.form.button.edit = Edit
+administrator.airline.form.button.update = Update
+administrator.airline.form.label.confirmation = Confirmation
+
+administrator.airline.form.placeholder.IATACode = Three capital letters
+administrator.airline.form.placeholder.email = acme@ans.com
+administrator.airline.form.placeholder.phoneNumber = Six to fifteen digits that may be preceeded of +
