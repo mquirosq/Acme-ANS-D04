@@ -9,7 +9,9 @@ acme.validation.customer.identifier.message = The identifier must start with the
 acme.validation.customer.identifier.unique.message = The identifier must be unique
 acme.validation.booking.locatorCode.message = The Locator Code must be unique
 
-acme.validation.airlineManager.identifier.message = The identifier must start with the initials of the manager
+acme.validation.airlineManager.identifierFormat.message = The identifier must start with the initials of the manager
+acme.validation.airlineManager.identifierUniqueness.message = The identifier must be unique
+
 acme.validation.assistanceAgent.employeeCodeFormat.message		= The employee code must start with the initials of the agent
 acme.validation.assistanceAgent.employeeCodeUniqueness.message	= The employee code must be unique
 

@@ -10,7 +10,9 @@ acme.validation.booking.locatorCode.message = The código de localización debe 
 acme.validation.customer.identifier.message = El identificador debe comenzar con las iniciales del cliente
 acme.validation.customer.identifier.unique.message = El identificador debe ser único
 
-acme.validation.airlineManager.identifier.message = El identificador debe comenzar con las iniciales del gestor
+acme.validation.airlineManager.identifierFormat.message = El identificador debe comenzar con las iniciales del gestor
+acme.validation.airlineManager.identifierUniqueness.message = El identificador debe de ser único
+
 acme.validation.assistanceAgent.employeeCode.message			= El código de empleado debe comenzar con las iniciales del agente
 acme.validation.assistanceAgent.employeeCodeUniqueness.message	= El código de empleado debe ser único
 
