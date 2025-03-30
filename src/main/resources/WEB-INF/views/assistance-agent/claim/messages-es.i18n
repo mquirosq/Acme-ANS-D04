@@ -5,6 +5,8 @@ assistance-agent.claim.list.label.isPublished			= Publicada
 assistance-agent.claim.list.label.type					= Tipo
 assistance-agent.claim.list.label.registrationMoment	= Momento de registro
 
+assistance-agent.claim.list.button.create				= Crear
+
 assistance-agent.claim.form.title						= Detalles de la queja
 
 assistance-agent.claim.form.label.registrationMoment	= Momento de registro	
@@ -15,3 +17,8 @@ assistance-agent.claim.form.label.type					= Tipo
 assistance-agent.claim.form.label.status				= Estado
 assistance-agent.claim.form.label.leg					= Tramo
 assistance-agent.claim.form.label.agent					= Agente de asistencia
+
+assistance-agent.claim.form.button.edit					= Editar
+assistance-agent.claim.form.button.delete				= Borrar
+assistance-agent.claim.form.button.publish				= Publicar
+assistance-agent.claim.form.button.create				= Crear
