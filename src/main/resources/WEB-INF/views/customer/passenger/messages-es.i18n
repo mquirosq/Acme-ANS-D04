@@ -4,6 +4,7 @@ customer.passenger.list.label.fullName = Nombre completo
 customer.passenger.list.label.passportNumber = Número de pasaporte
 
 customer.list-passengers.draft = Pasajeros sin publicar
+customer.list-passengers.mine = Mis pasajeros
 
 customer.passenger.form.title						= Detalles del pasajero
 

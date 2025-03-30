@@ -46,6 +46,10 @@ public class CustomerPassengerListService extends AbstractGuiService<Customer, P
 		Dataset dataset;
 
 		dataset = super.unbindObject(passenger, "fullName", "passportNumber");
+		super.addPayload(dataset, passenger, "email", "birthDate", "draftMode");
+
+		boolean draft = super.getRequest().getData("draft", boolean.class);
+		super.getResponse().addGlobal("draft", draft);
 
 		super.getResponse().addData(dataset);
 	}

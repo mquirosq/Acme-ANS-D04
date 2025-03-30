@@ -9,6 +9,11 @@
 	<acme:list-payload path="payload"/>
 </acme:list>
 
-<jstl:if test="${!draft}">
-	<acme:button code="customer.list-passengers.draft" action="/customer/passenger/list?draft=${true}"/>
-</jstl:if>
+<jstl:choose>
+	<jstl:when test="${!draft}">
+		<acme:button code="customer.list-passengers.draft" action="/customer/passenger/list?draft=${true}"/>
+	</jstl:when>
+	<jstl:when test="${draft}">
+		<acme:button code="customer.list-passengers.mine" action="/customer/passenger/list?draft=${false}"/>
+	</jstl:when>
+</jstl:choose>	
