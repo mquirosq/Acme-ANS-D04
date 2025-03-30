@@ -16,3 +16,10 @@ customer.passenger.form.placeholder.passportNumber = Passport number
 customer.passenger.form.label.birthDate = Birth date
 customer.passenger.form.label.specialNeeds = Special needs
 customer.passenger.form.label.draft = Draft
+
+customer.passenger.list.button.create = Create
+
+customer.passenger.form.button.edit = Edit
+customer.passenger.form.button.publish = Publish
+customer.passenger.form.button.update = Update
+customer.passenger.form.button.save = Save

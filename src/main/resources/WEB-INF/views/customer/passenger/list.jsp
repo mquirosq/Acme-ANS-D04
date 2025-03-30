@@ -17,3 +17,5 @@
 		<acme:button code="customer.list-passengers.mine" action="/customer/passenger/list?draft=${false}"/>
 	</jstl:when>
 </jstl:choose>	
+
+<acme:button code="customer.passenger.list.button.create" action="/customer/passenger/create"/>

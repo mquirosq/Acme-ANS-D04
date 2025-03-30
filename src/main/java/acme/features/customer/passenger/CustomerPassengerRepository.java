@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import acme.client.repositories.AbstractRepository;
 import acme.entities.Passenger;
+import acme.realms.Customer;
 
 @Repository
 public interface CustomerPassengerRepository extends AbstractRepository {
@@ -20,5 +21,8 @@ public interface CustomerPassengerRepository extends AbstractRepository {
 
 	@Query("select p from Passenger p where p.customer.id = :customerId and p.draftMode = true")
 	Collection<Passenger> findDraftPassengersOfCustomer(int customerId);
+
+	@Query("select c from Customer c where c.id = :customerId")
+	Customer findCustomerById(int customerId);
 
 }
