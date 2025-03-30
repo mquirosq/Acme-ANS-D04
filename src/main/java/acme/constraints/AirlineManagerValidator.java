@@ -3,12 +3,21 @@ package acme.constraints;
 
 import javax.validation.ConstraintValidatorContext;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
+import acme.client.components.principals.DefaultUserIdentity;
 import acme.client.components.validation.AbstractValidator;
 import acme.client.components.validation.Validator;
+import acme.helpers.EmployeeCodeHelper;
 import acme.realms.AirlineManager;
+import acme.realms.AirlineManagerRepository;
 
 @Validator
 public class AirlineManagerValidator extends AbstractValidator<ValidAirlineManager, AirlineManager> {
+
+	@Autowired
+	private AirlineManagerRepository repository;
+
 
 	@Override
 	protected void initialise(final ValidAirlineManager annotation) {
@@ -23,15 +32,18 @@ public class AirlineManagerValidator extends AbstractValidator<ValidAirlineManag
 
 		if (manager == null)
 			super.state(context, false, "*", "javax.validation.constraints.NotNull.message");
-		else {
-			boolean initialsInIdentifier;
+		else if (manager.getIdentifierNumber() != null) {
+			String identifierNumber = manager.getIdentifierNumber();
+			DefaultUserIdentity identity = manager.getIdentity();
 
-			char nameInitial = manager.getIdentity().getName().trim().charAt(0);
-			char surnameInitial = manager.getIdentity().getSurname().trim().charAt(0);
+			boolean isCorrectlyFormatted = EmployeeCodeHelper.checkFormatIsCorrect(identifierNumber, identity);
+			super.state(context, isCorrectlyFormatted, "identifier", "acme.validation.airlineManager.identifierFormat.message");
 
-			initialsInIdentifier = manager.getIdentifierNumber().charAt(0) == nameInitial && manager.getIdentifierNumber().charAt(1) == surnameInitial;
+			AirlineManager obtainedManager = this.repository.findByIdentifierNumber(identifierNumber);
 
-			super.state(context, initialsInIdentifier, "identifier", "acme.validation.airlineManager.identifier.message");
+			boolean isUnique = EmployeeCodeHelper.checkUniqueness(manager, obtainedManager);
+			super.state(context, isUnique, "identifier", "acme.validation.airlineManager.identifierUniqueness.message");
+
 		}
 
 		result = !super.hasErrors(context);
