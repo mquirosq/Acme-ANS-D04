@@ -1,0 +1,20 @@
+# messages-es.i18n
+
+any.review.form.title = Detalles de la reseña
+any.review.list.title = Listado de reseñas
+
+any.review.form.label.alias = Alias:
+any.review.form.label.moment = Fecha de la reseña:
+any.review.form.label.subject = Asunto:
+any.review.form.label.text = Descripción:
+any.review.form.label.score = Valoración:
+any.review.form.label.recommended = Recomendado:
+any.review.form.label.details = Detalles:
+any.review.form.label.confirmation = Confirmación:
+any.review.form.button.create = Crear:
+
+any.review.list.label.alias = Alias
+any.review.list.label.subject = Asunto
+any.review.list.label.text = Descripción
+any.review.list.label.score = Valoración
+any.review.list.button.create = Crear
