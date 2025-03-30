@@ -13,12 +13,25 @@ import acme.entities.Review;
 @GuiController
 public class AnyReviewController extends AbstractGuiController<Any, Review> {
 
+	// Internal state ---------------------------------------------------------
+
 	@Autowired
-	private AnyReviewCreateService createService;
+	private AnyReviewListService	listService;
+
+	@Autowired
+	private AnyReviewShowService	showService;
+
+	@Autowired
+	private AnyReviewCreateService	createService;
+
+	// Constructors -----------------------------------------------------------
 
 
 	@PostConstruct
 	protected void initialise() {
+		super.addBasicCommand("list", this.listService);
+		super.addBasicCommand("show", this.showService);
 		super.addBasicCommand("create", this.createService);
+
 	}
 }

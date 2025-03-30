@@ -14,8 +14,10 @@ any.review.form.label.details = Details:
 any.review.form.label.confirmation = Confirmation:
 any.review.form.button.create = Create:
 
+
 any.review.list.label.alias = User Alias
 any.review.list.label.subject = Subject
 any.review.list.label.text = Description
 any.review.list.label.score = Score
 any.review.list.button.create = Create
+
