@@ -21,3 +21,6 @@ administrator.aircraft.form.label.confirmation			= Confirmación
 administrator.aircraft.form.button.edit					= Editar
 administrator.aircraft.form.button.disable				= Deshabilitar
 administrator.aircraft.form.button.create				= Crear
+
+administrator.aircraft.form.placeholder.capacity		= 128
+administrator.aircraft.form.placeholder.cargoWeight		= 26000
