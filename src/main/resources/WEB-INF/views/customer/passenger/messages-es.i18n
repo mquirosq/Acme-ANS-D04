@@ -3,6 +3,8 @@ customer.passenger.list.title						= Lista de pasajeros
 customer.passenger.list.label.fullName = Nombre completo
 customer.passenger.list.label.passportNumber = Número de pasaporte
 
+customer.list-passengers.draft = Pasajeros sin publicar
+
 customer.passenger.form.title						= Detalles del pasajero
 
 customer.passenger.form.label.fullName = Nombre completo
@@ -12,3 +14,4 @@ customer.passenger.form.label.passportNumber = Número de pasaporte
 customer.passenger.form.placeholder.passportNumber = Número de pasaporte
 customer.passenger.form.label.birthDate = Fecha de nacimiento
 customer.passenger.form.label.specialNeeds = Necesidades especiales
+customer.passenger.form.label.draft = Borrador

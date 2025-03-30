@@ -3,6 +3,8 @@ customer.passenger.list.title						= Passenger list
 customer.passenger.list.label.fullName = Full name
 customer.passenger.list.label.passportNumber = Passport number
 
+customer.list-passengers.draft = My drafts
+
 customer.passenger.form.title						= Passenger details
 
 customer.passenger.form.label.fullName = Full name
@@ -12,3 +14,4 @@ customer.passenger.form.label.passportNumber = Passport number
 customer.passenger.form.placeholder.passportNumber = Passport number
 customer.passenger.form.label.birthDate = Birth date
 customer.passenger.form.label.specialNeeds = Special needs
+customer.passenger.form.label.draft = Draft

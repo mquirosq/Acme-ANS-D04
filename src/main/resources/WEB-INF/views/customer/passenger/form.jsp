@@ -9,4 +9,5 @@
 	<acme:input-textbox code = "customer.passenger.form.label.passportNumber" path = "passportNumber" placeholder = "customer.passenger.form.placeholder.passportNumber"/>
 	<acme:input-moment code = "customer.passenger.form.label.birthDate" path = "birthDate"/>
 	<acme:input-textarea code = "customer.passenger.form.label.specialNeeds" path = "specialNeeds"/>
+	<acme:input-checkbox code = "customer.passenger.form.label.draft" path = "draftMode"/>
  </acme:form>

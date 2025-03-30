@@ -40,7 +40,7 @@ public class CustomerPassengerShowService extends AbstractGuiService<Customer, P
 	public void unbind(final Passenger passenger) {
 		Dataset dataset;
 
-		dataset = super.unbindObject(passenger, "fullName", "email", "passportNumber", "birthDate", "specialNeeds");
+		dataset = super.unbindObject(passenger, "fullName", "email", "passportNumber", "birthDate", "specialNeeds", "draftMode");
 
 		super.getResponse().addData(dataset);
 	}
