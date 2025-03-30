@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import acme.client.repositories.AbstractRepository;
 import acme.entities.Claim;
 import acme.entities.FlightLeg;
+import acme.entities.TrackingLog;
 import acme.realms.AssistanceAgent;
 
 @Repository
@@ -25,4 +26,13 @@ public interface AssistanceAgentClaimRepository extends AbstractRepository {
 
 	@Query("select a from AssistanceAgent a")
 	Collection<AssistanceAgent> findAllAssistanceAgents();
+
+	@Query("select l from FlightLeg l where l.id = :id")
+	FlightLeg findLegById(int id);
+
+	@Query("select a from AssistanceAgent a where a.id = :id")
+	AssistanceAgent findAssistanceAgentById(int id);
+
+	@Query("select t from TrackingLog t where t.claim.id = :id")
+	Collection<TrackingLog> findAllTrackingLogsByClaimId(int id);
 }

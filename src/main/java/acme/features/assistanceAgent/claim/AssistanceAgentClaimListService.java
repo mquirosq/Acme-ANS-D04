@@ -37,10 +37,10 @@ public class AssistanceAgentClaimListService extends AbstractGuiService<Assistan
 	public void unbind(final Claim claim) {
 		Dataset dataset;
 
-		dataset = super.unbindObject(claim, "registrationMoment", "passengerEmail", "type");
+		dataset = super.unbindObject(claim, "registrationMoment", "isPublished", "type");
 		dataset.put("status", claim.getStatus());
 
-		super.addPayload(dataset, claim, "agent.employeeCode", "leg.flightNumber", "isPublished");
+		super.addPayload(dataset, claim, "agent.employeeCode", "leg.flightNumber", "description", "passengerEmail");
 		super.getResponse().addData(dataset);
 	}
 
