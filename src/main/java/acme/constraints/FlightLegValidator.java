@@ -36,7 +36,7 @@ public class FlightLegValidator extends AbstractValidator<ValidFlightLeg, Flight
 			{
 				boolean firstCharsFromIATA;
 
-				String airlineIATA = leg.getParentFlight().getManager().getAirline().getIATACode();
+				String airlineIATA = leg.getDeployedAircraft().getAirline().getIATACode();
 				firstCharsFromIATA = airlineIATA.equals(leg.getFlightNumber().substring(0, 3));
 
 				super.state(context, firstCharsFromIATA, "flightNumber", "acme.validation.flightLeg.flightNumber.message");
