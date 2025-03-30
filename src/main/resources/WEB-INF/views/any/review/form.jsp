@@ -6,7 +6,7 @@
 
 <acme:form readonly="${readonly}">
 	<acme:input-textbox code="any.review.form.label.alias" path="alias"/>
-	<acme:input-moment code="any.review.form.label.moment" path="date"/>
+	<acme:input-moment code="any.review.form.label.moment" path="moment"/>
 	<acme:input-textbox code="any.review.form.label.subject" path="subject"/>
 	<acme:input-textarea code="any.review.form.label.text" path="text"/>
 	<acme:input-double code="any.review.form.label.score" path="score"/>
