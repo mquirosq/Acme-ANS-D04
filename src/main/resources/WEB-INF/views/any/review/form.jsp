@@ -6,7 +6,7 @@
 
 <acme:form readonly="${readonly}">
 	<acme:input-textbox code="any.review.form.label.alias" path="alias"/>
-	<acme:input-moment code="any.review.form.label.moment" path="date"/>
+	<acme:input-moment code="any.review.form.label.moment" path="moment"/>
 	<acme:input-textbox code="any.review.form.label.subject" path="subject"/>
 	<acme:input-textarea code="any.review.form.label.text" path="text"/>
 	<acme:input-double code="any.review.form.label.score" path="score"/>
@@ -17,9 +17,6 @@
 	</jstl:if>
 	
 	<jstl:choose>
-			<jstl:when test = "${_command == 'show'}">
-				<acme:button code = "administrator.aircraft.form.button.edit" action = "/administrator/aircraft/update?id=${id}"/>
-			</jstl:when>
 			<jstl:when test = "${_command == 'create'}">
 				<acme:submit code = "any.review.form.button.create" action = "/any/review/create"/>
 			</jstl:when>

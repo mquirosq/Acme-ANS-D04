@@ -22,6 +22,14 @@ public class AnyReviewCreateService extends AbstractGuiService<Any, Review> {
 	}
 
 	@Override
+	public void load() {
+		Review review;
+
+		review = new Review();
+		super.getBuffer().addData(review);
+	}
+
+	@Override
 	public void bind(final Review review) {
 		super.bindObject(review, "alias", "moment", "subject", "text", "score", "recommended");
 	}
