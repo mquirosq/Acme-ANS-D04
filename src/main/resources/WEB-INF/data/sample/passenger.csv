@@ -1,65 +1,67 @@
-key,fullName,email,passportNumber,birthDate,specialNeeds
+key,fullName,email,passportNumber,birthDate,specialNeeds,draftMode,key:customer
 # Base passenger
-passenger-01,Loren Ipsum,acme@lorem-ipsum.org,DBIBF3R,2012/07/02 0:00,Lorem ipsum dolor sit amet
+passenger-01,Loren Ipsum,acme@lorem-ipsum.org,DBIBF3R,2012/07/02 0:00,Lorem ipsum dolor sit amet,false,customer-01
 # fullName variants
-passenger-02,L,acme@lorem-ipsum.org,DBIBF3R,2012/07/02 0:00,Lorem ipsum dolor sit amet
-passenger-03,Lo,acme@lorem-ipsum.org,DBIBF3R,2012/07/02 0:00,Lorem ipsum dolor sit amet
-passenger-04,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor",acme@lorem-ipsum.org,DBIBF3R,2012/07/02 0:00,Lorem ipsum dolor sit amet
-passenger-05,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor*",acme@lorem-ipsum.org,DBIBF3R,2012/07/02 0:00,Lorem ipsum dolor sit amet
-passenger-06,โลเร็ม อิปซัม,acme@lorem-ipsum.org,DBIBF3R,2012/07/02 0:00,Lorem ipsum dolor sit amet
-passenger-07,لوريم إيبسوم,acme@lorem-ipsum.org,DBIBF3R,2012/07/02 0:00,Lorem ipsum dolor sit amet
-passenger-08,洛伦·伊普森,acme@lorem-ipsum.org,DBIBF3R,2012/07/02 0:00,Lorem ipsum dolor sit amet
-passenger-09,"<marquee>Hacked</marquee>",acme@lorem-ipsum.org,DBIBF3R,2012/07/02 0:00,Lorem ipsum dolor sit amet
-passenger-10,"<script>alert(‘Hacked!’);</script>",acme@lorem-ipsum.org,DBIBF3R,2012/07/02 0:00,Lorem ipsum dolor sit amet
-passenger-11,"' or 'A' = 'A",acme@lorem-ipsum.org,DBIBF3R,2012/07/02 0:00,Lorem ipsum dolor sit amet
+passenger-02,L,acme@lorem-ipsum.org,DBIBF3R,2012/07/02 0:00,Lorem ipsum dolor sit amet,false,customer-01
+passenger-03,Lo,acme@lorem-ipsum.org,DBIBF3R,2012/07/02 0:00,Lorem ipsum dolor sit amet,false,customer-01
+passenger-04,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor",acme@lorem-ipsum.org,DBIBF3R,2012/07/02 0:00,Lorem ipsum dolor sit amet,false,customer-01
+passenger-05,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor*",acme@lorem-ipsum.org,DBIBF3R,2012/07/02 0:00,Lorem ipsum dolor sit amet,false,customer-01
+passenger-06,โลเร็ม อิปซัม,acme@lorem-ipsum.org,DBIBF3R,2012/07/02 0:00,Lorem ipsum dolor sit amet,false,customer-01
+passenger-07,لوريم إيبسوم,acme@lorem-ipsum.org,DBIBF3R,2012/07/02 0:00,Lorem ipsum dolor sit amet,false,customer-01
+passenger-08,洛伦·伊普森,acme@lorem-ipsum.org,DBIBF3R,2012/07/02 0:00,Lorem ipsum dolor sit amet,false,customer-01
+passenger-09,"<marquee>Hacked</marquee>",acme@lorem-ipsum.org,DBIBF3R,2012/07/02 0:00,Lorem ipsum dolor sit amet,false,customer-01
+passenger-10,"<script>alert(‘Hacked!’);</script>",acme@lorem-ipsum.org,DBIBF3R,2012/07/02 0:00,Lorem ipsum dolor sit amet,false,customer-01
+passenger-11,"' or 'A' = 'A",acme@lorem-ipsum.org,DBIBF3R,2012/07/02 0:00,Lorem ipsum dolor sit amet,false,customer-01
 # fullName singular values
-passenger-12,"María González",acme@lorem-ipsum.org,DBIBF3R,2012/07/02 0:00,Lorem ipsum dolor sit amet
-passenger-13,"Jean-Claude",acme@lorem-ipsum.org,DBIBF3R,2012/07/02 0:00,Lorem ipsum dolor sit amet
-passenger-14,"O'Graham",acme@lorem-ipsum.org,DBIBF3R,2012/07/02 0:00,Lorem ipsum dolor sit amet
-passenger-15,"M Q Q",acme@lorem-ipsum.org,DBIBF3R,2012/07/02 0:00,Lorem ipsum dolor sit amet
-passenger-16,"X Æ A-12",acme@lorem-ipsum.org,DBIBF3R,2012/07/02 0:00,Lorem ipsum dolor sit amet
-passenger-17,"María de la O",acme@lorem-ipsum.org,DBIBF3R,2012/07/02 0:00,Lorem ipsum dolor sit amet
+passenger-12,"María González",acme@lorem-ipsum.org,DBIBF3R,2012/07/02 0:00,Lorem ipsum dolor sit amet,false,customer-01
+passenger-13,"Jean-Claude",acme@lorem-ipsum.org,DBIBF3R,2012/07/02 0:00,Lorem ipsum dolor sit amet,false,customer-01
+passenger-14,"O'Graham",acme@lorem-ipsum.org,DBIBF3R,2012/07/02 0:00,Lorem ipsum dolor sit amet,false,customer-01
+passenger-15,"M Q Q",acme@lorem-ipsum.org,DBIBF3R,2012/07/02 0:00,Lorem ipsum dolor sit amet,false,customer-01
+passenger-16,"X Æ A-12",acme@lorem-ipsum.org,DBIBF3R,2012/07/02 0:00,Lorem ipsum dolor sit amet,false,customer-01
+passenger-17,"María de la O",acme@lorem-ipsum.org,DBIBF3R,2012/07/02 0:00,Lorem ipsum dolor sit amet,false,customer-01
 # email variants
-passenger-19,Loren Ipsum,a@b.e,DBIBF3R,2012/07/02 0:00,Lorem ipsum dolor sit amet
-passenger-20,Loren Ipsum,a@b.es,DBIBF3R,2012/07/02 0:00,Lorem ipsum dolor sit amet
-passenger-21,Loren Ipsum,a@b.esx,DBIBF3R,2012/07/02 0:00,Lorem ipsum dolor sit amet
-passenger-22,Loren Ipsum,lorem-ipsum@dolor.sit.amet.consectetur.adipiscing.elit.sed.do.eiusmod.tempor.incididunt.ut.labore.et.dolore.magna.aliqua.Ut.enim.ad.minim.veniam.quis.nostrud.exercitation.ullamco.laboris.nisi.ut.aliquip.ex.ea.commodo.consequat.duis.aute.irure.doloris.edu,DBIBF3R,2012/07/02 0:00,Lorem ipsum dolor sit amet
-passenger-23,Loren Ipsum,lorem-ipsum@dolor.sit.amet.consectetur.adipiscing.elit.sed.do.eiusmod.tempor.incididunt.ut.labore.et.dolore.magna.aliqua.Ut.enim.ad.minim.veniam.quis.nostrud.exercitation.ullamco.laboris.nisi.ut.aliquip.ex.ea.commodo.consequat.duis.aute.irure.dolor.es.org,DBIBF3R,2012/07/02 0:00,Lorem ipsum dolor sit amet
+passenger-19,Loren Ipsum,a@b.e,DBIBF3R,2012/07/02 0:00,Lorem ipsum dolor sit amet,false,customer-01
+passenger-20,Loren Ipsum,a@b.es,DBIBF3R,2012/07/02 0:00,Lorem ipsum dolor sit amet,false,customer-01
+passenger-21,Loren Ipsum,a@b.esx,DBIBF3R,2012/07/02 0:00,Lorem ipsum dolor sit amet,false,customer-01
+passenger-22,Loren Ipsum,lorem-ipsum@dolor.sit.amet.consectetur.adipiscing.elit.sed.do.eiusmod.tempor.incididunt.ut.labore.et.dolore.magna.aliqua.Ut.enim.ad.minim.veniam.quis.nostrud.exercitation.ullamco.laboris.nisi.ut.aliquip.ex.ea.commodo.consequat.duis.aute.irure.doloris.edu,DBIBF3R,2012/07/02 0:00,Lorem ipsum dolor sit amet,false,customer-01
+passenger-23,Loren Ipsum,lorem-ipsum@dolor.sit.amet.consectetur.adipiscing.elit.sed.do.eiusmod.tempor.incididunt.ut.labore.et.dolore.magna.aliqua.Ut.enim.ad.minim.veniam.quis.nostrud.exercitation.ullamco.laboris.nisi.ut.aliquip.ex.ea.commodo.consequat.duis.aute.irure.dolor.es.org,DBIBF3R,2012/07/02 0:00,Lorem ipsum dolor sit amet,false,customer-01
 # passportNumber variants
-passenger-24,Loren Ipsum,acme@lorem-ipsum.org,ABC123,2012/07/02 0:00,Lorem ipsum dolor sit amet
-passenger-25,Loren Ipsum,acme@lorem-ipsum.org,ABC1234,2012/07/02 0:00,Lorem ipsum dolor sit amet
-passenger-26,Loren Ipsum,acme@lorem-ipsum.org,ABCD123,2012/07/02 0:00,Lorem ipsum dolor sit amet
-passenger-27,Loren Ipsum,acme@lorem-ipsum.org,12345678,2012/07/02 0:00,Lorem ipsum dolor sit amet
-passenger-28,Loren Ipsum,acme@lorem-ipsum.org,ABCDEFGH,2012/07/02 0:00,Lorem ipsum dolor sit amet
-passenger-29,Loren Ipsum,acme@lorem-ipsum.org,A1B2C3D4E,2012/07/02 0:00,Lorem ipsum dolor sit amet
-passenger-30,Loren Ipsum,acme@lorem-ipsum.org,QWERTYUIO,2012/07/02 0:00,Lorem ipsum dolor sit amet
-passenger-31,Loren Ipsum,acme@lorem-ipsum.org,987654321,2012/07/02 0:00,Lorem ipsum dolor sit amet
-passenger-32,Loren Ipsum,acme@lorem-ipsum.org,000000000,2012/07/02 0:00,Lorem ipsum dolor sit amet
-passenger-33,Loren Ipsum,acme@lorem-ipsum.org,999999999,2012/07/02 0:00,Lorem ipsum dolor sit amet
-passenger-34,Loren Ipsum,acme@lorem-ipsum.org,AAAAAAAAA,2012/07/02 0:00,Lorem ipsum dolor sit amet
-passenger-35,Loren Ipsum,acme@lorem-ipsum.org,ZZZZZZZZZ,2012/07/02 0:00,Lorem ipsum dolor sit amet
+passenger-24,Loren Ipsum,acme@lorem-ipsum.org,ABC123,2012/07/02 0:00,Lorem ipsum dolor sit amet,false,customer-01
+passenger-25,Loren Ipsum,acme@lorem-ipsum.org,ABC1234,2012/07/02 0:00,Lorem ipsum dolor sit amet,false,customer-01
+passenger-26,Loren Ipsum,acme@lorem-ipsum.org,ABCD123,2012/07/02 0:00,Lorem ipsum dolor sit amet,false,customer-01
+passenger-27,Loren Ipsum,acme@lorem-ipsum.org,12345678,2012/07/02 0:00,Lorem ipsum dolor sit amet,false,customer-01
+passenger-28,Loren Ipsum,acme@lorem-ipsum.org,ABCDEFGH,2012/07/02 0:00,Lorem ipsum dolor sit amet,false,customer-01
+passenger-29,Loren Ipsum,acme@lorem-ipsum.org,A1B2C3D4E,2012/07/02 0:00,Lorem ipsum dolor sit amet,false,customer-01
+passenger-30,Loren Ipsum,acme@lorem-ipsum.org,QWERTYUIO,2012/07/02 0:00,Lorem ipsum dolor sit amet,false,customer-01
+passenger-31,Loren Ipsum,acme@lorem-ipsum.org,987654321,2012/07/02 0:00,Lorem ipsum dolor sit amet,false,customer-01
+passenger-32,Loren Ipsum,acme@lorem-ipsum.org,000000000,2012/07/02 0:00,Lorem ipsum dolor sit amet,false,customer-01
+passenger-33,Loren Ipsum,acme@lorem-ipsum.org,999999999,2012/07/02 0:00,Lorem ipsum dolor sit amet,false,customer-01
+passenger-34,Loren Ipsum,acme@lorem-ipsum.org,AAAAAAAAA,2012/07/02 0:00,Lorem ipsum dolor sit amet,false,customer-01
+passenger-35,Loren Ipsum,acme@lorem-ipsum.org,ZZZZZZZZZ,2012/07/02 0:00,Lorem ipsum dolor sit amet,false,customer-01
 # birthDate variants
-passenger-36,Loren Ipsum,acme@lorem-ipsum.org,DBIBF3R,2000/01/01 0:00,Lorem ipsum dolor sit amet
-passenger-37,Loren Ipsum,acme@lorem-ipsum.org,DBIBF3R,2000/01/01 0:01,Lorem ipsum dolor sit amet
-passenger-38,Loren Ipsum,acme@lorem-ipsum.org,DBIBF3R,2024/12/31 23:59,Lorem ipsum dolor sit amet
-passenger-39,Loren Ipsum,acme@lorem-ipsum.org,DBIBF3R,2025/01/01 0:00,Lorem ipsum dolor sit amet
+passenger-36,Loren Ipsum,acme@lorem-ipsum.org,DBIBF3R,2000/01/01 0:00,Lorem ipsum dolor sit amet,false,customer-01
+passenger-37,Loren Ipsum,acme@lorem-ipsum.org,DBIBF3R,2000/01/01 0:01,Lorem ipsum dolor sit amet,false,customer-01
+passenger-38,Loren Ipsum,acme@lorem-ipsum.org,DBIBF3R,2024/12/31 23:59,Lorem ipsum dolor sit amet,false,customer-01
+passenger-39,Loren Ipsum,acme@lorem-ipsum.org,DBIBF3R,2025/01/01 0:00,Lorem ipsum dolor sit amet,false,customer-01
 # birthDate singular values
-passenger-40,Loren Ipsum,acme@lorem-ipsum.org,DBIBF3R,2004/02/29 0:00,Lorem ipsum dolor sit amet
-passenger-41,Loren Ipsum,acme@lorem-ipsum.org,DBIBF3R,2003/02/28 0:00,Lorem ipsum dolor sit amet
+passenger-40,Loren Ipsum,acme@lorem-ipsum.org,DBIBF3R,2004/02/29 0:00,Lorem ipsum dolor sit amet,false,customer-01
+passenger-41,Loren Ipsum,acme@lorem-ipsum.org,DBIBF3R,2003/02/28 0:00,Lorem ipsum dolor sit amet,false,customer-01
 # specialNeeds variants
-passenger-42,Loren Ipsum,acme@lorem-ipsum.org,DBIBF3R,2012/07/02 0:00,null
-passenger-43,Loren Ipsum,acme@lorem-ipsum.org,DBIBF3R,2012/07/02 0:00,""
-passenger-44,Loren Ipsum,acme@lorem-ipsum.org,DBIBF3R,2012/07/02 0:00,L
-passenger-45,Loren Ipsum,acme@lorem-ipsum.org,DBIBF3R,2012/07/02 0:00,"Lorem ipsum dolor sit amet, consectetur adipiscin"
-passenger-46,Loren Ipsum,acme@lorem-ipsum.org,DBIBF3R,2012/07/02 0:00,"Lorem ipsum dolor sit amet, consectetur adipiscing"
-passenger-47,Loren Ipsum,acme@lorem-ipsum.org,DBIBF3R,2012/07/02 0:00,โลเร็ม อิปซัม
-passenger-48,Loren Ipsum,acme@lorem-ipsum.org,DBIBF3R,2012/07/02 0:00,لوريم إيبسوم
-passenger-49,Loren Ipsum,acme@lorem-ipsum.org,DBIBF3R,2012/07/02 0:00,洛伦·伊普森
-passenger-50,Loren Ipsum,acme@lorem-ipsum.org,DBIBF3R,2012/07/02 0:00,"<marquee>Hacked</marquee>"
-passenger-51,Loren Ipsum,acme@lorem-ipsum.org,DBIBF3R,2012/07/02 0:00,"<script>alert(‘Hacked!’);</script>"
-passenger-52,Loren Ipsum,acme@lorem-ipsum.org,DBIBF3R,2012/07/02 0:00,"' or 'A' = 'A"
+passenger-42,Loren Ipsum,acme@lorem-ipsum.org,DBIBF3R,2012/07/02 0:00,null,false,customer-01
+passenger-43,Loren Ipsum,acme@lorem-ipsum.org,DBIBF3R,2012/07/02 0:00,"",false,customer-01
+passenger-44,Loren Ipsum,acme@lorem-ipsum.org,DBIBF3R,2012/07/02 0:00,L,false,customer-01
+passenger-45,Loren Ipsum,acme@lorem-ipsum.org,DBIBF3R,2012/07/02 0:00,"Lorem ipsum dolor sit amet, consectetur adipiscin",false,customer-01
+passenger-46,Loren Ipsum,acme@lorem-ipsum.org,DBIBF3R,2012/07/02 0:00,"Lorem ipsum dolor sit amet, consectetur adipiscing",false,customer-01
+passenger-47,Loren Ipsum,acme@lorem-ipsum.org,DBIBF3R,2012/07/02 0:00,โลเร็ม อิปซัม,false,customer-01
+passenger-48,Loren Ipsum,acme@lorem-ipsum.org,DBIBF3R,2012/07/02 0:00,لوريم إيبسوم,false,customer-01
+passenger-49,Loren Ipsum,acme@lorem-ipsum.org,DBIBF3R,2012/07/02 0:00,洛伦·伊普森,false,customer-01
+passenger-50,Loren Ipsum,acme@lorem-ipsum.org,DBIBF3R,2012/07/02 0:00,"<marquee>Hacked</marquee>",false,customer-01
+passenger-51,Loren Ipsum,acme@lorem-ipsum.org,DBIBF3R,2012/07/02 0:00,"<script>alert(‘Hacked!’);</script>",false,customer-01
+passenger-52,Loren Ipsum,acme@lorem-ipsum.org,DBIBF3R,2012/07/02 0:00,"' or 'A' = 'A",false,customer-01
 # specialNeeds singular values
-passenger-53,Loren Ipsum,acme@lorem-ipsum.org,DBIBF3R,2012/07/02 0:00,"None"
-
-
-
+passenger-53,Loren Ipsum,acme@lorem-ipsum.org,DBIBF3R,2012/07/02 0:00,"None",false,customer-01
+# isDraft variants
+passenger-54,Loren Ipsum,acme@lorem-ipsum.org,DBIBF3R,2012/07/02 0:00,Lorem ipsum dolor sit amet,true,customer-01
+# isDraft no singular values
+# creator variants
+passenger-55,Loren Ipsum,acme@lorem-ipsum.org,DBIBF3R,2012/07/02 0:00,Lorem ipsum dolor sit amet,false,customer-02

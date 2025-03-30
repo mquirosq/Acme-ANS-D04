@@ -6,6 +6,8 @@ acme.validation.phoneNumber.message = El número de teléfono debe estar compues
 acme.validation.airline.IATACode.message = El código IATA debe ser único
 
 acme.validation.booking.locatorCode.message = The código de localización debe ser único
+acme.validation.booking.lastCreditCardNibble.message = Una reserva publicada debe incluir los últimos cuatr dígitos de la tarjeta de crédito usada para pagar
+acme.validation.booking.passengers.message = Una reserva publicada tiene que tener al menos un pasajero
 
 acme.validation.customer.identifier.message = El identificador debe comenzar con las iniciales del cliente
 acme.validation.customer.identifier.unique.message = El identificador debe ser único
@@ -37,3 +39,5 @@ acme.validation.flightLeg.flightNumber.message = El numero de vuelo debe comenza
 
 acme.validation.aircraft.registrationNumber.message			= El número de registro debe ser único
 acme.validation.airport.notUniqueIATA.message = Este codigo IATA ya existe
+
+acme.validation.confirmation.message = Debes confirmar antes de realizar esta operación
