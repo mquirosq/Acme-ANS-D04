@@ -8,6 +8,8 @@ acme.validation.airline.IATACode.message = The IATA Code must be unique
 acme.validation.customer.identifier.message = The identifier must start with the initials of the customer
 
 acme.validation.booking.locatorCode.message = The Locator Code must be unique
+acme.validation.booking.lastCreditCardNibble.message = When a booking is not a draft, it must store the last nibble of the credit card used to pay
+acme.validation.booking.passengers.message = When a booking is published, it must have at least one passenger
 
 acme.validation.airlineManager.identifier.message = The identifier must start with the initials of the manager
 acme.validation.assistanceAgent.employeeCode.message	= The first two or three letters must match the employee's initials
