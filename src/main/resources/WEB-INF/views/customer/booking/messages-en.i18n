@@ -6,6 +6,9 @@ customer.booking.list.label.locatorCode = Locator code
 customer.booking.list.label.purchasedAt = Purchase date
 customer.booking.list.label.price = Price
 customer.booking.list.label.flight.destination = Destination
+customer.booking.list.label.draftMode = Status
+customer.booking.list.draftMode.complete = Complete
+customer.booking.list.draftMode.pending = Pending
 
 customer.booking.form.label.locatorCode = Locator code
 customer.booking.form.label.flight = Flight	

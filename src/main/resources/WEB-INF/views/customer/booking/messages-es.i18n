@@ -6,6 +6,9 @@ customer.booking.list.label.locatorCode = Código de seguimiento
 customer.booking.list.label.purchasedAt = Fecha de compra
 customer.booking.list.label.price = Precio
 customer.booking.list.label.flight.destination = Destino
+customer.booking.list.label.draftMode = Estado
+customer.booking.list.draftMode.complete = Completada
+customer.booking.list.draftMode.pending = En proceso
 
 customer.booking.form.label.locatorCode = Código de seguimiento
 customer.booking.form.label.flight = Vuelo	
