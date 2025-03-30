@@ -7,9 +7,23 @@
 	<acme:input-moment code = "assistance-agent.claim.form.label.registrationMoment" path = "registrationMoment"/>	
 	<acme:input-email code = "assistance-agent.claim.form.label.passengerEmail" path = "passengerEmail"/>	
 	<acme:input-textarea code = "assistance-agent.claim.form.label.description" path = "description"/>
-	<acme:input-checkbox code = "assistance-agent.claim.form.label.isPublished" path = "isPublished"/>
+	<acme:input-checkbox code = "assistance-agent.claim.form.label.isPublished" path = "isPublished" readonly = "true"/>
 	<acme:input-select code = "assistance-agent.claim.form.label.type" path = "type" choices = "${types}"/>
-	<acme:input-select code = "assistance-agent.claim.form.label.status" path = "status" choices = "${statuses}"/>	
-	<acme:input-select code = "assistance-agent.claim.form.label.leg" path = "type" choices = "${legs}"/>
-	<acme:input-select code = "assistance-agent.claim.form.label.agent" path = "assistanceAgent" choices = "${assistanceAgents}"/>	
+	<acme:input-select code = "assistance-agent.claim.form.label.status" path = "status" choices = "${statuses}" readonly = "true"/>	
+	<acme:input-select code = "assistance-agent.claim.form.label.leg" path = "leg" choices = "${legs}"/>
+	<acme:input-select code = "assistance-agent.claim.form.label.agent" path = "assistanceAgent" choices = "${assistanceAgents}"/>
+	
+	<jstl:choose>
+		<jstl:when test = "${_command == 'show' && isPublished == false}">
+			<acme:button code = "assistance-agent.claim.form.button.edit" action = "/assistance-agent/claim/update?id=${id}"/>			
+			<acme:submit code = "assistance-agent.claim.form.button.delete" action = "/assistance-agent/claim/delete"/>			
+			<acme:submit code = "assistance-agent.claim.form.button.publish" action = "/assistance-agent/claim/publish"/>
+		</jstl:when>
+		<jstl:when test = "${_command == 'update'}">
+			<acme:submit code = "assistance-agent.claim.form.button.edit" action = "/assistance-agent/claim/update"/>			
+		</jstl:when>
+		<jstl:when test = "${_command == 'create'}">
+			<acme:submit code = "assistance-agent.claim.form.button.create" action = "/assistance-agent/claim/create"/>
+		</jstl:when>			
+	</jstl:choose>	
 </acme:form>

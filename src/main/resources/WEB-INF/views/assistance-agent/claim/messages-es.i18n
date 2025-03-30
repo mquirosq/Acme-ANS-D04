@@ -1,7 +1,7 @@
 assistance-agent.claim.list.title						= Claims
 
 assistance-agent.claim.list.label.status				= Estado
-assistance-agent.claim.list.label.passengerEmail		= Email del pasajero
+assistance-agent.claim.list.label.isPublished			= Publicada
 assistance-agent.claim.list.label.type					= Tipo
 assistance-agent.claim.list.label.registrationMoment	= Momento de registro
 
