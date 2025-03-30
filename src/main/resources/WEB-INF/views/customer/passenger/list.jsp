@@ -7,4 +7,8 @@
 	<acme:list-column code = "customer.passenger.list.label.fullName" path = "fullName" width="80%"/>
 	<acme:list-column code = "customer.passenger.list.label.passportNumber" path = "passportNumber" width="20%"/>
 	<acme:list-payload path="payload"/>
+	
+	<jstl:if test="${!draft}">
+		<acme:button code="customer.list-passengers.draft" action="/customer/passenger/list?draft=${true}"/>
+	</jstl:if>
 </acme:list>

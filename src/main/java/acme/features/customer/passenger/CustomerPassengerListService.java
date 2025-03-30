@@ -32,7 +32,11 @@ public class CustomerPassengerListService extends AbstractGuiService<Customer, P
 		Collection<Passenger> passengers;
 
 		int customerId = super.getRequest().getPrincipal().getActiveRealm().getId();
-		passengers = this.repository.findPassengersOfCustomer(customerId);
+		boolean draftMode = super.getRequest().getData("draft", boolean.class);
+		if (draftMode)
+			passengers = this.repository.findDraftPassengersOfCustomer(customerId);
+		else
+			passengers = this.repository.findPassengersOfCustomer(customerId);
 
 		super.getBuffer().addData(passengers);
 	}
