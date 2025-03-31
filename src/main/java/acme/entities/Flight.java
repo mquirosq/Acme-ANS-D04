@@ -51,7 +51,7 @@ public class Flight extends AbstractEntity {
 	@Transient
 	public Date getScheduledDeparture() {
 		FlightLegRepository repository = SpringHelper.getBean(FlightLegRepository.class);
-		FlightLeg firstLeg = repository.getFirstLegOfFlight(this.getId());
+		FlightLeg firstLeg = repository.getFirstLegOfFlight(this.getId()).orElse(null);
 		Date result;
 		if (firstLeg == null)
 			result = null;
@@ -63,28 +63,48 @@ public class Flight extends AbstractEntity {
 	@Transient
 	public Date getScheduledArrival() {
 		FlightLegRepository repository = SpringHelper.getBean(FlightLegRepository.class);
-		FlightLeg lastLeg = repository.getLastLegOfFlight(this.getId());
-		return lastLeg.getScheduledArrival();
+		FlightLeg lastLeg = repository.getLastLegOfFlight(this.getId()).orElse(null);
+		Date result;
+		if (lastLeg == null)
+			result = null;
+		else
+			result = lastLeg.getScheduledArrival();
+		return result;
 	}
 
 	@Transient
 	public String getOriginCity() {
 		FlightLegRepository repository = SpringHelper.getBean(FlightLegRepository.class);
-		FlightLeg firstLeg = repository.getFirstLegOfFlight(this.getId());
-		return firstLeg.getDepartureAirport().getCity();
+		FlightLeg firstLeg = repository.getFirstLegOfFlight(this.getId()).orElse(null);
+		String result;
+		if (firstLeg == null)
+			result = null;
+		else
+			result = firstLeg.getDepartureAirport().getCity();
+		return result;
 	}
 
 	@Transient
 	public String getDestinationCity() {
 		FlightLegRepository repository = SpringHelper.getBean(FlightLegRepository.class);
-		FlightLeg lastLeg = repository.getLastLegOfFlight(this.getId());
-		return lastLeg.getArrivalAirport().getCity();
+		FlightLeg lastLeg = repository.getLastLegOfFlight(this.getId()).orElse(null);
+		String result;
+		if (lastLeg == null)
+			result = null;
+		else
+			result = lastLeg.getArrivalAirport().getCity();
+
+		return result;
 	}
 
 	@Transient
 	public Integer getNumberOfLayovers() {
 		FlightLegRepository repository = SpringHelper.getBean(FlightLegRepository.class);
-		return repository.getLegsCountOfFlight(this.getId());
+		Integer legCount = repository.getLegsCountOfFlight(this.getId());
+		if (legCount > 0)
+			return legCount - 1;
+		else
+			return 0;
 	}
 
 
