@@ -39,6 +39,8 @@ acme.validation.flightLeg.flightNumber.message = El número de vuelo debe comenz
 acme.validation.flightLeg.flightNumberPattern.message = El número de vuelo debe contener 3 letras mayúsculas y 4 dígitos
 
 acme.validation.flight.overlappingDates.message = Este vuelo tiene tramos solapados
+acme.validation.flight.notPublishedLeg.message = Este vuelo tiene tramos sin publicar
+acme.validation.flight.missingLegs.message = Este vuelo no tiene tramos
 
 acme.validation.aircraft.registrationNumber.message			= El número de registro debe ser único
 acme.validation.airport.notUniqueIATA.message = Este codigo IATA ya existe

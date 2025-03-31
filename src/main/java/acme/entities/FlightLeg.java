@@ -49,6 +49,11 @@ public class FlightLeg extends AbstractEntity {
 	@Automapped
 	private FlightLegStatus		status;
 
+	@Mandatory
+	@Valid
+	@Automapped
+	private Boolean				draftMode;
+
 
 	@Transient
 	public Double getDuration() {
