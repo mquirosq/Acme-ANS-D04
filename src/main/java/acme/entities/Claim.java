@@ -81,7 +81,8 @@ public class Claim extends AbstractEntity {
 			out = ClaimStatus.ACCEPTED;
 		else if (trackingLogs.stream().anyMatch(log -> log.getStatus().equals(ClaimStatus.REJECTED)))
 			out = ClaimStatus.REJECTED;
-
+		else if (trackingLogs.stream().anyMatch(log -> log.getStatus().equals(ClaimStatus.RECLAIMED)))
+			out = ClaimStatus.RECLAIMED;
 		return out;
 	}
 }
