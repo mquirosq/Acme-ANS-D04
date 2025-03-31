@@ -54,7 +54,7 @@ public class FlightLeg extends AbstractEntity {
 	public Double getDuration() {
 		double differenceInMiliseconds = this.scheduledArrival.getTime() - this.scheduledDeparture.getTime();
 		double differenceInHours = differenceInMiliseconds / (1000 * 60 * 60);
-		double result = Math.round(differenceInHours * 100.0) / 100.0;
+		double result = Math.floor(differenceInHours * 100.0) / 100.0;
 		return result;
 	}
 
