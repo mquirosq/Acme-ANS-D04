@@ -1,6 +1,7 @@
 
 package acme.constraints;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.validation.ConstraintValidatorContext;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.validation.AbstractValidator;
 import acme.client.components.validation.Validator;
+import acme.client.helpers.MomentHelper;
 import acme.entities.FlightLeg;
 import acme.entities.FlightLegRepository;
 
@@ -51,9 +53,12 @@ public class FlightLegValidator extends AbstractValidator<ValidFlightLeg, Flight
 
 				List<FlightLeg> legsOfFlight = this.repository.getLegsOfFlight(leg.getParentFlight().getId());
 
-				for (Integer i = 0; i < legsOfFlight.size() - 1; i++)
-					if (legsOfFlight.get(i).getScheduledArrival().compareTo(legsOfFlight.get(i + 1).getScheduledDeparture()) >= 0)
+				for (Integer i = 0; i < legsOfFlight.size() - 1; i++) {
+					Date scheduledArrivalFirst = legsOfFlight.get(i).getScheduledArrival();
+					Date scheduledDepartureSecond = legsOfFlight.get(i + 1).getScheduledDeparture();
+					if (MomentHelper.isAfterOrEqual(scheduledArrivalFirst, scheduledDepartureSecond))
 						isNotOverlapping = false;
+				}
 				super.state(context, isNotOverlapping, "dates", "acme.validation.flight.overlappingDates.message");
 			}
 		}
