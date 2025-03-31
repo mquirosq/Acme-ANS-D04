@@ -16,6 +16,7 @@ import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidMoney;
 import acme.client.components.validation.ValidString;
 import acme.client.helpers.SpringHelper;
+import acme.constraints.ValidFlight;
 import acme.realms.AirlineManager;
 import lombok.Getter;
 import lombok.Setter;
@@ -23,6 +24,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+@ValidFlight
 public class Flight extends AbstractEntity {
 
 	public static final long	serialVersionUID	= 1L;
@@ -46,6 +48,11 @@ public class Flight extends AbstractEntity {
 	@ValidString(max = 255)
 	@Automapped
 	private String				description;
+
+	@Mandatory
+	@Valid
+	@Automapped
+	private Boolean				draftMode;
 
 
 	@Transient

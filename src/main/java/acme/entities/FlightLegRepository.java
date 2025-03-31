@@ -24,4 +24,7 @@ public interface FlightLegRepository extends AbstractRepository {
 	@Query("select fl from FlightLeg fl where fl.parentFlight.id = :flightId order by fl.scheduledArrival asc")
 	List<FlightLeg> getLegsOfFlight(Integer flightId);
 
+	@Query("select fl from FlightLeg fl where fl.flightNumber = :flightNumber")
+	FlightLeg getByFlightNumber(String flightNumber);
+
 }
