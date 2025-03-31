@@ -16,6 +16,7 @@ import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidString;
+import acme.constraints.ValidFlightLeg;
 import acme.datatypes.FlightLegStatus;
 import lombok.Getter;
 import lombok.Setter;
@@ -23,12 +24,13 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+@ValidFlightLeg
 public class FlightLeg extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
 
 	@Mandatory
-	@ValidString(pattern = "^\\d{4}$")
+	@ValidString(pattern = "^[A-Z]{3}\\d{4}$", message = "{acme.validation.flightLeg.flightNumberPattern.message}")
 	@Column(unique = true)
 	private String				flightNumber;
 
@@ -52,7 +54,7 @@ public class FlightLeg extends AbstractEntity {
 	public Double getDuration() {
 		double differenceInMiliseconds = this.scheduledArrival.getTime() - this.scheduledDeparture.getTime();
 		double differenceInHours = differenceInMiliseconds / (1000 * 60 * 60);
-		double result = Math.round(differenceInHours * 100.0) / 100.0;
+		double result = Math.floor(differenceInHours * 100.0) / 100.0;
 		return result;
 	}
 

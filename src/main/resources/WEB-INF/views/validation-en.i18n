@@ -1,14 +1,48 @@
 # validation-en.i18n
 #
+
+acme.validation.phoneNumber.message = The phone number must be composed of 6 to 15 digits preceded or not by "+"
+
+acme.validation.airline.IATACode.message = The IATA Code must be unique
+
 acme.validation.customer.identifier.message = The identifier must start with the initials of the customer
-acme.validation.airlineManager.identifier.message = The identifier must start with the initials of the manager
-acme.validation.assistanceAgent.employeeCode.message	= The first two or three letters must match the employee's initials
+acme.validation.customer.identifier.unique.message = The identifier must be unique
+acme.validation.booking.locatorCode.message = The Locator Code must be unique
+acme.validation.booking.lastCreditCardNibble.message = When a booking is not a draft, it must store the last nibble of the credit card used to pay
+acme.validation.booking.passengers.message = When a booking is published, it must have at least one passenger
+
+acme.validation.airlineManager.identifierFormat.message = The identifier must start with the initials of the manager
+acme.validation.airlineManager.identifierUniqueness.message = The identifier must be unique
+acme.validation.airlineManager.identifierPattern.message	= The identifier must include 2-3 upper case letters and 6 digits.
+
+acme.validation.assistanceAgent.employeeCodeFormat.message		= The employee code must start with the initials of the agent
+acme.validation.assistanceAgent.employeeCodeUniqueness.message	= The employee code must be unique
 
 acme.validation.trackingLog.notPendingStatus.message 		= The status must not be pending if the resolution percentage has reached 100%
 acme.validation.trackingLog.pendingStatus.message			= The status must be pending if the resolution percentage has not reached 100%
 acme.validation.trackingLog.resolution.message				= The resolution is mandatory if the claim has already been accepted or rejected
 acme.validation.trackingLog.resolutionPercentage.message 	= The resolution percentage must be monotonically increasing
+acme.validation.trackingLog.lastUpdateMoment.message		= The last update moment must not be before the creation moment
+acme.validation.trackingLog.isPublished.message				= The tracking log cannot be published until its associated claim has been published
 acme.validation.service.promotioncode.message 				= The promotion code year must be according to the current year
+acme.validation.service.promotioncodeuniqueness.message 	= The promotion code is not unique
 acme.validation.flightcrewmember.employeecode.message 		= The employee code first two letters must match the employee's name and surname initials
+acme.validation.bannedPassenger.issuedAt.message 					= The issue date must be after the birth date of the passenger
+acme.validation.bannedPassenger.liftedAt.message 					= The lifting date must be after the issue date
+
+acme.validation.flightcrewmember.uniqueemployeecode.message = The employee code is already in use
 acme.validation.customer.issuedAt.message 					= The issue date must be after the birth date of the passenger
 acme.validation.customer.liftedAt.message 					= The lifting date must be after the issue date
+
+acme.validation.flightLeg.scheduledDates.message = The scheduled departure must be before the scheduled arrival
+acme.validation.flightLeg.scheduledDates.message = The scheduled departure must be before the scheduled arrival
+acme.validation.flightLeg.flightNumber.message = The flight number must begin with the airline's IATA code
+acme.validation.flightLeg.flightNumberPattern.message = The flight number must contain 3 upper case letters and 4 digits
+
+acme.validation.flight.overlappingDates.message = This flight has overlapping dates
+
+acme.validation.airport.notUniqueIATA.message = This IATA code already exists
+acme.validation.aircraft.registrationNumber.message			= The registration number must be unique
+
+
+acme.validation.confirmation.message = You must confirm before performing this operation

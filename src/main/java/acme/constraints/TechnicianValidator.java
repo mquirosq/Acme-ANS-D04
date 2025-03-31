@@ -3,13 +3,21 @@ package acme.constraints;
 
 import javax.validation.ConstraintValidatorContext;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import acme.client.components.principals.DefaultUserIdentity;
 import acme.client.components.validation.AbstractValidator;
 import acme.client.components.validation.Validator;
+import acme.helpers.EmployeeCodeHelper;
 import acme.realms.Technician;
+import acme.realms.TechnicianRepository;
 
 @Validator
 public class TechnicianValidator extends AbstractValidator<ValidTechnician, Technician> {
+
+	@Autowired
+	private TechnicianRepository repository;
+
 
 	@Override
 	protected void initialise(final ValidTechnician annotation) {
@@ -24,19 +32,21 @@ public class TechnicianValidator extends AbstractValidator<ValidTechnician, Tech
 
 		if (technician == null)
 			super.state(context, false, "*", "javax.validation.constraints.NotNull.message");
-		else {
-			Boolean check;
-			String initials;
+		else if (technician.getLicense() != null) {
+			String license;
 			DefaultUserIdentity identity;
+			Boolean isCorrectlyFormatted, isUnique;
+			Technician obtainedTechnician;
 
 			identity = technician.getIdentity();
+			license = technician.getLicense();
+			obtainedTechnician = this.repository.findByLicense(license);
 
-			initials = "";
-			initials += identity.getName().trim().charAt(0);
-			initials += identity.getSurname().trim().charAt(0);
+			isCorrectlyFormatted = EmployeeCodeHelper.checkFormatIsCorrect(license, identity);
+			super.state(context, isCorrectlyFormatted, "license", "acme.validation.technician.licenseCodeFormat.message");
 
-			check = technician.getLicense().toLowerCase().trim().startsWith(initials.toLowerCase());
-			super.state(context, check, "license", "acme.validation.technician.license.message");
+			isUnique = EmployeeCodeHelper.checkUniqueness(technician, obtainedTechnician);
+			super.state(context, isUnique, "license", "acme.validation.technician.licenseUniqueness.message");
 		}
 
 		result = !super.hasErrors(context);
