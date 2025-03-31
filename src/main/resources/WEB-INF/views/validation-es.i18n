@@ -37,6 +37,7 @@ acme.validation.customer.liftedAt.message 					= No se puede levantar una prohib
 acme.validation.flightLeg.scheduledDates.message = La fecha de salida programada debe ser antes de la fecha de llegada programada
 acme.validation.flightLeg.flightNumber.message = El número de vuelo debe comenzar con el código IATA de la aerolinea
 acme.validation.flightLeg.flightNumberPattern.message = El número de vuelo debe contener 3 letras mayúsculas y 4 dígitos
+acme.validation.flightLeg.flightNumberUnique.message = El número de vuelo debe ser único
 
 acme.validation.flight.overlappingDates.message = Este vuelo tiene tramos solapados
 acme.validation.flight.notPublishedLeg.message = Este vuelo tiene tramos sin publicar

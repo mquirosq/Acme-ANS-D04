@@ -45,6 +45,11 @@ public class FlightLegValidator extends AbstractValidator<ValidFlightLeg, Flight
 
 				super.state(context, departureIsBeforeArrival, "dates", "acme.validation.flightLeg.scheduledDates.message");
 			}
+			if (leg.getFlightNumber() != null) {
+				FlightLeg existingLeg = this.repository.getByFlightNumber(leg.getFlightNumber());
+				boolean uniqueFlightNumber = existingLeg == null || existingLeg.equals(leg);
+				super.state(context, uniqueFlightNumber, "flightNumber", "acme.validation.flightLeg.flightNumberUnique.message");
+			}
 		}
 
 		result = !super.hasErrors(context);
