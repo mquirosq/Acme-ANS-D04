@@ -49,6 +49,12 @@ master.menu.customer = Customer
 master.menu.customer.list-passengers = My passengers
 master.menu.customer.list-bookings = My bookings
 
+# master.menu.flightCrewMember ##################################################
+
+master.menu.flightCrewMember = Flight Crew Member
+master.menu.flightCrewMember.list-completed = List completed flight assignments
+master.menu.flightCrewMember.list-planned = List planned flight assignments
+
 # master.menu.user-account ####################################################
 
 master.menu.user-account = Account

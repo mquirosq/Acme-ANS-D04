@@ -1,0 +1,6 @@
+
+flight-crew-member.flight-assignment.list.title = Mis asignaciones de vuelo
+
+flightCrewMember.list.label.duty = Cargo
+flightCrewMember.list.label.moment = Fecha
+flightCrewMember.list.label.currentStatus = Estado actual
