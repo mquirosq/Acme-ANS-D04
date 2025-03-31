@@ -18,12 +18,15 @@ acme.validation.airlineManager.identifierPattern.message	= The identifier must i
 acme.validation.assistanceAgent.employeeCodeFormat.message		= The employee code must start with the initials of the agent
 acme.validation.assistanceAgent.employeeCodeUniqueness.message	= The employee code must be unique
 
-acme.validation.trackingLog.notPendingStatus.message 		= The status must not be pending if the resolution percentage has reached 100%
-acme.validation.trackingLog.pendingStatus.message			= The status must be pending if the resolution percentage has not reached 100%
-acme.validation.trackingLog.resolution.message				= The resolution is mandatory if the claim has already been accepted or rejected
-acme.validation.trackingLog.resolutionPercentage.message 	= The resolution percentage must be monotonically increasing
-acme.validation.trackingLog.lastUpdateMoment.message		= The last update moment must not be before the creation moment
-acme.validation.trackingLog.isPublished.message				= The tracking log cannot be published until its associated claim has been published
+acme.validation.trackingLog.notPendingStatus.message 			= The status must not be pending if the resolution percentage has reached 100%
+acme.validation.trackingLog.pendingStatus.message				= The status must be pending if the resolution percentage has not reached 100%
+acme.validation.trackingLog.resolution.message					= The resolution is mandatory if the claim has already been accepted or rejected
+acme.validation.trackingLog.resolutionPercentage.message 		= The resolution percentage must be monotonically increasing
+acme.validation.trackingLog.lastUpdateMoment.message			= The last update moment must not be before the creation moment
+acme.validation.trackingLog.isPublished.message					= The tracking log cannot be published until its associated claim has been published
+acme.validation.trackingLog.reclaimed.noCompletedLog.message	= There must be a published completed tracking log for a claim before submitting a reclaimed one for that same claim
+acme.validation.trackingLog.reclaimed.notUnique.message			= There must only be one reclaimed tracking log for a particular claim
+
 acme.validation.service.promotioncode.message 				= The promotion code year must be according to the current year
 acme.validation.service.promotioncodeuniqueness.message 	= The promotion code is not unique
 acme.validation.flightcrewmember.employeecode.message 		= The employee code first two letters must match the employee's name and surname initials
