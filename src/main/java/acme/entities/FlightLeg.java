@@ -30,7 +30,7 @@ public class FlightLeg extends AbstractEntity {
 	private static final long	serialVersionUID	= 1L;
 
 	@Mandatory
-	@ValidString(pattern = "^[A-Z]{3}\\d{4}$")
+	@ValidString(pattern = "^[A-Z]{3}\\d{4}$", message = "{acme.validation.flightLeg.flightNumberPattern.message}")
 	@Column(unique = true)
 	private String				flightNumber;
 
@@ -54,7 +54,7 @@ public class FlightLeg extends AbstractEntity {
 	public Double getDuration() {
 		double differenceInMiliseconds = this.scheduledArrival.getTime() - this.scheduledDeparture.getTime();
 		double differenceInHours = differenceInMiliseconds / (1000 * 60 * 60);
-		double result = Math.round(differenceInHours * 100.0) / 100.0;
+		double result = Math.floor(differenceInHours * 100.0) / 100.0;
 		return result;
 	}
 

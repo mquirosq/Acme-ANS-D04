@@ -27,7 +27,7 @@ public class AirlineManager extends AbstractRole {
 	private static final long	serialVersionUID	= 1L;
 
 	@Mandatory
-	@ValidString(pattern = "^[A-Z]{2,3}\\d{6}$", message = "The identifier must include 2-3 upper case letters and 6 digits.")
+	@ValidString(pattern = "^[A-Z]{2,3}\\d{6}$", message = "{acme.validation.airlineManager.identifierPattern.message}")
 	@Column(unique = true)
 	private String				identifierNumber;
 
