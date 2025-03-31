@@ -33,7 +33,7 @@ public class FlightLegValidator extends AbstractValidator<ValidFlightLeg, Flight
 		if (leg == null)
 			super.state(context, false, "*", "javax.validation.constraints.NotNull.message");
 		else {
-			{
+			if (leg.getFlightNumber() != null && leg.getFlightNumber().trim().length() >= 3 && leg.getDeployedAircraft() != null) {
 				boolean firstCharsFromIATA;
 
 				String airlineIATA = leg.getDeployedAircraft().getAirline().getIATACode();
@@ -41,21 +41,19 @@ public class FlightLegValidator extends AbstractValidator<ValidFlightLeg, Flight
 
 				super.state(context, firstCharsFromIATA, "flightNumber", "acme.validation.flightLeg.flightNumber.message");
 			}
-			{
+			if (leg.getScheduledDeparture() != null && leg.getScheduledArrival() != null) {
 				boolean departureIsBeforeArrival = leg.getScheduledDeparture().compareTo(leg.getScheduledArrival()) < 0;
 
 				super.state(context, departureIsBeforeArrival, "dates", "acme.validation.flightLeg.scheduledDates.message");
 			}
-			{
+			if (leg.getParentFlight() != null) {
 				boolean isNotOverlapping = true;
 
 				List<FlightLeg> legsOfFlight = this.repository.getLegsOfFlight(leg.getParentFlight().getId());
 
 				for (Integer i = 0; i < legsOfFlight.size() - 1; i++)
-					if (legsOfFlight.get(i).getScheduledArrival().compareTo(legsOfFlight.get(i + 1).getScheduledDeparture()) >= 0) {
+					if (legsOfFlight.get(i).getScheduledArrival().compareTo(legsOfFlight.get(i + 1).getScheduledDeparture()) >= 0)
 						isNotOverlapping = false;
-						break;
-					}
 				super.state(context, isNotOverlapping, "dates", "acme.validation.flight.overlappingDates.message");
 			}
 		}
