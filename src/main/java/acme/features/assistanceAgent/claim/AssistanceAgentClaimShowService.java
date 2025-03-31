@@ -24,7 +24,17 @@ public class AssistanceAgentClaimShowService extends AbstractGuiService<Assistan
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean authorised;
+
+		int claimId;
+		Claim claim;
+
+		claimId = super.getRequest().getData("id", int.class);
+		claim = this.repository.findClaimById(claimId);
+
+		authorised = claim != null;
+
+		super.getResponse().setAuthorised(authorised);
 	}
 
 	@Override
@@ -55,7 +65,6 @@ public class AssistanceAgentClaimShowService extends AbstractGuiService<Assistan
 		assistanceAgentChoices = SelectChoices.from(assistanceAgents, "employeeCode", claim.getAgent());
 
 		dataset = super.unbindObject(claim, "registrationMoment", "passengerEmail", "description", "isPublished");
-		dataset.put("readonly", true);
 		dataset.put("types", typeChoices);
 		dataset.put("type", typeChoices.getSelected().getKey());
 		dataset.put("statuses", statusChoices);

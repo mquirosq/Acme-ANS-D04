@@ -32,7 +32,7 @@ public class AssistanceAgentClaimPublishService extends AbstractGuiService<Assis
 		claimId = super.getRequest().getData("id", int.class);
 		claim = this.repository.findClaimById(claimId);
 
-		authorised = claim.getIsPublished().equals(false);
+		authorised = claim != null && claim.getIsPublished().equals(false);
 
 		super.getResponse().setAuthorised(authorised);
 	}
@@ -93,7 +93,6 @@ public class AssistanceAgentClaimPublishService extends AbstractGuiService<Assis
 		assistanceAgentChoices = SelectChoices.from(assistanceAgents, "employeeCode", claim.getAgent());
 
 		dataset = super.unbindObject(claim, "registrationMoment", "passengerEmail", "description", "isPublished");
-		dataset.put("readonly", false);
 		dataset.put("types", typeChoices);
 		dataset.put("type", typeChoices.getSelected().getKey());
 		dataset.put("statuses", statusChoices);

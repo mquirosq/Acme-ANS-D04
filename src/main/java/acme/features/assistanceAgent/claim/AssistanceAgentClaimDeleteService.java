@@ -68,7 +68,7 @@ public class AssistanceAgentClaimDeleteService extends AbstractGuiService<Assist
 
 	@Override
 	public void validate(final Claim claim) {
-
+		;
 	}
 
 	@Override
@@ -98,7 +98,6 @@ public class AssistanceAgentClaimDeleteService extends AbstractGuiService<Assist
 		assistanceAgentChoices = SelectChoices.from(assistanceAgents, "employeeCode", claim.getAgent());
 
 		dataset = super.unbindObject(claim, "registrationMoment", "passengerEmail", "description", "isPublished");
-		dataset.put("readonly", false);
 		dataset.put("types", typeChoices);
 		dataset.put("type", typeChoices.getSelected().getKey());
 		dataset.put("statuses", statusChoices);
