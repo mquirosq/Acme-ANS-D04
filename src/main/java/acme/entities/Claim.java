@@ -68,7 +68,7 @@ public class Claim extends AbstractEntity {
 
 
 	@Transient
-	private ClaimStatus getStatus() {
+	public ClaimStatus getStatus() {
 		ClaimStatus out;
 		List<TrackingLog> trackingLogs;
 		TrackingLogRepository trackingLogRepository;
