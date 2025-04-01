@@ -17,7 +17,7 @@ import acme.entities.Flight;
 import acme.realms.Customer;
 
 @GuiService
-public class CustomerBookingShowService extends AbstractGuiService<Customer, Booking> {
+public class CustomerBookingPublishService extends AbstractGuiService<Customer, Booking> {
 
 	// Internal state ---------------------------------------------------------
 
@@ -29,7 +29,17 @@ public class CustomerBookingShowService extends AbstractGuiService<Customer, Boo
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean authorised;
+
+		int customerId = super.getRequest().getPrincipal().getActiveRealm().getId();
+		Customer customer = this.repository.findCustomerById(customerId);
+
+		int bookingId = super.getRequest().getData("id", int.class);
+		Booking booking = this.repository.findBookingById(bookingId);
+
+		authorised = booking != null && booking.isDraftMode() && super.getRequest().getPrincipal().hasRealm(customer);
+
+		super.getResponse().setAuthorised(authorised);
 	}
 
 	@Override
@@ -41,6 +51,32 @@ public class CustomerBookingShowService extends AbstractGuiService<Customer, Boo
 		booking = this.repository.findBookingById(id);
 
 		super.getBuffer().addData(booking);
+	}
+
+	@Override
+	public void bind(final Booking booking) {
+		super.bindObject(booking, "locatorCode", "purchasedAt", "travelClass", "price", "lastCardNibble", "draftMode", "flight");
+	}
+
+	@Override
+	public void validate(final Booking booking) {
+		boolean hasCreditCardNibble;
+		boolean hasSomePassengers;
+
+		hasCreditCardNibble = booking.getLastCardNibble() != null && !booking.getLastCardNibble().isBlank();
+		super.state(hasCreditCardNibble, "*", "acme.validation.booking.lastCreditCardNibble.message");
+
+		hasSomePassengers = this.repository.countPassengersInBooking(booking.getId()).compareTo(0L) > 0;
+		super.state(hasSomePassengers, "*", "acme.validation.booking.passengers.message");
+	}
+
+	@Override
+	public void perform(final Booking booking) {
+		Date currentMoment = MomentHelper.getCurrentMoment();
+
+		booking.setDraftMode(false);
+		booking.setPurchasedAt(currentMoment);
+		this.repository.save(booking);
 	}
 
 	@Override
@@ -63,8 +99,8 @@ public class CustomerBookingShowService extends AbstractGuiService<Customer, Boo
 		dataset.put("flights", flightChoices);
 		dataset.put("travelClass", travelChoices.getSelected().getKey());
 		dataset.put("travelClasses", travelChoices);
+		dataset.put("readonly", false);
 
 		super.getResponse().addData(dataset);
 	}
-
 }

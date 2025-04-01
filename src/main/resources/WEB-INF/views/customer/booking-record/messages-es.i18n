@@ -9,4 +9,6 @@ customer.bookingRecord.form.button.delete = Borrar
 
 customer.bookingRecord.list.label.passenger = Pasajero
 
-customer.bookingRecord.list.button.create = Crear
+customer.bookingRecord.list.button.create = Añadir
+
+customer.bookingRecord.form.button.delete = Eliminar

@@ -11,6 +11,8 @@ acme.validation.booking.locatorCode.message = The Locator Code must be unique
 acme.validation.booking.lastCreditCardNibble.message = When a booking is not a draft, it must store the last nibble of the credit card used to pay
 acme.validation.booking.passengers.message = When a booking is published, it must have at least one passenger
 
+acme.validation.bookingRecord.uniquePassengerInBooking.message = This passenger is already on the booking
+
 acme.validation.airlineManager.identifierFormat.message = The identifier must start with the initials of the manager
 acme.validation.airlineManager.identifierUniqueness.message = The identifier must be unique
 acme.validation.airlineManager.identifierPattern.message	= The identifier must include 2-3 upper case letters and 6 digits.

@@ -16,11 +16,13 @@ customer.booking.form.label.travelClass = Travel class
 customer.booking.form.label.lastCardNibble = Last credit card nibble
 customer.booking.form.label.price = Price
 customer.booking.form.label.purchasedAt = Purchase date
+customer.booking.form.label.draft = Pending
 
 customer.booking.form.placeholder.lastCardNibble = Four last digits of the credit card used to pay
 
+customer.booking.list.button.create = Create
+
 customer.booking.form.button.passengers = Passengers
 customer.booking.form.button.update = Update
-customer.booking.form.button.delete = Delete
 customer.booking.form.button.publish = Publish
 customer.booking.form.button.create = Create

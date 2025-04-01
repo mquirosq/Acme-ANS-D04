@@ -9,6 +9,8 @@ acme.validation.booking.locatorCode.message = The código de localización debe 
 acme.validation.booking.lastCreditCardNibble.message = Una reserva publicada debe incluir los últimos cuatr dígitos de la tarjeta de crédito usada para pagar
 acme.validation.booking.passengers.message = Una reserva publicada tiene que tener al menos un pasajero
 
+acme.validation.bookingRecord.uniquePassengerInBooking.message = Este pasajero ya está en esta reserva
+
 acme.validation.customer.identifier.message = El identificador debe comenzar con las iniciales del cliente
 acme.validation.customer.identifier.unique.message = El identificador debe ser único
 

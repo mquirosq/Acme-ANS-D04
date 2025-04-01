@@ -6,6 +6,7 @@ import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import acme.client.components.datatypes.Money;
 import acme.client.components.models.Dataset;
 import acme.client.components.views.SelectChoices;
 import acme.client.helpers.MomentHelper;
@@ -17,19 +18,28 @@ import acme.entities.Flight;
 import acme.realms.Customer;
 
 @GuiService
-public class CustomerBookingShowService extends AbstractGuiService<Customer, Booking> {
+public class CustomerBookingUpdateService extends AbstractGuiService<Customer, Booking> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
 	private CustomerBookingRepository repository;
 
-	// AbstractGuiService interface -------------------------------------------
+	// AbstractService<Customer, Booking> -------------------------------------
 
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean authorised;
+
+		int bookingId = super.getRequest().getData("id", int.class);
+		Booking booking = this.repository.findBookingById(bookingId);
+
+		Customer customer = booking.getCustomer();
+
+		authorised = booking != null && booking.isDraftMode() && super.getRequest().getPrincipal().hasRealm(customer);
+
+		super.getResponse().setAuthorised(authorised);
 	}
 
 	@Override
@@ -41,6 +51,34 @@ public class CustomerBookingShowService extends AbstractGuiService<Customer, Boo
 		booking = this.repository.findBookingById(id);
 
 		super.getBuffer().addData(booking);
+	}
+
+	@Override
+	public void bind(final Booking booking) {
+		super.bindObject(booking, "locatorCode", "purchasedAt", "travelClass", "price", "lastCardNibble", "draftMode", "flight");
+	}
+
+	@Override
+	public void validate(final Booking booking) {
+		;
+	}
+
+	@Override
+	public void perform(final Booking booking) {
+		Money price;
+		Long numberPassengers;
+
+		numberPassengers = this.repository.countPassengersInBooking(booking.getId());
+
+		price = new Money();
+		if (booking.getFlight() != null && booking.getFlight().getCost() != null) {
+			price.setAmount(booking.getFlight().getCost().getAmount() * numberPassengers);
+			price.setCurrency(booking.getFlight().getCost().getCurrency());
+		} else
+			price = null;
+
+		booking.setPrice(price);
+		this.repository.save(booking);
 	}
 
 	@Override
@@ -66,5 +104,4 @@ public class CustomerBookingShowService extends AbstractGuiService<Customer, Boo
 
 		super.getResponse().addData(dataset);
 	}
-
 }

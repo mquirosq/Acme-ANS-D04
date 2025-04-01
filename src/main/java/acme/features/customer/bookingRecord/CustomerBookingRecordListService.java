@@ -27,11 +27,15 @@ public class CustomerBookingRecordListService extends AbstractGuiService<Custome
 	public void load() {
 		int bookingId;
 		Collection<BookingRecord> bookingRecords;
+		boolean isDraft;
 
 		bookingId = super.getRequest().getData("id", int.class);
+		isDraft = this.repository.findBookingDraftById(bookingId);
 		bookingRecords = this.repository.findBookingRecordsByBookingId(bookingId);
 
 		super.getBuffer().addData(bookingRecords);
+		super.getResponse().addGlobal("draft", isDraft);
+		super.getResponse().addGlobal("bookingId", bookingId);
 	}
 
 	@Override
@@ -41,7 +45,6 @@ public class CustomerBookingRecordListService extends AbstractGuiService<Custome
 		dataset = super.unbindObject(bookingRecord);
 		dataset.put("passenger", bookingRecord.getPassenger().getFullName());
 		super.addPayload(dataset, bookingRecord, "passenger.birthDate", "passenger.passportNumber");
-
 		super.getResponse().addData(dataset);
 	}
 }

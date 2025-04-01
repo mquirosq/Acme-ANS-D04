@@ -15,6 +15,6 @@ public interface TrackingLogRepository extends AbstractRepository {
 	@Query("select t from TrackingLog t where t.claim.id = :claimId order by t.creationMoment asc")
 	List<TrackingLog> findAllByClaimId(Integer claimId);
 
-	@Query("select t from TrackingLog t where t.status = :status")
-	List<TrackingLog> findAllByStatus(ClaimStatus status);
+	@Query("select t from TrackingLog t where t.claim.id = :claimId and t.status = :status")
+	List<TrackingLog> findAllByClaimIdAndStatus(Integer claimId, ClaimStatus status);
 }

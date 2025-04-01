@@ -61,7 +61,7 @@ public class TrackingLogValidator extends AbstractValidator<ValidTrackingLog, Tr
 
 					super.state(context, existsCompletedLog, "status", "acme.validation.trackingLog.reclaimed.noCompletedLog.message");
 
-					reclaimedLogs = this.repository.findAllByStatus(ClaimStatus.RECLAIMED);
+					reclaimedLogs = this.repository.findAllByClaimIdAndStatus(trackingLog.getClaim().getId(), ClaimStatus.RECLAIMED);
 					isUnique = reclaimedLogs.isEmpty() || reclaimedLogs.size() == 1 && reclaimedLogs.get(0).equals(trackingLog);
 
 					super.state(context, isUnique, "status", "acme.validation.trackingLog.reclaimed.notUnique.message");
