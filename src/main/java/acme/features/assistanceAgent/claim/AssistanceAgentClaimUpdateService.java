@@ -50,19 +50,14 @@ public class AssistanceAgentClaimUpdateService extends AbstractGuiService<Assist
 
 	@Override
 	public void bind(final Claim claim) {
-		int legId, agentId;
+		int legId;
 		FlightLeg leg;
-		AssistanceAgent agent;
 
 		legId = super.getRequest().getData("leg", int.class);
-		agentId = super.getRequest().getData("assistanceAgent", int.class);
-
 		leg = this.repository.findLegById(legId);
-		agent = this.repository.findAssistanceAgentById(agentId);
 
-		super.bindObject(claim, "registrationMoment", "passengerEmail", "description", "isPublished", "type");
+		super.bindObject(claim, "passengerEmail", "description", "type");
 		claim.setLeg(leg);
-		claim.setAgent(agent);
 	}
 
 	@Override
