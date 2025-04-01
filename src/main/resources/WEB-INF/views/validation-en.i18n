@@ -52,3 +52,5 @@ acme.validation.aircraft.registrationNumber.message			= The registration number 
 
 
 acme.validation.confirmation.message = You must confirm before performing this operation
+
+acme.validation.claim.isPublished.message = You cannot publish a claim that has not been completed
