@@ -9,3 +9,5 @@
 	<acme:list-column code="administrator.airport.list.label.name" path="name" width="70%"/>
 	<acme:list-payload path="payload"/>
 </acme:list>
+
+<acme:button code="administrator.airport.list.button.create" action="/administrator/airport/create"/>
