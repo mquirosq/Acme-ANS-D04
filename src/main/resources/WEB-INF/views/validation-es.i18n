@@ -53,4 +53,5 @@ acme.validation.airport.notUniqueIATA.message = Este codigo IATA ya existe
 
 acme.validation.confirmation.message = Debes confirmar antes de realizar esta operación
 
-acme.validation.claim.isPublished.message = No se puede publicar una queja que no está completada
+acme.validation.claim.isPublished.message	= No se puede publicar una queja que no está completada
+acme.validation.claim.leg.message			= Una queja no puede estar enlazada a un tramo no publicado
