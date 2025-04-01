@@ -9,47 +9,59 @@ import acme.client.components.models.Dataset;
 import acme.client.components.views.SelectChoices;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
-import acme.entities.Booking;
 import acme.entities.BookingRecord;
 import acme.entities.Passenger;
 import acme.realms.Customer;
 
 @GuiService
-public class CustomerBookingRecordShowService extends AbstractGuiService<Customer, BookingRecord> {
+public class CustomerBookingRecordDeleteService extends AbstractGuiService<Customer, BookingRecord> {
+
+	// Internal state ---------------------------------------------------------
 
 	@Autowired
 	private CustomerBookingRecordRepository repository;
 
+	// AbstractGuiService interface -------------------------------------------
+
 
 	@Override
 	public void authorise() {
-		boolean status;
-		int id;
-		Booking booking;
+		boolean authorised;
 
-		id = super.getRequest().getData("id", int.class);
-		booking = this.repository.findBookingOfBookingRecordById(id);
-		status = booking != null && super.getRequest().getPrincipal().hasRealm(booking.getCustomer());
+		int bookingRecordId = super.getRequest().getData("id", int.class);
+		BookingRecord bookingRecord = this.repository.findBookingRecordById(bookingRecordId);
 
-		super.getResponse().setAuthorised(status);
+		Customer customer = bookingRecord.getBooking().getCustomer();
+
+		authorised = bookingRecord != null && bookingRecord.getBooking() != null && bookingRecord.getBooking().isDraftMode() && super.getRequest().getPrincipal().hasRealm(customer);
+
+		super.getResponse().setAuthorised(authorised);
 	}
 
 	@Override
 	public void load() {
 		BookingRecord bookingRecord;
 		int id;
-		boolean isDraft;
 
 		id = super.getRequest().getData("id", int.class);
 		bookingRecord = this.repository.findBookingRecordById(id);
-		if (bookingRecord.getBooking() != null)
-			isDraft = bookingRecord.getBooking().isDraftMode();
-		else
-			isDraft = false;
 
 		super.getBuffer().addData(bookingRecord);
-		super.getResponse().addGlobal("draft", isDraft);
-		super.getResponse().addGlobal("bookingId", bookingRecord.getBooking().getId());
+	}
+
+	@Override
+	public void bind(final BookingRecord bookingRecord) {
+		super.bindObject(bookingRecord, "passenger");
+	}
+
+	@Override
+	public void validate(final BookingRecord bookingRecord) {
+		;
+	}
+
+	@Override
+	public void perform(final BookingRecord bookingRecord) {
+		this.repository.delete(bookingRecord);
 	}
 
 	@Override
@@ -59,7 +71,8 @@ public class CustomerBookingRecordShowService extends AbstractGuiService<Custome
 		Dataset dataset;
 
 		int customerId = super.getRequest().getPrincipal().getActiveRealm().getId();
-		passengers = this.repository.findMyPassengers(customerId);
+		int bookingId = bookingRecord.getBooking().getId();
+		passengers = this.repository.findMyPassengersNotAlreadyInBooking(customerId, bookingId);
 		choices = SelectChoices.from(passengers, "fullName", bookingRecord.getPassenger());
 
 		dataset = super.unbindObject(bookingRecord);

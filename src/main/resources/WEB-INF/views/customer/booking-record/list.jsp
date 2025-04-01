@@ -8,4 +8,8 @@
 	<acme:list-payload path="payload"/>
 </acme:list>
 
-<acme:button code="customer.bookingRecord.list.button.create" action="/customer/bookingRecord/create"/>
+<jstl:if test="${draft}">
+	<acme:button code="customer.bookingRecord.list.button.create" action="/customer/booking-record/create?id=${bookingId}"/>
+</jstl:if>
+
+
