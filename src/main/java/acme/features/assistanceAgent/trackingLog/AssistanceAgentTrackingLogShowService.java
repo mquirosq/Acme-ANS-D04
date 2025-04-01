@@ -53,7 +53,7 @@ public class AssistanceAgentTrackingLogShowService extends AbstractGuiService<As
 		Collection<Claim> claims;
 		SelectChoices statusChoices, claimChoices;
 
-		claims = this.repository.findAllClaimsByAssistanceAgentId(trackingLog.getClaim().getAgent().getId());
+		claims = this.repository.findAllClaimsByAssistanceAgentId(super.getRequest().getPrincipal().getActiveRealm().getId());
 		statusChoices = SelectChoices.from(ClaimStatus.class, trackingLog.getStatus());
 		claimChoices = SelectChoices.from(claims, "id", trackingLog.getClaim());
 

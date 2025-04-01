@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
 import acme.client.components.views.SelectChoices;
+import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.datatypes.ClaimStatus;
@@ -43,7 +44,10 @@ public class AssistanceAgentTrackingLogCreateService extends AbstractGuiService<
 		claim = this.repository.findClaimById(claimId);
 
 		super.bindObject(trackingLog, "lastUpdateMoment", "creationMoment", "step", "resolutionPercentage", "resolution", "isPublished", "status");
+
 		trackingLog.setClaim(claim);
+		trackingLog.setCreationMoment(MomentHelper.getCurrentMoment());
+		trackingLog.setLastUpdateMoment(MomentHelper.getCurrentMoment());
 	}
 
 	@Override
@@ -62,7 +66,7 @@ public class AssistanceAgentTrackingLogCreateService extends AbstractGuiService<
 		Collection<Claim> claims;
 		SelectChoices statusChoices, claimChoices;
 
-		claims = this.repository.findAllClaimsByAssistanceAgentId(trackingLog.getClaim().getAgent().getId());
+		claims = this.repository.findAllClaimsByAssistanceAgentId(super.getRequest().getPrincipal().getActiveRealm().getId());
 		statusChoices = SelectChoices.from(ClaimStatus.class, trackingLog.getStatus());
 		claimChoices = SelectChoices.from(claims, "id", trackingLog.getClaim());
 

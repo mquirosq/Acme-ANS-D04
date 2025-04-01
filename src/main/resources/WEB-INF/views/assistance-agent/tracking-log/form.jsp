@@ -4,8 +4,8 @@
 <%@taglib prefix = "acme" uri = "http://acme-framework.org/"%>
 
 <acme:form>
-	<acme:input-moment code = "assistance-agent.tracking-log.form.label.lastUpdateMoment" path = "lastUpdateMoment"/>	
-	<acme:input-moment code = "assistance-agent.tracking-log.form.label.creationMoment" path = "creationMoment"/>	
+	<acme:input-moment code = "assistance-agent.tracking-log.form.label.lastUpdateMoment" path = "lastUpdateMoment" readonly = "true"/>	
+	<acme:input-moment code = "assistance-agent.tracking-log.form.label.creationMoment" path = "creationMoment" readonly = "true"/>	
 	<acme:input-textbox code = "assistance-agent.tracking-log.form.label.step" path = "step"/>
 	<acme:input-double code = "assistance-agent.tracking-log.form.label.resolutionPercentage" path = "resolutionPercentage" placeholder = "assistance-agent.tracking-log.form.placeholder.resolutionPercentage"/>
 	<acme:input-textarea code = "assistance-agent.tracking-log.form.label.resolution" path = "resolution"/>
