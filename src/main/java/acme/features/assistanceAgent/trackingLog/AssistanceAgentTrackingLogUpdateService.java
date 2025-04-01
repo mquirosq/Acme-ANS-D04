@@ -38,9 +38,12 @@ public class AssistanceAgentTrackingLogUpdateService extends AbstractGuiService<
 
 	@Override
 	public void load() {
+		int id;
 		TrackingLog trackingLog;
 
-		trackingLog = new TrackingLog();
+		id = super.getRequest().getData("id", int.class);
+		trackingLog = this.repository.findTrackingLogById(id);
+
 		super.getBuffer().addData(trackingLog);
 	}
 
@@ -82,6 +85,7 @@ public class AssistanceAgentTrackingLogUpdateService extends AbstractGuiService<
 		dataset.put("claims", claimChoices);
 		dataset.put("claim", claimChoices.getSelected().getKey());
 
+		super.getResponse().addGlobal("isClaimPublished", trackingLog.getClaim().getIsPublished());
 		super.getResponse().addData(dataset);
 	}
 }

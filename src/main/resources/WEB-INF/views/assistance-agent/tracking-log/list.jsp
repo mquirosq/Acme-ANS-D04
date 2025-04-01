@@ -4,7 +4,7 @@
 <%@taglib prefix = "acme" uri = "http://acme-framework.org/"%>
 
 <acme:list>
-	<acme:list-column code = "assistance-agent.tracking-log.list.label.lastUpdateMoment" path = "lastUpdateMoment"/>
+	<acme:list-column code = "assistance-agent.tracking-log.list.label.claim" path = "claim.id"/>
 	<acme:list-column code = "assistance-agent.tracking-log.list.label.resolutionPercentage" path = "resolutionPercentage"/>
 	<acme:list-column code = "assistance-agent.tracking-log.list.label.status" path = "status"/>
 	<acme:list-column code = "assistance-agent.tracking-log.list.label.isPublished" path = "isPublished"/>

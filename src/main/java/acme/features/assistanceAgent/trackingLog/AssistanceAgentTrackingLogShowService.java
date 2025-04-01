@@ -63,6 +63,7 @@ public class AssistanceAgentTrackingLogShowService extends AbstractGuiService<As
 		dataset.put("claims", claimChoices);
 		dataset.put("claim", claimChoices.getSelected().getKey());
 
+		super.getResponse().addGlobal("isClaimPublished", trackingLog.getClaim().getIsPublished());
 		super.getResponse().addData(dataset);
 	}
 }

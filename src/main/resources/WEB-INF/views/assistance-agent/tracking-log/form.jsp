@@ -16,8 +16,11 @@
 	<jstl:choose>
 		<jstl:when test = "${acme:anyOf(_command, 'show|update|delete|publish') && isPublished == false}">
 			<acme:submit code = "assistance-agent.tracking-log.form.button.edit" action = "/assistance-agent/tracking-log/update"/>			
-			<acme:submit code = "assistance-agent.tracking-log.form.button.publish" action = "/assistance-agent/tracking-log/publish"/>
 			<acme:submit code = "assistance-agent.tracking-log.form.button.delete" action = "/assistance-agent/tracking-log/delete"/>			
+			
+			<jstl:if test = "${isClaimPublished == true}">
+				<acme:submit code = "assistance-agent.tracking-log.form.button.publish" action = "/assistance-agent/tracking-log/publish"/>
+			</jstl:if>
 		</jstl:when>
 		<jstl:when test = "${_command == 'create'}">
 			<acme:submit code = "assistance-agent.tracking-log.form.button.create" action = "/assistance-agent/tracking-log/create"/>

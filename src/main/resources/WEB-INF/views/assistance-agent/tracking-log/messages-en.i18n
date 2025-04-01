@@ -1,6 +1,6 @@
 assistance-agent.tracking-log.list.title							= Tracking logs
 
-assistance-agent.tracking-log.list.label.lastUpdateMoment			= Last update
+assistance-agent.tracking-log.list.label.claim						= Claim
 assistance-agent.tracking-log.list.label.resolutionPercentage		= Resolution percentage
 assistance-agent.tracking-log.list.label.status						= Status
 assistance-agent.tracking-log.list.label.isPublished				= Published
