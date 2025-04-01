@@ -42,10 +42,10 @@ service-32,Lorem Ipsum dolor sit ame,https://imgur.com/jSv51L2.png,50,AAAA-25,50
 service-33,Lorem Ipsum dolor sit ame,https://imgur.com/TyINZSr.png,50,ZZZZ-25,50
 service-34,Lorem Ipsum dolor sit ame,https://imgur.com/sl13jvU.png,50,AZAZ-25,50
 service-35,Lorem Ipsum dolor sit ame,https://imgur.com/8TG4f4N.png,50,null,50
-service-41,Lorem Ipsum dolor sit ame,https://imgur.com/2jA4JmD.png,50,null,50
 # promotion-discount - standard variations
 service-36,Lorem Ipsum dolor sit ame,https://imgur.com/vsd22aR.png,50,BBBI-25,0.00
 service-37,Lorem Ipsum dolor sit ame,https://imgur.com/FiQJkuD.png,50,BBBJ-25,0.01
 service-38,Lorem Ipsum dolor sit ame,https://imgur.com/Ch5SdR4.png,50,BBBK-25,99.99
 service-39,Lorem Ipsum dolor sit ame,https://imgur.com/FNa1B46.png,50,BBBL-25,100.00
 service-40,Lorem Ipsum dolor sit ame,https://imgur.com/TNaSOJv.png,50,BBBM-25,null
+service-41,Lorem Ipsum dolor sit ame,https://imgur.com/2jA4JmD.png,50,null,50

@@ -1,0 +1,25 @@
+customer.passenger.list.title						= Lista de pasajeros
+
+customer.passenger.list.label.fullName = Nombre completo
+customer.passenger.list.label.passportNumber = Número de pasaporte
+
+customer.list-passengers.draft = Pasajeros sin publicar
+customer.list-passengers.mine = Mis pasajeros
+
+customer.passenger.form.title						= Detalles del pasajero
+
+customer.passenger.form.label.fullName = Nombre completo
+customer.passenger.form.label.email = Correo electrónico
+customer.passenger.form.placeholder.email = acme@ans.com
+customer.passenger.form.label.passportNumber = Número de pasaporte
+customer.passenger.form.placeholder.passportNumber = Número de pasaporte
+customer.passenger.form.label.birthDate = Fecha de nacimiento
+customer.passenger.form.label.specialNeeds = Necesidades especiales
+customer.passenger.form.label.draft = Borrador
+
+customer.passenger.list.button.create = Crear
+
+customer.passenger.form.button.edit = Editar
+customer.passenger.form.button.publish = Publicar
+customer.passenger.form.button.update = Actualizar
+customer.passenger.form.button.save = Guardar

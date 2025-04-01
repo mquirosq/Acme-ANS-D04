@@ -1,0 +1,28 @@
+
+administrator.airport.list.title = Listado de aeropuertos
+administrator.airport.form.title = Detalles de la aeropuerto
+
+administrator.airport.list.label.name = Nombre:
+administrator.airport.list.label.IATACode = Código IATA:
+administrator.airport.list.label.scope = Alcance:
+
+administrator.airport.form.label.name = Nombre:
+administrator.airport.form.label.IATACode = Código IATA:
+administrator.airport.form.label.city = Ciudad:
+administrator.airport.form.label.country = País:
+administrator.airport.form.label.website = Página web:
+administrator.airport.form.label.scope = Alcance:
+administrator.airport.form.label.email = Correo electrónico:
+administrator.airport.form.label.phoneNumber = Número de teléfono:
+
+administrator.airport.list.button.create = Crear
+administrator.airport.form.button.create = Crear
+administrator.airport.form.button.edit = Editar
+administrator.airport.form.button.update = Actualizar
+administrator.airport.form.label.confirmation = Confirmación
+
+administrator.airport.form.placeholder.IATACode = Tres letras mayúsculas
+administrator.airport.form.placeholder.city = De 1 a 50 caracteres
+administrator.airport.form.placeholder.country = De 1 a 50 caracteres
+administrator.airport.form.placeholder.email = acme@ans.com
+administrator.airport.form.placeholder.phoneNumber = De seis a quince dígitos opcionalmente precedidos de +
