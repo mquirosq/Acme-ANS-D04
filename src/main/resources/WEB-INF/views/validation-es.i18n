@@ -1,7 +1,7 @@
 # validation-es.i18n
 #
 
-acme.validation.phoneNumber.message = El número de teléfono debe estar compuestoi de entre seis y quince dígitos, opcionalmente precedido de "+"
+acme.validation.phoneNumber.message = El número de teléfono debe estar compuesto de entre seis y quince dígitos, opcionalmente precedido de "+"
 
 acme.validation.airline.IATACode.message = El código IATA debe ser único
 
