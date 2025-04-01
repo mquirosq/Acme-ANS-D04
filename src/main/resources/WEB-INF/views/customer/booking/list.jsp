@@ -10,3 +10,5 @@
 	<acme:list-column code="customer.booking.list.label.draftMode" path="draftMode"/>
 	<acme:list-payload path="payload"/>
 </acme:list>
+
+<acme:button code="customer.booking.list.button.create" action="/customer/booking/create"/>
