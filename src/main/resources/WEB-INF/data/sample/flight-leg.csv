@@ -20,4 +20,7 @@ flight-leg-12,ESP0008,2025/05/23 0:00,2025/05/24 0:00,"ON_TIME",airport-01,airpo
 # parent-flight - variations
 flight-leg-13,ESP0009,2025/05/25 0:00,2025/05/26 0:00,"ON_TIME",airport-01,airport-02,aircraft-01,flight-02,true
 # draft mode - variations. This leg will be used as the only leg of a published flight -> FLIGHT 32
-flight-leg-14,ESP0010,2025/05/05 0:00,2025/05/06 0:00,"ON_TIME",airport-01,airport-02,aircraft-01,flight-32,false
+flight-leg-14,ESP0010,2025/05/27 0:00,2025/05/28 0:00,"ON_TIME",airport-01,airport-02,aircraft-01,flight-32,false
+# more published legs used in other sample data
+flight-leg-15,ESP0011,2025/05/29 0:00,2025/05/30 0:00,"ON_TIME",airport-01,airport-02,aircraft-01,flight-33,false
+flight-leg-16,ESP0012,2025/05/31 0:00,2025/06/01 0:00,"ON_TIME",airport-01,airport-02,aircraft-01,flight-34,false
