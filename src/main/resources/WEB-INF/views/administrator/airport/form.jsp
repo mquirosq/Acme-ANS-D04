@@ -12,4 +12,20 @@
 	<acme:input-select code="administrator.airport.form.label.scope" path="scope" choices="${scopes}"/>
 	<acme:input-textbox code="administrator.airport.form.label.email" path="email" placeholder="administrator.airport.form.placeholder.email"/>	
 	<acme:input-textbox code="administrator.airport.form.label.phoneNumber" path="phoneNumber" placeholder="administrator.airport.form.placeholder.phoneNumber"/>
+
+	<jstl:if test="${!readonly}">
+		<acme:input-checkbox code="administrator.airport.form.label.confirmation" path="confirmation"/>
+	</jstl:if>
+	
+	<jstl:choose>
+		<jstl:when test="${_command == 'show'}">
+			<acme:button code="administrator.airport.form.button.edit" action="/administrator/airport/update?id=${id}"/>
+		</jstl:when>
+		<jstl:when test="${_command == 'update'}">
+			<acme:submit code="administrator.airport.form.button.update" action="/administrator/airport/update"/>
+		</jstl:when>
+		<jstl:when test="${_command == 'create'}">
+			<acme:submit code="administrator.airport.form.button.create" action="/administrator/airport/create"/>
+		</jstl:when>		
+	</jstl:choose>	
 </acme:form>

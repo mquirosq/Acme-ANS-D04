@@ -1,6 +1,6 @@
 
 administrator.airport.list.title = Listado de aeropuertos
-administrator.airport.form.title = Detalles de la aeropuerto
+administrator.airport.form.title = Detalles del aeropuerto
 
 administrator.airport.list.label.name = Nombre:
 administrator.airport.list.label.IATACode = Código IATA:

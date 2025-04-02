@@ -1,7 +1,7 @@
 # validation-es.i18n
 #
 
-acme.validation.phoneNumber.message = El número de teléfono debe estar compuestoi de entre seis y quince dígitos, opcionalmente precedido de "+"
+acme.validation.phoneNumber.message = El número de teléfono debe estar compuesto de entre seis y quince dígitos, opcionalmente precedido de "+"
 
 acme.validation.airline.IATACode.message = El código IATA debe ser único
 
@@ -52,3 +52,6 @@ acme.validation.aircraft.registrationNumber.message			= El número de registro d
 acme.validation.airport.notUniqueIATA.message = Este codigo IATA ya existe
 
 acme.validation.confirmation.message = Debes confirmar antes de realizar esta operación
+
+acme.validation.claim.isPublished.message	= No se puede publicar una queja que no está completada
+acme.validation.claim.leg.message			= Una queja no puede estar enlazada a un tramo no publicado
