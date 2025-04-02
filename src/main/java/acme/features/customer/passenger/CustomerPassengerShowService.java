@@ -42,6 +42,7 @@ public class CustomerPassengerShowService extends AbstractGuiService<Customer, P
 
 		dataset = super.unbindObject(passenger, "fullName", "email", "passportNumber", "birthDate", "specialNeeds", "draftMode");
 
+		super.getResponse().addGlobal("readonly", true);
 		super.getResponse().addData(dataset);
 	}
 
