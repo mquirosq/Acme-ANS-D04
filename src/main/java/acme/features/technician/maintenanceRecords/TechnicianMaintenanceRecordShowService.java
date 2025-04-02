@@ -12,8 +12,6 @@ import acme.client.services.GuiService;
 import acme.datatypes.recordStatus;
 import acme.entities.Aircraft;
 import acme.entities.MaintenanceRecord;
-import acme.entities.Task;
-import acme.entities.TaskRecord;
 import acme.realms.Technician;
 
 @GuiService
@@ -51,22 +49,15 @@ public class TechnicianMaintenanceRecordShowService extends AbstractGuiService<T
 
 	@Override
 	public void unbind(final MaintenanceRecord record) {
-		Collection<Task> tasks;
 		Collection<Aircraft> aircrafts;
-		Collection<TaskRecord> recordTask;
-		SelectChoices taskChoices, statusChoices, aircraftChoices;
+		SelectChoices statusChoices, aircraftChoices;
 		Dataset dataset;
 
-		recordTask = this.repository.getTaskRecordsByMaintenanceRecordId(record.getId());
-		tasks = this.repository.findTasksByMaintenanceRecordId(record.getId());
 		aircrafts = this.repository.findAllAircrafts();
-		//taskChoices = SelectChoices.from(tasks, "type", null);
 		statusChoices = SelectChoices.from(recordStatus.class, record.getStatus());
 		aircraftChoices = SelectChoices.from(aircrafts, "model", record.getAircraft());
 
 		dataset = super.unbindObject(record, "maintenanceDate", "inspectionDue", "cost", "notes");
-		//dataset.put("task", taskChoices.getSelected().getKey());
-		//dataset.put("tasks", taskChoices);
 		dataset.put("statuses", statusChoices);
 		dataset.put("status", statusChoices.getSelected().getKey());
 		dataset.put("aircrafts", aircraftChoices);

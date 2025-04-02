@@ -5,8 +5,8 @@
 
 <acme:list>
 	<acme:list-column code="technician.maintenance-record.list.label.aircraft" path="aircraft" width="34%"/>
-	<acme:list-column code="technician.maintenance-record.list.label.maintenanceDate" path="maintenanceDate" width="33%"/>
-	<acme:list-column code="technician.maintenance-record.list.label.inspectionDue" path="inspectionDue" width="33%"/>
+	<acme:list-column code="technician.maintenance-record.list.label.maintenance-date" path="maintenanceDate" width="33%"/>
+	<acme:list-column code="technician.maintenance-record.list.label.inspection-due" path="inspectionDue" width="33%"/>
 	<acme:list-payload path="payload"/>
 </acme:list>
 

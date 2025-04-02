@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import acme.client.components.models.Dataset;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
+import acme.entities.Aircraft;
 import acme.entities.MaintenanceRecord;
 import acme.realms.Technician;
 
@@ -36,10 +37,14 @@ public class TechnicianMaintenanceRecordListService extends AbstractGuiService<T
 
 	@Override
 	public void unbind(final MaintenanceRecord record) {
+		Aircraft aircraft;
 		Dataset dataset;
 
-		dataset = super.unbindObject(record, "aircraft", "status", "inspectionDue", "notes");
-		super.addPayload(dataset, record, "maintenanceDate", "cost");
+		aircraft = this.repository.findAircraftByRecordId(record.getId());
+
+		dataset = super.unbindObject(record, "inspectionDue", "maintenanceDate");
+		dataset.put("aircraft", aircraft.getModel());
+		super.addPayload(dataset, record, "cost");
 
 		super.getResponse().addData(dataset);
 	}
