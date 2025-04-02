@@ -54,7 +54,7 @@ public class AssistanceAgentClaimPublishService extends AbstractGuiService<Assis
 
 	@Override
 	public void bind(final Claim claim) {
-
+    
 	}
 
 	@Override

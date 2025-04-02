@@ -18,6 +18,7 @@
 			<jstl:if test = "${acme:anyOf(status, 'ACCEPTED|REJECTED|RECLAIMED')}">
 				<acme:submit code = "assistance-agent.claim.form.button.publish" action = "/assistance-agent/claim/publish"/>
 			</jstl:if>
+
 			<acme:submit code = "assistance-agent.claim.form.button.delete" action = "/assistance-agent/claim/delete"/>			
 		</jstl:when>
 		<jstl:when test = "${_command == 'create'}">

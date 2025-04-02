@@ -44,7 +44,7 @@ public class AssistanceAgentClaimListService extends AbstractGuiService<Assistan
 		dataset.put("status", claim.getStatus());
 
 		super.addPayload(dataset, claim, "agent.employeeCode", "leg.flightNumber", "description", "passengerEmail");
-
+    
 		if (!status.equals(ClaimStatus.NO_STATUS) && !status.equals(ClaimStatus.PENDING))
 			dataset.put("payload", dataset.get("payload") + "|completed");
 		super.getResponse().addData(dataset);
