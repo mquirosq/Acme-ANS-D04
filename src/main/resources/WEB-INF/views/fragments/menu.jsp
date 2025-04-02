@@ -30,6 +30,8 @@
 		<acme:menu-option code="master.menu.administrator" access="hasRealm('Administrator')">
 			<acme:menu-suboption code="master.menu.administrator.list-user-accounts" action="/administrator/user-account/list"/>
 			<acme:menu-separator/>
+			<acme:menu-suboption code="master.menu.administrator.list-airports" action="/administrator/airport/list"/>
+			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.administrator.list-airlines" action="/administrator/airline/list"/>
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.administrator.list-aircrafts" action="/administrator/aircraft/list"/>
@@ -38,6 +40,12 @@
 			<acme:menu-suboption code="master.menu.administrator.populate-db-sample" action="/administrator/system/populate-sample"/>			
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.administrator.shut-system-down" action="/administrator/system/shut-down"/>
+		</acme:menu-option>
+
+		<acme:menu-option code = "master.menu.assistance-agent" access = "hasRealm('AssistanceAgent')">
+			<acme:menu-suboption code = "master.menu.assistance-agent.list-claims" action = "/assistance-agent/claim/list"/>
+			<acme:menu-separator/>
+			<acme:menu-suboption code = "master.menu.assistance-agent.list-tracking-logs" action = "/assistance-agent/tracking-log/list"/>
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.provider" access="hasRealm('Provider')">

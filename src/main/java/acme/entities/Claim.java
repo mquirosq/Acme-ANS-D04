@@ -2,7 +2,6 @@
 package acme.entities;
 
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -18,6 +17,7 @@ import acme.client.components.validation.ValidEmail;
 import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidString;
 import acme.client.helpers.SpringHelper;
+import acme.constraints.ValidClaim;
 import acme.datatypes.ClaimStatus;
 import acme.datatypes.ClaimType;
 import acme.realms.AssistanceAgent;
@@ -27,6 +27,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+@ValidClaim
 public class Claim extends AbstractEntity {
 
 	public static final long	serialVersionUID	= 1L;
@@ -68,20 +69,30 @@ public class Claim extends AbstractEntity {
 
 
 	@Transient
-	private ClaimStatus getStatus() {
+	public ClaimStatus getStatus() {
 		ClaimStatus out;
-		List<TrackingLog> trackingLogs;
-		TrackingLogRepository trackingLogRepository;
+		ClaimRepository claimRepository;
+		Long pendingLogs, acceptedLogs, rejectedLogs, reclaimedLogs;
 
-		out = ClaimStatus.PENDING;
-		trackingLogRepository = SpringHelper.getBean(TrackingLogRepository.class);
-		trackingLogs = trackingLogRepository.findAllByClaimId(this.getId());
+		out = ClaimStatus.NO_STATUS;
+		claimRepository = SpringHelper.getBean(ClaimRepository.class);
 
-		if (trackingLogs.stream().anyMatch(log -> log.getStatus().equals(ClaimStatus.ACCEPTED)))
+		pendingLogs = claimRepository.findAmountOfTrackingLogsByClaimIdAndStatus(this.getId(), ClaimStatus.PENDING);
+		acceptedLogs = claimRepository.findAmountOfTrackingLogsByClaimIdAndStatus(this.getId(), ClaimStatus.ACCEPTED);
+		rejectedLogs = claimRepository.findAmountOfTrackingLogsByClaimIdAndStatus(this.getId(), ClaimStatus.REJECTED);
+		reclaimedLogs = claimRepository.findAmountOfTrackingLogsByClaimIdAndStatus(this.getId(), ClaimStatus.RECLAIMED);
+
+		if (pendingLogs > 0L)
+			out = ClaimStatus.PENDING;
+
+		if (acceptedLogs > 0L)
 			out = ClaimStatus.ACCEPTED;
-		else if (trackingLogs.stream().anyMatch(log -> log.getStatus().equals(ClaimStatus.REJECTED)))
+
+		if (rejectedLogs > 0L)
 			out = ClaimStatus.REJECTED;
 
+		if (reclaimedLogs > 0L)
+			out = ClaimStatus.RECLAIMED;
 		return out;
 	}
 }

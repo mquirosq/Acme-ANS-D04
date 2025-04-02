@@ -1,7 +1,7 @@
 # validation-es.i18n
 #
 
-acme.validation.phoneNumber.message = El número de teléfono debe estar compuestoi de entre seis y quince dígitos, opcionalmente precedido de "+"
+acme.validation.phoneNumber.message = El número de teléfono debe estar compuesto de entre seis y quince dígitos, opcionalmente precedido de "+"
 
 acme.validation.airline.IATACode.message = El código IATA debe ser único
 
@@ -16,16 +16,20 @@ acme.validation.customer.identifier.unique.message = El identificador debe ser �
 
 acme.validation.airlineManager.identifierFormat.message = El identificador debe comenzar con las iniciales del gestor
 acme.validation.airlineManager.identifierUniqueness.message = El identificador debe de ser único
+acme.validation.airlineManager.identifierPattern.message	= El identificador debe incluir 2-3 letras mayúsculas y 6 dígitos
 
 acme.validation.assistanceAgent.employeeCode.message			= El código de empleado debe comenzar con las iniciales del agente
 acme.validation.assistanceAgent.employeeCodeUniqueness.message	= El código de empleado debe ser único
 
-acme.validation.trackingLog.notPendingStatus.message 		= El estado no puede ser pendiente si el porcentaje de resolución ha llegado al 100%
-acme.validation.trackingLog.pendingStatus.message			= El estado debe ser pendiente si el porcentaje de resolución no ha llegado al 100%
-acme.validation.trackingLog.resolution.message				= La resolución es obligatoria si la queja ha sido aceptada o rechazada
-acme.validation.trackingLog.resolutionPercentage.message 	= El porcentaje de resolución debe aumentar monotónicamente
-acme.validation.trackingLog.lastUpdateMoment.message		= El momento de última actualización no puede ser anterior al momento de creación
-acme.validation.trackingLog.isPublished.message				= No se puede publicar hasta que la queja asociada no esté publicada
+acme.validation.trackingLog.notPendingStatus.message 			= El estado no puede ser pendiente si el porcentaje de resolución ha llegado al 100%
+acme.validation.trackingLog.pendingStatus.message				= El estado debe ser pendiente si el porcentaje de resolución no ha llegado al 100%
+acme.validation.trackingLog.resolution.message					= La resolución es obligatoria si la queja ha sido aceptada o rechazada
+acme.validation.trackingLog.resolutionPercentage.message 		= El porcentaje de resolución debe aumentar monotónicamente
+acme.validation.trackingLog.lastUpdateMoment.message			= El momento de última actualización no puede ser anterior al momento de creación
+acme.validation.trackingLog.isPublished.message					= No se puede publicar hasta que la queja asociada no esté publicada
+acme.validation.trackingLog.reclaimed.noCompletedLog.message	= Debe haber un registro publicado para una queja para poder crear uno reclamado para esa misma queja
+acme.validation.trackingLog.reclaimed.notUnique.message			= Solo puede haber un registro reclamado para cada queja
+
 acme.validation.service.promotioncode.message 				= El código de la promoción debe correponder al año actual
 acme.validation.service.promotioncodeuniqueness.message 	= El código de la promoción no es unico
 acme.validation.flightcrewmember.employeecode.message       = Las primeras dos letras del código de empleado deben de coincidir con las iniciales del nombre y apellidos del mismo
@@ -36,10 +40,18 @@ acme.validation.customer.issuedAt.message 					= No se puede prohibir el acceso 
 acme.validation.customer.liftedAt.message 					= No se puede levantar una prohibición antes de su fecha de creación
 
 acme.validation.flightLeg.scheduledDates.message = La fecha de salida programada debe ser antes de la fecha de llegada programada
+acme.validation.flightLeg.flightNumber.message = El número de vuelo debe comenzar con el código IATA de la aerolinea
+acme.validation.flightLeg.flightNumberPattern.message = El número de vuelo debe contener 3 letras mayúsculas y 4 dígitos
+acme.validation.flightLeg.flightNumberUnique.message = El número de vuelo debe ser único
+
 acme.validation.flight.overlappingDates.message = Este vuelo tiene tramos solapados
-acme.validation.flightLeg.flightNumber.message = El numero de vuelo debe comenzar con el codigo IATA de la aerolinea
+acme.validation.flight.notPublishedLeg.message = Este vuelo tiene tramos sin publicar
+acme.validation.flight.missingLegs.message = Este vuelo no tiene tramos
 
 acme.validation.aircraft.registrationNumber.message			= El número de registro debe ser único
 acme.validation.airport.notUniqueIATA.message = Este codigo IATA ya existe
 
 acme.validation.confirmation.message = Debes confirmar antes de realizar esta operación
+
+acme.validation.claim.isPublished.message	= No se puede publicar una queja que no está completada
+acme.validation.claim.leg.message			= Una queja no puede estar enlazada a un tramo no publicado
