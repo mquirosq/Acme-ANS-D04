@@ -12,7 +12,7 @@ import acme.client.repositories.AbstractRepository;
 @Repository
 public interface FlightLegRepository extends AbstractRepository {
 
-	@Query("select fl from FlightLeg fl where fl.parentFlight.draftMode = true and fl.scheduledArrival = (select min(fl2.scheduledArrival) from FlightLeg fl2 where fl2.parentFlight.id = :flightId)")
+	@Query("select fl from FlightLeg fl where fl.parentFlight.draftMode = false and fl.scheduledArrival = (select min(fl2.scheduledArrival) from FlightLeg fl2 where fl2.parentFlight.id = :flightId)")
 	Optional<FlightLeg> getFirstLegOfFlight(Integer flightId);
 
 	@Query("select fl from FlightLeg fl where fl.parentFlight.draftMode = true and fl.scheduledArrival = (select max(fl2.scheduledArrival) from FlightLeg fl2 where fl2.parentFlight.id = :flightId)")
