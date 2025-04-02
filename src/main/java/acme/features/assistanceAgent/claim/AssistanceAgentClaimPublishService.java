@@ -26,13 +26,17 @@ public class AssistanceAgentClaimPublishService extends AbstractGuiService<Assis
 	public void authorise() {
 		boolean authorised;
 
-		int claimId;
+		int claimId, agentId;
 		Claim claim;
+		AssistanceAgent agent;
 
 		claimId = super.getRequest().getData("id", int.class);
 		claim = this.repository.findClaimById(claimId);
 
-		authorised = claim != null && claim.getIsPublished().equals(false);
+		agentId = super.getRequest().getPrincipal().getActiveRealm().getId();
+		agent = this.repository.findAssistanceAgentById(agentId);
+
+		authorised = claim != null && claim.getIsPublished().equals(false) && claim.getAgent().equals(agent);
 
 		super.getResponse().setAuthorised(authorised);
 	}
