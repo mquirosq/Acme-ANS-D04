@@ -26,13 +26,17 @@ public class AssistanceAgentClaimShowService extends AbstractGuiService<Assistan
 	public void authorise() {
 		boolean authorised;
 
-		int claimId;
+		int claimId, agentId;
 		Claim claim;
+		AssistanceAgent agent;
 
 		claimId = super.getRequest().getData("id", int.class);
 		claim = this.repository.findClaimById(claimId);
 
-		authorised = claim != null;
+		agentId = super.getRequest().getPrincipal().getActiveRealm().getId();
+		agent = this.repository.findAssistanceAgentById(agentId);
+
+		authorised = claim != null && claim.getAgent().equals(agent);
 
 		super.getResponse().setAuthorised(authorised);
 	}
@@ -51,18 +55,14 @@ public class AssistanceAgentClaimShowService extends AbstractGuiService<Assistan
 	@Override
 	public void unbind(final Claim claim) {
 		Dataset dataset;
-		SelectChoices typeChoices, statusChoices, legChoices, assistanceAgentChoices;
-
+		SelectChoices typeChoices, statusChoices, legChoices;
 		Collection<FlightLeg> legs;
-		Collection<AssistanceAgent> assistanceAgents;
 
-		legs = this.repository.findAllLegs();
-		assistanceAgents = this.repository.findAllAssistanceAgents();
+		legs = this.repository.findAllPublishedLegs();
 
 		typeChoices = SelectChoices.from(ClaimType.class, claim.getType());
 		statusChoices = SelectChoices.from(ClaimStatus.class, claim.getStatus());
 		legChoices = SelectChoices.from(legs, "flightNumber", claim.getLeg());
-		assistanceAgentChoices = SelectChoices.from(assistanceAgents, "employeeCode", claim.getAgent());
 
 		dataset = super.unbindObject(claim, "registrationMoment", "passengerEmail", "description", "isPublished");
 		dataset.put("types", typeChoices);
@@ -71,8 +71,6 @@ public class AssistanceAgentClaimShowService extends AbstractGuiService<Assistan
 		dataset.put("status", statusChoices.getSelected().getKey());
 		dataset.put("legs", legChoices);
 		dataset.put("leg", legChoices.getSelected().getKey());
-		dataset.put("assistanceAgents", assistanceAgentChoices);
-		dataset.put("assistanceAgent", assistanceAgentChoices.getSelected().getKey());
 
 		super.getResponse().addData(dataset);
 	}
