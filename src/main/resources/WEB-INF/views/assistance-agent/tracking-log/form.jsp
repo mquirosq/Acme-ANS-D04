@@ -9,7 +9,6 @@
 	<acme:input-textbox code = "assistance-agent.tracking-log.form.label.step" path = "step"/>
 	<acme:input-double code = "assistance-agent.tracking-log.form.label.resolutionPercentage" path = "resolutionPercentage" placeholder = "assistance-agent.tracking-log.form.placeholder.resolutionPercentage"/>
 	<acme:input-textarea code = "assistance-agent.tracking-log.form.label.resolution" path = "resolution"/>
-	<acme:input-checkbox code = "assistance-agent.tracking-log.form.label.isPublished" path = "isPublished" readonly = "true"/>	
 	<acme:input-select code = "assistance-agent.tracking-log.form.label.status" path = "status" choices = "${statuses}"/>
 	<acme:input-select code = "assistance-agent.tracking-log.form.label.claim" path = "claim" choices = "${claims}"/>
 	

@@ -56,7 +56,7 @@ public class AssistanceAgentTrackingLogUpdateService extends AbstractGuiService<
 		claimId = super.getRequest().getData("claim", int.class);
 		claim = this.repository.findClaimById(claimId);
 
-		super.bindObject(trackingLog, "lastUpdateMoment", "creationMoment", "step", "resolutionPercentage", "resolution", "isPublished", "status");
+		super.bindObject(trackingLog, "step", "resolutionPercentage", "resolution", "status");
 		trackingLog.setClaim(claim);
 	}
 

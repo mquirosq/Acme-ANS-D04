@@ -43,8 +43,9 @@ public class AssistanceAgentTrackingLogCreateService extends AbstractGuiService<
 		claimId = super.getRequest().getData("claim", int.class);
 		claim = this.repository.findClaimById(claimId);
 
-		super.bindObject(trackingLog, "lastUpdateMoment", "creationMoment", "step", "resolutionPercentage", "resolution", "isPublished", "status");
+		super.bindObject(trackingLog, "step", "resolutionPercentage", "resolution", "status");
 
+		trackingLog.setIsPublished(false);
 		trackingLog.setClaim(claim);
 		trackingLog.setCreationMoment(MomentHelper.getCurrentMoment());
 		trackingLog.setLastUpdateMoment(MomentHelper.getCurrentMoment());

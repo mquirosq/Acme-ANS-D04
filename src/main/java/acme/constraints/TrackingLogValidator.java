@@ -37,6 +37,7 @@ public class TrackingLogValidator extends AbstractValidator<ValidTrackingLog, Tr
 		else {
 			{
 				super.state(context, !trackingLog.getLastUpdateMoment().before(trackingLog.getCreationMoment()), "lastUpdateMoment", "acme.validation.trackingLog.lastUpdateMoment.message");
+				super.state(context, !trackingLog.getStatus().equals(ClaimStatus.NO_STATUS), "status", "acme.validation.trackingLog.status.message");
 			}
 			{
 				if (trackingLog.getResolutionPercentage() == 100.0)
