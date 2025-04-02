@@ -36,20 +36,36 @@ public class TrackingLogValidator extends AbstractValidator<ValidTrackingLog, Tr
 			super.state(context, false, "*", "javax.validation.constraints.NotNull.message");
 		else {
 			{
-				super.state(context, !trackingLog.getLastUpdateMoment().before(trackingLog.getCreationMoment()), "*", "acme.validation.trackingLog.lastUpdateMoment.message");
+				super.state(context, !trackingLog.getLastUpdateMoment().before(trackingLog.getCreationMoment()), "lastUpdateMoment", "acme.validation.trackingLog.lastUpdateMoment.message");
 			}
 			{
 				if (trackingLog.getResolutionPercentage() == 100.0)
-					super.state(context, !trackingLog.getStatus().equals(ClaimStatus.PENDING), "*", "acme.validation.trackingLog.notPendingStatus.message");
+					super.state(context, !trackingLog.getStatus().equals(ClaimStatus.PENDING), "status", "acme.validation.trackingLog.notPendingStatus.message");
 				else
-					super.state(context, trackingLog.getStatus().equals(ClaimStatus.PENDING), "*", "acme.validation.trackingLog.pendingStatus.message");
+					super.state(context, trackingLog.getStatus().equals(ClaimStatus.PENDING), "status", "acme.validation.trackingLog.pendingStatus.message");
 			}
 			{
 				if (!trackingLog.getStatus().equals(ClaimStatus.PENDING))
-					super.state(context, !StringHelper.isBlank(trackingLog.getResolution()), "*", "acme.validation.trackingLog.resolution.message");
+					super.state(context, !StringHelper.isBlank(trackingLog.getResolution()), "resolution", "acme.validation.trackingLog.resolution.message");
 			}
 			{
-				super.state(context, !(trackingLog.getIsPublished() && !trackingLog.getClaim().getIsPublished()), "*", "acme.validation.trackingLog.isPublished.message");
+				super.state(context, !(trackingLog.getIsPublished() && !trackingLog.getClaim().getIsPublished()), "isPublished", "acme.validation.trackingLog.isPublished.message");
+			}
+			{
+				if (trackingLog.getStatus().equals(ClaimStatus.RECLAIMED)) {
+					boolean existsCompletedLog, isUnique;
+					List<TrackingLog> trackingLogs, reclaimedLogs;
+
+					trackingLogs = this.repository.findAllByClaimId(trackingLog.getClaim().getId());
+					existsCompletedLog = trackingLogs.stream().anyMatch(t -> t.getResolutionPercentage() == 100.0 && t.getIsPublished());
+
+					super.state(context, existsCompletedLog, "status", "acme.validation.trackingLog.reclaimed.noCompletedLog.message");
+
+					reclaimedLogs = this.repository.findAllByClaimIdAndStatus(trackingLog.getClaim().getId(), ClaimStatus.RECLAIMED);
+					isUnique = reclaimedLogs.isEmpty() || reclaimedLogs.size() == 1 && reclaimedLogs.get(0).equals(trackingLog);
+
+					super.state(context, isUnique, "status", "acme.validation.trackingLog.reclaimed.notUnique.message");
+				}
 			}
 			{
 				List<TrackingLog> trackingLogs;
@@ -64,7 +80,9 @@ public class TrackingLogValidator extends AbstractValidator<ValidTrackingLog, Tr
 
 					if (trackingLogs.size() > i + 1) {
 						t2 = trackingLogs.get(i + 1);
-						super.state(context, t1.getResolutionPercentage() < t2.getResolutionPercentage(), "*", "acme.validation.trackingLog.resolutionPercentage.message");
+
+						if (!t2.getStatus().equals(ClaimStatus.RECLAIMED))
+							super.state(context, t1.getResolutionPercentage() < t2.getResolutionPercentage(), "resolutionPercentage", "acme.validation.trackingLog.resolutionPercentage.message");
 					}
 				}
 			}

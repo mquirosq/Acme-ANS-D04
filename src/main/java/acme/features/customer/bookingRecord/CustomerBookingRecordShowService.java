@@ -38,11 +38,18 @@ public class CustomerBookingRecordShowService extends AbstractGuiService<Custome
 	public void load() {
 		BookingRecord bookingRecord;
 		int id;
+		boolean isDraft;
 
 		id = super.getRequest().getData("id", int.class);
 		bookingRecord = this.repository.findBookingRecordById(id);
+		if (bookingRecord.getBooking() != null)
+			isDraft = bookingRecord.getBooking().isDraftMode();
+		else
+			isDraft = false;
 
 		super.getBuffer().addData(bookingRecord);
+		super.getResponse().addGlobal("draft", isDraft);
+		super.getResponse().addGlobal("bookingId", bookingRecord.getBooking().getId());
 	}
 
 	@Override
@@ -51,7 +58,8 @@ public class CustomerBookingRecordShowService extends AbstractGuiService<Custome
 		SelectChoices choices;
 		Dataset dataset;
 
-		passengers = this.repository.findAllPassengers();
+		int customerId = super.getRequest().getPrincipal().getActiveRealm().getId();
+		passengers = this.repository.findMyPassengers(customerId);
 		choices = SelectChoices.from(passengers, "fullName", bookingRecord.getPassenger());
 
 		dataset = super.unbindObject(bookingRecord);

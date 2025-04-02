@@ -10,15 +10,11 @@
 		readonly="${_command != 'create'}" />
 
 	<jstl:choose>
-		<jstl:when test="${acme:anyOf(_command, 'show|update|delete')}">
-			<acme:submit code="customer.bookingRecord.form.button.update"
-				action="/customer/booking-record/update" />
-			<acme:submit code="customer.bookingRecord.form.button.delete"
-				action="/customer/booking-record/delete" />
+		<jstl:when test="${acme:anyOf(_command, 'show|delete') && draft}">
+			<acme:submit code="customer.bookingRecord.form.button.delete" action="/customer/booking-record/delete" />
 		</jstl:when>
 		<jstl:when test="${_command == 'create'}">
-			<acme:submit code="customer.bookingRecord.form.button.create"
-				action="/customer/booking-record/create" />
+			<acme:submit code="customer.bookingRecord.form.button.create" action="/customer/booking-record/create?id=${bookingId}" />
 		</jstl:when>
 	</jstl:choose>
 </acme:form>

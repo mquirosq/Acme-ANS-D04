@@ -52,13 +52,13 @@ public class CustomerBookingShowService extends AbstractGuiService<Customer, Boo
 		Date currentMoment;
 
 		currentMoment = MomentHelper.getCurrentMoment();
-		flights = this.repository.findAllFlights();
+		flights = this.repository.findAllNonDraftFlights();
 		flights = flights.stream().filter(f -> (f.getScheduledDeparture() != null && MomentHelper.isAfter(f.getScheduledDeparture(), currentMoment))).toList();
 
-		flightChoices = SelectChoices.from(flights, "id", booking.getFlight());
+		flightChoices = SelectChoices.from(flights, "tag", booking.getFlight());
 		travelChoices = SelectChoices.from(TravelClass.class, booking.getTravelClass());
 
-		dataset = super.unbindObject(booking, "locatorCode", "travelClass", "lastCardNibble", "price", "purchasedAt");
+		dataset = super.unbindObject(booking, "locatorCode", "travelClass", "lastCardNibble", "price", "purchasedAt", "draftMode");
 		dataset.put("flight", flightChoices.getSelected().getKey());
 		dataset.put("flights", flightChoices);
 		dataset.put("travelClass", travelChoices.getSelected().getKey());

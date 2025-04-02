@@ -2,5 +2,5 @@
 package acme.datatypes;
 
 public enum ClaimStatus {
-	PENDING, ACCEPTED, REJECTED
+	NO_STATUS, PENDING, ACCEPTED, REJECTED, RECLAIMED
 }
