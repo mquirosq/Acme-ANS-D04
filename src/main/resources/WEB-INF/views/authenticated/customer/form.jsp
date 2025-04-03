@@ -5,7 +5,7 @@
 
 <acme:form>
 	<acme:input-textbox code="authenticated.customer.form.label.identifier" path="identifier"/>
-	<acme:input-textbox code="authenticated.customer.form.label.phoneNumber" path="phoneNumber"/>
+	<acme:input-textbox code="authenticated.customer.form.label.phoneNumber" path="phoneNumber" placeholder = "authenticated.customer.form.placeholder.phoneNumber"/>
 	<acme:input-textarea code="authenticated.customer.form.label.address" path="address"/>
 	<acme:input-textbox code="authenticated.customer.form.label.city" path="city"/>
 	<acme:input-textbox code="authenticated.customer.form.label.country" path="country"/>
