@@ -1,6 +1,7 @@
 
 package acme.constraints;
 
+import java.util.Comparator;
 import java.util.List;
 
 import javax.validation.ConstraintValidatorContext;
@@ -34,7 +35,7 @@ public class TrackingLogValidator extends AbstractValidator<ValidTrackingLog, Tr
 
 		if (trackingLog == null)
 			super.state(context, false, "*", "javax.validation.constraints.NotNull.message");
-		else {
+		else if (trackingLog.getStatus() != null && trackingLog.getClaim() != null) {
 			{
 				super.state(context, !trackingLog.getLastUpdateMoment().before(trackingLog.getCreationMoment()), "lastUpdateMoment", "acme.validation.trackingLog.lastUpdateMoment.message");
 				super.state(context, !trackingLog.getStatus().equals(ClaimStatus.NO_STATUS), "status", "acme.validation.trackingLog.status.message");
@@ -72,6 +73,11 @@ public class TrackingLogValidator extends AbstractValidator<ValidTrackingLog, Tr
 				List<TrackingLog> trackingLogs;
 
 				trackingLogs = this.repository.findAllByClaimId(trackingLog.getClaim().getId());
+
+				if (!trackingLogs.contains(trackingLog)) {
+					trackingLogs.add(trackingLog);
+					trackingLogs.sort(Comparator.comparing(t -> t.getCreationMoment()));
+				}
 
 				for (Integer i = 0; i < trackingLogs.size(); i++) {
 					TrackingLog t1;

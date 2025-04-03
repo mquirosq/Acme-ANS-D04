@@ -85,7 +85,10 @@ public class AssistanceAgentTrackingLogDeleteService extends AbstractGuiService<
 		dataset.put("claims", claimChoices);
 		dataset.put("claim", claimChoices.getSelected().getKey());
 
-		super.getResponse().addGlobal("isClaimPublished", trackingLog.getClaim().getIsPublished());
+		if (trackingLog.getClaim() != null)
+			super.getResponse().addGlobal("isClaimPublished", trackingLog.getClaim().getIsPublished());
+		else
+			super.getResponse().addGlobal("isClaimPublished", false);
 		super.getResponse().addData(dataset);
 	}
 }
