@@ -47,17 +47,21 @@ public class TechnicianTaskRecordShowService extends AbstractGuiService<Technici
 	@Override
 	public void unbind(final TaskRecord taskRecord) {
 		Collection<Task> tasks;
-		SelectChoices choices;
+		Collection<MaintenanceRecord> records;
+		SelectChoices taskChoices, recordChoices;
 		Dataset dataset;
 
 		int id = super.getRequest().getData("id", int.class);
-		MaintenanceRecord maintenanceRecord = this.repository.findMaintenanceRecordOfTaskRecordById(id);
-		tasks = this.repository.findTasksByMaintenanceRecordId(maintenanceRecord.getId());
-		choices = SelectChoices.from(tasks, "type", taskRecord.getTask());
+		tasks = this.repository.findAllTasksByTaskRecordId(id);
+		taskChoices = SelectChoices.from(tasks, "type", taskRecord.getTask());
+		records = this.repository.findAllMaintenanceRecordsByTaskRecordId(id);
+		recordChoices = SelectChoices.from(records, "status", taskRecord.getRecord());
 
 		dataset = super.unbindObject(taskRecord);
 		dataset.put("task", taskRecord.getTask().getId());
-		dataset.put("tasks", choices);
+		dataset.put("tasks", taskChoices);
+		dataset.put("record", taskRecord.getRecord().getId());
+		dataset.put("records", recordChoices);
 
 		super.getResponse().addData(dataset);
 
