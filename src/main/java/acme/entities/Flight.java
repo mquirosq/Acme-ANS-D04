@@ -116,9 +116,10 @@ public class Flight extends AbstractEntity {
 
 	@Transient
 	public String getIdentifierCode() {
-		String identifierCode;
+		String identifierCode = " - ";
 
-		identifierCode = this.getOriginCity() + " - " + this.getDestinationCity();
+		if (this.getOriginCity() != null && this.getDestinationCity() != null)
+			identifierCode = this.getOriginCity() + " - " + this.getDestinationCity();
 
 		return identifierCode;
 	}

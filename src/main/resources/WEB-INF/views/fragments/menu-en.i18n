@@ -62,3 +62,8 @@ master.menu.user-account.become-consumer = Become a consumer
 master.menu.user-account.consumer-profile = Consumer profile
 master.menu.user-account.become-customer = Become a customer
 master.menu.user-account.customer-profile = Customer profile
+
+# master.menu.airline-manager ####################################################
+
+master.menu.airline-manager = Airline Manager
+master.menu.airline-manager.list-flights = List flights
