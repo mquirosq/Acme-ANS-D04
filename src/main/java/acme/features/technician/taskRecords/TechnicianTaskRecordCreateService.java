@@ -36,17 +36,17 @@ public class TechnicianTaskRecordCreateService extends AbstractGuiService<Techni
 
 	@Override
 	public void load() {
+		MaintenanceRecord maintenanceRecord;
+		int id;
 		TaskRecord taskRecord;
 
+		id = super.getRequest().getData("id", int.class);
+		maintenanceRecord = this.repository.findMaintenanceRecordById(id);
+
 		taskRecord = new TaskRecord();
-
-		int maintenanceRecordId = super.getRequest().getData("id", int.class);
-		MaintenanceRecord maintenanceRecord = this.repository.findMaintenanceRecordById(maintenanceRecordId);
-
 		taskRecord.setRecord(maintenanceRecord);
 
 		super.getBuffer().addData(taskRecord);
-		super.getResponse().addGlobal("maintenanceRecordId", maintenanceRecordId);
 	}
 
 	@Override
@@ -66,18 +66,20 @@ public class TechnicianTaskRecordCreateService extends AbstractGuiService<Techni
 
 	@Override
 	public void unbind(final TaskRecord taskRecord) {
-		Collection<Task> tasks;
-		SelectChoices choices;
 		Dataset dataset;
+		SelectChoices taskChoices;
+		Collection<Task> tasks;
+		int maintenanceRecordId;
 
-		int technicianId = super.getRequest().getPrincipal().getActiveRealm().getId();
-		int maintenanceRecordId = taskRecord.getRecord().getId();
-		tasks = this.repository.findTasksByMaintenanceRecordId(maintenanceRecordId);
-		choices = SelectChoices.from(tasks, "type", taskRecord.getTask());
+		maintenanceRecordId = super.getRequest().getData("id", int.class);
+
+		tasks = this.repository.findNewTasksforMaintenanceRecord(maintenanceRecordId);
+		taskChoices = SelectChoices.from(tasks, "description", taskRecord.getTask());
 
 		dataset = super.unbindObject(taskRecord);
-		dataset.put("task", choices.getSelected().getKey());
-		dataset.put("tasks", choices);
+		dataset.put("tasks", taskChoices);
+		dataset.put("task", taskChoices.getSelected().getKey());
+		dataset.put("id", maintenanceRecordId);
 
 		super.getResponse().addData(dataset);
 	}

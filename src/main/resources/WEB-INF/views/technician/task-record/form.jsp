@@ -4,7 +4,9 @@
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
 <acme:form readonly="${_command != 'create'}">
-	<acme:input-select code="technician.task-record.form.label.technician"
+	<jstl:choose>
+		<jstl:when test="${acme:anyOf(_command, 'show|delete')}">
+			<acme:input-select code="technician.task-record.form.label.technician"
 		path="technician" choices="${technicians}"/>
 	<acme:input-select code="technician.task-record.form.label.type"
 		path="type" choices="${types}"/>
@@ -14,13 +16,12 @@
 		path="estimate"/>
 	<acme:input-textarea code="technician.task-record.form.label.description"
 		path="description"/>	
-	<jstl:choose>
-		<jstl:when test="${acme:anyOf(_command, 'show|delete')}">
 			<acme:submit code="technician.task-record.form.button.delete" action="/technician/task-record/delete" />
 		</jstl:when>
 		<jstl:when test="${_command == 'create'}">
-			<acme:submit code="technician.task-record.form.button.create" action="/technician/task-record/create?id=${maintenanceRecordId}" />
-
+			<acme:input-select code="technician.task-record.form.label.task"
+		path="task" choices="${tasks}"/>
+			<acme:submit code="technician.task-record.form.button.create" action="/technician/task-record/create?id=${id}" />
 		</jstl:when>
 	</jstl:choose>
 </acme:form>

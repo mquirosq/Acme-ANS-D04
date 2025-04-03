@@ -13,8 +13,18 @@
 	<acme:input-textarea code="technician.maintenance-record.form.label.notes" path="notes"/>
 
 	<jstl:choose>	 
-		<jstl:when test="${_command == 'show'}">
+		<jstl:when test="${_command == 'show' && draftMode == false}">
 			<acme:button code="technician.maintenance-record.form.button.tasks" action="/technician/task-record/list?id=${id}"/>			
-		</jstl:when>		
+		</jstl:when>
+		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish') && draftMode == true}">
+            <acme:submit code="technician.maintenance-record.form.button.publish" action="/technician/maintenance-record/publish?id=${id}"/>
+            <acme:submit code="technician.maintenance-record.form.button.update" action="/technician/maintenance-record/update?id=${id}"/>
+            <acme:submit code="technician.maintenance-record.form.button.delete" action="/technician/maintenance-record/delete?id=${id}"/>
+			<acme:button code="technician.maintenance-record.form.button.tasks" action="/technician/task-record/list?id=${id}"/>
+            
+        </jstl:when>
+        <jstl:when test="${_command == 'create'}">
+            <acme:submit code="technician.maintenance-record.form.button.create" action="/technician/maintenance-record/create"/>
+        </jstl:when>  	
 	</jstl:choose>
 </acme:form>

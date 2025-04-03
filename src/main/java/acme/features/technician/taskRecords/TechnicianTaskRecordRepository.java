@@ -38,4 +38,7 @@ public interface TechnicianTaskRecordRepository extends AbstractRepository {
 	@Query("select tr.task from TaskRecord tr where tr.id = :id")
 	Task findTaskByTaskRecordId(int id);
 
+	@Query("select t from Task t where t not in (select tr.task from TaskRecord tr where tr.record.id = :id)")
+	Collection<Task> findNewTasksforMaintenanceRecord(int id);
+
 }
