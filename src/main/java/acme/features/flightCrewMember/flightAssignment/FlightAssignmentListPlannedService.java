@@ -28,11 +28,10 @@ public class FlightAssignmentListPlannedService extends AbstractGuiService<Fligh
 	@Override
 	public void load() {
 		Collection<FlightAssignment> completedFlightAssignments;
-		int flightCrewMemberId;
 		Date currentMoment;
 
 		currentMoment = MomentHelper.getCurrentMoment();
-		flightCrewMemberId = super.getRequest().getPrincipal().getActiveRealm().getId();
+		int flightCrewMemberId = super.getRequest().getPrincipal().getActiveRealm().getId();
 		completedFlightAssignments = this.repository.findPlannedFlightAssignments(currentMoment, flightCrewMemberId);
 
 		super.getBuffer().addData(completedFlightAssignments);
@@ -44,6 +43,7 @@ public class FlightAssignmentListPlannedService extends AbstractGuiService<Fligh
 
 		dataset = super.unbindObject(flightAssignment, "duty", "moment", "currentStatus");
 
+		super.addPayload(dataset, flightAssignment, "remarks");
 		super.getResponse().addData(dataset);
 	}
 

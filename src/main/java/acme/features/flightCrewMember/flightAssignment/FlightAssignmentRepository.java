@@ -9,6 +9,8 @@ import org.springframework.stereotype.Repository;
 
 import acme.client.repositories.AbstractRepository;
 import acme.entities.FlightAssignment;
+import acme.entities.FlightLeg;
+import acme.realms.FlightCrewMember;
 
 @Repository
 public interface FlightAssignmentRepository extends AbstractRepository {
@@ -18,4 +20,26 @@ public interface FlightAssignmentRepository extends AbstractRepository {
 
 	@Query("select f from FlightAssignment f where f.moment > :moment and f.allocatedFlightCrewMember.id = :id")
 	Collection<FlightAssignment> findPlannedFlightAssignments(Date moment, int id);
+
+	@Query("select f from FlightAssignment f where f.id = :id")
+	FlightAssignment findFlightAssignmentById(int id);
+
+	@Query("select l from FlightLeg l")
+	Collection<FlightLeg> findAllLegs();
+
+	@Query("select f from FlightCrewMember f")
+	Collection<FlightCrewMember> findAllFlightCrewMembers();
+
+	@Query("select l from FlightLeg l where l.id = :id")
+	FlightLeg findByLegId(int id);
+
+	@Query("select f from FlightCrewMember f where f.id = :id")
+	FlightCrewMember findByFlightCrewMemberId(int id);
+
+	@Query("select f from FlightAssignment f where f.allocatedFlightCrewMember.id = :id ")
+	Collection<FlightAssignment> findFlightAssignmentsByFlightCrewMemberId(int id);
+
+	@Query("select f from FlightAssignment f where f.leg.id = :id")
+	Collection<FlightAssignment> findFlightAssignmentsByFlightLegId(int id);
+
 }

@@ -1,6 +1,19 @@
 
-flight-crew-member.flight-assignment.list.title = Mis asignaciones de vuelo
+flight-crew-member.flight-assignment.list.title = Asignaciones de vuelo
+flight-crew-member.flight-assignment.form.title = Asignación de vuelo
 
 flightCrewMember.list.label.duty = Cargo
 flightCrewMember.list.label.moment = Fecha
 flightCrewMember.list.label.currentStatus = Estado actual
+flightCrewMember.list.label.allocatedFlightCrewMember = Código del tripulante
+flightCrewMember.list.label.leg = Código IATA del tramo
+
+flightCrewMember.flightAssignment.form.label.duty = Cargo
+flightCrewMember.flightAssignment.form.label.moment = Fecha
+flightCrewMember.flightAssignment.form.label.currentStatus = Estado actual
+flightCrewMember.flightAssignment.form.label.remarks = Observaciones
+flightCrewMember.flightAssignment.form.label.allocatedFlightCrewMember = Código del tripulante de cabina asignado
+flightCrewMember.flightAssignment.form.label.leg = Código IATA del tramo
+flightCrewMember.flightAssignment.form.label.isPublished = Publicado
+
+flight-crew-member.flight-assignment.list.button.create = Crear

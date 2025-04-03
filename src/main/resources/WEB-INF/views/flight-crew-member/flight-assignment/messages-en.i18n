@@ -1,6 +1,19 @@
 
-flight-crew-member.flight-assignment.list.title = My flight assignments
+flight-crew-member.flight-assignment.list.title = Flight assignments
+flight-crew-member.flight-assignment.form.title = Flight assignment
 
 flightCrewMember.list.label.duty = Duty
 flightCrewMember.list.label.moment = Moment
 flightCrewMember.list.label.currentStatus = Current status
+flightCrewMember.list.label.allocatedFlightCrewMember = Crew member code
+flightCrewMember.list.label.leg = Leg IATA code
+
+flightCrewMember.flightAssignment.form.label.duty = Duty
+flightCrewMember.flightAssignment.form.label.moment = Moment
+flightCrewMember.flightAssignment.form.label.currentStatus = Custom status
+flightCrewMember.flightAssignment.form.label.remarks = Remarks
+flightCrewMember.flightAssignment.form.label.allocatedFlightCrewMember = Allocated flight crew member code
+flightCrewMember.flightAssignment.form.label.leg = Leg IATA code
+flightCrewMember.flightAssignment.form.label.isPublished = Published
+
+flight-crew-member.flight-assignment.list.button.create = Create

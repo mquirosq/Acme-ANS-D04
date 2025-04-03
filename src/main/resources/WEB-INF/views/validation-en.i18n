@@ -52,3 +52,10 @@ acme.validation.aircraft.registrationNumber.message			= The registration number 
 
 
 acme.validation.confirmation.message = You must confirm before performing this operation
+
+acme.validation.flightAssignment.overlappingLegs.message = Flight crew members cannot be assigned to overlapping flight legs
+acme.validation.flightAssignment.pastLeg.message = The chosen leg has already happened
+acme.validation.flightAssignment.extraPilot.message = The pilot duty is already covered for this flight leg
+acme.validation.flightAssignment.extraCopilot.message = The copilot duty is already covered for this flight leg
+acme.validation.flightAssignment.unavailableFlightCrewMember.message = The flight crew member is unavailable
+
