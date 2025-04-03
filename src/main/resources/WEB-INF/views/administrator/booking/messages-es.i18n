@@ -2,7 +2,7 @@ administrator.booking.list.title = Lista  de reservas
 administrator.booking.form.title = Detalles de la reserva
 
 administrator.booking.list.label.locatorCode = Código de seguimiento
-administrator.booking.list.label.purchasedAt = Fecha de compra
+administrator.booking.list.label.flight = Vuelo
 administrator.booking.list.label.price = Precio
 administrator.booking.list.label.customer = Cliente
 
