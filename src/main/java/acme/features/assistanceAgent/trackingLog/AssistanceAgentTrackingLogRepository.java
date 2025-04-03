@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import acme.client.repositories.AbstractRepository;
 import acme.entities.Claim;
 import acme.entities.TrackingLog;
+import acme.realms.AssistanceAgent;
 
 @Repository
 public interface AssistanceAgentTrackingLogRepository extends AbstractRepository {
@@ -24,4 +25,8 @@ public interface AssistanceAgentTrackingLogRepository extends AbstractRepository
 
 	@Query("select c from Claim c where c.id = :id")
 	Claim findClaimById(int id);
+
+	@Query("select a from AssistanceAgent a where a.id = :id")
+	AssistanceAgent findAssistanceAgentById(int id);
+
 }

@@ -28,6 +28,7 @@ acme.validation.trackingLog.lastUpdateMoment.message			= The last update moment 
 acme.validation.trackingLog.isPublished.message					= The tracking log cannot be published until its associated claim has been published
 acme.validation.trackingLog.reclaimed.noCompletedLog.message	= There must be a published completed tracking log for a claim before submitting a reclaimed one for that same claim
 acme.validation.trackingLog.reclaimed.notUnique.message			= There must only be one reclaimed tracking log for a particular claim
+acme.validation.trackingLog.status.message						= A tracking log cannot have NO_STATUS as status
 
 acme.validation.service.promotioncode.message 				= The promotion code year must be according to the current year
 acme.validation.service.promotioncodeuniqueness.message 	= The promotion code is not unique

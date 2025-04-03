@@ -26,13 +26,18 @@ public class AssistanceAgentTrackingLogPublishService extends AbstractGuiService
 	public void authorise() {
 		boolean authorised;
 
-		int trackingLogId;
+		int trackingLogId, agentId;
 		TrackingLog trackingLog;
+		AssistanceAgent agent;
 
 		trackingLogId = super.getRequest().getData("id", int.class);
 		trackingLog = this.repository.findTrackingLogById(trackingLogId);
 
-		authorised = trackingLog != null && trackingLog.getClaim().getIsPublished();
+		agentId = super.getRequest().getPrincipal().getActiveRealm().getId();
+		agent = this.repository.findAssistanceAgentById(agentId);
+
+		authorised = trackingLog != null && trackingLog.getIsPublished().equals(false) && trackingLog.getClaim() != null && trackingLog.getClaim().getIsPublished() && trackingLog.getClaim().getAgent() != null
+			&& trackingLog.getClaim().getAgent().equals(agent);
 
 		super.getResponse().setAuthorised(authorised);
 	}
@@ -56,7 +61,7 @@ public class AssistanceAgentTrackingLogPublishService extends AbstractGuiService
 		claimId = super.getRequest().getData("claim", int.class);
 		claim = this.repository.findClaimById(claimId);
 
-		super.bindObject(trackingLog, "lastUpdateMoment", "creationMoment", "step", "resolutionPercentage", "resolution", "isPublished", "status");
+		super.bindObject(trackingLog, "step", "resolutionPercentage", "resolution", "status");
 		trackingLog.setClaim(claim);
 	}
 
@@ -88,7 +93,10 @@ public class AssistanceAgentTrackingLogPublishService extends AbstractGuiService
 		dataset.put("claims", claimChoices);
 		dataset.put("claim", claimChoices.getSelected().getKey());
 
-		super.getResponse().addGlobal("isClaimPublished", trackingLog.getClaim().getIsPublished());
+		if (trackingLog.getClaim() != null)
+			super.getResponse().addGlobal("isClaimPublished", trackingLog.getClaim().getIsPublished());
+		else
+			super.getResponse().addGlobal("isClaimPublished", false);
 		super.getResponse().addData(dataset);
 	}
 }

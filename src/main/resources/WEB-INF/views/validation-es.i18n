@@ -29,6 +29,7 @@ acme.validation.trackingLog.lastUpdateMoment.message			= El momento de última a
 acme.validation.trackingLog.isPublished.message					= No se puede publicar hasta que la queja asociada no esté publicada
 acme.validation.trackingLog.reclaimed.noCompletedLog.message	= Debe haber un registro publicado para una queja para poder crear uno reclamado para esa misma queja
 acme.validation.trackingLog.reclaimed.notUnique.message			= Solo puede haber un registro reclamado para cada queja
+acme.validation.trackingLog.status.message						= Un registro no puede tener NO_STATUS como estado
 
 acme.validation.service.promotioncode.message 				= El código de la promoción debe correponder al año actual
 acme.validation.service.promotioncodeuniqueness.message 	= El código de la promoción no es unico
