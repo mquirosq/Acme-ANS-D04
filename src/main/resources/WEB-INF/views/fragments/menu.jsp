@@ -49,7 +49,6 @@
 		
 		<acme:menu-option code = "master.menu.technician" access = "hasRealm('Technician')">
 			<acme:menu-suboption code = "master.menu.technician.list-maintenance-records" action = "/technician/maintenance-record/list"/>
-			<acme:menu-separator/>
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.provider" access="hasRealm('Provider')">

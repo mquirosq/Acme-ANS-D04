@@ -1,0 +1,8 @@
+
+technician.task-record.list.label.type = Task type
+technician.task-record.list.label.technician = Technician
+technician.task-record.list.label.priority = Priority
+
+technician.task-record.list.button.create = Add
+
+technician.task-record.form.button.delete = Remove

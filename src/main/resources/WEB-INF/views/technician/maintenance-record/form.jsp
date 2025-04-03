@@ -14,7 +14,7 @@
 
 	<jstl:choose>	 
 		<jstl:when test="${_command == 'show'}">
-			<acme:button code="technician.maintenance-record.form.button.tasks" action="/technician/tasks/list?masterId=${id}"/>			
+			<acme:button code="technician.maintenance-record.form.button.tasks" action="/technician/task-record/list?id=${id}"/>			
 		</jstl:when>		
 	</jstl:choose>
 </acme:form>
