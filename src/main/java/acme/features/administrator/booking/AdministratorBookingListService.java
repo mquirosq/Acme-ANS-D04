@@ -36,11 +36,12 @@ public class AdministratorBookingListService extends AbstractGuiService<Administ
 	public void unbind(final Booking booking) {
 		Dataset dataset;
 
-		dataset = super.unbindObject(booking, "locatorCode", "purchasedAt", "price");
+		dataset = super.unbindObject(booking, "locatorCode", "price");
 
+		dataset.put("flight", booking.getFlight().getIdentifierCode());
 		dataset.put("customer", booking.getCustomer().getIdentifier());
 
-		super.addPayload(dataset, booking, "travelClass", "lastCardNibble", "flight");
+		super.addPayload(dataset, booking, "travelClass", "lastCardNibble", "purchasedAt");
 
 		super.getResponse().addData(dataset);
 	}
