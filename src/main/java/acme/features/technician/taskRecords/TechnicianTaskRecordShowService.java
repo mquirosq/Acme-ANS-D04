@@ -47,21 +47,26 @@ public class TechnicianTaskRecordShowService extends AbstractGuiService<Technici
 	@Override
 	public void unbind(final TaskRecord taskRecord) {
 		Collection<Task> tasks;
-		Collection<MaintenanceRecord> records;
-		SelectChoices taskChoices, recordChoices;
+		SelectChoices taskChoices, technicianChoices;
 		Dataset dataset;
 
 		int id = super.getRequest().getData("id", int.class);
 		tasks = this.repository.findAllTasksByTaskRecordId(id);
 		taskChoices = SelectChoices.from(tasks, "type", taskRecord.getTask());
-		records = this.repository.findAllMaintenanceRecordsByTaskRecordId(id);
-		recordChoices = SelectChoices.from(records, "status", taskRecord.getRecord());
+		int priority = taskRecord.getTask().getPriority();
+		technicianChoices = SelectChoices.from(tasks, "technician.identity.fullName", taskRecord.getTask());
+		int estimate = taskRecord.getTask().getHourEstimate();
+		String description = taskRecord.getTask().getDescription();
 
 		dataset = super.unbindObject(taskRecord);
 		dataset.put("task", taskRecord.getTask().getId());
-		dataset.put("tasks", taskChoices);
-		dataset.put("record", taskRecord.getRecord().getId());
-		dataset.put("records", recordChoices);
+		dataset.put("types", taskChoices);
+		dataset.put("type", taskChoices.getSelected().getKey());
+		dataset.put("priority", priority);
+		dataset.put("technicians", technicianChoices);
+		dataset.put("technician", technicianChoices.getSelected().getKey());
+		dataset.put("estimate", estimate);
+		dataset.put("description", description);
 
 		super.getResponse().addData(dataset);
 

@@ -9,7 +9,6 @@ import acme.client.components.models.Dataset;
 import acme.client.components.views.SelectChoices;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
-import acme.entities.MaintenanceRecord;
 import acme.entities.Task;
 import acme.entities.TaskRecord;
 import acme.realms.Technician;
@@ -25,12 +24,12 @@ public class TechnicianTaskRecordDeleteService extends AbstractGuiService<Techni
 	public void authorise() {
 		boolean authorised;
 
-		int maintenanceRecordId = super.getRequest().getData("id", int.class);
-		MaintenanceRecord maintenanceRecord = this.repository.findMaintenanceRecordById(maintenanceRecordId);
+		int taskRecordId = super.getRequest().getData("id", int.class);
+		TaskRecord taskRecord = this.repository.findTaskRecordById(taskRecordId);
 
-		Technician technician = maintenanceRecord.getTechnician();
+		Technician technician = taskRecord.getRecord().getTechnician();
 
-		authorised = maintenanceRecord != null && super.getRequest().getPrincipal().hasRealm(technician);
+		authorised = taskRecord != null && super.getRequest().getPrincipal().hasRealm(technician);
 		super.getResponse().setAuthorised(authorised);
 	}
 
@@ -47,7 +46,7 @@ public class TechnicianTaskRecordDeleteService extends AbstractGuiService<Techni
 
 	@Override
 	public void bind(final TaskRecord taskRecord) {
-		super.bindObject(taskRecord, "task");
+		super.bindObject(taskRecord);
 	}
 
 	@Override
@@ -63,17 +62,26 @@ public class TechnicianTaskRecordDeleteService extends AbstractGuiService<Techni
 	@Override
 	public void unbind(final TaskRecord taskRecord) {
 		Collection<Task> tasks;
-		SelectChoices choices;
+		SelectChoices taskChoices, technicianChoices;
 		Dataset dataset;
 
-		int technicianId = super.getRequest().getPrincipal().getActiveRealm().getId();
-		int maintenanceRecordId = taskRecord.getRecord().getId();
-		tasks = this.repository.findTasksByMaintenanceRecordId(maintenanceRecordId);
-		choices = SelectChoices.from(tasks, "type", taskRecord.getTask());
+		int id = super.getRequest().getData("id", int.class);
+		tasks = this.repository.findAllTasksByTaskRecordId(id);
+		taskChoices = SelectChoices.from(tasks, "type", taskRecord.getTask());
+		int priority = taskRecord.getTask().getPriority();
+		technicianChoices = SelectChoices.from(tasks, "technician.identity.fullName", taskRecord.getTask());
+		int estimate = taskRecord.getTask().getHourEstimate();
+		String description = taskRecord.getTask().getDescription();
 
 		dataset = super.unbindObject(taskRecord);
-		dataset.put("task", choices.getSelected().getKey());
-		dataset.put("tasks", choices);
+		dataset.put("task", taskRecord.getTask().getId());
+		dataset.put("types", taskChoices);
+		dataset.put("type", taskChoices.getSelected().getKey());
+		dataset.put("priority", priority);
+		dataset.put("technicians", technicianChoices);
+		dataset.put("technician", technicianChoices.getSelected().getKey());
+		dataset.put("estimate", estimate);
+		dataset.put("description", description);
 
 		super.getResponse().addData(dataset);
 	}

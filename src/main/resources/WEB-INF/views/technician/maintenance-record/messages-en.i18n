@@ -1,10 +1,9 @@
 # messages-en.i18n
 
-technician.maintenance-record.form.title = Job form 
-technician.maintenance-record.list.title = Listing of jobs
+technician.maintenance-record.form.title = Maintenance record form 
+technician.maintenance-record.list.title = Listing of maintenance records
 
 technician.maintenance-record.form.label.maintenance-date = Maintenance Date:
-technician.maintenance-record.form.label.task = Tasks: 
 technician.maintenance-record.form.label.status = Status:
 technician.maintenance-record.form.label.aircraft = Aircraft:
 technician.maintenance-record.form.label.inspection-due = Date of inspection due:

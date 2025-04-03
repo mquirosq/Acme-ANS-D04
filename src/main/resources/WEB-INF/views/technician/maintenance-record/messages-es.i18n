@@ -1,20 +1,19 @@
 # messages-es.i18n
 
-technician.maintenance-record.form.title = Job form 
-technician.maintenance-record.list.title = Listing of jobs
+technician.maintenance-record.form.title = Formulario de registro de mantenimiento
+technician.maintenance-record.list.title = Listado de registros de mantenimiento
 
-technician.maintenance-record.form.label.maintenance-date = Maintenance Date:
-technician.maintenance-record.form.label.task = Tasks: 
-technician.maintenance-record.form.label.status = Status:
-technician.maintenance-record.form.label.aircraft = Aircraft:
-technician.maintenance-record.form.label.inspection-due = Date of inspection due:
-technician.maintenance-record.form.label.cost = Cost:
-technician.maintenance-record.form.label.notes = Notes:
+technician.maintenance-record.form.label.maintenance-date = Fecha de mantenimiento:
+technician.maintenance-record.form.label.status = Estatus:
+technician.maintenance-record.form.label.aircraft = Aeronave:
+technician.maintenance-record.form.label.inspection-due = Fecha límite de inspección:
+technician.maintenance-record.form.label.cost = Coste:
+technician.maintenance-record.form.label.notes = Notas:
 
-technician.maintenance-record.form.button.tasks = Tasks
+technician.maintenance-record.form.button.tasks = Tareas
 
-technician.maintenance-record.list.label.aircraft = Aircraft
-technician.maintenance-record.list.label.maintenance-date = Maintenance Date
-technician.maintenance-record.list.label.inspection-due = Inspection Due
+technician.maintenance-record.list.label.aircraft = Aeronave
+technician.maintenance-record.list.label.maintenance-date = Fecha de mantenimiento
+technician.maintenance-record.list.label.inspection-due = Fecha límite de inspección
 
-technician.maintenance-record.list.button.create = Create
+technician.maintenance-record.list.button.create = Crear
