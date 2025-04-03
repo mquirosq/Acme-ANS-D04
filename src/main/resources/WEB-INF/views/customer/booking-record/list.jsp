@@ -5,6 +5,7 @@
 
 <acme:list>
 	<acme:list-column code="customer.bookingRecord.list.label.passenger" path="passenger"/>
+	<acme:list-column code="customer.bookingRecord.list.label.passport" path="passport"/>
 	<acme:list-payload path="payload"/>
 </acme:list>
 
