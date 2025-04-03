@@ -5,7 +5,7 @@
 
 <acme:list>
 	<acme:list-column code="customer.booking.list.label.locatorCode" path="locatorCode"/>
-	<acme:list-column code="customer.booking.list.label.purchasedAt" path="purchasedAt"/>
+	<acme:list-column code="customer.booking.list.label.flight" path="flight"/>
 	<acme:list-column code="customer.booking.list.label.price" path="price"/>
 	<acme:list-column code="customer.booking.list.label.draftMode" path="draftMode"/>
 	<acme:list-payload path="payload"/>

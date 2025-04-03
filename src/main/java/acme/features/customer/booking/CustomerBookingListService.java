@@ -38,8 +38,9 @@ public class CustomerBookingListService extends AbstractGuiService<Customer, Boo
 	public void unbind(final Booking booking) {
 		Dataset dataset;
 		String draftMode = "";
+		String flight;
 
-		dataset = super.unbindObject(booking, "locatorCode", "purchasedAt", "price", "flight");
+		dataset = super.unbindObject(booking, "locatorCode", "purchasedAt", "price");
 
 		if (booking.isDraftMode())
 			draftMode = "Pending";
@@ -47,8 +48,10 @@ public class CustomerBookingListService extends AbstractGuiService<Customer, Boo
 			draftMode = "Complete";
 		dataset.put("draftMode", draftMode);
 
-		super.addPayload(dataset, booking, //
-			"travelClass", "lastCardNibble");
+		flight = booking.getFlight().getIdentifierCode();
+		dataset.put("flight", flight);
+
+		super.addPayload(dataset, booking, "travelClass", "lastCardNibble", "purchasedAt");
 
 		super.getResponse().addData(dataset);
 	}

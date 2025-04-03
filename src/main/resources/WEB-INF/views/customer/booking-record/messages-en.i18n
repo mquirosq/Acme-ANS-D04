@@ -8,6 +8,7 @@ customer.bookingRecord.form.button.update = Update
 customer.bookingRecord.form.button.delete = Delete
 
 customer.bookingRecord.list.label.passenger = Passenger
+customer.bookingRecord.list.label.passport = Passport
 
 customer.bookingRecord.list.button.create = Add
 
