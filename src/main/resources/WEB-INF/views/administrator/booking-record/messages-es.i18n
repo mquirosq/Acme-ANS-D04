@@ -1,5 +1,5 @@
-administrator.bookingRecord.form.title = Formulario de pasajeros
-administrator.bookingRecord.list.title = Lista de pasajeros
+administrator.booking-record.form.title = Formulario de pasajeros
+administrator.booking-record.list.title = Lista de pasajeros
 
 administrator.bookingRecord.form.label.passenger = Pasajero
 
