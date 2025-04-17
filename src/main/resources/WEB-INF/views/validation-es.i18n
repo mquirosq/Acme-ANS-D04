@@ -23,13 +23,14 @@ acme.validation.assistanceAgent.employeeCodeUniqueness.message	= El código de e
 
 acme.validation.trackingLog.notPendingStatus.message 			= El estado no puede ser pendiente si el porcentaje de resolución ha llegado al 100%
 acme.validation.trackingLog.pendingStatus.message				= El estado debe ser pendiente si el porcentaje de resolución no ha llegado al 100%
-acme.validation.trackingLog.resolution.message					= La resolución es obligatoria si la queja ha sido aceptada o rechazada
+acme.validation.trackingLog.resolution.message					= La resolución es obligatoria si la reclamación ha sido aceptada o rechazada
 acme.validation.trackingLog.resolutionPercentage.message 		= El porcentaje de resolución debe aumentar monotónicamente
 acme.validation.trackingLog.lastUpdateMoment.message			= El momento de última actualización no puede ser anterior al momento de creación
-acme.validation.trackingLog.isPublished.message					= No se puede publicar hasta que la queja asociada no esté publicada
-acme.validation.trackingLog.reclaimed.noCompletedLog.message	= Debe haber un registro publicado para una queja para poder crear uno reclamado para esa misma queja
-acme.validation.trackingLog.reclaimed.notUnique.message			= Solo puede haber un registro reclamado para cada queja
-acme.validation.trackingLog.status.message						= Un registro no puede tener NO_STATUS como estado
+acme.validation.trackingLog.isPublished.message					= No se puede publicar hasta que la reclamación asociada no esté publicada
+acme.validation.trackingLog.reclaimed.noCompletedLog.message	= Debe haber un registro publicado para una reclamación para poder reclamarla
+acme.validation.trackingLog.creationMoment.message				= El momento de creación de un registro no puede ser anterior al de la reclamación a la que está asociado
+acme.validation.trackingLog.reclaimed.status.message			= Un registro reclamado debe tener el mismo estado que el registro completado anterior
+acme.validation.trackingLog.completedNumber.message				= No pueden haber más de dos registros completados para la misma reclamación
 
 acme.validation.service.promotioncode.message 				= El código de la promoción debe correponder al año actual
 acme.validation.service.promotioncodeuniqueness.message 	= El código de la promoción no es unico

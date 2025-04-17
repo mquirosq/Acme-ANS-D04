@@ -24,7 +24,7 @@ public class ClaimValidator extends AbstractValidator<ValidClaim, Claim> {
 
 		if (claim == null)
 			super.state(context, false, "*", "javax.validation.constraints.NotNull.message");
-		else if (claim.getIsPublished() && (claim.getStatus().equals(ClaimStatus.NO_STATUS) || claim.getStatus().equals(ClaimStatus.PENDING)))
+		else if (claim.getIsPublished() && claim.getStatus().equals(ClaimStatus.PENDING))
 			super.state(context, false, "isPublished", "acme.validation.claim.isPublished.message");
 		else if (claim.getLeg() != null && claim.getLeg().getDraftMode())
 			super.state(context, false, "leg", "acme.validation.claim.leg.message");
