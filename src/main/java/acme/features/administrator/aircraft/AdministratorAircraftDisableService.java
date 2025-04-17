@@ -30,7 +30,7 @@ public class AdministratorAircraftDisableService extends AbstractGuiService<Admi
 
 		aircraftId = super.getRequest().getData("id", int.class);
 		aircraft = this.repository.findAircraftById(aircraftId);
-		authorised = !aircraft.getStatus().equals(AircraftStatus.UNDER_MAINTENANCE);
+		authorised = aircraft != null && !aircraft.getStatus().equals(AircraftStatus.UNDER_MAINTENANCE);
 
 		super.getResponse().setAuthorised(authorised);
 	}
