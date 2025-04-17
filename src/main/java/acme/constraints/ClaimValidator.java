@@ -5,6 +5,7 @@ import javax.validation.ConstraintValidatorContext;
 
 import acme.client.components.validation.AbstractValidator;
 import acme.client.components.validation.Validator;
+import acme.client.helpers.MomentHelper;
 import acme.datatypes.ClaimStatus;
 import acme.entities.Claim;
 
@@ -24,10 +25,13 @@ public class ClaimValidator extends AbstractValidator<ValidClaim, Claim> {
 
 		if (claim == null)
 			super.state(context, false, "*", "javax.validation.constraints.NotNull.message");
-		else if (claim.getIsPublished() && claim.getStatus().equals(ClaimStatus.PENDING))
-			super.state(context, false, "isPublished", "acme.validation.claim.isPublished.message");
-		else if (claim.getLeg() != null && claim.getLeg().getDraftMode())
-			super.state(context, false, "leg", "acme.validation.claim.leg.message");
+		else if (claim.getIsPublished() != null && claim.getStatus() != null && claim.getLeg() != null && claim.getRegistrationMoment() != null) {
+			if (claim.getIsPublished() && claim.getStatus().equals(ClaimStatus.PENDING))
+				super.state(context, false, "isPublished", "acme.validation.claim.isPublished.message");
+
+			super.state(context, MomentHelper.isAfterOrEqual(claim.getRegistrationMoment(), claim.getLeg().getScheduledDeparture()), "registrationMoment", "acme.validation.claim.registrationMoment.message");
+			super.state(context, !claim.getLeg().getDraftMode(), "leg", "acme.validation.claim.leg.message");
+		}
 		result = !super.hasErrors(context);
 		return result;
 	}
