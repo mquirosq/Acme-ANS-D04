@@ -21,7 +21,7 @@
 			<acme:button code = "administrator.aircraft.form.button.edit" action = "/administrator/aircraft/update?id=${id}"/>
 		</jstl:when>
 		<jstl:when test = "${acme:anyOf(_command, 'update|disable')}">
-			<acme:submit code = "administrator.aircraft.form.button.edit" action = "/administrator/aircraft/update"/>			
+			<acme:submit code = "administrator.aircraft.form.button.update" action = "/administrator/aircraft/update"/>			
 			
 			<jstl:if test = "${status != 'UNDER_MAINTENANCE'}">
 				<acme:submit code = "administrator.aircraft.form.button.disable" action = "/administrator/aircraft/disable"/>
