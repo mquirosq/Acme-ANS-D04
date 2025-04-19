@@ -26,12 +26,26 @@ public class AdministratorAircraftDisableService extends AbstractGuiService<Admi
 		boolean authorised;
 
 		int aircraftId;
+		String aircraftIdRaw;
 		Aircraft aircraft;
 
-		aircraftId = super.getRequest().getData("id", int.class);
-		aircraft = this.repository.findAircraftById(aircraftId);
-		authorised = aircraft != null && !aircraft.getStatus().equals(AircraftStatus.UNDER_MAINTENANCE);
+		authorised = true;
 
+		if (super.getRequest().hasData("id")) {
+			aircraftIdRaw = super.getRequest().getData("id", String.class);
+
+			try {
+				aircraftId = Integer.parseInt(aircraftIdRaw);
+			} catch (Throwable e) {
+				aircraftId = -1;
+				authorised = false;
+			}
+
+			if (aircraftId >= 0) {
+				aircraft = this.repository.findAircraftById(aircraftId);
+				authorised &= aircraft != null && !aircraft.getStatus().equals(AircraftStatus.UNDER_MAINTENANCE);
+			}
+		}
 		super.getResponse().setAuthorised(authorised);
 	}
 
