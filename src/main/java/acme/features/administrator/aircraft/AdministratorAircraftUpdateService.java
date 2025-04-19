@@ -37,15 +37,12 @@ public class AdministratorAircraftUpdateService extends AbstractGuiService<Admin
 
 			try {
 				aircraftId = Integer.parseInt(aircraftIdRaw);
-			} catch (Throwable e) {
+			} catch (NumberFormatException e) {
 				aircraftId = -1;
 				authorised = false;
 			}
-
-			if (aircraftId >= 0) {
-				aircraft = this.repository.findAircraftById(aircraftId);
-				authorised &= aircraft != null;
-			}
+			aircraft = this.repository.findAircraftById(aircraftId);
+			authorised &= aircraft != null;
 		}
 
 		if (super.getRequest().hasData("airline")) {
@@ -53,12 +50,12 @@ public class AdministratorAircraftUpdateService extends AbstractGuiService<Admin
 
 			try {
 				airlineId = Integer.parseInt(airlineIdRaw);
-			} catch (Throwable e) {
+			} catch (NumberFormatException e) {
 				airlineId = -1;
 				authorised = false;
 			}
 
-			if (airlineId >= 0) {
+			if (airlineId != 0) {
 				airline = this.repository.findAirlineById(airlineId);
 				authorised &= airline != null;
 			}

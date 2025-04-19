@@ -36,12 +36,12 @@ public class AdministratorAircraftCreateService extends AbstractGuiService<Admin
 
 			try {
 				airlineId = Integer.parseInt(airlineIdRaw);
-			} catch (Throwable e) {
+			} catch (NumberFormatException e) {
 				airlineId = -1;
 				authorised = false;
 			}
 
-			if (airlineId >= 0) {
+			if (airlineId != 0) {
 				airline = this.repository.findAirlineById(airlineId);
 				authorised &= airline != null;
 			}
