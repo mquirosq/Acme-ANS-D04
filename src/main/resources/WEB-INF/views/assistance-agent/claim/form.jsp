@@ -13,7 +13,7 @@
 	
 	<jstl:choose>
 		<jstl:when test = "${acme:anyOf(_command, 'show|update|delete|publish') && isPublished == false}">
-			<acme:submit code = "assistance-agent.claim.form.button.edit" action = "/assistance-agent/claim/update"/>			
+			<acme:submit code = "assistance-agent.claim.form.button.update" action = "/assistance-agent/claim/update"/>			
 			
 			<jstl:if test = "${acme:anyOf(status, 'ACCEPTED|REJECTED|RECLAIMED')}">
 				<acme:submit code = "assistance-agent.claim.form.button.publish" action = "/assistance-agent/claim/publish"/>
