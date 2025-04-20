@@ -1,5 +1,5 @@
-customer.bookingRecord.form.title = Formulario de pasajeros
-customer.bookingRecord.list.title = Lista de pasajeros
+customer.booking-record.form.title = Formulario de pasajeros
+customer.booking-record.list.title = Lista de pasajeros
 
 customer.bookingRecord.form.label.passenger = Pasajero
 
