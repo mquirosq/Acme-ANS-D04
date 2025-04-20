@@ -29,7 +29,7 @@ public class CustomerBookingRecordListService extends AbstractGuiService<Custome
 		Collection<BookingRecord> bookingRecords;
 		boolean isDraft;
 
-		bookingId = super.getRequest().getData("id", int.class);
+		bookingId = super.getRequest().getData("masterId", int.class);
 		isDraft = this.repository.findBookingDraftById(bookingId);
 		bookingRecords = this.repository.findBookingRecordsByBookingId(bookingId);
 

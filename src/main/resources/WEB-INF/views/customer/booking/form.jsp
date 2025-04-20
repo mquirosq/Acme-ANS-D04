@@ -16,15 +16,15 @@
 	</jstl:if>
 	<jstl:choose>	 
 		<jstl:when test="${_command == 'show' && draftMode}">
-			<acme:button code="customer.booking.form.button.passengers" action="/customer/booking-record/list?id=${id}"/>	
+			<acme:button code="customer.booking.form.button.passengers" action="/customer/booking-record/list?masterId=${id}"/>	
 			<acme:submit code="customer.booking.form.button.update" action="/customer/booking/update"/>
 			<acme:submit code="customer.booking.form.button.publish" action="/customer/booking/publish"/>		
 		</jstl:when>
 		<jstl:when test="${_command == 'show'}">
-			<acme:button code="customer.booking.form.button.passengers" action="/customer/booking-record/list?id=${id}"/>			
+			<acme:button code="customer.booking.form.button.passengers" action="/customer/booking-record/list?masterId=${id}"/>			
 		</jstl:when>
 		<jstl:when test="${acme:anyOf(_command, 'update || publish')}">
-			<acme:button code="customer.booking.form.button.passengers" action="/customer/booking-record/list?id=${id}"/>
+			<acme:button code="customer.booking.form.button.passengers" action="/customer/booking-record/list?masterId=${id}"/>
 			<acme:submit code="customer.booking.form.button.update" action="/customer/booking/update"/>
 			<acme:submit code="customer.booking.form.button.publish" action="/customer/booking/publish"/>
 		</jstl:when>

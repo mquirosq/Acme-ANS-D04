@@ -10,7 +10,7 @@
 </acme:list>
 
 <jstl:if test="${draft}">
-	<acme:button code="customer.bookingRecord.list.button.create" action="/customer/booking-record/create?id=${bookingId}"/>
+	<acme:button code="customer.bookingRecord.list.button.create" action="/customer/booking-record/create?masterId=${bookingId}"/>
 </jstl:if>
 
 

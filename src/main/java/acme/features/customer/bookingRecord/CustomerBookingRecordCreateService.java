@@ -29,7 +29,7 @@ public class CustomerBookingRecordCreateService extends AbstractGuiService<Custo
 	public void authorise() {
 		boolean authorised;
 
-		int bookingId = super.getRequest().getData("id", int.class);
+		int bookingId = super.getRequest().getData("masterId", int.class);
 		Booking booking = this.repository.findBookingById(bookingId);
 
 		Customer customer = booking.getCustomer();
@@ -45,7 +45,7 @@ public class CustomerBookingRecordCreateService extends AbstractGuiService<Custo
 
 		bookingRecord = new BookingRecord();
 
-		int bookingId = super.getRequest().getData("id", int.class);
+		int bookingId = super.getRequest().getData("masterId", int.class);
 		Booking booking = this.repository.findBookingById(bookingId);
 
 		bookingRecord.setBooking(booking);
