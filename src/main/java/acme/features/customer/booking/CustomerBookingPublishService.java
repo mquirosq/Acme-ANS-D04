@@ -31,13 +31,10 @@ public class CustomerBookingPublishService extends AbstractGuiService<Customer, 
 	public void authorise() {
 		boolean authorised;
 
-		int customerId = super.getRequest().getPrincipal().getActiveRealm().getId();
-		Customer customer = this.repository.findCustomerById(customerId);
-
 		int bookingId = super.getRequest().getData("id", int.class);
 		Booking booking = this.repository.findBookingById(bookingId);
 
-		authorised = booking != null && booking.isDraftMode() && super.getRequest().getPrincipal().hasRealm(customer);
+		authorised = booking != null && booking.isDraftMode() && super.getRequest().getPrincipal().hasRealm(booking.getCustomer());
 
 		super.getResponse().setAuthorised(authorised);
 	}
@@ -72,10 +69,7 @@ public class CustomerBookingPublishService extends AbstractGuiService<Customer, 
 
 	@Override
 	public void perform(final Booking booking) {
-		Date currentMoment = MomentHelper.getCurrentMoment();
-
 		booking.setDraftMode(false);
-		booking.setPurchasedAt(currentMoment);
 		this.repository.save(booking);
 	}
 

@@ -35,9 +35,27 @@ public class CustomerBookingUpdateService extends AbstractGuiService<Customer, B
 		int bookingId = super.getRequest().getData("id", int.class);
 		Booking booking = this.repository.findBookingById(bookingId);
 
-		Customer customer = booking.getCustomer();
+		authorised = booking != null && booking.isDraftMode() && super.getRequest().getPrincipal().getActiveRealm().equals(booking.getCustomer());
 
-		authorised = booking != null && booking.isDraftMode() && super.getRequest().getPrincipal().hasRealm(customer);
+		String flightIdRaw;
+		int flightId;
+		Flight flight;
+
+		if (super.getRequest().hasData("flight")) {
+			flightIdRaw = super.getRequest().getData("flight", String.class);
+
+			try {
+				flightId = Integer.parseInt(flightIdRaw);
+			} catch (NumberFormatException e) {
+				flightId = -1;
+				authorised = false;
+			}
+
+			if (flightId != 0) {
+				flight = this.repository.findFlightById(flightId);
+				authorised &= flight != null && !flight.getDraftMode() && flight.getScheduledDeparture() != null && MomentHelper.isAfter(flight.getScheduledDeparture(), MomentHelper.getCurrentMoment());
+			}
+		}
 
 		super.getResponse().setAuthorised(authorised);
 	}
@@ -45,10 +63,10 @@ public class CustomerBookingUpdateService extends AbstractGuiService<Customer, B
 	@Override
 	public void load() {
 		Booking booking;
-		int id;
+		int bookingId;
 
-		id = super.getRequest().getData("id", int.class);
-		booking = this.repository.findBookingById(id);
+		bookingId = super.getRequest().getData("id", int.class);
+		booking = this.repository.findBookingById(bookingId);
 
 		super.getBuffer().addData(booking);
 	}
