@@ -60,7 +60,7 @@ public class CustomerBookingRecordShowService extends AbstractGuiService<Custome
 
 		int customerId = super.getRequest().getPrincipal().getActiveRealm().getId();
 		passengers = this.repository.findMyPassengers(customerId);
-		choices = SelectChoices.from(passengers, "fullName", bookingRecord.getPassenger());
+		choices = SelectChoices.from(passengers, "identifier", bookingRecord.getPassenger());
 
 		dataset = super.unbindObject(bookingRecord);
 		dataset.put("passenger", bookingRecord.getPassenger().getId());
