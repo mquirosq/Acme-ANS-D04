@@ -36,6 +36,29 @@ public class CustomerBookingRecordCreateService extends AbstractGuiService<Custo
 
 		authorised = booking != null && booking.isDraftMode() && super.getRequest().getPrincipal().getActiveRealm().equals(customer);
 
+		String passengerIdRaw;
+		int passengerId;
+		Passenger passenger;
+		Collection<Passenger> legalPassengers;
+
+		legalPassengers = this.repository.findMyPassengersNotAlreadyInBooking(super.getRequest().getPrincipal().getActiveRealm().getId(), bookingId);
+
+		if (super.getRequest().hasData("passenger")) {
+			passengerIdRaw = super.getRequest().getData("passenger", String.class);
+
+			try {
+				passengerId = Integer.parseInt(passengerIdRaw);
+			} catch (NumberFormatException e) {
+				passengerId = -1;
+				authorised = false;
+			}
+
+			if (passengerId != 0) {
+				passenger = this.repository.findPassengerById(passengerId);
+				authorised &= passenger != null && legalPassengers.contains(passenger);
+			}
+		}
+
 		super.getResponse().setAuthorised(authorised);
 	}
 
