@@ -34,7 +34,7 @@ public class CustomerBookingRecordCreateService extends AbstractGuiService<Custo
 
 		Customer customer = booking.getCustomer();
 
-		authorised = booking != null && booking.isDraftMode() && super.getRequest().getPrincipal().hasRealm(customer);
+		authorised = booking != null && booking.isDraftMode() && super.getRequest().getPrincipal().getActiveRealm().equals(customer);
 
 		super.getResponse().setAuthorised(authorised);
 	}

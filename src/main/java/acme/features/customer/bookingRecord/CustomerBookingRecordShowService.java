@@ -23,15 +23,38 @@ public class CustomerBookingRecordShowService extends AbstractGuiService<Custome
 
 	@Override
 	public void authorise() {
-		boolean status;
+		boolean authorised;
 		int id;
 		Booking booking;
 
 		id = super.getRequest().getData("id", int.class);
 		booking = this.repository.findBookingOfBookingRecordById(id);
-		status = booking != null && super.getRequest().getPrincipal().hasRealm(booking.getCustomer());
+		authorised = booking != null && super.getRequest().getPrincipal().getActiveRealm().equals(booking.getCustomer());
 
-		super.getResponse().setAuthorised(status);
+		String passengerIdRaw;
+		int passengerId;
+		Passenger passenger;
+		Collection<Passenger> legalPassengers;
+
+		legalPassengers = this.repository.findMyPassengersNotAlreadyInBooking(super.getRequest().getPrincipal().getActiveRealm().getId(), id);
+
+		if (super.getRequest().hasData("passenger")) {
+			passengerIdRaw = super.getRequest().getData("passenger", String.class);
+
+			try {
+				passengerId = Integer.parseInt(passengerIdRaw);
+			} catch (NumberFormatException e) {
+				passengerId = -1;
+				authorised = false;
+			}
+
+			if (passengerId != 0) {
+				passenger = this.repository.findPassengerById(passengerId);
+				authorised &= passenger != null && legalPassengers.contains(passenger);
+			}
+		}
+
+		super.getResponse().setAuthorised(authorised);
 	}
 
 	@Override
@@ -59,7 +82,8 @@ public class CustomerBookingRecordShowService extends AbstractGuiService<Custome
 		Dataset dataset;
 
 		int customerId = super.getRequest().getPrincipal().getActiveRealm().getId();
-		passengers = this.repository.findMyPassengers(customerId);
+		int bookingId = super.getResponse().getData("bookingId", int.class);
+		passengers = this.repository.findMyPassengersNotAlreadyInBooking(customerId, bookingId);
 		choices = SelectChoices.from(passengers, "identifier", bookingRecord.getPassenger());
 
 		dataset = super.unbindObject(bookingRecord);
