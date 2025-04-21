@@ -20,6 +20,7 @@ customer.booking.form.placeholder.lastCardNibble = Cuatro últimos dígitos de l
 customer.booking.list.button.create = Crear
 
 customer.booking.form.button.passengers = Pasajeros
+customer.booking.form.button.edit = Editar
 customer.booking.form.button.update = Actualizar
 customer.booking.form.button.publish = Publicar
 customer.booking.form.button.create = Crear

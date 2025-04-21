@@ -93,7 +93,7 @@ public class CustomerBookingPublishService extends AbstractGuiService<Customer, 
 		dataset.put("flights", flightChoices);
 		dataset.put("travelClass", travelChoices.getSelected().getKey());
 		dataset.put("travelClasses", travelChoices);
-		dataset.put("readonly", false);
+		dataset.put("readonly", true);
 
 		super.getResponse().addData(dataset);
 	}

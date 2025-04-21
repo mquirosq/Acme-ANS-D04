@@ -4,7 +4,7 @@
 <%@taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
-<acme:form> 
+<acme:form readonly = "${readonly}"> 
 	<acme:input-textbox code="customer.booking.form.label.locatorCode" path="locatorCode"/>
 	<acme:input-select code="customer.booking.form.label.flight" path="flight" choices="${flights}"/>	
 	<acme:input-select code="customer.booking.form.label.travelClass" path="travelClass" choices="${travelClasses}"/>
@@ -15,18 +15,16 @@
 		<acme:input-checkbox code = "customer.booking.form.label.draft" path = "draftMode" readonly = "${true}"/>
 	</jstl:if>
 	<jstl:choose>	 
-		<jstl:when test="${_command == 'show' && draftMode}">
+		<jstl:when test="${acme:anyOf(_command, 'show || publish') && draftMode}">
 			<acme:button code="customer.booking.form.button.passengers" action="/customer/booking-record/list?masterId=${id}"/>	
-			<acme:submit code="customer.booking.form.button.update" action="/customer/booking/update"/>
-			<acme:submit code="customer.booking.form.button.publish" action="/customer/booking/publish"/>		
+			<acme:button code="customer.booking.form.button.edit" action="/customer/booking/update?id=${id}"/>
+			<acme:submit code="customer.booking.form.button.publish" action="/customer/booking/publish?id=${id}"/>	
 		</jstl:when>
 		<jstl:when test="${_command == 'show'}">
 			<acme:button code="customer.booking.form.button.passengers" action="/customer/booking-record/list?masterId=${id}"/>			
 		</jstl:when>
-		<jstl:when test="${acme:anyOf(_command, 'update || publish')}">
-			<acme:button code="customer.booking.form.button.passengers" action="/customer/booking-record/list?masterId=${id}"/>
+		<jstl:when test="${_command == 'update'}">
 			<acme:submit code="customer.booking.form.button.update" action="/customer/booking/update"/>
-			<acme:submit code="customer.booking.form.button.publish" action="/customer/booking/publish"/>
 		</jstl:when>
 		<jstl:when test="${_command == 'create'}">
 			<acme:submit code="customer.booking.form.button.create" action="/customer/booking/create"/>
