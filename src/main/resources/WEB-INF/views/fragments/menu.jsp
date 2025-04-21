@@ -60,7 +60,7 @@
 		
 		<acme:menu-option code="master.menu.customer" access="hasRealm('Customer')">
 			<acme:menu-suboption code="master.menu.customer.list-bookings" action="/customer/booking/list"/>
-			<acme:menu-suboption code="master.menu.customer.list-passengers" action="/customer/passenger/list?draft=${false}"/>
+			<acme:menu-suboption code="master.menu.customer.list-passengers" action="/customer/passenger/list?all=${false}"/>
 		</acme:menu-option>
 		
 		<acme:menu-option code="master.menu.airline-manager" access="hasRealm('AirlineManager')">

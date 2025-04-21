@@ -3,8 +3,8 @@ customer.passenger.list.title						= Passenger list
 customer.passenger.list.label.fullName = Full name
 customer.passenger.list.label.passportNumber = Passport number
 
-customer.list-passengers.draft = My drafts
 customer.list-passengers.mine = My passengers
+customer.list-passengers.booking = Passengers in my bookings
 
 customer.passenger.form.title						= Passenger details
 
