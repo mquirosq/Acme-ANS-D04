@@ -7,12 +7,12 @@ customer.booking.list.label.price = Price
 customer.booking.list.label.flight = Flight
 customer.booking.list.label.draftMode = Status
 
-customer.booking.form.label.locatorCode = Locator code
-customer.booking.form.label.flight = Flight	
-customer.booking.form.label.travelClass = Travel class
-customer.booking.form.label.lastCardNibble = Last credit card nibble
-customer.booking.form.label.price = Price
-customer.booking.form.label.purchasedAt = Purchase date
+customer.booking.form.label.locatorCode = Locator code:
+customer.booking.form.label.flight = Flight:
+customer.booking.form.label.travelClass = Travel class:
+customer.booking.form.label.lastCardNibble = Last credit card nibble:
+customer.booking.form.label.price = Price:
+customer.booking.form.label.purchasedAt = Purchase date:
 customer.booking.form.label.draft = Pending
 
 customer.booking.form.placeholder.lastCardNibble = Four last digits of the credit card used to pay
