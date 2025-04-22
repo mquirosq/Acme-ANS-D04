@@ -29,7 +29,7 @@ public class ClaimValidator extends AbstractValidator<ValidClaim, Claim> {
 			if (claim.getIsPublished() && claim.getStatus().equals(ClaimStatus.PENDING))
 				super.state(context, false, "isPublished", "acme.validation.claim.isPublished.message");
 
-			super.state(context, MomentHelper.isAfterOrEqual(claim.getRegistrationMoment(), claim.getLeg().getScheduledDeparture()), "registrationMoment", "acme.validation.claim.registrationMoment.message");
+			super.state(context, MomentHelper.isAfterOrEqual(claim.getRegistrationMoment(), claim.getLeg().getScheduledArrival()), "registrationMoment", "acme.validation.claim.registrationMoment.message");
 			super.state(context, !claim.getLeg().getDraftMode(), "leg", "acme.validation.claim.leg.message");
 		}
 		result = !super.hasErrors(context);

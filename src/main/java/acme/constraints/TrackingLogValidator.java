@@ -39,7 +39,7 @@ public class TrackingLogValidator extends AbstractValidator<ValidTrackingLog, Tr
 		else if (trackingLog.getStatus() != null && trackingLog.getClaim() != null && trackingLog.getResolutionPercentage() != null && trackingLog.getIsPublished() != null && trackingLog.getLastUpdateMoment() != null
 			&& trackingLog.getCreationMoment() != null) {
 			{
-				super.state(context, MomentHelper.isAfterOrEqual(trackingLog.getLastUpdateMoment(), trackingLog.getClaim().getRegistrationMoment()), "creationMoment", "acme.validation.trackingLog.creationMoment.message");
+				super.state(context, MomentHelper.isAfterOrEqual(trackingLog.getCreationMoment(), trackingLog.getClaim().getRegistrationMoment()), "creationMoment", "acme.validation.trackingLog.creationMoment.message");
 				super.state(context, MomentHelper.isAfterOrEqual(trackingLog.getLastUpdateMoment(), trackingLog.getCreationMoment()), "lastUpdateMoment", "acme.validation.trackingLog.lastUpdateMoment.message");
 			}
 			{

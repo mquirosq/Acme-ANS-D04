@@ -59,4 +59,4 @@ acme.validation.confirmation.message = You must confirm before performing this o
 
 acme.validation.claim.isPublished.message 			= You cannot publish a claim that has not been completed
 acme.validation.claim.leg.message					= A claim cannot be linked to an unpublished leg
-acme.validation.claim.registrationMoment.message 	= A claim's registration moment cannot be before the departure of the leg to which it is associated
+acme.validation.claim.registrationMoment.message 	= A claim's registration moment cannot be before the arrival of the leg to which it is associated
