@@ -59,8 +59,6 @@ public class CustomerBookingCreateService extends AbstractGuiService<Customer, B
 		Booking booking;
 
 		booking = new Booking();
-
-		Date currentMoment = MomentHelper.getCurrentMoment();
 		Money price = new Money();
 
 		price.setAmount(0.0);

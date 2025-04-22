@@ -31,11 +31,19 @@ public class CustomerBookingUpdateService extends AbstractGuiService<Customer, B
 	@Override
 	public void authorise() {
 		boolean authorised;
+		String rawId;
+		int bookingId;
+		Booking booking;
 
-		int bookingId = super.getRequest().getData("id", int.class);
-		Booking booking = this.repository.findBookingById(bookingId);
+		try {
+			rawId = super.getRequest().getData("id", String.class);
+			bookingId = Integer.parseInt(rawId);
+			booking = this.repository.findBookingById(bookingId);
 
-		authorised = booking != null && booking.isDraftMode() && super.getRequest().getPrincipal().getActiveRealm().equals(booking.getCustomer());
+			authorised = booking != null && booking.isDraftMode() && super.getRequest().getPrincipal().hasRealm(booking.getCustomer());
+		} catch (NumberFormatException e) {
+			authorised = false;
+		}
 
 		String flightIdRaw;
 		int flightId;
