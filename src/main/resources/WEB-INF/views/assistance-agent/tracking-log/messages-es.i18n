@@ -1,6 +1,6 @@
 assistance-agent.tracking-log.list.title							= Registros de seguimiento
 
-assistance-agent.tracking-log.list.label.claim						= Queja
+assistance-agent.tracking-log.list.label.claim						= Reclamación
 assistance-agent.tracking-log.list.label.resolutionPercentage		= Porcentage de resolución
 assistance-agent.tracking-log.list.label.status						= Estado
 assistance-agent.tracking-log.list.label.isPublished				= Publicado
@@ -18,7 +18,7 @@ assistance-agent.tracking-log.form.label.resolutionPercentage		= Porcentaje de r
 assistance-agent.tracking-log.form.label.resolution					= Resolución
 assistance-agent.tracking-log.form.label.isPublished				= Publicado
 assistance-agent.tracking-log.form.label.status						= Estado
-assistance-agent.tracking-log.form.label.claim						= Queja
+assistance-agent.tracking-log.form.label.claim						= Reclamación
 
 assistance-agent.tracking-log.form.button.edit						= Editar
 assistance-agent.tracking-log.form.button.publish					= Publicar

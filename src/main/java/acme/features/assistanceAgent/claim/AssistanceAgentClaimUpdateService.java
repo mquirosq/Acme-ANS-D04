@@ -26,18 +26,40 @@ public class AssistanceAgentClaimUpdateService extends AbstractGuiService<Assist
 	public void authorise() {
 		boolean authorised;
 
-		int claimId, agentId;
+		int claimId, legId;
+		String claimIdRaw, legIdRaw;
+
 		Claim claim;
-		AssistanceAgent agent;
+		FlightLeg leg;
 
-		claimId = super.getRequest().getData("id", int.class);
-		claim = this.repository.findClaimById(claimId);
+		authorised = true;
 
-		agentId = super.getRequest().getPrincipal().getActiveRealm().getId();
-		agent = this.repository.findAssistanceAgentById(agentId);
+		if (super.getRequest().hasData("id")) {
+			claimIdRaw = super.getRequest().getData("id", String.class);
 
-		authorised = claim != null && claim.getIsPublished().equals(false) && claim.getAgent().equals(agent);
-    
+			try {
+				claimId = Integer.parseInt(claimIdRaw);
+			} catch (NumberFormatException e) {
+				claimId = -1;
+			}
+			claim = this.repository.findClaimById(claimId);
+			authorised = claim != null && !claim.getIsPublished() && claim.getAgent() != null && super.getRequest().getPrincipal().hasRealm(claim.getAgent());
+		}
+
+		if (super.getRequest().hasData("leg")) {
+			legIdRaw = super.getRequest().getData("leg", String.class);
+
+			try {
+				legId = Integer.parseInt(legIdRaw);
+			} catch (NumberFormatException e) {
+				legId = -1;
+			}
+
+			if (legId != 0) {
+				leg = this.repository.findLegById(legId);
+				authorised &= leg != null && !leg.getDraftMode();
+			}
+		}
 		super.getResponse().setAuthorised(authorised);
 	}
 
