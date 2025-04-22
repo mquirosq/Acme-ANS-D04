@@ -27,13 +27,19 @@ public class CustomerBookingRecordDeleteService extends AbstractGuiService<Custo
 	@Override
 	public void authorise() {
 		boolean authorised;
+		int id;
+		String rawId;
+		BookingRecord bookingRecord;
 
-		int bookingRecordId = super.getRequest().getData("id", int.class);
-		BookingRecord bookingRecord = this.repository.findBookingRecordById(bookingRecordId);
-
-		Customer customer = bookingRecord.getBooking().getCustomer();
-
-		authorised = bookingRecord != null && bookingRecord.getBooking() != null && bookingRecord.getBooking().isDraftMode() && super.getRequest().getPrincipal().hasRealm(customer);
+		try {
+			rawId = super.getRequest().getData("id", String.class);
+			id = Integer.parseInt(rawId);
+			bookingRecord = this.repository.findBookingRecordById(id);
+			Customer customer = bookingRecord.getBooking().getCustomer();
+			authorised = bookingRecord != null && bookingRecord.getBooking() != null && bookingRecord.getBooking().isDraftMode() && super.getRequest().getPrincipal().getActiveRealm().equals(customer);
+		} catch (NumberFormatException e) {
+			authorised = false;
+		}
 
 		super.getResponse().setAuthorised(authorised);
 	}
@@ -73,7 +79,7 @@ public class CustomerBookingRecordDeleteService extends AbstractGuiService<Custo
 		int customerId = super.getRequest().getPrincipal().getActiveRealm().getId();
 		int bookingId = bookingRecord.getBooking().getId();
 		passengers = this.repository.findMyPassengersNotAlreadyInBooking(customerId, bookingId);
-		choices = SelectChoices.from(passengers, "fullName", bookingRecord.getPassenger());
+		choices = SelectChoices.from(passengers, "identifier", bookingRecord.getPassenger());
 
 		dataset = super.unbindObject(bookingRecord);
 		dataset.put("passenger", bookingRecord.getPassenger().getId());

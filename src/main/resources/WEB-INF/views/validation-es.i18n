@@ -7,7 +7,7 @@ acme.validation.airline.IATACode.message = El código IATA debe ser único
 
 acme.validation.booking.locatorCode.message = The código de localización debe ser único
 acme.validation.booking.lastCreditCardNibble.message = Para publicar una reserva debe incluir los últimos cuatro dígitos de la tarjeta de crédito usada para pagar
-acme.validation.booking.passengers.message = Para publicar una reserva debe adociar al menos un pasajero
+acme.validation.booking.passengers.message = Para publicar una reserva debe asociar al menos un pasajero
 
 acme.validation.bookingRecord.uniquePassengerInBooking.message = Este pasajero ya está en esta reserva
 
@@ -58,3 +58,5 @@ acme.validation.confirmation.message = Debes confirmar antes de realizar esta op
 acme.validation.claim.isPublished.message			= No se puede publicar una reclamación que no está completada
 acme.validation.claim.leg.message					= Una reclamación no puede estar enlazada a un tramo no publicado
 acme.validation.claim.registrationMoment.message 	= El momento de registro de una reclamación no puede ser anterior a la fecha de salida del tramo al que está asociada
+
+acme.validation.realm.identifierPattern.message = El identificador debe de incluir 2-3 letras en mayúscula y 6 dígitos.
