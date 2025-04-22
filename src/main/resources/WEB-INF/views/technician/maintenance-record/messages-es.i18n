@@ -17,3 +17,6 @@ technician.maintenance-record.list.label.maintenance-date = Fecha de mantenimien
 technician.maintenance-record.list.label.inspection-due = Fecha límite de inspección
 
 technician.maintenance-record.list.button.create = Crear
+technician.maintenance-record.form.button.delete = Eliminar
+technician.maintenance-record.form.button.update = Actualizar
+technician.maintenance-record.form.button.publish = Publicar

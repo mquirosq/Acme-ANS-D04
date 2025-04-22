@@ -17,3 +17,6 @@ technician.maintenance-record.list.label.maintenance-date = Maintenance Date
 technician.maintenance-record.list.label.inspection-due = Inspection Due
 
 technician.maintenance-record.list.button.create = Create
+technician.maintenance-record.form.button.delete = Delete
+technician.maintenance-record.form.button.update = Update
+technician.maintenance-record.form.button.publish = Publish
