@@ -39,8 +39,8 @@ tracking-log-27,2012/07/02 0:00,2012/07/02 0:00,Lorem ipsum dolor sit ame,100.00
 tracking-log-28,2012/07/02 0:00,2012/07/02 0:00,Lorem ipsum dolor sit ame,50.00,PENDING,null,false,claim-09
 tracking-log-29,2012/07/02 0:00,2012/07/02 0:00,Lorem ipsum dolor sit ame,100.00,ACCEPTED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",false,claim-09
 tracking-log-30,2012/07/02 1:00,2012/07/02 1:00,Lorem ipsum dolor sit ame,100.00,REJECTED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",true,claim-28
+# Status - singular values
 tracking-log-31,2012/07/02 2:00,2012/07/02 2:00,Lorem ipsum dolor sit ame,100.00,REJECTED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",false,claim-28
-# Status - no singular values
 # Resolution - standard variations
 tracking-log-32,2012/07/02 0:00,2012/07/02 0:00,Lorem ipsum dolor sit ame,50.00,PENDING,null,false,claim-10
 tracking-log-33,2012/07/02 0:00,2012/07/02 0:00,Lorem ipsum dolor sit ame,50.00,PENDING,,false,claim-11
