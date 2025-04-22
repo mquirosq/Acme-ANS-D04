@@ -38,14 +38,13 @@ public class AssistanceAgentClaimCreateService extends AbstractGuiService<Assist
 
 			try {
 				legId = Integer.parseInt(legIdRaw);
-			} catch (Throwable e) {
+			} catch (NumberFormatException e) {
 				legId = -1;
-				authorised = false;
 			}
 
 			if (legId != 0) {
 				leg = this.repository.findLegById(legId);
-				authorised &= leg != null;
+				authorised = leg != null && !leg.getDraftMode();
 			}
 		}
 		super.getResponse().setAuthorised(authorised);

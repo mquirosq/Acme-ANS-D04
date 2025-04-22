@@ -27,28 +27,22 @@ public class AssistanceAgentClaimDeleteService extends AbstractGuiService<Assist
 	public void authorise() {
 		boolean authorised;
 
-		int claimId, agentId;
+		int claimId;
 		String claimIdRaw;
-
 		Claim claim;
-		AssistanceAgent agent;
 
 		authorised = true;
-
-		agentId = super.getRequest().getPrincipal().getActiveRealm().getId();
-		agent = this.repository.findAssistanceAgentById(agentId);
 
 		if (super.getRequest().hasData("id")) {
 			claimIdRaw = super.getRequest().getData("id", String.class);
 
 			try {
 				claimId = Integer.parseInt(claimIdRaw);
-			} catch (Throwable e) {
+			} catch (NumberFormatException e) {
 				claimId = -1;
-				authorised = false;
 			}
 			claim = this.repository.findClaimById(claimId);
-			authorised &= claim != null && !claim.getIsPublished() && claim.getAgent() != null && claim.getAgent().equals(agent);
+			authorised = claim != null && !claim.getIsPublished() && claim.getAgent() != null && super.getRequest().getPrincipal().hasRealm(claim.getAgent());
 		}
 		super.getResponse().setAuthorised(authorised);
 	}
@@ -66,14 +60,7 @@ public class AssistanceAgentClaimDeleteService extends AbstractGuiService<Assist
 
 	@Override
 	public void bind(final Claim claim) {
-		int legId;
-		FlightLeg leg;
 
-		legId = super.getRequest().getData("leg", int.class);
-		leg = this.repository.findLegById(legId);
-
-		super.bindObject(claim, "passengerEmail", "description", "type");
-		claim.setLeg(leg);
 	}
 
 	@Override
