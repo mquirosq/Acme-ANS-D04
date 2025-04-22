@@ -26,19 +26,24 @@ public class AssistanceAgentTrackingLogPublishService extends AbstractGuiService
 	public void authorise() {
 		boolean authorised;
 
-		int trackingLogId, agentId;
+		int trackingLogId;
+		String trackingLogIdRaw;
 		TrackingLog trackingLog;
-		AssistanceAgent agent;
 
-		trackingLogId = super.getRequest().getData("id", int.class);
-		trackingLog = this.repository.findTrackingLogById(trackingLogId);
+		trackingLog = null;
 
-		agentId = super.getRequest().getPrincipal().getActiveRealm().getId();
-		agent = this.repository.findAssistanceAgentById(agentId);
+		if (super.getRequest().hasData("id")) {
+			trackingLogIdRaw = super.getRequest().getData("id", String.class);
 
-		authorised = trackingLog != null && trackingLog.getIsPublished().equals(false) && trackingLog.getClaim() != null && trackingLog.getClaim().getIsPublished() && trackingLog.getClaim().getAgent() != null
-			&& trackingLog.getClaim().getAgent().equals(agent);
-
+			try {
+				trackingLogId = Integer.parseInt(trackingLogIdRaw);
+			} catch (NumberFormatException e) {
+				trackingLogId = -1;
+			}
+			trackingLog = this.repository.findTrackingLogById(trackingLogId);
+		}
+		authorised = trackingLog != null && !trackingLog.getIsPublished() && trackingLog.getClaim() != null && trackingLog.getClaim().getIsPublished() && trackingLog.getClaim().getAgent() != null
+			&& super.getRequest().getPrincipal().hasRealm(trackingLog.getClaim().getAgent());
 		super.getResponse().setAuthorised(authorised);
 	}
 
@@ -55,14 +60,7 @@ public class AssistanceAgentTrackingLogPublishService extends AbstractGuiService
 
 	@Override
 	public void bind(final TrackingLog trackingLog) {
-		int claimId;
-		Claim claim;
 
-		claimId = super.getRequest().getData("claim", int.class);
-		claim = this.repository.findClaimById(claimId);
-
-		super.bindObject(trackingLog, "step", "resolutionPercentage", "resolution", "status");
-		trackingLog.setClaim(claim);
 	}
 
 	@Override

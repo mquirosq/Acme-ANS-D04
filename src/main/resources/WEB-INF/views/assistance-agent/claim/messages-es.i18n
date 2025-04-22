@@ -18,7 +18,8 @@ assistance-agent.claim.form.label.status				= Estado
 assistance-agent.claim.form.label.leg					= Tramo
 assistance-agent.claim.form.label.agent					= Agente de asistencia
 
-assistance-agent.claim.form.button.edit					= Editar
+assistance-agent.claim.form.button.update				= Actualizar
 assistance-agent.claim.form.button.delete				= Borrar
 assistance-agent.claim.form.button.publish				= Publicar
 assistance-agent.claim.form.button.create				= Crear
+assistance-agent.claim.form.button.trackingLogs			= Registros de seguimiento

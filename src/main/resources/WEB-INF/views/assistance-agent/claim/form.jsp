@@ -12,17 +12,19 @@
 	<acme:input-select code = "assistance-agent.claim.form.label.leg" path = "leg" choices = "${legs}"/>
 	
 	<jstl:choose>
+		<jstl:when test = "${acme:anyOf(_command, 'show|update|delete|publish')}">
+			<acme:button code = "assistance-agent.claim.form.button.trackingLogs" action = "/assistance-agent/tracking-log/list?masterId=${id}"/>
+		</jstl:when>
 		<jstl:when test = "${acme:anyOf(_command, 'show|update|delete|publish') && isPublished == false}">
-			<acme:submit code = "assistance-agent.claim.form.button.edit" action = "/assistance-agent/claim/update"/>			
+			<acme:submit code = "assistance-agent.claim.form.button.update" action = "/assistance-agent/claim/update"/>			
 			
-			<jstl:if test = "${acme:anyOf(status, 'ACCEPTED|REJECTED|RECLAIMED')}">
+			<jstl:if test = "${acme:anyOf(status, 'ACCEPTED|REJECTED')}">
 				<acme:submit code = "assistance-agent.claim.form.button.publish" action = "/assistance-agent/claim/publish"/>
 			</jstl:if>
-
 			<acme:submit code = "assistance-agent.claim.form.button.delete" action = "/assistance-agent/claim/delete"/>			
 		</jstl:when>
 		<jstl:when test = "${_command == 'create'}">
 			<acme:submit code = "assistance-agent.claim.form.button.create" action = "/assistance-agent/claim/create"/>
-		</jstl:when>			
-	</jstl:choose>	
+		</jstl:when>		
+	</jstl:choose>
 </acme:form>
