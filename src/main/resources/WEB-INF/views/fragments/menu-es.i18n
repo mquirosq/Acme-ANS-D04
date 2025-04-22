@@ -36,6 +36,11 @@ master.menu.assistance-agent 						= Agente de asistencia
 master.menu.assistance-agent.list-claims 			= Ver quejas
 master.menu.assistance-agent.list-tracking-logs		= Ver registros de seguimiento
 
+# master.menu.technician ###################################################
+
+master.menu.technician 						= Tecnico
+master.menu.technician.list-maintenance-records			= Registros de Mantenimiento
+
 # master.menu.provider ########################################################
 
 master.menu.provider = Proveedor
