@@ -29,7 +29,16 @@ public class CustomerBookingShowService extends AbstractGuiService<Customer, Boo
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		Boolean authorised;
+		int bookingId = super.getRequest().getData("id", int.class);
+		Booking booking = this.repository.findBookingById(bookingId);
+
+		if (booking != null && super.getRequest().getPrincipal().getActiveRealm().equals(booking.getCustomer()))
+			authorised = true;
+		else
+			authorised = false;
+
+		super.getResponse().setAuthorised(authorised);
 	}
 
 	@Override
@@ -63,6 +72,7 @@ public class CustomerBookingShowService extends AbstractGuiService<Customer, Boo
 		dataset.put("flights", flightChoices);
 		dataset.put("travelClass", travelChoices.getSelected().getKey());
 		dataset.put("travelClasses", travelChoices);
+		super.getResponse().addGlobal("readonly", true);
 
 		super.getResponse().addData(dataset);
 	}

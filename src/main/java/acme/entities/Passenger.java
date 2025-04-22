@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import javax.validation.Valid;
 
 import acme.client.components.basis.AbstractEntity;
@@ -62,4 +63,26 @@ public class Passenger extends AbstractEntity {
 	@ManyToOne(optional = false)
 	private Customer			customer;
 
+
+	@Transient
+	public String getIdentifier() {
+		String identifierCode = " - ";
+
+		if (this.getFullName() != null && this.getPassportNumber() != null)
+			identifierCode = this.getFullName() + " - " + this.getPassportNumber();
+
+		return identifierCode;
+	}
+
+	@Transient
+	public String getDraftModeString() {
+		String draftModeString;
+
+		if (this.isDraftMode())
+			draftModeString = "Draft";
+		else
+			draftModeString = "Published";
+
+		return draftModeString;
+	}
 }

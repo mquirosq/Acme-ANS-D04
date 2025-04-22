@@ -31,13 +31,10 @@ public class CustomerBookingPublishService extends AbstractGuiService<Customer, 
 	public void authorise() {
 		boolean authorised;
 
-		int customerId = super.getRequest().getPrincipal().getActiveRealm().getId();
-		Customer customer = this.repository.findCustomerById(customerId);
-
 		int bookingId = super.getRequest().getData("id", int.class);
 		Booking booking = this.repository.findBookingById(bookingId);
 
-		authorised = booking != null && booking.isDraftMode() && super.getRequest().getPrincipal().hasRealm(customer);
+		authorised = booking != null && booking.isDraftMode() && super.getRequest().getPrincipal().hasRealm(booking.getCustomer());
 
 		super.getResponse().setAuthorised(authorised);
 	}
@@ -72,10 +69,7 @@ public class CustomerBookingPublishService extends AbstractGuiService<Customer, 
 
 	@Override
 	public void perform(final Booking booking) {
-		Date currentMoment = MomentHelper.getCurrentMoment();
-
 		booking.setDraftMode(false);
-		booking.setPurchasedAt(currentMoment);
 		this.repository.save(booking);
 	}
 
@@ -91,7 +85,7 @@ public class CustomerBookingPublishService extends AbstractGuiService<Customer, 
 		flights = this.repository.findAllNonDraftFlights();
 		flights = flights.stream().filter(f -> (f.getScheduledDeparture() != null && MomentHelper.isAfter(f.getScheduledDeparture(), currentMoment))).toList();
 
-		flightChoices = SelectChoices.from(flights, "tag", booking.getFlight());
+		flightChoices = SelectChoices.from(flights, "identifierCode", booking.getFlight());
 		travelChoices = SelectChoices.from(TravelClass.class, booking.getTravelClass());
 
 		dataset = super.unbindObject(booking, "locatorCode", "travelClass", "lastCardNibble", "price", "purchasedAt", "draftMode");
@@ -99,7 +93,7 @@ public class CustomerBookingPublishService extends AbstractGuiService<Customer, 
 		dataset.put("flights", flightChoices);
 		dataset.put("travelClass", travelChoices.getSelected().getKey());
 		dataset.put("travelClasses", travelChoices);
-		dataset.put("readonly", false);
+		dataset.put("readonly", true);
 
 		super.getResponse().addData(dataset);
 	}
