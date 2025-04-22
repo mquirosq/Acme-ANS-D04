@@ -14,12 +14,13 @@
 	<jstl:choose>
 		<jstl:when test = "${acme:anyOf(_command, 'show|update|delete|publish')}">
 			<acme:button code = "assistance-agent.claim.form.button.trackingLogs" action = "/assistance-agent/tracking-log/list?masterId=${id}"/>
-		</jstl:when>
-		<jstl:when test = "${acme:anyOf(_command, 'show|update|delete|publish') && isPublished == false}">
-			<acme:submit code = "assistance-agent.claim.form.button.update" action = "/assistance-agent/claim/update"/>			
 			
-			<jstl:if test = "${acme:anyOf(status, 'ACCEPTED|REJECTED')}">
-				<acme:submit code = "assistance-agent.claim.form.button.publish" action = "/assistance-agent/claim/publish"/>
+			<jstl:if test = "${isPublished == false}">
+				<acme:submit code = "assistance-agent.claim.form.button.update" action = "/assistance-agent/claim/update"/>			
+				
+				<jstl:if test = "${acme:anyOf(status, 'ACCEPTED|REJECTED')}">
+					<acme:submit code = "assistance-agent.claim.form.button.publish" action = "/assistance-agent/claim/publish"/>
+				</jstl:if>
 			</jstl:if>
 			<acme:submit code = "assistance-agent.claim.form.button.delete" action = "/assistance-agent/claim/delete"/>			
 		</jstl:when>
