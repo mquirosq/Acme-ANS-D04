@@ -7,7 +7,17 @@ airline-manager.flight-leg.list.label.arrivalAirport = Arrival airport
 
 airline-manager.flight-leg.list.button.create = Create
 
-airline-manager.flight-leg.form.title = Details of the leg
+airline-manager.flight-leg.form.title = Details of the flight leg
+
+airline-manager.flight-leg.form.label.flightNumber = Flight number
+airline-manager.flight-leg.form.label.scheduledDeparture = Scheduled departure
+airline-manager.flight-leg.form.label.scheduledArrival = Scheduled arrival
+airline-manager.flight-leg.form.label.status = Status
+airline-manager.flight-leg.form.label.departureAirport = Departure airport
+airline-manager.flight-leg.form.label.arrivalAirport = Arrival airport
+airline-manager.flight-leg.form.label.deployedAircraft = Aircraft
+airline-manager.flight-leg.form.label.parentFlight = Parent flight
+airline-manager.flight-leg.form.label.draftMode = Draft mode
 
 airline-manager.flight-leg.form.button.update = Update
 airline-manager.flight-leg.form.button.publish = Publish
