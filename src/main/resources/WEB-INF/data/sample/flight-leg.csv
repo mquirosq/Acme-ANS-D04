@@ -27,4 +27,4 @@ flight-leg-16,ESP1247,2025/01/30 00:00,2025/01/31 00:00,"LANDED",airport-01,airp
 flight-leg-17,ESP1248,2025/02/01 00:00,2025/02/02 00:00,"LANDED",airport-02,airport-01,aircraft-01,flight-33,false
 flight-leg-18,ESP1249,2000/01/01 00:00,2000/01/01 00:01,"LANDED",airport-01,airport-02,aircraft-01,flight-34,false
 flight-leg-19,ESP1250,2012/06/05 00:00,2012/06/06 00:00,"LANDED",airport-02,airport-01,aircraft-01,flight-34,false
-flight-leg-20,ESP1251,2024/12/31 23:59,2025/01/01 00:00,"LANDED",airport-01,airport-02,aircraft-01,flight-34,false
+flight-leg-20,ESP1251,2024/12/31 23:58,2024/12/31 23:59,"LANDED",airport-01,airport-02,aircraft-01,flight-34,false
