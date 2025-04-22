@@ -81,7 +81,7 @@ public class CustomerBookingUpdateService extends AbstractGuiService<Customer, B
 
 	@Override
 	public void bind(final Booking booking) {
-		super.bindObject(booking, "locatorCode", "purchasedAt", "travelClass", "lastCardNibble", "flight");
+		super.bindObject(booking, "locatorCode", "travelClass", "lastCardNibble", "flight");
 	}
 
 	@Override
@@ -93,7 +93,9 @@ public class CustomerBookingUpdateService extends AbstractGuiService<Customer, B
 	public void perform(final Booking booking) {
 		Money price;
 		Long numberPassengers;
+		Date currentMoment;
 
+		currentMoment = MomentHelper.getCurrentMoment();
 		numberPassengers = this.repository.countPassengersInBooking(booking.getId());
 
 		price = new Money();
@@ -104,6 +106,7 @@ public class CustomerBookingUpdateService extends AbstractGuiService<Customer, B
 			price = null;
 
 		booking.setPrice(price);
+		booking.setPurchasedAt(currentMoment);
 		this.repository.save(booking);
 	}
 
