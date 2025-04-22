@@ -35,6 +35,11 @@ master.menu.administrator.shut-system-down = Parar el sistema
 master.menu.assistance-agent 						= Agente de asistencia
 master.menu.assistance-agent.list-claims 			= Ver reclamaciones
 
+# master.menu.technician ###################################################
+
+master.menu.technician 						= Tecnico
+master.menu.technician.list-maintenance-records			= Registros de Mantenimiento
+
 # master.menu.provider ########################################################
 
 master.menu.provider = Proveedor

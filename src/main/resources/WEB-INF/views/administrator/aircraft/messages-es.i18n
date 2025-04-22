@@ -19,6 +19,7 @@ administrator.aircraft.form.label.details				= Detalles
 administrator.aircraft.form.label.confirmation			= Confirmación
 
 administrator.aircraft.form.button.edit					= Editar
+administrator.aircraft.form.button.update				= Actualizar
 administrator.aircraft.form.button.disable				= Deshabilitar
 administrator.aircraft.form.button.create				= Crear
 

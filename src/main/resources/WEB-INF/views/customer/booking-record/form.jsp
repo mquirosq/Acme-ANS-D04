@@ -14,7 +14,7 @@
 			<acme:submit code="customer.bookingRecord.form.button.delete" action="/customer/booking-record/delete" />
 		</jstl:when>
 		<jstl:when test="${_command == 'create'}">
-			<acme:submit code="customer.bookingRecord.form.button.create" action="/customer/booking-record/create?id=${bookingId}" />
+			<acme:submit code="customer.bookingRecord.form.button.create" action="/customer/booking-record/create?masterId=${bookingId}" />
 		</jstl:when>
 	</jstl:choose>
 </acme:form>

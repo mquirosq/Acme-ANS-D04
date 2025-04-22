@@ -1,4 +1,4 @@
-assistance-agent.claim.list.title						= Claims
+assistance-agent.claim.list.title						= Reclamaciones
 
 assistance-agent.claim.list.label.status				= Estado
 assistance-agent.claim.list.label.isPublished			= Publicada
@@ -7,7 +7,7 @@ assistance-agent.claim.list.label.registrationMoment	= Momento de registro
 
 assistance-agent.claim.list.button.create				= Crear
 
-assistance-agent.claim.form.title						= Detalles de la queja
+assistance-agent.claim.form.title						= Detalles de la reclamación
 
 assistance-agent.claim.form.label.registrationMoment	= Momento de registro	
 assistance-agent.claim.form.label.passengerEmail		= Email del pasajero

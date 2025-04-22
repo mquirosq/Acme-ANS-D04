@@ -1,0 +1,17 @@
+
+technician.task-record.form.title = Information of the task
+technician.task-record.list.title = List of tasks associated
+
+technician.task-record.form.label.technician = Technician in charge:
+technician.task-record.form.label.type = Type of task:
+technician.task-record.form.label.priority = Priority of the task:
+technician.task-record.form.label.estimate = Time estimate in hours:
+technician.task-record.form.label.description = Task description:
+
+technician.task-record.list.label.type = Task type
+technician.task-record.list.label.technician = Technician
+technician.task-record.list.label.priority = Priority
+
+technician.task-record.list.button.create = Add
+
+technician.task-record.form.button.delete = Remove

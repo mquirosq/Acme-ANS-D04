@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import acme.client.components.principals.DefaultUserIdentity;
 import acme.client.components.validation.AbstractValidator;
 import acme.client.components.validation.Validator;
-import acme.helpers.EmployeeCodeHelper;
+import acme.helpers.ValidatorHelper;
 import acme.realms.AirlineManager;
 import acme.realms.AirlineManagerRepository;
 
@@ -36,12 +36,12 @@ public class AirlineManagerValidator extends AbstractValidator<ValidAirlineManag
 			String identifierNumber = manager.getIdentifierNumber();
 			DefaultUserIdentity identity = manager.getIdentity();
 
-			boolean isCorrectlyFormatted = EmployeeCodeHelper.checkFormatIsCorrect(identifierNumber, identity);
+			boolean isCorrectlyFormatted = ValidatorHelper.checkFormatIsCorrect(identifierNumber, identity);
 			super.state(context, isCorrectlyFormatted, "identifier", "acme.validation.airlineManager.identifierFormat.message");
 
 			AirlineManager obtainedManager = this.repository.findByIdentifierNumber(identifierNumber);
 
-			boolean isUnique = EmployeeCodeHelper.checkUniqueness(manager, obtainedManager);
+			boolean isUnique = ValidatorHelper.checkUniqueness(manager, obtainedManager);
 			super.state(context, isUnique, "identifier", "acme.validation.airlineManager.identifierUniqueness.message");
 
 		}

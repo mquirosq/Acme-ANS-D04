@@ -23,15 +23,23 @@ public class CustomerBookingRecordShowService extends AbstractGuiService<Custome
 
 	@Override
 	public void authorise() {
-		boolean status;
+		boolean authorised;
 		int id;
+		String rawId;
 		Booking booking;
+		BookingRecord bookingRecord;
 
-		id = super.getRequest().getData("id", int.class);
-		booking = this.repository.findBookingOfBookingRecordById(id);
-		status = booking != null && super.getRequest().getPrincipal().hasRealm(booking.getCustomer());
+		try {
+			rawId = super.getRequest().getData("id", String.class);
+			id = Integer.parseInt(rawId);
+			bookingRecord = this.repository.findBookingRecordById(id);
+			booking = this.repository.findBookingOfBookingRecordById(id);
+			authorised = bookingRecord != null && booking != null && super.getRequest().getPrincipal().getActiveRealm().equals(booking.getCustomer());
+		} catch (NumberFormatException e) {
+			authorised = false;
+		}
 
-		super.getResponse().setAuthorised(status);
+		super.getResponse().setAuthorised(authorised);
 	}
 
 	@Override
@@ -60,7 +68,7 @@ public class CustomerBookingRecordShowService extends AbstractGuiService<Custome
 
 		int customerId = super.getRequest().getPrincipal().getActiveRealm().getId();
 		passengers = this.repository.findMyPassengers(customerId);
-		choices = SelectChoices.from(passengers, "fullName", bookingRecord.getPassenger());
+		choices = SelectChoices.from(passengers, "identifier", bookingRecord.getPassenger());
 
 		dataset = super.unbindObject(bookingRecord);
 		dataset.put("passenger", bookingRecord.getPassenger().getId());

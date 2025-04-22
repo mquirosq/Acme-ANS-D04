@@ -9,7 +9,7 @@ import acme.client.components.principals.DefaultUserIdentity;
 import acme.client.components.validation.AbstractValidator;
 import acme.client.components.validation.Validator;
 import acme.entities.FlightCrewMemberRepository;
-import acme.helpers.EmployeeCodeHelper;
+import acme.helpers.ValidatorHelper;
 import acme.realms.FlightCrewMember;
 
 @Validator
@@ -38,13 +38,13 @@ public class FlightCrewMemberValidator extends AbstractValidator<ValidFlightCrew
 			DefaultUserIdentity dui = flightCrewMember.getIdentity();
 			String employeeCode = flightCrewMember.getEmployeeCode();
 
-			check = EmployeeCodeHelper.checkFormatIsCorrect(employeeCode, dui);
+			check = ValidatorHelper.checkFormatIsCorrect(employeeCode, dui);
 
 			super.state(context, check, "employeeCode", "acme.validation.flightcrewmember.employeecode.message");
 
 			FlightCrewMember fcm = this.repository.findByEmployeeCode(employeeCode);
 
-			uniqueness = EmployeeCodeHelper.checkUniqueness(flightCrewMember, fcm);
+			uniqueness = ValidatorHelper.checkUniqueness(flightCrewMember, fcm);
 
 			super.state(context, uniqueness, "employeeCode", "acme.validation.flightcrewmember.uniqueemployeecode.message");
 

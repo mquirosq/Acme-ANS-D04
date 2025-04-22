@@ -7,7 +7,7 @@ acme.validation.airline.IATACode.message = El código IATA debe ser único
 
 acme.validation.booking.locatorCode.message = The código de localización debe ser único
 acme.validation.booking.lastCreditCardNibble.message = Para publicar una reserva debe incluir los últimos cuatro dígitos de la tarjeta de crédito usada para pagar
-acme.validation.booking.passengers.message = Para publicar una reserva debe adociar al menos un pasajero
+acme.validation.booking.passengers.message = Para publicar una reserva debe asociar al menos un pasajero
 
 acme.validation.bookingRecord.uniquePassengerInBooking.message = Este pasajero ya está en esta reserva
 
@@ -23,13 +23,14 @@ acme.validation.assistanceAgent.employeeCodeUniqueness.message	= El código de e
 
 acme.validation.trackingLog.notPendingStatus.message 			= El estado no puede ser pendiente si el porcentaje de resolución ha llegado al 100%
 acme.validation.trackingLog.pendingStatus.message				= El estado debe ser pendiente si el porcentaje de resolución no ha llegado al 100%
-acme.validation.trackingLog.resolution.message					= La resolución es obligatoria si la queja ha sido aceptada o rechazada
+acme.validation.trackingLog.resolution.message					= La resolución es obligatoria si la reclamación ha sido aceptada o rechazada
 acme.validation.trackingLog.resolutionPercentage.message 		= El porcentaje de resolución debe aumentar monotónicamente
 acme.validation.trackingLog.lastUpdateMoment.message			= El momento de última actualización no puede ser anterior al momento de creación
-acme.validation.trackingLog.isPublished.message					= No se puede publicar hasta que la queja asociada no esté publicada
-acme.validation.trackingLog.reclaimed.noCompletedLog.message	= Debe haber un registro publicado para una queja para poder crear uno reclamado para esa misma queja
-acme.validation.trackingLog.reclaimed.notUnique.message			= Solo puede haber un registro reclamado para cada queja
-acme.validation.trackingLog.status.message						= Un registro no puede tener NO_STATUS como estado
+acme.validation.trackingLog.isPublished.message					= No se puede publicar hasta que la reclamación asociada no esté publicada
+acme.validation.trackingLog.reclaimed.noCompletedLog.message	= Debe haber un registro publicado para una reclamación para poder reclamarla
+acme.validation.trackingLog.creationMoment.message				= El momento de creación de un registro no puede ser anterior al de la reclamación a la que está asociado
+acme.validation.trackingLog.reclaimed.status.message			= Un registro reclamado debe tener el mismo estado que el registro completado anterior
+acme.validation.trackingLog.completedNumber.message				= No pueden haber más de dos registros completados para la misma reclamación
 
 acme.validation.service.promotioncode.message 				= El código de la promoción debe correponder al año actual
 acme.validation.service.promotioncodeuniqueness.message 	= El código de la promoción no es unico
@@ -54,5 +55,8 @@ acme.validation.airport.notUniqueIATA.message = Este codigo IATA ya existe
 
 acme.validation.confirmation.message = Debes confirmar antes de realizar esta operación
 
-acme.validation.claim.isPublished.message	= No se puede publicar una queja que no está completada
-acme.validation.claim.leg.message			= Una queja no puede estar enlazada a un tramo no publicado
+acme.validation.claim.isPublished.message			= No se puede publicar una reclamación que no está completada
+acme.validation.claim.leg.message					= Una reclamación no puede estar enlazada a un tramo no publicado
+acme.validation.claim.registrationMoment.message 	= El momento de registro de una reclamación no puede ser anterior a la fecha de llegada del tramo al que está asociada
+
+acme.validation.realm.identifierPattern.message = El identificador debe de incluir 2-3 letras en mayúscula y 6 dígitos.
