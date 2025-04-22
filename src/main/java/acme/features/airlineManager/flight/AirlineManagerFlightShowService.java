@@ -1,13 +1,11 @@
 
 package acme.features.airlineManager.flight;
 
-import java.util.Collection;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
-import acme.client.components.views.SelectChoices;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.Flight;
@@ -38,8 +36,6 @@ public class AirlineManagerFlightShowService extends AbstractGuiService<AirlineM
 
 	@Override
 	public void unbind(final Flight flight) {
-		Collection<AirlineManager> managers;
-		SelectChoices managerChoices;
 		Dataset dataset;
 		Date scheduledDeparture = flight.getScheduledDeparture();
 		Date scheduledArrival = flight.getScheduledArrival();
@@ -47,14 +43,8 @@ public class AirlineManagerFlightShowService extends AbstractGuiService<AirlineM
 		String destinationCity = flight.getDestinationCity();
 		Integer numberOfLayovers = flight.getNumberOfLayovers();
 
-		managers = this.repository.findAllAirlineManagers();
-
-		managerChoices = SelectChoices.from(managers, "identifierNumber", flight.getManager());
-
 		dataset = super.unbindObject(flight, "tag", "requiresSelfTransfer", "cost", "description", "draftMode");
 
-		dataset.put("manager", managerChoices.getSelected().getKey());
-		dataset.put("managers", managerChoices);
 		dataset.put("scheduledDeparture", scheduledDeparture != null ? scheduledDeparture : "-");
 		dataset.put("scheduledArrival", scheduledArrival != null ? scheduledArrival : "-");
 		dataset.put("originCity", originCity != null ? originCity : "-");
