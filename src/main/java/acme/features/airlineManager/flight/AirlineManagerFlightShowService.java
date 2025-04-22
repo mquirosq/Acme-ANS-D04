@@ -20,7 +20,16 @@ public class AirlineManagerFlightShowService extends AbstractGuiService<AirlineM
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean authorised = true;
+
+		try {
+			String flightIdInput = super.getRequest().getData("id", String.class);
+			Integer.parseInt(flightIdInput);
+		} catch (NumberFormatException e) {
+			authorised = false;
+		}
+
+		super.getResponse().setAuthorised(authorised);
 	}
 
 	@Override

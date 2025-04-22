@@ -27,17 +27,22 @@ public class AirlineManagerFlightLegShowService extends AbstractGuiService<Airli
 	public void authorise() {
 		boolean authorised;
 
+		String legIdInput;
 		int legId, managerId;
 		FlightLeg leg;
 		AirlineManager manager;
 
-		legId = super.getRequest().getData("id", int.class);
-		leg = this.repository.findFlightLegById(legId);
+		legIdInput = super.getRequest().getData("id", String.class);
 
-		managerId = super.getRequest().getPrincipal().getActiveRealm().getId();
-		manager = this.repository.findManagerById(managerId);
-
-		authorised = leg != null && leg.getParentFlight() != null && leg.getParentFlight().getManager() != null && leg.getParentFlight().getManager().equals(manager);
+		try {
+			legId = Integer.parseInt(legIdInput);
+			leg = this.repository.findFlightLegById(legId);
+			managerId = super.getRequest().getPrincipal().getActiveRealm().getId();
+			manager = this.repository.findManagerById(managerId);
+			authorised = leg != null && leg.getParentFlight() != null && leg.getParentFlight().getManager() != null && leg.getParentFlight().getManager().equals(manager);
+		} catch (NumberFormatException e) {
+			authorised = false;
+		}
 
 		super.getResponse().setAuthorised(authorised);
 	}

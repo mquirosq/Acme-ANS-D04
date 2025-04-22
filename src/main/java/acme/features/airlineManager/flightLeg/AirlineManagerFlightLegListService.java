@@ -23,10 +23,15 @@ public class AirlineManagerFlightLegListService extends AbstractGuiService<Airli
 	public void authorise() {
 		Boolean authorised = true;
 
-		int flightId = super.getRequest().getData("id", int.class);
-		Flight flight = this.repository.findFlightById(flightId);
+		String flightIdInput = super.getRequest().getData("id", String.class);
 
-		authorised = flight != null && super.getRequest().getPrincipal().getActiveRealm().equals(flight.getManager());
+		try {
+			int flightId = Integer.parseInt(flightIdInput);
+			Flight flight = this.repository.findFlightById(flightId);
+			authorised = flight != null && super.getRequest().getPrincipal().getActiveRealm().equals(flight.getManager());
+		} catch (NumberFormatException e) {
+			authorised = false;
+		}
 
 		super.getResponse().setAuthorised(authorised);
 	}
