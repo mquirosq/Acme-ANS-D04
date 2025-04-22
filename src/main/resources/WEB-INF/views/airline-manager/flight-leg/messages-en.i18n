@@ -1,0 +1,14 @@
+airline-manager.flight-leg.list.title = Flight legs
+
+airline-manager.flight-leg.list.label.flightNumber = Flight number
+airline-manager.flight-leg.list.label.draftMode = State
+airline-manager.flight-leg.list.label.departureAirport = Departure airport
+airline-manager.flight-leg.list.label.arrivalAirport = Arrival airport
+
+airline-manager.flight-leg.list.button.create = Create
+
+airline-manager.flight-leg.form.title = Details of the leg
+
+airline-manager.flight-leg.form.button.update = Update
+airline-manager.flight-leg.form.button.publish = Publish
+airline-manager.flight-leg.form.button.create = Create
