@@ -30,7 +30,28 @@ public class CustomerBookingCreateService extends AbstractGuiService<Customer, B
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		Boolean authorised = true;
+
+		String flightIdRaw;
+		int flightId;
+		Flight flight;
+
+		if (super.getRequest().hasData("flight")) {
+			flightIdRaw = super.getRequest().getData("flight", String.class);
+
+			try {
+				flightId = Integer.parseInt(flightIdRaw);
+			} catch (NumberFormatException e) {
+				flightId = -1;
+				authorised = false;
+			}
+
+			if (flightId != 0) {
+				flight = this.repository.findFlightById(flightId);
+				authorised &= flight != null && !flight.getDraftMode() && flight.getScheduledDeparture() != null && MomentHelper.isAfter(flight.getScheduledDeparture(), MomentHelper.getCurrentMoment());
+			}
+		}
+		super.getResponse().setAuthorised(authorised);
 	}
 
 	@Override
@@ -50,7 +71,6 @@ public class CustomerBookingCreateService extends AbstractGuiService<Customer, B
 		booking.setCustomer(customer);
 		booking.setDraftMode(true);
 		booking.setPrice(price);
-		booking.setPurchasedAt(currentMoment);
 
 		super.getBuffer().addData(booking);
 	}
@@ -95,14 +115,15 @@ public class CustomerBookingCreateService extends AbstractGuiService<Customer, B
 		flights = this.repository.findAllNonDraftFlights();
 		flights = flights.stream().filter(f -> (f.getScheduledDeparture() != null && MomentHelper.isAfter(f.getScheduledDeparture(), currentMoment))).toList();
 
-		flightChoices = SelectChoices.from(flights, "tag", booking.getFlight());
+		flightChoices = SelectChoices.from(flights, "identifierCode", booking.getFlight());
 		travelChoices = SelectChoices.from(TravelClass.class, booking.getTravelClass());
 
-		dataset = super.unbindObject(booking, "locatorCode", "travelClass", "lastCardNibble", "price", "purchasedAt");
+		dataset = super.unbindObject(booking, "locatorCode", "lastCardNibble", "price", "purchasedAt");
 		dataset.put("flight", flightChoices.getSelected().getKey());
 		dataset.put("flights", flightChoices);
 		dataset.put("travelClass", travelChoices.getSelected().getKey());
 		dataset.put("travelClasses", travelChoices);
+		dataset.put("readonly", false);
 
 		super.getResponse().addData(dataset);
 	}

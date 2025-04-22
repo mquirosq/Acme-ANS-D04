@@ -6,13 +6,13 @@ administrator.booking.list.label.flight = Vuelo
 administrator.booking.list.label.price = Precio
 administrator.booking.list.label.customer = Cliente
 
-administrator.booking.form.label.locatorCode = Código de seguimiento
-administrator.booking.form.label.flight = Vuelo	
-administrator.booking.form.label.travelClass = Clase
-administrator.booking.form.label.lastCardNibble = Últimos cuatro dígitos de la tarjeta de crédito
-administrator.booking.form.label.price = Precio
-administrator.booking.form.label.purchasedAt =  Fecha de compra
-administrator.booking.form.label.customer = Cliente
+administrator.booking.form.label.locatorCode = Código de seguimiento:
+administrator.booking.form.label.flight = Vuelo:
+administrator.booking.form.label.travelClass = Clase:
+administrator.booking.form.label.lastCardNibble = Últimos cuatro dígitos de la tarjeta de crédito:
+administrator.booking.form.label.price = Precio:
+administrator.booking.form.label.purchasedAt =  Fecha de compra:
+administrator.booking.form.label.customer = Cliente:
 
 administrator.booking.form.placeholder.lastCardNibble = Últimos cuatro dígitos de la tarjeta de crédito usada para el pago
 

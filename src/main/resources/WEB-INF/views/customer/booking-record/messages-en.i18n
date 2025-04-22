@@ -1,7 +1,7 @@
 customer.booking-record.form.title = Passenger form
 customer.booking-record.list.title = List of passengers
 
-customer.bookingRecord.form.label.passenger = Passenger
+customer.bookingRecord.form.label.passenger = Passenger:
 
 customer.bookingRecord.form.button.create = Create		
 customer.bookingRecord.form.button.update = Update

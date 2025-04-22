@@ -10,3 +10,5 @@
 	<acme:list-column code="airline-manager.flight.list.label.numberOfLayovers" path="numberOfLayovers"/>
 	<acme:list-payload path="payload"/>
 </acme:list>
+
+<acme:button code="airline-manager.flight.list.button.create" action="/airline-manager/flight/create"/>

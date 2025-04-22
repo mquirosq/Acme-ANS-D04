@@ -32,14 +32,14 @@ public class CustomerPassengerListService extends AbstractGuiService<Customer, P
 		Collection<Passenger> passengers;
 
 		int customerId = super.getRequest().getPrincipal().getActiveRealm().getId();
-		boolean draftMode = super.getRequest().getData("draft", boolean.class);
-		if (draftMode)
-			passengers = this.repository.findDraftPassengersOfCustomer(customerId);
+		boolean allMode = super.getRequest().getData("all", boolean.class);
+		if (allMode)
+			passengers = this.repository.findAllPassengersOfCustomer(customerId);
 		else
 			passengers = this.repository.findPassengersOfCustomer(customerId);
 
 		super.getBuffer().addData(passengers);
-		super.getResponse().addGlobal("draft", draftMode);
+		super.getResponse().addGlobal("all", allMode);
 	}
 
 	@Override
@@ -47,7 +47,7 @@ public class CustomerPassengerListService extends AbstractGuiService<Customer, P
 		Dataset dataset;
 
 		dataset = super.unbindObject(passenger, "fullName", "passportNumber");
-		super.addPayload(dataset, passenger, "email", "birthDate", "draftMode");
+		super.addPayload(dataset, passenger, "email", "birthDate", "draftModeString");
 
 		super.getResponse().addData(dataset);
 	}

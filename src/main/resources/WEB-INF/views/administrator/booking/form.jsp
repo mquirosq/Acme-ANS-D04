@@ -12,5 +12,5 @@
 	<acme:input-moment code="administrator.booking.form.label.purchasedAt" path="purchasedAt"/>
 	<acme:input-select code="administrator.booking.form.label.customer" path = "customer" choices="${customers}"/>
 
-	<acme:button code="administrator.booking.form.button.passengers" action="/administrator/booking-record/list?id=${id}"/>
+	<acme:button code="administrator.booking.form.button.passengers" action="/administrator/booking-record/list?masterId=${id}"/>
 </acme:form>

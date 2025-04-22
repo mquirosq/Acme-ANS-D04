@@ -28,7 +28,7 @@ public class AdministratorBookingRecordListService extends AbstractGuiService<Ad
 		int bookingId;
 		Collection<BookingRecord> bookingRecords;
 
-		bookingId = super.getRequest().getData("id", int.class);
+		bookingId = super.getRequest().getData("masterId", int.class);
 		bookingRecords = this.repository.findBookingRecordsByBookingId(bookingId);
 
 		super.getBuffer().addData(bookingRecords);

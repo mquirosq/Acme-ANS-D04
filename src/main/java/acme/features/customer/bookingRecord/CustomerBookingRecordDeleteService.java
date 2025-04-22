@@ -33,7 +33,7 @@ public class CustomerBookingRecordDeleteService extends AbstractGuiService<Custo
 
 		Customer customer = bookingRecord.getBooking().getCustomer();
 
-		authorised = bookingRecord != null && bookingRecord.getBooking() != null && bookingRecord.getBooking().isDraftMode() && super.getRequest().getPrincipal().hasRealm(customer);
+		authorised = bookingRecord != null && bookingRecord.getBooking() != null && bookingRecord.getBooking().isDraftMode() && super.getRequest().getPrincipal().getActiveRealm().equals(customer);
 
 		super.getResponse().setAuthorised(authorised);
 	}
@@ -73,7 +73,7 @@ public class CustomerBookingRecordDeleteService extends AbstractGuiService<Custo
 		int customerId = super.getRequest().getPrincipal().getActiveRealm().getId();
 		int bookingId = bookingRecord.getBooking().getId();
 		passengers = this.repository.findMyPassengersNotAlreadyInBooking(customerId, bookingId);
-		choices = SelectChoices.from(passengers, "fullName", bookingRecord.getPassenger());
+		choices = SelectChoices.from(passengers, "identifier", bookingRecord.getPassenger());
 
 		dataset = super.unbindObject(bookingRecord);
 		dataset.put("passenger", bookingRecord.getPassenger().getId());

@@ -24,13 +24,10 @@ public class CustomerPassengerPublishService extends AbstractGuiService<Customer
 	public void authorise() {
 		boolean authorised;
 
-		int customerId = super.getRequest().getPrincipal().getActiveRealm().getId();
-		Customer customer = this.repository.findCustomerById(customerId);
-
 		int passengerId = super.getRequest().getData("id", int.class);
 		Passenger passenger = this.repository.findPassengerById(passengerId);
 
-		authorised = passenger != null && passenger.isDraftMode() && super.getRequest().getPrincipal().hasRealm(customer);
+		authorised = passenger != null && passenger.isDraftMode() && super.getRequest().getPrincipal().getActiveRealm().equals(passenger.getCustomer());
 
 		super.getResponse().setAuthorised(authorised);
 	}
@@ -67,7 +64,7 @@ public class CustomerPassengerPublishService extends AbstractGuiService<Customer
 		Dataset dataset;
 
 		dataset = super.unbindObject(passenger, "fullName", "email", "passportNumber", "birthDate", "specialNeeds", "draftMode");
-		dataset.put("readonly", false);
+		dataset.put("readonly", true);
 		dataset.put("draftMode", true);
 
 		super.getResponse().addData(dataset);
