@@ -72,27 +72,19 @@ public class Claim extends AbstractEntity {
 	public ClaimStatus getStatus() {
 		ClaimStatus out;
 		ClaimRepository claimRepository;
-		Long pendingLogs, acceptedLogs, rejectedLogs, reclaimedLogs;
+		Long acceptedLogs, rejectedLogs;
 
-		out = ClaimStatus.NO_STATUS;
+		out = ClaimStatus.PENDING;
 		claimRepository = SpringHelper.getBean(ClaimRepository.class);
 
-		pendingLogs = claimRepository.findAmountOfTrackingLogsByClaimIdAndStatus(this.getId(), ClaimStatus.PENDING);
 		acceptedLogs = claimRepository.findAmountOfTrackingLogsByClaimIdAndStatus(this.getId(), ClaimStatus.ACCEPTED);
 		rejectedLogs = claimRepository.findAmountOfTrackingLogsByClaimIdAndStatus(this.getId(), ClaimStatus.REJECTED);
-		reclaimedLogs = claimRepository.findAmountOfTrackingLogsByClaimIdAndStatus(this.getId(), ClaimStatus.RECLAIMED);
-
-		if (pendingLogs > 0L)
-			out = ClaimStatus.PENDING;
 
 		if (acceptedLogs > 0L)
 			out = ClaimStatus.ACCEPTED;
-
-		if (rejectedLogs > 0L)
+		else if (rejectedLogs > 0L)
 			out = ClaimStatus.REJECTED;
 
-		if (reclaimedLogs > 0L)
-			out = ClaimStatus.RECLAIMED;
 		return out;
 	}
 }
