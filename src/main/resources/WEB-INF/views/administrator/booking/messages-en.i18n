@@ -7,13 +7,13 @@ administrator.booking.list.label.flight = Flight
 administrator.booking.list.label.price = Price
 administrator.booking.list.label.customer = Customer
 
-administrator.booking.form.label.locatorCode = Locator code
-administrator.booking.form.label.flight = Flight	
-administrator.booking.form.label.travelClass = Travel class
-administrator.booking.form.label.lastCardNibble = Last credit card nibble
-administrator.booking.form.label.price = Price
-administrator.booking.form.label.purchasedAt = Purchase date
-administrator.booking.form.label.customer = Customer
+administrator.booking.form.label.locatorCode = Locator code:
+administrator.booking.form.label.flight = Flight:
+administrator.booking.form.label.travelClass = Travel class:
+administrator.booking.form.label.lastCardNibble = Last credit card nibble:
+administrator.booking.form.label.price = Price:
+administrator.booking.form.label.purchasedAt = Purchase date:
+administrator.booking.form.label.customer = Customer:
 
 administrator.booking.form.placeholder.lastCardNibble = Four last digits of the credit card used to pay
 

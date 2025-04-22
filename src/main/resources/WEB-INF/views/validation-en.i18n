@@ -26,9 +26,10 @@ acme.validation.trackingLog.resolution.message					= The resolution is mandatory
 acme.validation.trackingLog.resolutionPercentage.message 		= The resolution percentage must be monotonically increasing
 acme.validation.trackingLog.lastUpdateMoment.message			= The last update moment must not be before the creation moment
 acme.validation.trackingLog.isPublished.message					= The tracking log cannot be published until its associated claim has been published
-acme.validation.trackingLog.reclaimed.noCompletedLog.message	= There must be a published completed tracking log for a claim before submitting a reclaimed one for that same claim
-acme.validation.trackingLog.reclaimed.notUnique.message			= There must only be one reclaimed tracking log for a particular claim
-acme.validation.trackingLog.status.message						= A tracking log cannot have NO_STATUS as status
+acme.validation.trackingLog.reclaimed.noCompletedLog.message	= There must be a published completed tracking log for a claim before reclaiming it
+acme.validation.trackingLog.creationMoment.message				= The creation moment of a tracking log cannot be before that of the claim to which it is associated
+acme.validation.trackingLog.reclaimed.status.message			= A reclaimed tracking log must have the same status as the previous completed tracking log
+acme.validation.trackingLog.completedNumber.message				= There cannot be more than two completed tracking logs for the same claim
 
 acme.validation.service.promotioncode.message 				= The promotion code year must be according to the current year
 acme.validation.service.promotioncodeuniqueness.message 	= The promotion code is not unique
@@ -56,5 +57,8 @@ acme.validation.aircraft.registrationNumber.message			= The registration number 
 
 acme.validation.confirmation.message = You must confirm before performing this operation
 
-acme.validation.claim.isPublished.message 	= You cannot publish a claim that has not been completed
-acme.validation.claim.leg.message			= A claim cannot be linked to an unpublished leg
+acme.validation.claim.isPublished.message 			= You cannot publish a claim that has not been completed
+acme.validation.claim.leg.message					= A claim cannot be linked to an unpublished leg
+acme.validation.claim.registrationMoment.message 	= A claim's registration moment cannot be before the arrival of the leg to which it is associated
+
+acme.validation.realm.identifierPattern.message = The identifier must include 2-3 upper case letters and 6 digits.

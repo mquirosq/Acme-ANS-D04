@@ -10,11 +10,11 @@
 </acme:list>
 
 <jstl:choose>
-	<jstl:when test="${!draft}">
-		<acme:button code="customer.list-passengers.draft" action="/customer/passenger/list?draft=${true}"/>
+	<jstl:when test="${!all}">
+		<acme:button code="customer.list-passengers.mine" action="/customer/passenger/list?all=${true}"/>
 	</jstl:when>
-	<jstl:when test="${draft}">
-		<acme:button code="customer.list-passengers.mine" action="/customer/passenger/list?draft=${false}"/>
+	<jstl:when test="${all}">
+		<acme:button code="customer.list-passengers.booking" action="/customer/passenger/list?all=${false}"/>
 	</jstl:when>
 </jstl:choose>	
 

@@ -22,7 +22,22 @@ public class CustomerPassengerShowService extends AbstractGuiService<Customer, P
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		Boolean authorised;
+		String rawId;
+		int passengerId;
+		Passenger passenger;
+
+		try {
+			rawId = super.getRequest().getData("id", String.class);
+			passengerId = Integer.parseInt(rawId);
+			passenger = this.repository.findPassengerById(passengerId);
+
+			authorised = passenger != null && passenger.getCustomer().equals(super.getRequest().getPrincipal().getActiveRealm());
+		} catch (NumberFormatException e) {
+			authorised = false;
+		}
+
+		super.getResponse().setAuthorised(authorised);
 	}
 
 	@Override
