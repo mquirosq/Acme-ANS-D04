@@ -38,6 +38,7 @@ master.menu.assistance-agent.list-claims 			= Ver quejas
 
 master.menu.technician 						= Tecnico
 master.menu.technician.list-maintenance-records			= Registros de Mantenimiento
+master.menu.technician.list-tasks			= Tareas
 
 # master.menu.provider ########################################################
 
