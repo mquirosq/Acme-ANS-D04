@@ -56,3 +56,5 @@ acme.validation.confirmation.message = Debes confirmar antes de realizar esta op
 
 acme.validation.claim.isPublished.message	= No se puede publicar una queja que no está completada
 acme.validation.claim.leg.message			= Una queja no puede estar enlazada a un tramo no publicado
+
+acme.validation.realm.identifierPattern.message = El identificador debe de incluir 2-3 letras en mayúscula y 6 dígitos.

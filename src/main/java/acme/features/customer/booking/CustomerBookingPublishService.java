@@ -29,13 +29,20 @@ public class CustomerBookingPublishService extends AbstractGuiService<Customer, 
 
 	@Override
 	public void authorise() {
-		boolean authorised;
+		Boolean authorised;
+		String rawId;
+		int bookingId;
+		Booking booking;
 
-		int bookingId = super.getRequest().getData("id", int.class);
-		Booking booking = this.repository.findBookingById(bookingId);
+		try {
+			rawId = super.getRequest().getData("id", String.class);
+			bookingId = Integer.parseInt(rawId);
+			booking = this.repository.findBookingById(bookingId);
 
-		authorised = booking != null && booking.isDraftMode() && super.getRequest().getPrincipal().hasRealm(booking.getCustomer());
-
+			authorised = booking != null && booking.isDraftMode() && super.getRequest().getPrincipal().hasRealm(booking.getCustomer());
+		} catch (NumberFormatException e) {
+			authorised = false;
+		}
 		super.getResponse().setAuthorised(authorised);
 	}
 

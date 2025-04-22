@@ -9,6 +9,7 @@ import acme.client.components.models.Dataset;
 import acme.client.components.principals.Administrator;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
+import acme.entities.Booking;
 import acme.entities.BookingRecord;
 
 @GuiService
@@ -20,7 +21,20 @@ public class AdministratorBookingRecordListService extends AbstractGuiService<Ad
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		Boolean authorised;
+		String rawId;
+		int bookingId;
+		Booking booking;
+
+		try {
+			rawId = super.getRequest().getData("masterId", String.class);
+			bookingId = Integer.parseInt(rawId);
+			booking = this.repository.findBookingById(bookingId);
+			authorised = booking != null;
+		} catch (NumberFormatException e) {
+			authorised = false;
+		}
+		super.getResponse().setAuthorised(authorised);
 	}
 
 	@Override
