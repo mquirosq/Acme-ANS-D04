@@ -28,22 +28,27 @@ public class CustomerBookingRecordCreateService extends AbstractGuiService<Custo
 	@Override
 	public void authorise() {
 		boolean authorised;
+		String rawId;
+		int bookingId;
+		Booking booking;
+		Collection<Passenger> legalPassengers = null;
 
-		int bookingId = super.getRequest().getData("masterId", int.class);
-		Booking booking = this.repository.findBookingById(bookingId);
-
-		Customer customer = booking.getCustomer();
-
-		authorised = booking != null && booking.isDraftMode() && super.getRequest().getPrincipal().getActiveRealm().equals(customer);
+		try {
+			rawId = super.getRequest().getData("masterId", String.class);
+			bookingId = Integer.parseInt(rawId);
+			booking = this.repository.findBookingById(bookingId);
+			Customer customer = booking.getCustomer();
+			legalPassengers = this.repository.findMyPassengersNotAlreadyInBooking(super.getRequest().getPrincipal().getActiveRealm().getId(), bookingId);
+			authorised = booking != null && booking.isDraftMode() && super.getRequest().getPrincipal().getActiveRealm().equals(customer);
+		} catch (NumberFormatException e) {
+			authorised = false;
+		}
 
 		String passengerIdRaw;
 		int passengerId;
 		Passenger passenger;
-		Collection<Passenger> legalPassengers;
 
-		legalPassengers = this.repository.findMyPassengersNotAlreadyInBooking(super.getRequest().getPrincipal().getActiveRealm().getId(), bookingId);
-
-		if (super.getRequest().hasData("passenger")) {
+		if (super.getRequest().hasData("passenger") && legalPassengers != null) {
 			passengerIdRaw = super.getRequest().getData("passenger", String.class);
 
 			try {

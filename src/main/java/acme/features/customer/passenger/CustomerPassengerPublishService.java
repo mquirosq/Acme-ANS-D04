@@ -22,13 +22,20 @@ public class CustomerPassengerPublishService extends AbstractGuiService<Customer
 
 	@Override
 	public void authorise() {
-		boolean authorised;
+		Boolean authorised;
+		String rawId;
+		int passengerId;
+		Passenger passenger;
 
-		int passengerId = super.getRequest().getData("id", int.class);
-		Passenger passenger = this.repository.findPassengerById(passengerId);
+		try {
+			rawId = super.getRequest().getData("id", String.class);
+			passengerId = Integer.parseInt(rawId);
+			passenger = this.repository.findPassengerById(passengerId);
 
-		authorised = passenger != null && passenger.isDraftMode() && super.getRequest().getPrincipal().getActiveRealm().equals(passenger.getCustomer());
-
+			authorised = passenger != null && passenger.isDraftMode() && super.getRequest().getPrincipal().getActiveRealm().equals(passenger.getCustomer());
+		} catch (NumberFormatException e) {
+			authorised = false;
+		}
 		super.getResponse().setAuthorised(authorised);
 	}
 
