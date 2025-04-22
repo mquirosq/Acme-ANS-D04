@@ -17,3 +17,5 @@ flightCrewMember.flightAssignment.form.label.leg = Leg IATA code
 flightCrewMember.flightAssignment.form.label.isPublished = Published
 
 flight-crew-member.flight-assignment.list.button.create = Create
+flight-crew-member.flight-assignment.form.button.update = Update
+flight-crew-member.flight-assignment.form.button.delete = Delete

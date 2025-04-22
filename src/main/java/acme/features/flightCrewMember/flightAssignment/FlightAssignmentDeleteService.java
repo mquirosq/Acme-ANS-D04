@@ -11,15 +11,20 @@ import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.datatypes.CurrentStatus;
 import acme.datatypes.Duty;
+import acme.entities.ActivityLog;
 import acme.entities.FlightAssignment;
 import acme.entities.FlightLeg;
+import acme.features.flightCrewMember.activityLog.ActivityLogRepository;
 import acme.realms.FlightCrewMember;
 
 @GuiService
-public class FlightAssignmentUpdateService extends AbstractGuiService<FlightCrewMember, FlightAssignment> {
+public class FlightAssignmentDeleteService extends AbstractGuiService<FlightCrewMember, FlightAssignment> {
 
 	@Autowired
-	FlightAssignmentRepository repository;
+	FlightAssignmentRepository	repository;
+
+	@Autowired
+	ActivityLogRepository		activityLogRepository;
 
 
 	@Override
@@ -59,7 +64,9 @@ public class FlightAssignmentUpdateService extends AbstractGuiService<FlightCrew
 
 	@Override
 	public void perform(final FlightAssignment flightAssignment) {
-		this.repository.save(flightAssignment);
+		Collection<ActivityLog> activityLogs = this.repository.findActivityLogsByFlightAssignmentId(flightAssignment.getId());
+		this.activityLogRepository.deleteAll(activityLogs);
+		this.repository.delete(flightAssignment);
 	}
 
 	@Override
@@ -75,8 +82,7 @@ public class FlightAssignmentUpdateService extends AbstractGuiService<FlightCrew
 		statusChoices = SelectChoices.from(CurrentStatus.class, flightAssignment.getCurrentStatus());
 		dutyChoices = SelectChoices.from(Duty.class, flightAssignment.getDuty());
 
-		dataset = super.unbindObject(flightAssignment, "moment", "remarks", "published");
-		dataset.put("readonly", false);
+		dataset = super.unbindObject(flightAssignment, "remarks", "published");
 		dataset.put("legs", legChoices);
 		dataset.put("leg", legChoices.getSelected().getKey());
 		dataset.put("flightCrewMembers", flightCrewMemberChoices);
