@@ -71,7 +71,6 @@ public class CustomerBookingCreateService extends AbstractGuiService<Customer, B
 		booking.setCustomer(customer);
 		booking.setDraftMode(true);
 		booking.setPrice(price);
-		booking.setPurchasedAt(currentMoment);
 
 		super.getBuffer().addData(booking);
 	}
