@@ -14,8 +14,8 @@ import acme.realms.AssistanceAgent;
 @Repository
 public interface AssistanceAgentTrackingLogRepository extends AbstractRepository {
 
-	@Query("select t from TrackingLog t where t.claim.agent.id = :id")
-	Collection<TrackingLog> findAllTrackingLogsByAssistanceAgentId(int id);
+	@Query("select t from TrackingLog t where t.claim.id = :masterId")
+	Collection<TrackingLog> findAllTrackingLogsByMasterId(int masterId);
 
 	@Query("select t from TrackingLog t where t.id = :id")
 	TrackingLog findTrackingLogById(int id);

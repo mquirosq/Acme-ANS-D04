@@ -10,7 +10,7 @@
 	<acme:input-double code = "assistance-agent.tracking-log.form.label.resolutionPercentage" path = "resolutionPercentage" placeholder = "assistance-agent.tracking-log.form.placeholder.resolutionPercentage"/>
 	<acme:input-textarea code = "assistance-agent.tracking-log.form.label.resolution" path = "resolution"/>
 	<acme:input-select code = "assistance-agent.tracking-log.form.label.status" path = "status" choices = "${statuses}"/>
-	<acme:input-select code = "assistance-agent.tracking-log.form.label.claim" path = "claim" choices = "${claims}"/>
+	<acme:input-select code = "assistance-agent.tracking-log.form.label.claim" path = "claim" choices = "${claims}" readonly = "true"/>
 	
 	<jstl:choose>
 		<jstl:when test = "${acme:anyOf(_command, 'show|update|delete|publish') && isPublished == false}">
@@ -22,7 +22,7 @@
 			</jstl:if>
 		</jstl:when>
 		<jstl:when test = "${_command == 'create'}">
-			<acme:submit code = "assistance-agent.tracking-log.form.button.create" action = "/assistance-agent/tracking-log/create"/>
+			<acme:submit code = "assistance-agent.tracking-log.form.button.create" action = "/assistance-agent/tracking-log/create?masterId=${masterId}"/>
 		</jstl:when>			
 	</jstl:choose>	
 </acme:form>
