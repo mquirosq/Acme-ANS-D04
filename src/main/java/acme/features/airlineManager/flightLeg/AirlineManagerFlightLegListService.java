@@ -23,7 +23,7 @@ public class AirlineManagerFlightLegListService extends AbstractGuiService<Airli
 	public void authorise() {
 		Boolean authorised = true;
 
-		String flightIdInput = super.getRequest().getData("id", String.class);
+		String flightIdInput = super.getRequest().getData("parentId", String.class);
 
 		try {
 			int flightId = Integer.parseInt(flightIdInput);
@@ -41,9 +41,13 @@ public class AirlineManagerFlightLegListService extends AbstractGuiService<Airli
 		int flightId;
 		Collection<FlightLeg> legs;
 
-		flightId = super.getRequest().getData("id", int.class);
+		flightId = super.getRequest().getData("parentId", int.class);
+		Flight flight = this.repository.findFlightById(flightId);
 		legs = this.repository.findAllLegsByFlightId(flightId);
+
 		super.getBuffer().addData(legs);
+		super.getResponse().addGlobal("parentId", flightId);
+		super.getResponse().addGlobal("parentDraftMode", flight.getDraftMode());
 	}
 
 	@Override

@@ -19,15 +19,15 @@
 	</jstl:if>
 		<jstl:choose>	 
 		<jstl:when test="${_command == 'show' && draftMode}">
-			<acme:button code="airline-manager.flight.form.button.flight-legs" action="/airline-manager/flight-leg/list?id=${id}"/>	
+			<acme:button code="airline-manager.flight.form.button.flight-legs" action="/airline-manager/flight-leg/list?parentId=${id}"/>	
 			<acme:submit code="airline-manager.flight.form.button.update" action="/airline-manager/flight/update"/>
 			<acme:submit code="airline-manager.flight.form.button.publish" action="/airline-manager/flight/publish"/>		
 		</jstl:when>
 		<jstl:when test="${_command == 'show'}">
-			<acme:button code="airline-manager.flight.form.button.flight-legs" action="/airline-manager/flight-leg/list?id=${id}"/>			
+			<acme:button code="airline-manager.flight.form.button.flight-legs" action="/airline-manager/flight-leg/list?parentId=${id}"/>			
 		</jstl:when>
 		<jstl:when test="${acme:anyOf(_command, 'update || publish')}">
-			<acme:button code="airline-manager.flight.form.button.flight-legs" action="/airline-manager/flight-leg/list?id=${id}"/>
+			<acme:button code="airline-manager.flight.form.button.flight-legs" action="/airline-manager/flight-leg/list?parentId=${id}"/>
 			<acme:submit code="airline-manager.flight.form.button.update" action="/airline-manager/flight/update"/>
 			<acme:submit code="airline-manager.flight.form.button.publish" action="/airline-manager/flight/publish"/>
 		</jstl:when>

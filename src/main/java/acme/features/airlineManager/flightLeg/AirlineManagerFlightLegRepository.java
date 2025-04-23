@@ -34,7 +34,7 @@ public interface AirlineManagerFlightLegRepository extends AbstractRepository {
 	@Query("select a from Airport a")
 	Collection<Airport> findAllAirports();
 
-	@Query("select a from Aircraft a")
-	Collection<Aircraft> findAllAircrafts();
+	@Query("select a from Aircraft a where a.status = 'IN_ACTIVE_SERVICE'")
+	Collection<Aircraft> findActiveAircrafts();
 
 }

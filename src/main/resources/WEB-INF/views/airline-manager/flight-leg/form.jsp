@@ -12,8 +12,8 @@
 	<acme:input-select code = "airline-manager.flight-leg.form.label.departureAirport" path = "departureAirport" choices = "${departureAirports}"/>
 	<acme:input-select code = "airline-manager.flight-leg.form.label.arrivalAirport" path = "arrivalAirport" choices = "${arrivalAirports}"/>
 	<acme:input-select code = "airline-manager.flight-leg.form.label.deployedAircraft" path = "deployedAircraft" choices = "${deployedAircrafts}"/>
-	<acme:input-select code = "airline-manager.flight-leg.form.label.parentFlight" path = "parentFlight" choices = "${parentFlights}"/>
 	<jstl:if test="${_command != 'create'}">
+		<acme:input-select code = "airline-manager.flight-leg.form.label.parentFlight" path = "parentFlight" choices = "${parentFlights}"/>
 		<acme:input-checkbox code="airline-manager.flight-leg.form.label.draftMode" path="draftMode" readonly = "${true}"/>
 	</jstl:if>
 		<jstl:choose>	 
@@ -26,7 +26,7 @@
 			<acme:submit code="airline-manager.flight-leg.form.button.publish" action="/airline-manager/flight-leg/publish"/>
 		</jstl:when>
 		<jstl:when test="${_command == 'create'}">
-			<acme:submit code="airline-manager.flight-leg.form.button.create" action="/airline-manager/flight-leg/create"/>
+			<acme:submit code="airline-manager.flight-leg.form.button.create" action="/airline-manager/flight-leg/create?parentId=${parentId}"/>
 		</jstl:when>		
 	</jstl:choose>
 </acme:form>

@@ -11,4 +11,10 @@
 	<acme:list-payload path="payload"/>
 </acme:list>
 
-<acme:button code="airline-manager.flight-leg.list.button.create" action="/airline-manager/flight-leg/create"/>
+<jstl:choose>	 
+	<jstl:when test="${parentDraftMode}">
+		<acme:button code="airline-manager.flight-leg.list.button.create" action="/airline-manager/flight-leg/create?parentId=${parentId}"/>
+	</jstl:when>
+</jstl:choose>	 
+
+

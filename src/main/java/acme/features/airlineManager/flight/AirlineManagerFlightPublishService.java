@@ -7,22 +7,17 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
-import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.Flight;
-import acme.entities.FlightLeg;
-import acme.entities.FlightLegRepository;
+import acme.helpers.ValidatorHelper;
 import acme.realms.AirlineManager;
 
 @GuiService
 public class AirlineManagerFlightPublishService extends AbstractGuiService<AirlineManager, Flight> {
 
 	@Autowired
-	private AirlineManagerFlightRepository	repository;
-
-	@Autowired
-	private FlightLegRepository				flightLegRepository;
+	private AirlineManagerFlightRepository repository;
 
 
 	@Override
@@ -58,30 +53,13 @@ public class AirlineManagerFlightPublishService extends AbstractGuiService<Airli
 
 	@Override
 	public void validate(final Flight flight) {
-		boolean isNotOverlapping = true;
-		boolean allLegsPublished = true;
-		boolean atLeastOneLeg = true;
+		List<Boolean> validation = ValidatorHelper.validatePublishedFlight(flight);
 
-		List<FlightLeg> legsOfFlight = this.flightLegRepository.getLegsOfFlight(flight.getId());
-
-		if (legsOfFlight.size() <= 0)
-			atLeastOneLeg = false;
+		boolean atLeastOneLeg = validation.get(0);
+		boolean isNotOverlapping = validation.get(1);
+		boolean allLegsPublished = validation.get(2);
 
 		super.state(atLeastOneLeg, "*", "acme.validation.flight.missingLegs.message");
-
-		for (Integer i = 0; i < legsOfFlight.size() - 1; i++) {
-			{
-				Date scheduledArrivalFirst = legsOfFlight.get(i).getScheduledArrival();
-				Date scheduledDepartureSecond = legsOfFlight.get(i + 1).getScheduledDeparture();
-				if (MomentHelper.isAfterOrEqual(scheduledArrivalFirst, scheduledDepartureSecond))
-					isNotOverlapping = false;
-			}
-			{
-				if (legsOfFlight.get(i).getDraftMode())
-					allLegsPublished = false;
-			}
-		}
-
 		super.state(isNotOverlapping, "*", "acme.validation.flight.overlappingDates.message");
 		super.state(allLegsPublished, "*", "acme.validation.flight.notPublishedLeg.message");
 	}
