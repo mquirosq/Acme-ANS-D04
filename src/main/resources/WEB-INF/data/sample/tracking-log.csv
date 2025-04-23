@@ -3,15 +3,15 @@ key,last-update-moment,creation-moment,step,resolution-percentage,status,resolut
 tracking-log-01,2012/07/02 0:00,2012/07/02 0:00,Lorem ipsum dolor sit ame,50.00,PENDING,null,false,claim-01
 # Last update moment - standard variations
 tracking-log-02,2000/01/01 0:01,2000/01/01 0:01,Lorem ipsum dolor sit ame,30.00,PENDING,null,false,claim-02
-tracking-log-03,2000/01/01 0:01,2000/01/01 0:01,Lorem ipsum dolor sit ame,30.01,PENDING,null,false,claim-02
-tracking-log-04,2024/12/31 23:59,2012/07/02 0:01,Lorem ipsum dolor sit ame,60.00,PENDING,null,false,claim-01
-tracking-log-05,2025/01/01 0:00,2012/07/02 0:02,Lorem ipsum dolor sit ame,60.01,PENDING,null,false,claim-01
+tracking-log-03,2000/01/01 0:02,2000/01/01 0:01,Lorem ipsum dolor sit ame,30.01,PENDING,null,false,claim-02
+tracking-log-04,2024/12/31 23:59,2012/07/02 0:00,Lorem ipsum dolor sit ame,60.00,PENDING,null,false,claim-01
+tracking-log-05,2025/01/01 0:00,2012/07/02 0:00,Lorem ipsum dolor sit ame,60.01,PENDING,null,false,claim-01
 # Last update moment - singular values
 tracking-log-06,2019/02/28 0:00,2012/07/02 0:03,Lorem ipsum dolor sit ame,70.00,PENDING,null,false,claim-01
 tracking-log-07,2020/02/29 0:00,2012/07/02 0:04,Lorem ipsum dolor sit ame,70.01,PENDING,null,false,claim-01
 # Creation moment - standard variations
 tracking-log-08,2012/07/02 0:00,2000/01/01 0:01,Lorem ipsum dolor sit ame,50.00,PENDING,null,false,claim-02
-tracking-log-09,2012/07/02 0:00,2000/01/01 0:01,Lorem ipsum dolor sit ame,50.01,PENDING,null,false,claim-02
+tracking-log-09,2012/07/02 0:00,2000/01/01 0:02,Lorem ipsum dolor sit ame,50.01,PENDING,null,false,claim-02
 tracking-log-10,2025/01/01 0:00,2024/12/31 23:59,Lorem ipsum dolor sit ame,70.00,PENDING,null,false,claim-02
 tracking-log-11,2025/01/01 0:00,2025/01/01 0:00,Lorem ipsum dolor sit ame,70.01,PENDING,null,false,claim-02
 # Creation moment - singular values
