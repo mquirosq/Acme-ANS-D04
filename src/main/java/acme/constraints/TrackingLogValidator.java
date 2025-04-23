@@ -66,7 +66,7 @@ public class TrackingLogValidator extends AbstractValidator<ValidTrackingLog, Tr
 					trackingLogs.sort(Comparator.comparing(t -> t.getCreationMoment()));
 				}
 				completedTrackingLogs = trackingLogs.stream().filter(t -> t.getResolutionPercentage() == 100.0).count();
-				super.state(context, completedTrackingLogs <= 2, "*", "acme.validation.trackingLog.completedNumber.message");
+				super.state(context, completedTrackingLogs <= 2, "status", "acme.validation.trackingLog.completedNumber.message");
 
 				for (Integer i = 0; i < trackingLogs.size(); i++) {
 					TrackingLog t1;
@@ -78,7 +78,7 @@ public class TrackingLogValidator extends AbstractValidator<ValidTrackingLog, Tr
 						t2 = trackingLogs.get(i + 1);
 
 						if (completedTrackingLogs <= 2 && t1.getResolutionPercentage() == 100.0 && t2.getResolutionPercentage() == 100.0) {
-							super.state(context, t1.getIsPublished(), "*", "acme.validation.trackingLog.reclaimed.noCompletedLog.message");
+							super.state(context, t1.getIsPublished(), "status", "acme.validation.trackingLog.reclaimed.noCompletedLog.message");
 							super.state(context, t1.getStatus().equals(t2.getStatus()), "status", "acme.validation.trackingLog.reclaimed.status.message");
 						} else
 							super.state(context, t1.getResolutionPercentage() < t2.getResolutionPercentage(), "resolutionPercentage", "acme.validation.trackingLog.resolutionPercentage.message");
