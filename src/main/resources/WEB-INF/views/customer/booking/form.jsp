@@ -9,9 +9,9 @@
 	<acme:input-select code="customer.booking.form.label.flight" path="flight" choices="${flights}"/>	
 	<acme:input-select code="customer.booking.form.label.travelClass" path="travelClass" choices="${travelClasses}"/>
 	<acme:input-textbox code="customer.booking.form.label.lastCardNibble" path="lastCardNibble" placeholder = "customer.booking.form.placeholder.lastCardNibble"/>
-	<acme:input-moment code="customer.booking.form.label.purchasedAt" path="purchasedAt"/>
 	<jstl:if test="${_command != 'create'}">
 		<acme:input-money code="customer.booking.form.label.price" path="price" readonly="True"/>
+		<acme:input-moment code="customer.booking.form.label.purchasedAt" path="purchasedAt" readonly = "${true}"/>
 		<acme:input-checkbox code = "customer.booking.form.label.draft" path = "draftMode" readonly = "${true}"/>
 	</jstl:if>
 	<jstl:choose>	 

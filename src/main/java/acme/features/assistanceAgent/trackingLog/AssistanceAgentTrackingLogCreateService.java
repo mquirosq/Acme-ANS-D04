@@ -24,7 +24,26 @@ public class AssistanceAgentTrackingLogCreateService extends AbstractGuiService<
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean authorised;
+
+		int masterId;
+		String masterIdRaw;
+		Claim claim;
+
+		claim = null;
+
+		if (super.getRequest().hasData("masterId")) {
+			masterIdRaw = super.getRequest().getData("masterId", String.class);
+
+			try {
+				masterId = Integer.parseInt(masterIdRaw);
+			} catch (NumberFormatException e) {
+				masterId = -1;
+			}
+			claim = this.repository.findClaimById(masterId);
+		}
+		authorised = claim != null && claim.getAgent() != null && super.getRequest().getPrincipal().hasRealm(claim.getAgent());
+		super.getResponse().setAuthorised(authorised);
 	}
 
 	@Override
@@ -37,11 +56,11 @@ public class AssistanceAgentTrackingLogCreateService extends AbstractGuiService<
 
 	@Override
 	public void bind(final TrackingLog trackingLog) {
-		int claimId;
+		int masterId;
 		Claim claim;
 
-		claimId = super.getRequest().getData("claim", int.class);
-		claim = this.repository.findClaimById(claimId);
+		masterId = super.getRequest().getData("masterId", int.class);
+		claim = this.repository.findClaimById(masterId);
 
 		super.bindObject(trackingLog, "step", "resolutionPercentage", "resolution", "status");
 
@@ -63,10 +82,12 @@ public class AssistanceAgentTrackingLogCreateService extends AbstractGuiService<
 
 	@Override
 	public void unbind(final TrackingLog trackingLog) {
+		int masterId;
 		Dataset dataset;
 		Collection<Claim> claims;
 		SelectChoices statusChoices, claimChoices;
 
+		masterId = super.getRequest().getData("masterId", int.class);
 		claims = this.repository.findAllClaimsByAssistanceAgentId(super.getRequest().getPrincipal().getActiveRealm().getId());
 		statusChoices = SelectChoices.from(ClaimStatus.class, trackingLog.getStatus());
 		claimChoices = SelectChoices.from(claims, "id", trackingLog.getClaim());
@@ -78,5 +99,6 @@ public class AssistanceAgentTrackingLogCreateService extends AbstractGuiService<
 		dataset.put("claim", claimChoices.getSelected().getKey());
 
 		super.getResponse().addData(dataset);
+		super.getResponse().addGlobal("masterId", masterId);
 	}
 }

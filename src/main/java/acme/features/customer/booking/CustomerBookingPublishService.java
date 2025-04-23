@@ -76,6 +76,10 @@ public class CustomerBookingPublishService extends AbstractGuiService<Customer, 
 
 	@Override
 	public void perform(final Booking booking) {
+		Date currentMoment;
+		currentMoment = MomentHelper.getCurrentMoment();
+
+		booking.setPurchasedAt(currentMoment);
 		booking.setDraftMode(false);
 		this.repository.save(booking);
 	}

@@ -60,6 +60,9 @@ public class CustomerBookingCreateService extends AbstractGuiService<Customer, B
 
 		booking = new Booking();
 		Money price = new Money();
+		Date currentMoment;
+
+		currentMoment = MomentHelper.getCurrentMoment();
 
 		price.setAmount(0.0);
 		price.setCurrency("EUR");
@@ -69,13 +72,14 @@ public class CustomerBookingCreateService extends AbstractGuiService<Customer, B
 		booking.setCustomer(customer);
 		booking.setDraftMode(true);
 		booking.setPrice(price);
+		booking.setPurchasedAt(currentMoment);
 
 		super.getBuffer().addData(booking);
 	}
 
 	@Override
 	public void bind(final Booking booking) {
-		super.bindObject(booking, "locatorCode", "purchasedAt", "travelClass", "lastCardNibble", "flight");
+		super.bindObject(booking, "locatorCode", "travelClass", "lastCardNibble", "flight");
 	}
 
 	@Override
@@ -116,7 +120,7 @@ public class CustomerBookingCreateService extends AbstractGuiService<Customer, B
 		flightChoices = SelectChoices.from(flights, "identifierCode", booking.getFlight());
 		travelChoices = SelectChoices.from(TravelClass.class, booking.getTravelClass());
 
-		dataset = super.unbindObject(booking, "locatorCode", "lastCardNibble", "price", "purchasedAt");
+		dataset = super.unbindObject(booking, "locatorCode", "lastCardNibble", "price");
 		dataset.put("flight", flightChoices.getSelected().getKey());
 		dataset.put("flights", flightChoices);
 		dataset.put("travelClass", travelChoices.getSelected().getKey());

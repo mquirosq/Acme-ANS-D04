@@ -1,0 +1,18 @@
+
+technician.task-record.form.title = Datos de la tarea
+technician.task-record.list.title = Tareas asociadas
+
+technician.task-record.form.label.technician = Técnico encargado:
+technician.task-record.form.label.type = Tipo de tarea:
+technician.task-record.form.label.priority = Prioridad de la tarea:
+technician.task-record.form.label.estimate = Tiempo estimado en horas:
+technician.task-record.form.label.description = Descripción de la tarea:
+
+technician.task-record.list.label.type = Tipo de tarea
+technician.task-record.list.label.technician = Técnico
+technician.task-record.list.label.priority = Prioridad
+
+
+technician.task-record.list.button.create = Añadir
+
+technician.task-record.form.button.delete = Eliminar

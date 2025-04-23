@@ -44,6 +44,11 @@ public class Task extends AbstractEntity {
 
 	@Mandatory
 	@Valid
+	@Automapped
+	private Boolean				isDraft;
+
+	@Mandatory
+	@Valid
 	@ManyToOne(optional = false)
 	private Technician			technician;
 }
