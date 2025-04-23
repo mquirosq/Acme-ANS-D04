@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import acme.client.components.models.Dataset;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
+import acme.datatypes.ClaimStatus;
 import acme.entities.Claim;
 import acme.entities.TrackingLog;
 import acme.realms.AssistanceAgent;
@@ -55,16 +56,21 @@ public class AssistanceAgentTrackingLogListService extends AbstractGuiService<As
 
 	@Override
 	public void unbind(final TrackingLog trackingLog) {
-		int masterId;
-		boolean canCreate;
 		Dataset dataset;
 
-		canCreate = true;
-		masterId = super.getRequest().getData("masterId", int.class);
 		dataset = super.unbindObject(trackingLog, "resolutionPercentage", "status", "isPublished");
 
 		super.addPayload(dataset, trackingLog, "lastUpdateMoment", "creationMoment", "resolution", "step", "claim.id");
 		super.getResponse().addData(dataset);
+	}
+
+	@Override
+	public void unbind(final Collection<TrackingLog> trackingLogs) {
+		int masterId;
+		boolean canCreate;
+
+		canCreate = trackingLogs.stream().filter(t -> !t.getStatus().equals(ClaimStatus.PENDING)).count() < 2L;
+		masterId = super.getRequest().getData("masterId", int.class);
 
 		super.getResponse().addGlobal("masterId", masterId);
 		super.getResponse().addGlobal("canCreate", canCreate);

@@ -20,7 +20,7 @@ assistance-agent.tracking-log.form.label.isPublished				= Publicado
 assistance-agent.tracking-log.form.label.status						= Estado
 assistance-agent.tracking-log.form.label.claim						= Reclamación
 
-assistance-agent.tracking-log.form.button.edit						= Editar
+assistance-agent.tracking-log.form.button.update					= Actualizar
 assistance-agent.tracking-log.form.button.publish					= Publicar
 assistance-agent.tracking-log.form.button.delete					= Borrar
 assistance-agent.tracking-log.form.button.create					= Crear
