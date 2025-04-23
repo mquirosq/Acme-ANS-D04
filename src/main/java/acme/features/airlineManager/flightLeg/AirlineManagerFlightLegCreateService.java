@@ -30,10 +30,7 @@ public class AirlineManagerFlightLegCreateService extends AbstractGuiService<Air
 			int flightId = Integer.parseInt(flightIdInput);
 			Flight flight = this.repository.findFlightById(flightId);
 
-			AirlineManager manager = flight.getManager();
-
-			authorised = flight != null && flight.getDraftMode() && super.getRequest().getPrincipal().hasRealm(manager);
-
+			authorised = flight != null && flight.getDraftMode() && super.getRequest().getPrincipal().hasRealm(flight.getManager());
 		} catch (NumberFormatException e) {
 			authorised = false;
 		}
