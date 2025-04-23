@@ -44,7 +44,7 @@ public class TechnicianMaintenanceRecordCreateService extends AbstractGuiService
 	public void bind(final MaintenanceRecord mRecord) {
 		Technician technician = (Technician) super.getRequest().getPrincipal().getActiveRealm();
 
-		super.bindObject(mRecord, "status", "inspectionDue", "maintenanceDate", "cost", "notes", "aircraft");
+		super.bindObject(mRecord, "inspectionDue", "maintenanceDate", "cost", "notes", "aircraft");
 		mRecord.setTechnician(technician);
 	}
 
@@ -55,27 +55,23 @@ public class TechnicianMaintenanceRecordCreateService extends AbstractGuiService
 
 	@Override
 	public void perform(final MaintenanceRecord mRecord) {
+		mRecord.setStatus(recordStatus.PENDING);
 		this.repository.save(mRecord);
 	}
 
 	@Override
 	public void unbind(final MaintenanceRecord mRecord) {
 		Dataset dataset;
-		SelectChoices statusChoices;
 		SelectChoices aircraftChoices;
 		Collection<Aircraft> aircrafts;
 
 		aircrafts = this.repository.findAllAircrafts();
 		aircraftChoices = SelectChoices.from(aircrafts, "registrationNumber", mRecord.getAircraft());
 
-		statusChoices = SelectChoices.from(recordStatus.class, mRecord.getStatus());
-
 		dataset = super.unbindObject(mRecord, "maintenanceDate", "inspectionDue", "cost", "notes");
 		dataset.put("id", mRecord.getId());
 		dataset.put("aircraft", aircraftChoices.getSelected().getKey());
 		dataset.put("aircrafts", aircraftChoices);
-		dataset.put("status", statusChoices.getSelected().getKey());
-		dataset.put("statuses", statusChoices);
 
 		super.getResponse().addData(dataset);
 	}

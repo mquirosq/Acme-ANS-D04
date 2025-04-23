@@ -54,7 +54,7 @@ public class TechnicianMaintenanceRecordUpdateService extends AbstractGuiService
 
 		technician = (Technician) super.getRequest().getPrincipal().getActiveRealm();
 
-		super.bindObject(mRecord, "status", "maintenanceDate", "inspectionDue", "cost", "notes", "aircraft");
+		super.bindObject(mRecord, "maintenanceDate", "inspectionDue", "cost", "notes", "aircraft");
 		mRecord.setTechnician(technician);
 	}
 
@@ -65,6 +65,7 @@ public class TechnicianMaintenanceRecordUpdateService extends AbstractGuiService
 
 	@Override
 	public void perform(final MaintenanceRecord mRecord) {
+		mRecord.setStatus(recordStatus.IN_PROGRESS);
 		this.repository.save(mRecord);
 	}
 
