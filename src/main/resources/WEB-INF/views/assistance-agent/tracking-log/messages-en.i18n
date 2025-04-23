@@ -20,7 +20,7 @@ assistance-agent.tracking-log.form.label.isPublished				= Published
 assistance-agent.tracking-log.form.label.status						= Status
 assistance-agent.tracking-log.form.label.claim						= Claim
 
-assistance-agent.tracking-log.form.button.edit						= Edit
+assistance-agent.tracking-log.form.button.update					= Update
 assistance-agent.tracking-log.form.button.publish					= Publish
 assistance-agent.tracking-log.form.button.delete					= Delete
 assistance-agent.tracking-log.form.button.create					= Create

@@ -25,18 +25,24 @@ public class AssistanceAgentTrackingLogShowService extends AbstractGuiService<As
 	public void authorise() {
 		boolean authorised;
 
-		int trackingLogId, agentId;
+		int trackingLogId;
+		String trackingLogIdRaw;
+
 		TrackingLog trackingLog;
-		AssistanceAgent agent;
 
-		trackingLogId = super.getRequest().getData("id", int.class);
-		trackingLog = this.repository.findTrackingLogById(trackingLogId);
+		trackingLog = null;
 
-		agentId = super.getRequest().getPrincipal().getActiveRealm().getId();
-		agent = this.repository.findAssistanceAgentById(agentId);
+		if (super.getRequest().hasData("id")) {
+			trackingLogIdRaw = super.getRequest().getData("id", String.class);
 
-		authorised = trackingLog != null && trackingLog.getClaim() != null && trackingLog.getClaim().getAgent() != null && trackingLog.getClaim().getAgent().equals(agent);
-
+			try {
+				trackingLogId = Integer.parseInt(trackingLogIdRaw);
+			} catch (NumberFormatException e) {
+				trackingLogId = -1;
+			}
+			trackingLog = this.repository.findTrackingLogById(trackingLogId);
+		}
+		authorised = trackingLog != null && trackingLog.getClaim() != null && trackingLog.getClaim() != null && trackingLog.getClaim().getAgent() != null && super.getRequest().getPrincipal().hasRealm(trackingLog.getClaim().getAgent());
 		super.getResponse().setAuthorised(authorised);
 	}
 

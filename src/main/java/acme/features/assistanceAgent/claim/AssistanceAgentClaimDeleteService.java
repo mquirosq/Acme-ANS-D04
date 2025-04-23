@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
 import acme.client.components.views.SelectChoices;
+import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.datatypes.ClaimStatus;
@@ -27,18 +28,23 @@ public class AssistanceAgentClaimDeleteService extends AbstractGuiService<Assist
 	public void authorise() {
 		boolean authorised;
 
-		int claimId, agentId;
+		int claimId;
+		String claimIdRaw;
 		Claim claim;
-		AssistanceAgent agent;
 
-		claimId = super.getRequest().getData("id", int.class);
-		claim = this.repository.findClaimById(claimId);
+		authorised = true;
 
-		agentId = super.getRequest().getPrincipal().getActiveRealm().getId();
-		agent = this.repository.findAssistanceAgentById(agentId);
+		if (super.getRequest().hasData("id")) {
+			claimIdRaw = super.getRequest().getData("id", String.class);
 
-		authorised = claim != null && claim.getIsPublished().equals(false) && claim.getAgent().equals(agent);
-
+			try {
+				claimId = Integer.parseInt(claimIdRaw);
+			} catch (NumberFormatException e) {
+				claimId = -1;
+			}
+			claim = this.repository.findClaimById(claimId);
+			authorised = claim != null && !claim.getIsPublished() && claim.getAgent() != null && super.getRequest().getPrincipal().hasRealm(claim.getAgent());
+		}
 		super.getResponse().setAuthorised(authorised);
 	}
 
@@ -55,19 +61,12 @@ public class AssistanceAgentClaimDeleteService extends AbstractGuiService<Assist
 
 	@Override
 	public void bind(final Claim claim) {
-		int legId;
-		FlightLeg leg;
 
-		legId = super.getRequest().getData("leg", int.class);
-		leg = this.repository.findLegById(legId);
-
-		super.bindObject(claim, "passengerEmail", "description", "type");
-		claim.setLeg(leg);
 	}
 
 	@Override
 	public void validate(final Claim claim) {
-		;
+
 	}
 
 	@Override
@@ -86,7 +85,7 @@ public class AssistanceAgentClaimDeleteService extends AbstractGuiService<Assist
 		SelectChoices typeChoices, statusChoices, legChoices;
 		Collection<FlightLeg> legs;
 
-		legs = this.repository.findAllPublishedLegs();
+		legs = this.repository.findAllPublishedLegsBefore(MomentHelper.getCurrentMoment());
 
 		typeChoices = SelectChoices.from(ClaimType.class, claim.getType());
 		statusChoices = SelectChoices.from(ClaimStatus.class, claim.getStatus());
