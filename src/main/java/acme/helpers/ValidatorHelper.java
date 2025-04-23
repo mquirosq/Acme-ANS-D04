@@ -41,6 +41,8 @@ public abstract class ValidatorHelper {
 
 		if (legsOfFlight.size() <= 0)
 			atLeastOneLeg = false;
+		else if (legsOfFlight.get(legsOfFlight.size() - 1).getDraftMode())
+			allLegsPublished = false;
 
 		for (Integer i = 0; i < legsOfFlight.size() - 1; i++) {
 			{
