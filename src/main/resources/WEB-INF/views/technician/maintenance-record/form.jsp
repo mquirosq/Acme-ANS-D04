@@ -6,7 +6,7 @@
 
 <acme:form> 
 	<acme:input-moment code="technician.maintenance-record.form.label.maintenance-date" path="maintenanceDate"/>	
-	<acme:input-select code="technician.maintenance-record.form.label.status" path="status" choices="${statuses}"/>
+	<acme:input-select code="technician.maintenance-record.form.label.status" path="status" choices="${statuses}" readonly="true"/>
 	<acme:input-select code="technician.maintenance-record.form.label.aircraft" path="aircraft" choices="${aircrafts}"/>
 	<acme:input-moment code="technician.maintenance-record.form.label.inspection-due" path="inspectionDue"/>
 	<acme:input-money code="technician.maintenance-record.form.label.cost" path="cost"/>
