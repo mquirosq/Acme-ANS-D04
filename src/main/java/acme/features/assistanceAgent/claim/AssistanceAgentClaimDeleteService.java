@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
 import acme.client.components.views.SelectChoices;
+import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.datatypes.ClaimStatus;
@@ -84,7 +85,7 @@ public class AssistanceAgentClaimDeleteService extends AbstractGuiService<Assist
 		SelectChoices typeChoices, statusChoices, legChoices;
 		Collection<FlightLeg> legs;
 
-		legs = this.repository.findAllPublishedLegs();
+		legs = this.repository.findAllPublishedLegsBefore(MomentHelper.getCurrentMoment());
 
 		typeChoices = SelectChoices.from(ClaimType.class, claim.getType());
 		statusChoices = SelectChoices.from(ClaimStatus.class, claim.getStatus());
