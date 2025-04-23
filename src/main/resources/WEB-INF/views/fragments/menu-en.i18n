@@ -39,6 +39,7 @@ master.menu.assistance-agent.list-claims 			= List claims
 
 master.menu.technician 						= Technician
 master.menu.technician.list-maintenance-records			= Maintenance Records
+master.menu.technician.list-tasks			= Tasks
 
 # master.menu.provider ########################################################
 

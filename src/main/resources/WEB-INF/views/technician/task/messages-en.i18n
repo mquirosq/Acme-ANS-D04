@@ -1,0 +1,20 @@
+# messages-en.i18n
+
+technician.task.form.title = Task form
+technician.task.list.title = Listing of tasks
+ 
+technician.task.form.label.type = Type of task:
+technician.task.form.label.priority = Priority:
+technician.task.form.label.hour-estimate = Time Estimate:
+technician.task.form.label.description = Description:
+
+technician.task.list.label.type = Type of task
+technician.task.list.label.priority = Priority
+technician.task.list.label.hour-estimate = Time Estimate
+
+technician.task.form.button.publish = Publish
+technician.task.form.button.update = Update
+technician.task.form.button.delete = Delete
+technician.task.form.button.create = Create
+
+technician.task.list.button.create = Create

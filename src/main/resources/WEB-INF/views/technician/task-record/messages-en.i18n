@@ -15,3 +15,6 @@ technician.task-record.list.label.priority = Priority
 technician.task-record.list.button.create = Add
 
 technician.task-record.form.button.delete = Remove
+
+technician.task-record.form.label.task = Choose the task to add:
+technician.task-record.form.button.create = Add Task
