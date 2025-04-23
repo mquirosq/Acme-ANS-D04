@@ -2,6 +2,7 @@
 package acme.features.assistanceAgent.claim;
 
 import java.util.Collection;
+import java.util.Date;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -21,8 +22,8 @@ public interface AssistanceAgentClaimRepository extends AbstractRepository {
 	@Query("select c from Claim c where c.id = :id")
 	Claim findClaimById(int id);
 
-	@Query("select l from FlightLeg l where l.draftMode = false")
-	Collection<FlightLeg> findAllPublishedLegs();
+	@Query("select l from FlightLeg l where l.draftMode = false and l.scheduledArrival <= :moment")
+	Collection<FlightLeg> findAllPublishedLegsBefore(Date moment);
 
 	@Query("select a from AssistanceAgent a")
 	Collection<AssistanceAgent> findAllAssistanceAgents();
