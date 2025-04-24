@@ -30,11 +30,9 @@ bg=LIGHT_GRAY</panel_attributes>
     <panel_attributes>&lt;&lt;Enum&gt;&gt;
 ClaimStatus
 --
-+ NO_STATUS
 + PENDING
 + ACCEPTED
 + REJECTED
-+ RECLAIMED
 bg=LIGHT_GRAY</panel_attributes>
     <additional_attributes/>
   </element>
