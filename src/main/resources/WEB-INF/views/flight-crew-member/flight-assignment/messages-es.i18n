@@ -19,3 +19,4 @@ flightCrewMember.flightAssignment.form.label.isPublished = Publicado
 flight-crew-member.flight-assignment.list.button.create = Crear
 flight-crew-member.flight-assignment.form.button.update = Editar
 flight-crew-member.flight-assignment.form.button.delete = Borrar
+flight-crew-member.flight-assignment.form.button.publish = Publicar

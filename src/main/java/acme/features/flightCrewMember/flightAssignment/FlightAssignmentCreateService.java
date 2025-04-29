@@ -58,21 +58,24 @@ public class FlightAssignmentCreateService extends AbstractGuiService<FlightCrew
 	@Override
 	public void validate(final FlightAssignment flightAssignment) {
 		FlightCrewMember fcm = flightAssignment.getAllocatedFlightCrewMember();
-		Collection<FlightAssignment> flightLegsForFlightCrewMember = this.repository.findFlightAssignmentsByFlightCrewMemberId(fcm.getId());
+		Collection<FlightAssignment> flightAssignmentsForFlightCrewMember = this.repository.findFlightAssignmentsByFlightCrewMemberId(fcm.getId());
 		Boolean check = true;
-		for (FlightAssignment fa : flightLegsForFlightCrewMember) {
-			check = !MomentHelper.isInRange(flightAssignment.getLeg().getScheduledDeparture(), fa.getLeg().getScheduledDeparture(), fa.getLeg().getScheduledArrival())
-				|| !MomentHelper.isInRange(flightAssignment.getLeg().getScheduledArrival(), fa.getLeg().getScheduledDeparture(), fa.getLeg().getScheduledArrival());
-			super.state(check, "*", "acme.validation.flightAssignment.overlappingLegs.message");
+		for (FlightAssignment fa : flightAssignmentsForFlightCrewMember) {
+			boolean departureIsOverlapping = MomentHelper.isInRange(flightAssignment.getLeg().getScheduledDeparture(), fa.getLeg().getScheduledDeparture(), fa.getLeg().getScheduledArrival());
+			boolean arrivalIsOverlapping = MomentHelper.isInRange(flightAssignment.getLeg().getScheduledArrival(), fa.getLeg().getScheduledDeparture(), fa.getLeg().getScheduledArrival());
+			check = !departureIsOverlapping || !arrivalIsOverlapping;
+			super.state(check, "allocatedFlightCrewMember", "acme.validation.flightAssignment.overlappingLegs.message");
 		}
 
 		FlightLeg fl = flightAssignment.getLeg();
 		boolean pastLeg = MomentHelper.isBefore(fl.getScheduledDeparture(), MomentHelper.getCurrentMoment());
-		super.state(!pastLeg, "*", "acme.validation.flightAssignment.pastLeg.message");
+		super.state(!pastLeg, "leg", "acme.validation.flightAssignment.pastLeg.message");
 
 		Collection<FlightAssignment> flightAssignmentsForTheLeg = this.repository.findFlightAssignmentsByFlightLegId(fl.getId());
 		boolean copilot = false;
 		boolean pilot = false;
+
+		// Check there is one pilot or copilot
 		for (FlightAssignment fa : flightAssignmentsForTheLeg) {
 			if (fa.getDuty().equals(Duty.PILOT))
 				pilot = true;
@@ -82,11 +85,11 @@ public class FlightAssignmentCreateService extends AbstractGuiService<FlightCrew
 
 		boolean extraPilot = pilot && flightAssignment.getDuty().equals(Duty.PILOT);
 		boolean extraCopilot = copilot && flightAssignment.getDuty().equals(Duty.COPILOT);
-		super.state(!extraPilot, "*", "acme.validation.flightAssignment.extraPilot.message");
-		super.state(!extraCopilot, "*", "acme.validation.flightAssignment.extraCopilot.message");
+		super.state(!extraPilot, "duty", "acme.validation.flightAssignment.extraPilot.message");
+		super.state(!extraCopilot, "duty", "acme.validation.flightAssignment.extraCopilot.message");
 
 		boolean flightCrewMemberAvailable = flightAssignment.getAllocatedFlightCrewMember().getAvailabilityStatus().equals(AvailabilityStatus.AVAILABLE);
-		super.state(flightCrewMemberAvailable, "*", "acme.validation.flightAssignment.unavailableFlightCrewMember.message");
+		super.state(flightCrewMemberAvailable, "allocatedFlightCrewMember", "acme.validation.flightAssignment.unavailableFlightCrewMember.message");
 
 	}
 
