@@ -79,5 +79,4 @@ public abstract class ValidatorHelper {
 		}
 		return res;
 	}
-
 }
