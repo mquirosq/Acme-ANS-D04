@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>410</x>
+      <y>210</y>
+      <w>580</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Constraint&gt;&gt;
+ValidAssistanceAgent
+--
++ First 2 letters of employeeCode must match the user's initials
++ Employee code must be unique
+bg=RED</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>410</x>
+      <y>480</y>
+      <w>580</w>
+      <h>220</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Constraint&gt;&gt;
+ValidTrackingLog
+--
++ Creation moment must not be after the associated claim's registration moment
++ Creation moment must not be after last update moment
++ Status must be pending if resolution percentage is below 100%
++ Status must not be pending if resolution percentage has reached 100%
++ Resolution percentage must be monotonically increasing
++ Resolution message is mandatory if the claim has been resolved
++ A tracking log cannot be published until its corresponding claim is published
++ A reclaimed tracking log can only be published after a completed, published tracking log
++ There cannot be more than two completed tracking logs for a given claim
++ A reclaimed tracking log's status must be the same as the previous completed log's status
+bg=RED</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>410</x>
+      <y>340</y>
+      <w>580</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Constraint&gt;&gt;
+ValidClaim
+--
++ An uncompleted claim cannot be published
++ A claim can only be associated to a published leg
++ A claim's registration moment must be after the arrival date of its leg
+bg=RED</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

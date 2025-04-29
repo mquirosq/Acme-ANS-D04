@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>370</x>
+      <y>190</y>
+      <w>590</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Claim {ValidClaim}
+--
++ registrationMoment: Date {Mandatory, ValidMoment(past = true), Temporal(TIMESTAMP)}
++ passengerEmail: String {Mandatory, ValidEmail, Automapped}
++ description: String {Mandatory, ValidString(min = 1, max = 255), Automapped}
++ type: ClaimType {Mandatory, Valid, Automapped}
++ isPublished: Boolean {Mandatory, Valid, Automapped}
+--
+/+ status: ClaimStatus {Transient}
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>40</x>
+      <y>240</y>
+      <w>160</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Role&gt;&gt;
+AssistanceAgent
+bg=pink</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>190</x>
+      <y>250</y>
+      <w>200</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>&lt; Registered by
+lt=&lt;-x
+m1=1
+m2=*
+
+</panel_attributes>
+    <additional_attributes>10.0;20.0;180.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>370</x>
+      <y>470</y>
+      <w>590</w>
+      <h>170</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+TrackingLog {ValidTrackingLog}
+--
++ lastUpdateMoment: Date {Mandatory, ValidMoment(past = true), Temporal(TIMESTAMP)}
++ creationMoment: Date {Mandatory, ValidMoment(past = true), Temporal(TIMESTAMP)}
++ step: String {Mandatory, ValidString(min = 1, max = 50), Automapped}
++ resolutionPercentage: Double {Mandatory, ValidScore, Automapped}
++ status: ClaimStatus {Mandatory, Valid, Automapped}
++ resolution: String {Optional, ValidString(min = 0, max = 255), Automapped}
++ isPublished: Boolean {Mandatory, Valid, Automapped}
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>650</x>
+      <y>330</y>
+      <w>90</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>Tracks ^
+lt=&lt;-x
+m1=1
+m2=*
+
+</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;140.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1120</x>
+      <y>230</y>
+      <w>160</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+FlightLeg
+bg=pink</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>950</x>
+      <y>240</y>
+      <w>190</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>Is about &gt;
+lt=&lt;-x
+m1=1
+m2=*
+
+</panel_attributes>
+    <additional_attributes>170.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+</diagram>

@@ -3,13 +3,21 @@ package acme.constraints;
 
 import javax.validation.ConstraintValidatorContext;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import acme.client.components.principals.DefaultUserIdentity;
 import acme.client.components.validation.AbstractValidator;
 import acme.client.components.validation.Validator;
-import acme.entities.FlightCrewMember;
+import acme.entities.FlightCrewMemberRepository;
+import acme.helpers.ValidatorHelper;
+import acme.realms.FlightCrewMember;
 
 @Validator
 public class FlightCrewMemberValidator extends AbstractValidator<ValidFlightCrewMember, FlightCrewMember> {
+
+	@Autowired
+	private FlightCrewMemberRepository repository;
+
 
 	@Override
 	protected void initialise(final ValidFlightCrewMember annotation) {
@@ -24,14 +32,22 @@ public class FlightCrewMemberValidator extends AbstractValidator<ValidFlightCrew
 
 		if (flightCrewMember == null)
 			super.state(context, false, "*", "javax.validation.constraints.NotNull.message");
-		else {
+		else if (flightCrewMember.getEmployeeCode() != null) {
 			Boolean check;
+			Boolean uniqueness;
 			DefaultUserIdentity dui = flightCrewMember.getIdentity();
 			String employeeCode = flightCrewMember.getEmployeeCode();
 
-			check = dui.getName().charAt(0) == employeeCode.charAt(0) && dui.getSurname().charAt(0) == employeeCode.charAt(1);
+			check = ValidatorHelper.checkFormatIsCorrect(employeeCode, dui);
 
 			super.state(context, check, "employeeCode", "acme.validation.flightcrewmember.employeecode.message");
+
+			FlightCrewMember fcm = this.repository.findByEmployeeCode(employeeCode);
+
+			uniqueness = ValidatorHelper.checkUniqueness(flightCrewMember, fcm);
+
+			super.state(context, uniqueness, "employeeCode", "acme.validation.flightcrewmember.uniqueemployeecode.message");
+
 		}
 
 		result = !super.hasErrors(context);

@@ -1,0 +1,4 @@
+key,key:user-account,identifier-number,years-of-experience,birth-date,picture-link
+airline-manager-01,user-account-airline-manager-01,MF123456,5,2000/01/02 0:00,"http://lorem.com/ipsum"
+airline-manager-02,user-account-airline-manager-02,MS654321,2,2003/01/01 0:00,"http://lorem.com/ipsum"
+airline-manager-03,user-account-airline-manager-03,MT010101,1,2002/01/01 0:00,"http://lorem.com/ipsum"

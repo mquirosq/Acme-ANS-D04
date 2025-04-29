@@ -5,8 +5,6 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.validation.Valid;
 
 import acme.client.components.basis.AbstractRole;
 import acme.client.components.mappings.Automapped;
@@ -17,7 +15,6 @@ import acme.client.components.validation.ValidNumber;
 import acme.client.components.validation.ValidString;
 import acme.client.components.validation.ValidUrl;
 import acme.constraints.ValidAirlineManager;
-import acme.entities.Airline;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -30,7 +27,7 @@ public class AirlineManager extends AbstractRole {
 	private static final long	serialVersionUID	= 1L;
 
 	@Mandatory
-	@ValidString(pattern = "^[A-Z]{2-3}\\d{6}$")
+	@ValidString(pattern = "^[A-Z]{2,3}\\d{6}$", message = "{acme.validation.airlineManager.identifierPattern.message}")
 	@Column(unique = true)
 	private String				identifierNumber;
 
@@ -48,10 +45,5 @@ public class AirlineManager extends AbstractRole {
 	@ValidUrl
 	@Automapped
 	private String				pictureLink;
-
-	@Mandatory
-	@Valid
-	@ManyToOne(optional = false)
-	private Airline				airline;
 
 }
