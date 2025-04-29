@@ -4,16 +4,48 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>210</x>
-      <y>310</y>
+      <x>20</x>
+      <y>300</y>
       <w>480</w>
-      <h>80</h>
+      <h>90</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Constraint&gt;&gt;
 ValidCustomer
 --
-+ The identification must start with the two or three initials of the customer.
-
++ The identifier must start with the two or three initials of the customer.
++ The identifier must be unique for every customer.
+bg=RED</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>230</x>
+      <y>170</y>
+      <w>580</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Constraint&gt;&gt;
+ValidBooking
+--
++ The locatorCode must be unique.
++ When the booking is published it must have at least one passenger associated.
++ When the booking is published it must store the last nibble of the credit card used to pay.
+bg=RED</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>520</x>
+      <y>300</y>
+      <w>480</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Constraint&gt;&gt;
+ValidBookingRecord
+--
++ The pair booking, passenger must be unique for every bookingRecord.
 bg=RED</panel_attributes>
     <additional_attributes/>
   </element>

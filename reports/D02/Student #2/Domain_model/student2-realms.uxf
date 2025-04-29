@@ -4,8 +4,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>40</x>
-      <y>260</y>
+      <x>30</x>
+      <y>80</y>
       <w>600</w>
       <h>150</h>
     </coordinates>
@@ -13,7 +13,7 @@
 Customer {ValidCustomer}
 --
 + identifier: String {Mandatory, ValidString(pattern="^[A-Z]{2-3}\d{6}$"), Column(unique=true)}
-+ phoneNumber: String {Mandatory, VaidString(pattern="^+?\d{6,15}$"), Automapped}
++ phoneNumber: String {Mandatory, ValidPhoneNumber(), Automapped}
 + address: String {Mandatory, ValidString(min=1, max=255), Automapped}
 + city: String {Mandatory, ValidString(min=1, max=50), Automapped}
 + country: String {Mandatory, ValidString(min=1, max=50), Automapped}
