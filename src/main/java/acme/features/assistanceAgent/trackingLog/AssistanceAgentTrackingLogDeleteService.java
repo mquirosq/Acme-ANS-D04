@@ -56,7 +56,7 @@ public class AssistanceAgentTrackingLogDeleteService extends AbstractGuiService<
 
 	@Override
 	public void bind(final TrackingLog trackingLog) {
-
+		super.bindObject(trackingLog, "step", "resolutionPercentage", "resolution", "status");
 	}
 
 	@Override
