@@ -1,8 +1,6 @@
 
 package acme.features.assistanceAgent.trackingLog;
 
-import java.util.Collection;
-
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
@@ -84,19 +82,14 @@ public class AssistanceAgentTrackingLogCreateService extends AbstractGuiService<
 	public void unbind(final TrackingLog trackingLog) {
 		int masterId;
 		Dataset dataset;
-		Collection<Claim> claims;
-		SelectChoices statusChoices, claimChoices;
+		SelectChoices statusChoices;
 
 		masterId = super.getRequest().getData("masterId", int.class);
-		claims = this.repository.findAllClaimsByAssistanceAgentId(super.getRequest().getPrincipal().getActiveRealm().getId());
 		statusChoices = SelectChoices.from(ClaimStatus.class, trackingLog.getStatus());
-		claimChoices = SelectChoices.from(claims, "id", trackingLog.getClaim());
 
 		dataset = super.unbindObject(trackingLog, "lastUpdateMoment", "creationMoment", "step", "resolutionPercentage", "resolution", "isPublished");
 		dataset.put("statuses", statusChoices);
 		dataset.put("status", statusChoices.getSelected().getKey());
-		dataset.put("claims", claimChoices);
-		dataset.put("claim", claimChoices.getSelected().getKey());
 
 		super.getResponse().addData(dataset);
 		super.getResponse().addGlobal("masterId", masterId);
