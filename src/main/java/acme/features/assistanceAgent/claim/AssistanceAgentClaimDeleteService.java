@@ -28,9 +28,13 @@ public class AssistanceAgentClaimDeleteService extends AbstractGuiService<Assist
 	public void authorise() {
 		boolean authorised;
 
-		int claimId;
-		String claimIdRaw;
+		int claimId, legId;
+		String claimIdRaw, legIdRaw;
 		Claim claim;
+		FlightLeg leg;
+
+		claim = null;
+		leg = null;
 
 		authorised = true;
 
@@ -42,8 +46,26 @@ public class AssistanceAgentClaimDeleteService extends AbstractGuiService<Assist
 			} catch (NumberFormatException e) {
 				claimId = -1;
 			}
-			claim = this.repository.findClaimById(claimId);
-			authorised = claim != null && !claim.getIsPublished() && claim.getAgent() != null && super.getRequest().getPrincipal().hasRealm(claim.getAgent());
+
+			if (claimId != 0) {
+				claim = this.repository.findClaimById(claimId);
+				authorised = claim != null && !claim.getIsPublished() && claim.getAgent() != null && super.getRequest().getPrincipal().hasRealm(claim.getAgent());
+			}
+		}
+
+		if (super.getRequest().hasData("leg")) {
+			legIdRaw = super.getRequest().getData("leg", String.class);
+
+			try {
+				legId = Integer.parseInt(legIdRaw);
+			} catch (NumberFormatException e) {
+				legId = -1;
+			}
+
+			if (legId != 0) {
+				leg = this.repository.findLegById(legId);
+				authorised &= leg != null && !leg.getDraftMode() && claim != null && MomentHelper.isAfterOrEqual(claim.getRegistrationMoment(), leg.getScheduledArrival());
+			}
 		}
 		super.getResponse().setAuthorised(authorised);
 	}
@@ -61,7 +83,14 @@ public class AssistanceAgentClaimDeleteService extends AbstractGuiService<Assist
 
 	@Override
 	public void bind(final Claim claim) {
+		int legId;
+		FlightLeg leg;
 
+		legId = super.getRequest().getData("leg", int.class);
+		leg = this.repository.findLegById(legId);
+
+		super.bindObject(claim, "passengerEmail", "description", "type");
+		claim.setLeg(leg);
 	}
 
 	@Override

@@ -33,6 +33,9 @@ public class AssistanceAgentClaimUpdateService extends AbstractGuiService<Assist
 		Claim claim;
 		FlightLeg leg;
 
+		claim = null;
+		leg = null;
+
 		authorised = true;
 
 		if (super.getRequest().hasData("id")) {
@@ -43,8 +46,11 @@ public class AssistanceAgentClaimUpdateService extends AbstractGuiService<Assist
 			} catch (NumberFormatException e) {
 				claimId = -1;
 			}
-			claim = this.repository.findClaimById(claimId);
-			authorised = claim != null && !claim.getIsPublished() && claim.getAgent() != null && super.getRequest().getPrincipal().hasRealm(claim.getAgent());
+
+			if (claimId != 0) {
+				claim = this.repository.findClaimById(claimId);
+				authorised = claim != null && !claim.getIsPublished() && claim.getAgent() != null && super.getRequest().getPrincipal().hasRealm(claim.getAgent());
+			}
 		}
 
 		if (super.getRequest().hasData("leg")) {
@@ -58,7 +64,7 @@ public class AssistanceAgentClaimUpdateService extends AbstractGuiService<Assist
 
 			if (legId != 0) {
 				leg = this.repository.findLegById(legId);
-				authorised &= leg != null && !leg.getDraftMode();
+				authorised &= leg != null && !leg.getDraftMode() && claim != null && MomentHelper.isAfterOrEqual(claim.getRegistrationMoment(), leg.getScheduledArrival());
 			}
 		}
 		super.getResponse().setAuthorised(authorised);
