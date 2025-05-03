@@ -85,8 +85,6 @@ public class TrackingLogValidator extends AbstractValidator<ValidTrackingLog, Tr
 						if (t1.getResolutionPercentage() == 100.0 && t2.getResolutionPercentage() == 100.0) {
 							super.state(context, t1.getIsPublished(), "status", "acme.validation.trackingLog.reclaimed.noCompletedLog.message");
 							super.state(context, t1.getStatus().equals(t2.getStatus()), "status", "acme.validation.trackingLog.reclaimed.status.message");
-
-							System.out.println("S1 = " + t1.getStatus() + "; S2 = " + t2.getStatus());
 						} else
 							super.state(context, t1.getResolutionPercentage() < t2.getResolutionPercentage(), "resolutionPercentage", "acme.validation.trackingLog.resolutionPercentage.message");
 					}
