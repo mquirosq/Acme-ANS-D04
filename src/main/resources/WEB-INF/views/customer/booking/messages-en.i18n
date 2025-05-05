@@ -3,24 +3,24 @@ customer.booking.list.title = My bookings
 customer.booking.form.title = Details of the booking
 
 customer.booking.list.label.locatorCode = Locator code
-customer.booking.list.label.purchasedAt = Purchase date
 customer.booking.list.label.price = Price
-customer.booking.list.label.flight.destination = Destination
+customer.booking.list.label.flight = Flight
 customer.booking.list.label.draftMode = Status
-customer.booking.list.draftMode.complete = Complete
-customer.booking.list.draftMode.pending = Pending
 
-customer.booking.form.label.locatorCode = Locator code
-customer.booking.form.label.flight = Flight	
-customer.booking.form.label.travelClass = Travel class
-customer.booking.form.label.lastCardNibble = Last credit card nibble
-customer.booking.form.label.price = Price
-customer.booking.form.label.purchasedAt = Purchase date
+customer.booking.form.label.locatorCode = Locator code:
+customer.booking.form.label.flight = Flight:
+customer.booking.form.label.travelClass = Travel class:
+customer.booking.form.label.lastCardNibble = Last credit card nibble:
+customer.booking.form.label.price = Price:
+customer.booking.form.label.purchasedAt = Purchase date:
+customer.booking.form.label.draft = Pending
 
 customer.booking.form.placeholder.lastCardNibble = Four last digits of the credit card used to pay
 
+customer.booking.list.button.create = Create
+
 customer.booking.form.button.passengers = Passengers
 customer.booking.form.button.update = Update
-customer.booking.form.button.delete = Delete
+customer.booking.form.button.edit = Edit
 customer.booking.form.button.publish = Publish
 customer.booking.form.button.create = Create

@@ -5,6 +5,8 @@ administrator.aircraft.list.label.registrationNumber	= Registration number
 administrator.aircraft.list.label.status				= Status
 administrator.aircraft.list.label.airline				= Airline
 
+administrator.aircraft.list.button.create				= Create
+
 administrator.aircraft.form.title						= Aircraft details
 
 administrator.aircraft.form.label.model					= Model
@@ -14,3 +16,12 @@ administrator.aircraft.form.label.cargoWeight			= Cargo weight
 administrator.aircraft.form.label.status				= Status
 administrator.aircraft.form.label.airline				= Airline
 administrator.aircraft.form.label.details				= Details
+administrator.aircraft.form.label.confirmation			= Confirmation
+
+administrator.aircraft.form.button.edit					= Edit
+administrator.aircraft.form.button.update				= Update
+administrator.aircraft.form.button.disable				= Disable
+administrator.aircraft.form.button.create				= Create
+
+administrator.aircraft.form.placeholder.capacity		= 128
+administrator.aircraft.form.placeholder.cargoWeight		= 26000

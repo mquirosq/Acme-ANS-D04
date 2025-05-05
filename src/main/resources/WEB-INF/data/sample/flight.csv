@@ -38,3 +38,6 @@ flight-30,"Lorem ipsum dolor sit ame",false,EUR 100.00,"' or 'A' = 'A ",airline-
 flight-31,"Lorem ipsum dolor sit ame",false,EUR 100.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-manager-02,true
 # draft mode - variations. This sample must have at least 1 published leg -> LEG 14
 flight-32,"Lorem ipsum dolor sit ame",false,EUR 100.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-manager-01,false
+# published flights used in other sample data
+flight-33,"Lorem ipsum dolor sit ame",false,EUR 100.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-manager-01,false
+flight-34,"Lorem ipsum dolor sit ame",false,EUR 100.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-manager-01,false

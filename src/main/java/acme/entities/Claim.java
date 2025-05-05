@@ -2,7 +2,6 @@
 package acme.entities;
 
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -18,6 +17,7 @@ import acme.client.components.validation.ValidEmail;
 import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidString;
 import acme.client.helpers.SpringHelper;
+import acme.constraints.ValidClaim;
 import acme.datatypes.ClaimStatus;
 import acme.datatypes.ClaimType;
 import acme.realms.AssistanceAgent;
@@ -27,6 +27,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+@ValidClaim
 public class Claim extends AbstractEntity {
 
 	public static final long	serialVersionUID	= 1L;
@@ -70,19 +71,20 @@ public class Claim extends AbstractEntity {
 	@Transient
 	public ClaimStatus getStatus() {
 		ClaimStatus out;
-		List<TrackingLog> trackingLogs;
-		TrackingLogRepository trackingLogRepository;
+		ClaimRepository claimRepository;
+		Long acceptedLogs, rejectedLogs;
 
 		out = ClaimStatus.PENDING;
-		trackingLogRepository = SpringHelper.getBean(TrackingLogRepository.class);
-		trackingLogs = trackingLogRepository.findAllByClaimId(this.getId());
+		claimRepository = SpringHelper.getBean(ClaimRepository.class);
 
-		if (trackingLogs.stream().anyMatch(log -> log.getStatus().equals(ClaimStatus.ACCEPTED)))
+		acceptedLogs = claimRepository.findAmountOfTrackingLogsByClaimIdAndStatus(this.getId(), ClaimStatus.ACCEPTED);
+		rejectedLogs = claimRepository.findAmountOfTrackingLogsByClaimIdAndStatus(this.getId(), ClaimStatus.REJECTED);
+
+		if (acceptedLogs > 0L)
 			out = ClaimStatus.ACCEPTED;
-		else if (trackingLogs.stream().anyMatch(log -> log.getStatus().equals(ClaimStatus.REJECTED)))
+		else if (rejectedLogs > 0L)
 			out = ClaimStatus.REJECTED;
-		else if (trackingLogs.stream().anyMatch(log -> log.getStatus().equals(ClaimStatus.RECLAIMED)))
-			out = ClaimStatus.RECLAIMED;
+
 		return out;
 	}
 }

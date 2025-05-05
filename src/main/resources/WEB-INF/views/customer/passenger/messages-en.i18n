@@ -3,18 +3,18 @@ customer.passenger.list.title						= Passenger list
 customer.passenger.list.label.fullName = Full name
 customer.passenger.list.label.passportNumber = Passport number
 
-customer.list-passengers.draft = My drafts
 customer.list-passengers.mine = My passengers
+customer.list-passengers.booking = Passengers in my bookings
 
 customer.passenger.form.title						= Passenger details
 
-customer.passenger.form.label.fullName = Full name
-customer.passenger.form.label.email = E-mail
+customer.passenger.form.label.fullName = Full name:
+customer.passenger.form.label.email = E-mail:
 customer.passenger.form.placeholder.email = acme@ans.com
-customer.passenger.form.label.passportNumber = Passport number
+customer.passenger.form.label.passportNumber = Passport number:
 customer.passenger.form.placeholder.passportNumber = Passport number
-customer.passenger.form.label.birthDate = Birth date
-customer.passenger.form.label.specialNeeds = Special needs
+customer.passenger.form.label.birthDate = Birth date:
+customer.passenger.form.label.specialNeeds = Special needs: (Optional)
 customer.passenger.form.label.draft = Draft
 
 customer.passenger.list.button.create = Create

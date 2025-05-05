@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
 import acme.client.components.views.SelectChoices;
+import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.datatypes.ClaimStatus;
@@ -26,14 +27,45 @@ public class AssistanceAgentClaimPublishService extends AbstractGuiService<Assis
 	public void authorise() {
 		boolean authorised;
 
-		int claimId;
+		int claimId, legId;
+		String claimIdRaw, legIdRaw;
 		Claim claim;
+		FlightLeg leg;
 
-		claimId = super.getRequest().getData("id", int.class);
-		claim = this.repository.findClaimById(claimId);
+		claim = null;
+		leg = null;
 
-		authorised = claim != null && claim.getIsPublished().equals(false);
+		authorised = true;
 
+		if (super.getRequest().hasData("id")) {
+			claimIdRaw = super.getRequest().getData("id", String.class);
+
+			try {
+				claimId = Integer.parseInt(claimIdRaw);
+			} catch (NumberFormatException e) {
+				claimId = -1;
+			}
+
+			if (claimId != 0) {
+				claim = this.repository.findClaimById(claimId);
+				authorised = claim != null && !claim.getIsPublished() && claim.getAgent() != null && super.getRequest().getPrincipal().hasRealm(claim.getAgent());
+			}
+		}
+
+		if (super.getRequest().hasData("leg")) {
+			legIdRaw = super.getRequest().getData("leg", String.class);
+
+			try {
+				legId = Integer.parseInt(legIdRaw);
+			} catch (NumberFormatException e) {
+				legId = -1;
+			}
+
+			if (legId != 0) {
+				leg = this.repository.findLegById(legId);
+				authorised &= leg != null && !leg.getDraftMode() && claim != null && MomentHelper.isAfterOrEqual(claim.getRegistrationMoment(), leg.getScheduledArrival());
+			}
+		}
 		super.getResponse().setAuthorised(authorised);
 	}
 
@@ -50,19 +82,14 @@ public class AssistanceAgentClaimPublishService extends AbstractGuiService<Assis
 
 	@Override
 	public void bind(final Claim claim) {
-		int legId, agentId;
+		int legId;
 		FlightLeg leg;
-		AssistanceAgent agent;
 
 		legId = super.getRequest().getData("leg", int.class);
-		agentId = super.getRequest().getData("assistanceAgent", int.class);
-
 		leg = this.repository.findLegById(legId);
-		agent = this.repository.findAssistanceAgentById(agentId);
 
-		super.bindObject(claim, "registrationMoment", "passengerEmail", "description", "isPublished", "type");
+		super.bindObject(claim, "passengerEmail", "description", "type");
 		claim.setLeg(leg);
-		claim.setAgent(agent);
 	}
 
 	@Override
@@ -79,18 +106,14 @@ public class AssistanceAgentClaimPublishService extends AbstractGuiService<Assis
 	@Override
 	public void unbind(final Claim claim) {
 		Dataset dataset;
-		SelectChoices typeChoices, statusChoices, legChoices, assistanceAgentChoices;
-
+		SelectChoices typeChoices, statusChoices, legChoices;
 		Collection<FlightLeg> legs;
-		Collection<AssistanceAgent> assistanceAgents;
 
-		legs = this.repository.findAllLegs();
-		assistanceAgents = this.repository.findAllAssistanceAgents();
+		legs = this.repository.findAllPublishedLegsBefore(MomentHelper.getCurrentMoment());
 
 		typeChoices = SelectChoices.from(ClaimType.class, claim.getType());
 		statusChoices = SelectChoices.from(ClaimStatus.class, claim.getStatus());
 		legChoices = SelectChoices.from(legs, "flightNumber", claim.getLeg());
-		assistanceAgentChoices = SelectChoices.from(assistanceAgents, "employeeCode", claim.getAgent());
 
 		dataset = super.unbindObject(claim, "registrationMoment", "passengerEmail", "description", "isPublished");
 		dataset.put("types", typeChoices);
@@ -99,8 +122,6 @@ public class AssistanceAgentClaimPublishService extends AbstractGuiService<Assis
 		dataset.put("status", statusChoices.getSelected().getKey());
 		dataset.put("legs", legChoices);
 		dataset.put("leg", legChoices.getSelected().getKey());
-		dataset.put("assistanceAgents", assistanceAgentChoices);
-		dataset.put("assistanceAgent", assistanceAgentChoices.getSelected().getKey());
 
 		super.getResponse().addData(dataset);
 	}

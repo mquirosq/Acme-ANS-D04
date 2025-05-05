@@ -9,8 +9,9 @@
 	<acme:input-textbox code = "customer.passenger.form.label.passportNumber" path = "passportNumber" placeholder = "customer.passenger.form.placeholder.passportNumber"/>
 	<acme:input-moment code = "customer.passenger.form.label.birthDate" path = "birthDate"/>
 	<acme:input-textarea code = "customer.passenger.form.label.specialNeeds" path = "specialNeeds"/>
-	<acme:input-checkbox code = "customer.passenger.form.label.draft" path = "draftMode" readonly = "${true}"/>
- 
+	<jstl:if test = "${_command != 'create'}">
+		<acme:input-checkbox code = "customer.passenger.form.label.draft" path = "draftMode" readonly = "${true}"/>
+ 	</jstl:if>
  	<jstl:choose>
 		<jstl:when test="${_command == 'show' && draftMode}">
 			<acme:button code="customer.passenger.form.button.edit" action="/customer/passenger/update?id=${id}"/>

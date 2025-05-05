@@ -29,7 +29,22 @@ public class CustomerBookingShowService extends AbstractGuiService<Customer, Boo
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		Boolean authorised;
+		String rawId;
+		int bookingId;
+		Booking booking;
+
+		try {
+			rawId = super.getRequest().getData("id", String.class);
+			bookingId = Integer.parseInt(rawId);
+			booking = this.repository.findBookingById(bookingId);
+
+			authorised = booking != null && super.getRequest().getPrincipal().hasRealm(booking.getCustomer());
+		} catch (NumberFormatException e) {
+			authorised = false;
+		}
+
+		super.getResponse().setAuthorised(authorised);
 	}
 
 	@Override
@@ -52,17 +67,18 @@ public class CustomerBookingShowService extends AbstractGuiService<Customer, Boo
 		Date currentMoment;
 
 		currentMoment = MomentHelper.getCurrentMoment();
-		flights = this.repository.findAllFlights();
+		flights = this.repository.findAllNonDraftFlights();
 		flights = flights.stream().filter(f -> (f.getScheduledDeparture() != null && MomentHelper.isAfter(f.getScheduledDeparture(), currentMoment))).toList();
 
-		flightChoices = SelectChoices.from(flights, "id", booking.getFlight());
+		flightChoices = SelectChoices.from(flights, "identifierCode", booking.getFlight());
 		travelChoices = SelectChoices.from(TravelClass.class, booking.getTravelClass());
 
-		dataset = super.unbindObject(booking, "locatorCode", "travelClass", "lastCardNibble", "price", "purchasedAt");
+		dataset = super.unbindObject(booking, "locatorCode", "travelClass", "lastCardNibble", "price", "purchasedAt", "draftMode");
 		dataset.put("flight", flightChoices.getSelected().getKey());
 		dataset.put("flights", flightChoices);
 		dataset.put("travelClass", travelChoices.getSelected().getKey());
 		dataset.put("travelClasses", travelChoices);
+		super.getResponse().addGlobal("readonly", true);
 
 		super.getResponse().addData(dataset);
 	}

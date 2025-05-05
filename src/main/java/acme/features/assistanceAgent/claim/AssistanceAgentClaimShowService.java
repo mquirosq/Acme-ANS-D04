@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
 import acme.client.components.views.SelectChoices;
+import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.datatypes.ClaimStatus;
@@ -27,13 +28,22 @@ public class AssistanceAgentClaimShowService extends AbstractGuiService<Assistan
 		boolean authorised;
 
 		int claimId;
+		String claimIdRaw;
 		Claim claim;
 
-		claimId = super.getRequest().getData("id", int.class);
-		claim = this.repository.findClaimById(claimId);
+		authorised = true;
 
-		authorised = claim != null;
+		if (super.getRequest().hasData("id")) {
+			claimIdRaw = super.getRequest().getData("id", String.class);
 
+			try {
+				claimId = Integer.parseInt(claimIdRaw);
+			} catch (NumberFormatException e) {
+				claimId = -1;
+			}
+			claim = this.repository.findClaimById(claimId);
+			authorised = claim != null && claim.getAgent() != null && super.getRequest().getPrincipal().hasRealm(claim.getAgent());
+		}
 		super.getResponse().setAuthorised(authorised);
 	}
 
@@ -51,18 +61,14 @@ public class AssistanceAgentClaimShowService extends AbstractGuiService<Assistan
 	@Override
 	public void unbind(final Claim claim) {
 		Dataset dataset;
-		SelectChoices typeChoices, statusChoices, legChoices, assistanceAgentChoices;
-
+		SelectChoices typeChoices, statusChoices, legChoices;
 		Collection<FlightLeg> legs;
-		Collection<AssistanceAgent> assistanceAgents;
 
-		legs = this.repository.findAllLegs();
-		assistanceAgents = this.repository.findAllAssistanceAgents();
+		legs = this.repository.findAllPublishedLegsBefore(MomentHelper.getCurrentMoment());
 
 		typeChoices = SelectChoices.from(ClaimType.class, claim.getType());
 		statusChoices = SelectChoices.from(ClaimStatus.class, claim.getStatus());
 		legChoices = SelectChoices.from(legs, "flightNumber", claim.getLeg());
-		assistanceAgentChoices = SelectChoices.from(assistanceAgents, "employeeCode", claim.getAgent());
 
 		dataset = super.unbindObject(claim, "registrationMoment", "passengerEmail", "description", "isPublished");
 		dataset.put("types", typeChoices);
@@ -71,8 +77,6 @@ public class AssistanceAgentClaimShowService extends AbstractGuiService<Assistan
 		dataset.put("status", statusChoices.getSelected().getKey());
 		dataset.put("legs", legChoices);
 		dataset.put("leg", legChoices.getSelected().getKey());
-		dataset.put("assistanceAgents", assistanceAgentChoices);
-		dataset.put("assistanceAgent", assistanceAgentChoices.getSelected().getKey());
 
 		super.getResponse().addData(dataset);
 	}
