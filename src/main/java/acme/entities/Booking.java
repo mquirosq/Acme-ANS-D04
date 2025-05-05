@@ -33,7 +33,7 @@ public class Booking extends AbstractEntity {
 	private static final long	serialVersionUID	= 1L;
 
 	@Mandatory
-	@ValidString(pattern = "^[A-Z0-9]{6,8}$")
+	@ValidString(pattern = "^[A-Z0-9]{6,8}$", message = "{acme.validation.booking.locatorCode.pattern}")
 	@Column(unique = true)
 	private String				locatorCode;
 
@@ -53,7 +53,7 @@ public class Booking extends AbstractEntity {
 	private Money				price;
 
 	@Optional
-	@ValidString(pattern = "^\\d{4}$")
+	@ValidString(pattern = "^\\d{4}$", message = "{acme.validation.booking.lastCardNibble.pattern}")
 	@Automapped
 	private String				lastCardNibble;
 
