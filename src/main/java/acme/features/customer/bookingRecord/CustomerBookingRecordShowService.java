@@ -35,10 +35,9 @@ public class CustomerBookingRecordShowService extends AbstractGuiService<Custome
 			bookingRecord = this.repository.findBookingRecordById(id);
 			booking = this.repository.findBookingOfBookingRecordById(id);
 			authorised = bookingRecord != null && booking != null && super.getRequest().getPrincipal().getActiveRealm().equals(booking.getCustomer());
-		} catch (NumberFormatException e) {
+		} catch (NumberFormatException | AssertionError e) {
 			authorised = false;
 		}
-
 		super.getResponse().setAuthorised(authorised);
 	}
 

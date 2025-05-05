@@ -37,7 +37,7 @@ public class CustomerBookingRecordDeleteService extends AbstractGuiService<Custo
 			bookingRecord = this.repository.findBookingRecordById(id);
 			Customer customer = bookingRecord.getBooking().getCustomer();
 			authorised = bookingRecord != null && bookingRecord.getBooking() != null && bookingRecord.getBooking().isDraftMode() && super.getRequest().getPrincipal().getActiveRealm().equals(customer);
-		} catch (NumberFormatException e) {
+		} catch (NumberFormatException | AssertionError e) {
 			authorised = false;
 		}
 

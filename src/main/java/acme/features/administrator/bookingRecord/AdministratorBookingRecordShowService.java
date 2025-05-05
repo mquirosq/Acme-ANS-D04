@@ -35,7 +35,7 @@ public class AdministratorBookingRecordShowService extends AbstractGuiService<Ad
 			bookingRecord = this.repository.findBookingRecordById(id);
 			booking = this.repository.findBookingOfBookingRecordById(id);
 			authorised = bookingRecord != null && booking != null && !booking.isDraftMode();
-		} catch (NumberFormatException e) {
+		} catch (NumberFormatException | AssertionError e) {
 			authorised = false;
 		}
 
