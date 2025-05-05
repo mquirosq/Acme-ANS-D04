@@ -34,7 +34,7 @@ public class CustomerPassengerUpdateService extends AbstractGuiService<Customer,
 			passenger = this.repository.findPassengerById(passengerId);
 
 			authorised = passenger != null && passenger.isDraftMode() && super.getRequest().getPrincipal().getActiveRealm().equals(passenger.getCustomer());
-		} catch (NumberFormatException e) {
+		} catch (NumberFormatException | AssertionError e) {
 			authorised = false;
 		}
 
