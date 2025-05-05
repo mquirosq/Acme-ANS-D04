@@ -35,3 +35,4 @@ flight-assignment-24,PILOT,2012/07/02 0:00,CONFIRMED,"Lorem ipsum dolor sit amet
 # Leg - no singular values
 # Published - standard variations
 flight-assignment-25,PILOT,2012/07/02 0:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",flight-crew-member-01,flight-leg-01, true
+# Published - no singular values
