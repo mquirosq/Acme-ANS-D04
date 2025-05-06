@@ -64,3 +64,6 @@ acme.validation.claim.leg.message					= Una reclamación no puede estar enlazada
 acme.validation.claim.registrationMoment.message 	= El momento de registro de una reclamación no puede ser anterior a la fecha de llegada del tramo al que está asociada
 
 acme.validation.realm.identifierPattern.message = El identificador debe de incluir 2-3 letras en mayúscula y 6 dígitos.
+
+acme.validation.systemConfiguration.systemCurrency.message = Las monedas deben estar representadas por 3 letras mayúsculas.
+acme.validation.systemConfiguration.acceptedCurrencies.message = Debe ser una lista de monedas representadas con tres letras mayúsculas y separadas por comas.
