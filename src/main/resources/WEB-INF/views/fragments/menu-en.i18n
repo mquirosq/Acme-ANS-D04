@@ -46,6 +46,7 @@ master.menu.technician.list-tasks			= Tasks
 master.menu.customer = Customer
 master.menu.customer.list-passengers = My passengers
 master.menu.customer.list-bookings = My bookings
+master.menu.customer.show-dashboard = My dashboard
 
 # master.menu.user-account ####################################################
 
