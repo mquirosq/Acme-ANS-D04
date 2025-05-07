@@ -9,7 +9,7 @@
 	
 	<jstl:choose>
 		<jstl:when test = "${_command == 'show'}">
-			<acme:button code = "administrator.systemConfiguration.form.button.edit" action = "/administrator/system-configuration/update?id=${id}"/>
+			<acme:button code = "administrator.systemConfiguration.form.button.edit" action = "/administrator/system-configuration/update"/>
 		</jstl:when>
 		<jstl:when test = "${acme:anyOf(_command, 'update')}">
 			<acme:submit code = "administrator.systemConfiguration.form.button.update" action = "/administrator/system-configuration/update"/>		

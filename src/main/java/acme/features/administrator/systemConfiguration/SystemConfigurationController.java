@@ -16,7 +16,10 @@ public class SystemConfigurationController extends AbstractGuiController<Adminis
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private SystemConfigurationShowService showService;
+	private SystemConfigurationShowService		showService;
+
+	@Autowired
+	private SystemConfigurationUpdateService	updateService;
 
 	// Constructors -----------------------------------------------------------
 
@@ -24,5 +27,6 @@ public class SystemConfigurationController extends AbstractGuiController<Adminis
 	@PostConstruct
 	protected void initialise() {
 		super.addBasicCommand("show", this.showService);
+		super.addBasicCommand("update", this.updateService);
 	}
 }
