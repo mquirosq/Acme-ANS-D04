@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="15.1">
-  <zoom_level>10</zoom_level>
+  <zoom_level>9</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>30</x>
-      <y>80</y>
-      <w>600</w>
-      <h>150</h>
+      <x>27</x>
+      <y>45</y>
+      <w>540</w>
+      <h>135</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Role&gt;&gt;
 Customer {ValidCustomer}

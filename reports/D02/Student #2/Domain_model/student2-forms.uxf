@@ -4,7 +4,7 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>230</x>
+      <x>0</x>
       <y>170</y>
       <w>390</w>
       <h>260</h>
@@ -12,18 +12,18 @@
     <panel_attributes>&lt;&lt;Form&gt;&gt;
 CustomerDashboard
 --
-+ lastFiveDestionations: List&lt;String&gt;
-+ moneySpentInBookingDuringLastYear: Money
-+ numberOfBookingsByTravelClass: Map&lt;String, Integer&gt;
-+ totalCostOfBookings: Money
-+ averageCostOfBookings: Double
-+ minimumCostOfBookings: Double
-+ maximumOfCostOfBookings: Double
-+ standardDeviationOfCostOfBookings: Double
-+ totalNumberOfPassengersInBookings: Integer
++ lastFiveDestinations: List&lt;String&gt;
++ moneySpentInBookingsDuringLastYear: List&lt;Money&gt;
++ numberOfBookingsByTravelClass: Map&lt;TravelClass, Long&gt;
++ totalCostOfBookings: List&lt;Money&gt;
++ averageCostOfBookings: List&lt;Money&gt;
++ minimumCostOfBookings: List&lt;Money&gt;
++ maximumCostOfBookings: List&lt;Money&gt;
++ standardDeviationOfCostOfBookings: List&lt;Money&gt;
++ totalNumberOfPassengersInBookings: Long
 + averageNumberOfPassengerInBookings: Double
-+ minimumNumberOfPassengersInBookings: Double
-+ maximumNumberOfPassengersInBookings: Double
++ minimumNumberOfPassengersInBookings: Long
++ maximumNumberOfPassengersInBookings: Long
 + standardDeviationOfPassengersInBookings: Double
 
 bg=cyan</panel_attributes>

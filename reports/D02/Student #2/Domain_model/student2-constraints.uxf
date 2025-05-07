@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="15.1">
-  <zoom_level>10</zoom_level>
+  <zoom_level>5</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>20</x>
-      <y>300</y>
-      <w>480</w>
-      <h>90</h>
+      <x>25</x>
+      <y>230</y>
+      <w>240</w>
+      <h>45</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Constraint&gt;&gt;
 ValidCustomer
@@ -20,10 +20,10 @@ bg=RED</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>230</x>
-      <y>170</y>
-      <w>580</w>
-      <h>110</h>
+      <x>25</x>
+      <y>165</y>
+      <w>290</w>
+      <h>55</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Constraint&gt;&gt;
 ValidBooking
@@ -37,15 +37,30 @@ bg=RED</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>520</x>
-      <y>300</y>
-      <w>480</w>
-      <h>80</h>
+      <x>275</x>
+      <y>230</y>
+      <w>240</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Constraint&gt;&gt;
 ValidBookingRecord
 --
 + The pair booking, passenger must be unique for every bookingRecord.
+bg=RED</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>350</x>
+      <y>170</y>
+      <w>115</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Constraint&gt;&gt;
+ValidRecommendation
+--
++ The placeId must be unique.
 bg=RED</panel_attributes>
     <additional_attributes/>
   </element>

@@ -1,6 +1,7 @@
 
 package acme.entities;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 
 import acme.client.components.basis.AbstractEntity;
@@ -23,7 +24,7 @@ public class Recommendation extends AbstractEntity {
 
 	@Optional
 	@ValidString(min = 1, max = 255)
-	@Automapped
+	@Column(unique = true)
 	private String				placeId;
 
 	@Mandatory
