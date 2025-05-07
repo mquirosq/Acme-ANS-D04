@@ -1,4 +1,4 @@
-customer.booking-record.form.title = Passenger form
+customer.recommendation.form.title = Recommendation details
 customer.recommendation.list.title = List of recommendations
 
 customer.recommendation.list.label.name = Name:
