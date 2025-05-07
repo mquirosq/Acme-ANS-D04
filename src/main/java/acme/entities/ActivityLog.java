@@ -44,6 +44,11 @@ public class ActivityLog extends AbstractEntity {
 	@ValidNumber(min = 0, max = 10)
 	private Integer				severityLevel;
 
+	@Mandatory
+	@Valid
+	@Automapped
+	private Boolean				published;
+
 	// Relationships -------------------------------------------------------
 
 	@Mandatory

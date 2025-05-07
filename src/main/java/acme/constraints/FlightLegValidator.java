@@ -1,14 +1,13 @@
 
 package acme.constraints;
 
-import java.util.List;
-
 import javax.validation.ConstraintValidatorContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.validation.AbstractValidator;
 import acme.client.components.validation.Validator;
+import acme.client.helpers.MomentHelper;
 import acme.entities.FlightLeg;
 import acme.entities.FlightLegRepository;
 
@@ -33,30 +32,23 @@ public class FlightLegValidator extends AbstractValidator<ValidFlightLeg, Flight
 		if (leg == null)
 			super.state(context, false, "*", "javax.validation.constraints.NotNull.message");
 		else {
-			{
+			if (leg.getFlightNumber() != null && leg.getFlightNumber().trim().length() >= 3 && leg.getDeployedAircraft() != null) {
 				boolean firstCharsFromIATA;
 
-				String airlineIATA = leg.getParentFlight().getManager().getAirline().getIATACode();
+				String airlineIATA = leg.getDeployedAircraft().getAirline().getIATACode();
 				firstCharsFromIATA = airlineIATA.equals(leg.getFlightNumber().substring(0, 3));
 
 				super.state(context, firstCharsFromIATA, "flightNumber", "acme.validation.flightLeg.flightNumber.message");
 			}
-			{
-				boolean departureIsBeforeArrival = leg.getScheduledDeparture().compareTo(leg.getScheduledArrival()) < 0;
+			if (leg.getScheduledDeparture() != null && leg.getScheduledArrival() != null) {
+				boolean departureIsBeforeArrival = MomentHelper.isBefore(leg.getScheduledDeparture(), leg.getScheduledArrival());
 
 				super.state(context, departureIsBeforeArrival, "dates", "acme.validation.flightLeg.scheduledDates.message");
 			}
-			{
-				boolean isNotOverlapping = true;
-
-				List<FlightLeg> legsOfFlight = this.repository.getLegsOfFlight(leg.getParentFlight().getId());
-
-				for (Integer i = 0; i < legsOfFlight.size() - 1; i++)
-					if (legsOfFlight.get(i).getScheduledArrival().compareTo(legsOfFlight.get(i + 1).getScheduledDeparture()) >= 0) {
-						isNotOverlapping = false;
-						break;
-					}
-				super.state(context, isNotOverlapping, "dates", "acme.validation.flight.overlappingDates.message");
+			if (leg.getFlightNumber() != null) {
+				FlightLeg existingLeg = this.repository.getByFlightNumber(leg.getFlightNumber());
+				boolean uniqueFlightNumber = existingLeg == null || existingLeg.equals(leg);
+				super.state(context, uniqueFlightNumber, "flightNumber", "acme.validation.flightLeg.flightNumberUnique.message");
 			}
 		}
 

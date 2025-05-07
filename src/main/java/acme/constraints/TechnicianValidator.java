@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import acme.client.components.principals.DefaultUserIdentity;
 import acme.client.components.validation.AbstractValidator;
 import acme.client.components.validation.Validator;
-import acme.helpers.EmployeeCodeHelper;
+import acme.helpers.ValidatorHelper;
 import acme.realms.Technician;
 import acme.realms.TechnicianRepository;
 
@@ -42,10 +42,10 @@ public class TechnicianValidator extends AbstractValidator<ValidTechnician, Tech
 			license = technician.getLicense();
 			obtainedTechnician = this.repository.findByLicense(license);
 
-			isCorrectlyFormatted = EmployeeCodeHelper.checkFormatIsCorrect(license, identity);
+			isCorrectlyFormatted = ValidatorHelper.checkFormatIsCorrect(license, identity);
 			super.state(context, isCorrectlyFormatted, "license", "acme.validation.technician.licenseCodeFormat.message");
 
-			isUnique = EmployeeCodeHelper.checkUniqueness(technician, obtainedTechnician);
+			isUnique = ValidatorHelper.checkUniqueness(technician, obtainedTechnician);
 			super.state(context, isUnique, "license", "acme.validation.technician.licenseUniqueness.message");
 		}
 
