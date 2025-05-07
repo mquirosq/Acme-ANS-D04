@@ -1,0 +1,12 @@
+administrator.recommendation.form.title = Recomendaciones
+
+administrator.recommendation.form.label.city = Ciudad:
+administrator.recommendation.form.label.country = País:
+administrator.recommendation.form.label.placeId = Identificador del lugar:
+administrator.recommendation.form.label.name = Nombre:
+administrator.recommendation.form.label.website = Página web:
+
+administrator.recommendation.form.button.perform = Nueva recomendación
+
+administration.recommendation.form.label.api-error = Lo sentimos, la API no acepta más peticiones gratis :/
+administration.recommendation.form.label.not-found = La ciudad y país proporcinados no tienen nuevas recomendaciones. Recuerda proporcionar los nombres en inglés.

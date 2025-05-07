@@ -9,17 +9,19 @@ import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidString;
 import acme.client.components.validation.ValidUrl;
+import acme.constraints.ValidRecommendation;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
+@ValidRecommendation
 public class Recommendation extends AbstractEntity {
 
 	public static final long	serialVersionUID	= 1L;
 
-	@Mandatory
+	@Optional
 	@ValidString(min = 1, max = 255)
 	@Automapped
 	private String				placeId;
@@ -34,7 +36,7 @@ public class Recommendation extends AbstractEntity {
 	@Automapped
 	private String				country;
 
-	@Mandatory
+	@Optional
 	@ValidString(min = 1, max = 255)
 	@Automapped
 	private String				name;
