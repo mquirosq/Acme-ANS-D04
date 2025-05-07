@@ -13,5 +13,3 @@
 </acme:list>
 
 <acme:button code = "any.review.list.button.create" action = "/any/review/create"/>
-
-
