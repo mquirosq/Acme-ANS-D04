@@ -11,3 +11,5 @@
 	<acme:list-column code="any.review.list.label.score" path="score" width="10%"/>
 	<acme:list-payload path="payload"/>
 </acme:list>
+
+<acme:button code = "any.review.list.button.create" action = "/any/review/create"/>

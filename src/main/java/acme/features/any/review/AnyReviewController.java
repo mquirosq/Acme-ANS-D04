@@ -21,6 +21,9 @@ public class AnyReviewController extends AbstractGuiController<Any, Review> {
 	@Autowired
 	private AnyReviewShowService	showService;
 
+	@Autowired
+	private AnyReviewCreateService	createService;
+
 	// Constructors -----------------------------------------------------------
 
 
@@ -28,5 +31,6 @@ public class AnyReviewController extends AbstractGuiController<Any, Review> {
 	protected void initialise() {
 		super.addBasicCommand("list", this.listService);
 		super.addBasicCommand("show", this.showService);
+		super.addBasicCommand("create", this.createService);
 	}
 }

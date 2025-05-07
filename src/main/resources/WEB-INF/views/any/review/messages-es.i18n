@@ -9,8 +9,11 @@ any.review.form.label.subject = Asunto:
 any.review.form.label.text = Descripción:
 any.review.form.label.score = Valoración:
 any.review.form.label.recommended = Recomendado
+any.review.form.label.confirmation = Marque esta casilla si se encuentra conforme con los datos tras haberlos revisado.
+any.review.form.button.create = Crear
 
 any.review.list.label.alias = Alias
 any.review.list.label.subject = Asunto
 any.review.list.label.text = Descripción
 any.review.list.label.score = Valoración
+any.review.list.button.create = Crear
