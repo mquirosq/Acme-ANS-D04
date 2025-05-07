@@ -8,8 +8,8 @@ any.review.form.label.alias = Alias:
 any.review.form.label.moment = Date of Review:
 any.review.form.label.subject = Subject:
 any.review.form.label.text = Description:
-any.review.form.label.score = Score:
-any.review.form.label.recommended = Recommended
+any.review.form.label.score = Score: (optional)
+any.review.form.label.recommended = Recommended (optional)
 any.review.form.label.confirmation = Check this box if you are satisfied with the information after reviewing it.
 any.review.form.button.create = Create
 
