@@ -43,7 +43,7 @@ Booking {ValidBooking}
 + purchasedAt: Date {Mandatory, ValidMoment(part=true), Temporal(TIMESTAMP)}
 + travelClass: TravelClass {Mandatory, Valid, Automapped}
 + price: Money {Mandatory, ValidMoney, Automapped}
-+ lastCardNibble: String {Optional, ValidString(pattern = "^\\d{4}$"), Automapped}
++ lastCardNibble: String {Optional, ValidString(pattern = "^\d{4}$"), Automapped}
 + draftMode: boolean {Mandatory, Valid, Automapped}
 bg=green</panel_attributes>
     <additional_attributes/>
