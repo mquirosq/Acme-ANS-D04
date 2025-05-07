@@ -1,0 +1,11 @@
+authenticated.customer.form.title = Customer form
+
+authenticated.customer.form.label.identifier = Identificador:
+authenticated.customer.form.label.phoneNumber = Número de teléfono:
+authenticated.customer.form.label.address = Dirección:
+authenticated.customer.form.label.city = Ciudad:
+authenticated.customer.form.label.country = País:
+authenticated.customer.form.placeholder.phoneNumber = De 6 a 15 dígitos opcionalmente precedidos de "+"
+	
+authenticated.customer.form.button.create = Crear
+authenticated.customer.form.button.update = Actualizar

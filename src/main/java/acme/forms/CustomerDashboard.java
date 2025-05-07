@@ -6,6 +6,7 @@ import java.util.Map;
 
 import acme.client.components.basis.AbstractForm;
 import acme.client.components.datatypes.Money;
+import acme.datatypes.TravelClass;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,17 +16,19 @@ public class CustomerDashboard extends AbstractForm {
 
 	private static final long	serialVersionUID	= 1L;
 
-	List<String>				lastFiveDestionations;
-	Money						moneySpentInBookingDuringLastYear;
-	Map<String, Integer>		numberOfBookingsByTravelClass;
-	Money						totalCostOfBookings;
-	Double						averageCostOfBookings;
-	Double						minimumCostOfBookings;
-	Double						maximumOfCostOfBookings;
-	Double						standardDeviationOfCostOfBookings;
-	Integer						totalNumberOfPassengersInBookings;
+	List<String>				lastFiveDestinations;
+	List<Money>					moneySpentInBookingsDuringLastYear;
+	Map<TravelClass, Long>		numberOfBookingsByTravelClass;
+
+	List<Money>					totalCostOfBookings;
+	List<Money>					averageCostOfBookings;
+	List<Money>					minimumCostOfBookings;
+	List<Money>					maximumCostOfBookings;
+	List<Money>					standardDeviationOfCostOfBookings;
+
+	Long						totalNumberOfPassengersInBookings;
 	Double						averageNumberOfPassengerInBookings;
-	Double						minimumNumberOfPassengersInBookings;
-	Double						maximumNumberOfPassengersInBookings;
+	Long						minimumNumberOfPassengersInBookings;
+	Long						maximumNumberOfPassengersInBookings;
 	Double						standardDeviationOfPassengersInBookings;
 }
