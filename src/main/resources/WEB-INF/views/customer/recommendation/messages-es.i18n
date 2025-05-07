@@ -1,0 +1,12 @@
+customer.booking-record.form.title = Formulario de pasajeros
+customer.recommendation.list.title = Lista de recomendaciones
+
+customer.recommendation.list.label.name = Nombre:
+customer.recommendation.list.label.city = Ciudad:
+customer.recommendation.list.label.country = País:
+customer.recommendation.list.label.website = Página web:
+
+customer.recommendation.form.label.name = Nombre:
+customer.recommendation.form.label.city = Ciudad:
+customer.recommendation.form.label.country = País:
+customer.recommendation.form.label.website = Página web:

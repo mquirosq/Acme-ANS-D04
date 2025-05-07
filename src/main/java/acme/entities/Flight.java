@@ -105,6 +105,19 @@ public class Flight extends AbstractEntity {
 	}
 
 	@Transient
+	public String getDestinationCountry() {
+		FlightLegRepository repository = SpringHelper.getBean(FlightLegRepository.class);
+		FlightLeg lastLeg = repository.getLastLegOfFlight(this.getId()).orElse(null);
+		String result;
+		if (lastLeg == null)
+			result = null;
+		else
+			result = lastLeg.getArrivalAirport().getCountry();
+
+		return result;
+	}
+
+	@Transient
 	public Integer getNumberOfLayovers() {
 		FlightLegRepository repository = SpringHelper.getBean(FlightLegRepository.class);
 		Integer legCount = repository.getLegsCountOfFlight(this.getId());
