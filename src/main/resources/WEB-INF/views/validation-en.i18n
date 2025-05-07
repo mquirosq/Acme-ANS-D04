@@ -7,11 +7,16 @@ acme.validation.airline.IATACode.message = The IATA Code must be unique
 
 acme.validation.customer.identifier.message = The identifier must start with the initials of the customer
 acme.validation.customer.identifier.unique.message = The identifier must be unique
+
 acme.validation.booking.locatorCode.message = The Locator Code must be unique
+acme.validation.booking.locatorCode.pattern = Must be composed of six to eight upper-case letters and numbers.
+acme.validation.booking.lastCardNibble.pattern = Must be composed of four digits.
 acme.validation.booking.lastCreditCardNibble.message = To publish a booking, it must store the last nibble of the credit card used to pay
 acme.validation.booking.passengers.message = To publish a booking, it must have at least one passenger
 
 acme.validation.bookingRecord.uniquePassengerInBooking.message = This passenger is already on the booking
+
+acme.validation.passenger.passportNumber.pattern = Must be composed of six to nine upper-case letters and digits.
 
 acme.validation.airlineManager.identifierFormat.message = The identifier must start with the initials of the manager
 acme.validation.airlineManager.identifierUniqueness.message = The identifier must be unique
@@ -62,3 +67,5 @@ acme.validation.claim.leg.message					= A claim cannot be linked to an unpublish
 acme.validation.claim.registrationMoment.message 	= A claim's registration moment cannot be before the arrival of the leg to which it is associated
 
 acme.validation.realm.identifierPattern.message = The identifier must include 2-3 upper case letters and 6 digits.
+
+acme.validation.recommendation.uniquePlaceId.message = The place identifier must be unique.

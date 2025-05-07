@@ -16,13 +16,12 @@
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
 <acme:form>
-	<acme:input-textbox code="authenticated.consumer.form.label.company" path="company"/>
-	<acme:input-textbox code="authenticated.consumer.form.label.sector" path="sector"/>
-	
-	<jstl:if test="${_command == 'create'}">
-		<acme:submit code="authenticated.consumer.form.button.create" action="/authenticated/consumer/create"/>
-	</jstl:if>
-	<jstl:if test="${_command == 'update'}">
-		<acme:submit code="authenticated.consumer.form.button.update" action="/authenticated/consumer/update"/>
-	</jstl:if>
+	<acme:input-textbox code="administrator.recommendation.form.label.city" path="city"/>
+	<acme:input-textbox code="administrator.recommendation.form.label.country" path="country"/>
+
+	<acme:input-textarea code="administrator.recommendation.form.label.placeId" path="placeId" readonly="true"/>	
+	<acme:input-textarea code="administrator.recommendation.form.label.name" path="name" readonly="true"/>
+	<acme:input-url code="administrator.recommendation.form.label.website" path="website" readonly="true"/>
+		
+	<acme:submit code="administrator.recommendation.form.button.perform" action="/administrator/recommendation/perform"/>
 </acme:form>

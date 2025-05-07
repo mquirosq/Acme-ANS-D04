@@ -33,7 +33,7 @@ public class CustomerPassengerShowService extends AbstractGuiService<Customer, P
 			passenger = this.repository.findPassengerById(passengerId);
 
 			authorised = passenger != null && passenger.getCustomer().equals(super.getRequest().getPrincipal().getActiveRealm());
-		} catch (NumberFormatException e) {
+		} catch (NumberFormatException | AssertionError e) {
 			authorised = false;
 		}
 

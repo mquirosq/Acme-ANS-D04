@@ -30,8 +30,8 @@ public class AdministratorBookingRecordListService extends AbstractGuiService<Ad
 			rawId = super.getRequest().getData("masterId", String.class);
 			bookingId = Integer.parseInt(rawId);
 			booking = this.repository.findBookingById(bookingId);
-			authorised = booking != null;
-		} catch (NumberFormatException e) {
+			authorised = booking != null && !booking.isDraftMode();
+		} catch (NumberFormatException | AssertionError e) {
 			authorised = false;
 		}
 		super.getResponse().setAuthorised(authorised);

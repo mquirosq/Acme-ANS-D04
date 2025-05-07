@@ -24,13 +24,14 @@ public class AssistanceAgentTrackingLogCreateService extends AbstractGuiService<
 
 	@Override
 	public void authorise() {
-		boolean authorised;
+		boolean authorised, canCreate;
 
 		int masterId;
 		String masterIdRaw;
 		Claim claim;
 
 		claim = null;
+		canCreate = true;
 
 		if (super.getRequest().hasData("masterId")) {
 			masterIdRaw = super.getRequest().getData("masterId", String.class);
@@ -41,8 +42,15 @@ public class AssistanceAgentTrackingLogCreateService extends AbstractGuiService<
 				masterId = -1;
 			}
 			claim = this.repository.findClaimById(masterId);
+
+			if (masterId >= 0) {
+				Collection<TrackingLog> trackingLogs;
+
+				trackingLogs = this.repository.findAllTrackingLogsByMasterId(masterId);
+				canCreate = trackingLogs.stream().filter(t -> !t.getStatus().equals(ClaimStatus.PENDING)).count() < 2L;
+			}
 		}
-		authorised = claim != null && claim.getAgent() != null && super.getRequest().getPrincipal().hasRealm(claim.getAgent());
+		authorised = claim != null && claim.getAgent() != null && super.getRequest().getPrincipal().hasRealm(claim.getAgent()) && canCreate;
 		super.getResponse().setAuthorised(authorised);
 	}
 
@@ -84,19 +92,14 @@ public class AssistanceAgentTrackingLogCreateService extends AbstractGuiService<
 	public void unbind(final TrackingLog trackingLog) {
 		int masterId;
 		Dataset dataset;
-		Collection<Claim> claims;
-		SelectChoices statusChoices, claimChoices;
+		SelectChoices statusChoices;
 
 		masterId = super.getRequest().getData("masterId", int.class);
-		claims = this.repository.findAllClaimsByAssistanceAgentId(super.getRequest().getPrincipal().getActiveRealm().getId());
 		statusChoices = SelectChoices.from(ClaimStatus.class, trackingLog.getStatus());
-		claimChoices = SelectChoices.from(claims, "id", trackingLog.getClaim());
 
 		dataset = super.unbindObject(trackingLog, "lastUpdateMoment", "creationMoment", "step", "resolutionPercentage", "resolution", "isPublished");
 		dataset.put("statuses", statusChoices);
 		dataset.put("status", statusChoices.getSelected().getKey());
-		dataset.put("claims", claimChoices);
-		dataset.put("claim", claimChoices.getSelected().getKey());
 
 		super.getResponse().addData(dataset);
 		super.getResponse().addGlobal("masterId", masterId);
