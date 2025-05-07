@@ -8,7 +8,7 @@ any.review.form.label.moment = Fecha de la reseña:
 any.review.form.label.subject = Asunto:
 any.review.form.label.text = Descripción:
 any.review.form.label.score = Valoración:
-any.review.form.label.recommended = Recomendado:
+any.review.form.label.recommended = Recomendado
 
 any.review.list.label.alias = Alias
 any.review.list.label.subject = Asunto

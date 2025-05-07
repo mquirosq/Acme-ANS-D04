@@ -8,7 +8,7 @@ any.review.form.label.moment = Date of Review:
 any.review.form.label.subject = Subject:
 any.review.form.label.text = Description:
 any.review.form.label.score = Score:
-any.review.form.label.recommended = Recommended:
+any.review.form.label.recommended = Recommended
 
 any.review.list.label.alias = User Alias
 any.review.list.label.subject = Subject
