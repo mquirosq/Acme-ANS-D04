@@ -26,7 +26,11 @@ master.menu.administrator.list-airports = List airports
 master.menu.administrator.list-airlines = List airlines
 master.menu.administrator.list-aircrafts = List aircrafts
 master.menu.administrator.list-bookings = List bookings
+<<<<<<< HEAD
 master.menu.administrator.recommendation = Add a recommendation
+=======
+master.menu.administrator.show-systemConfiguration = See system configuration
+>>>>>>> task057
 master.menu.administrator.populate-db-initial = Populate DB (initial)
 master.menu.administrator.populate-db-sample = Populate DB (samples)
 master.menu.administrator.shut-system-down = Shut system down

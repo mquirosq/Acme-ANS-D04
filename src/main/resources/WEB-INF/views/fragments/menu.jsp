@@ -40,6 +40,8 @@
 			<acme:menu-separator />
 			<acme:menu-suboption code="master.menu.administrator.recommendation" action="/administrator/recommendation/perform" />
 			<acme:menu-separator/>
+			<acme:menu-suboption code="master.menu.administrator.show-systemConfiguration" action="/administrator/system-configuration/show" />
+			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.administrator.populate-db-initial" action="/administrator/system/populate-initial"/>
 			<acme:menu-suboption code="master.menu.administrator.populate-db-sample" action="/administrator/system/populate-sample"/>			
 			<acme:menu-separator/>

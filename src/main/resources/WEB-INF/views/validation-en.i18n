@@ -68,4 +68,9 @@ acme.validation.claim.registrationMoment.message 	= A claim's registration momen
 
 acme.validation.realm.identifierPattern.message = The identifier must include 2-3 upper case letters and 6 digits.
 
+<<<<<<< HEAD
 acme.validation.recommendation.uniquePlaceId.message = The place identifier must be unique.
+=======
+acme.validation.systemConfiguration.systemCurrency.message = Should be a three-letters currency code.
+acme.validation.systemConfiguration.acceptedCurrencies.message = Should be a list of three-letters currency codes separated by commas.
+>>>>>>> task057
