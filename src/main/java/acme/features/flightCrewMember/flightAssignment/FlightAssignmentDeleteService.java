@@ -29,7 +29,40 @@ public class FlightAssignmentDeleteService extends AbstractGuiService<FlightCrew
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean authorised = true;
+
+		int requesterId;
+
+		int flightLegId;
+		String requestFlightLegId;
+		FlightLeg leg;
+
+		int flightCrewMemberId;
+		String requestFlightCrewMemberId;
+		FlightCrewMember flightCrewMember;
+
+		int flightAssignmentId;
+		String requestFlightAssignmentId;
+		FlightAssignment flightAssignment;
+
+		if (super.getRequest().hasData("leg")) {
+			requestFlightLegId = super.getRequest().getData("leg", String.class);
+			requestFlightCrewMemberId = super.getRequest().getData("allocatedFlightCrewMember", String.class);
+			requestFlightAssignmentId = super.getRequest().getData("id", String.class);
+			try {
+				flightLegId = Integer.parseInt(requestFlightLegId);
+				flightCrewMemberId = Integer.parseInt(requestFlightCrewMemberId);
+				flightAssignmentId = Integer.parseInt(requestFlightAssignmentId);
+				leg = this.repository.findByLegId(flightLegId);
+				flightCrewMember = this.repository.findByFlightCrewMemberId(flightCrewMemberId);
+				flightAssignment = this.repository.findFlightAssignmentById(flightAssignmentId);
+				requesterId = super.getRequest().getPrincipal().getActiveRealm().getId();
+				authorised = leg != null && flightCrewMember != null && flightCrewMember.getId() == requesterId && flightAssignment != null && !flightAssignment.getPublished();
+			} catch (NumberFormatException e) {
+				authorised = false;
+			}
+		}
+		super.getResponse().setAuthorised(authorised);
 	}
 
 	@Override

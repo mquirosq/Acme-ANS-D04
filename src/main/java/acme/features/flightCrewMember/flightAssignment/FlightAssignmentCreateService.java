@@ -10,7 +10,6 @@ import acme.client.components.views.SelectChoices;
 import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
-import acme.datatypes.AvailabilityStatus;
 import acme.datatypes.CurrentStatus;
 import acme.datatypes.Duty;
 import acme.entities.FlightAssignment;
@@ -26,7 +25,30 @@ public class FlightAssignmentCreateService extends AbstractGuiService<FlightCrew
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean authorised = true;
+
+		int flightLegId;
+		String requestFlightLegId;
+		FlightLeg leg;
+
+		int flightCrewMemberId;
+		String requestFlightCrewMemberId;
+		FlightCrewMember flightCrewMember;
+
+		if (super.getRequest().hasData("leg")) {
+			requestFlightLegId = super.getRequest().getData("leg", String.class);
+			requestFlightCrewMemberId = super.getRequest().getData("allocatedFlightCrewMember", String.class);
+			try {
+				flightLegId = Integer.parseInt(requestFlightLegId);
+				flightCrewMemberId = Integer.parseInt(requestFlightCrewMemberId);
+				leg = this.repository.findByLegId(flightLegId);
+				flightCrewMember = this.repository.findByFlightCrewMemberId(flightCrewMemberId);
+				authorised = leg != null && flightCrewMember != null;
+			} catch (NumberFormatException e) {
+				authorised = false;
+			}
+		}
+		super.getResponse().setAuthorised(authorised);
 	}
 
 	@Override
@@ -50,47 +72,16 @@ public class FlightAssignmentCreateService extends AbstractGuiService<FlightCrew
 		flightCrewMemberId = super.getRequest().getData("allocatedFlightCrewMember", int.class);
 		flightCrewMember = this.repository.findByFlightCrewMemberId(flightCrewMemberId);
 
-		super.bindObject(flightAssignment, "duty", "moment", "currentStatus", "remarks", "published");
+		super.bindObject(flightAssignment, "duty", "currentStatus", "remarks");
 		flightAssignment.setLeg(flightLeg);
 		flightAssignment.setAllocatedFlightCrewMember(flightCrewMember);
+		flightAssignment.setPublished(false);
+		flightAssignment.setMoment(MomentHelper.getCurrentMoment());
 	}
 
 	@Override
 	public void validate(final FlightAssignment flightAssignment) {
-		FlightCrewMember fcm = flightAssignment.getAllocatedFlightCrewMember();
-		Collection<FlightAssignment> flightAssignmentsForFlightCrewMember = this.repository.findFlightAssignmentsByFlightCrewMemberId(fcm.getId());
-		Boolean check = true;
-		for (FlightAssignment fa : flightAssignmentsForFlightCrewMember) {
-			boolean departureIsOverlapping = MomentHelper.isInRange(flightAssignment.getLeg().getScheduledDeparture(), fa.getLeg().getScheduledDeparture(), fa.getLeg().getScheduledArrival());
-			boolean arrivalIsOverlapping = MomentHelper.isInRange(flightAssignment.getLeg().getScheduledArrival(), fa.getLeg().getScheduledDeparture(), fa.getLeg().getScheduledArrival());
-			check = !departureIsOverlapping || !arrivalIsOverlapping;
-			super.state(check, "allocatedFlightCrewMember", "acme.validation.flightAssignment.overlappingLegs.message");
-		}
-
-		FlightLeg fl = flightAssignment.getLeg();
-		boolean pastLeg = MomentHelper.isBefore(fl.getScheduledDeparture(), MomentHelper.getCurrentMoment());
-		super.state(!pastLeg, "leg", "acme.validation.flightAssignment.pastLeg.message");
-
-		Collection<FlightAssignment> flightAssignmentsForTheLeg = this.repository.findFlightAssignmentsByFlightLegId(fl.getId());
-		boolean copilot = false;
-		boolean pilot = false;
-
-		// Check there is one pilot or copilot
-		for (FlightAssignment fa : flightAssignmentsForTheLeg) {
-			if (fa.getDuty().equals(Duty.PILOT))
-				pilot = true;
-			if (fa.getDuty().equals(Duty.COPILOT))
-				copilot = true;
-		}
-
-		boolean extraPilot = pilot && flightAssignment.getDuty().equals(Duty.PILOT);
-		boolean extraCopilot = copilot && flightAssignment.getDuty().equals(Duty.COPILOT);
-		super.state(!extraPilot, "duty", "acme.validation.flightAssignment.extraPilot.message");
-		super.state(!extraCopilot, "duty", "acme.validation.flightAssignment.extraCopilot.message");
-
-		boolean flightCrewMemberAvailable = flightAssignment.getAllocatedFlightCrewMember().getAvailabilityStatus().equals(AvailabilityStatus.AVAILABLE);
-		super.state(flightCrewMemberAvailable, "allocatedFlightCrewMember", "acme.validation.flightAssignment.unavailableFlightCrewMember.message");
-
+		;
 	}
 
 	@Override

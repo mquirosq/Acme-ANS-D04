@@ -24,7 +24,25 @@ public class FlightAssignmentShowService extends AbstractGuiService<FlightCrewMe
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean authorised = true;
+		int requesterId;
+
+		int flightAssignmentId;
+		String requestFlightAssignmentId;
+		FlightAssignment flightAssignment;
+
+		if (super.getRequest().hasData("id")) {
+			requestFlightAssignmentId = super.getRequest().getData("id", String.class);
+			try {
+				flightAssignmentId = Integer.parseInt(requestFlightAssignmentId);
+				flightAssignment = this.repository.findFlightAssignmentById(flightAssignmentId);
+				requesterId = super.getRequest().getPrincipal().getActiveRealm().getId();
+				authorised = flightAssignment.getAllocatedFlightCrewMember().getId() == requesterId;
+			} catch (NumberFormatException e) {
+				authorised = false;
+			}
+		}
+		super.getResponse().setAuthorised(authorised);
 	}
 
 	@Override
@@ -52,7 +70,6 @@ public class FlightAssignmentShowService extends AbstractGuiService<FlightCrewMe
 		dutyChoices = SelectChoices.from(Duty.class, flightAssignment.getDuty());
 
 		dataset = super.unbindObject(flightAssignment, "moment", "remarks", "published");
-		dataset.put("readonly", true);
 		dataset.put("legs", legChoices);
 		dataset.put("leg", legChoices.getSelected().getKey());
 		dataset.put("flightCrewMembers", flightCrewMemberChoices);

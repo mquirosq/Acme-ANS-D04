@@ -59,7 +59,7 @@ master.menu.customer.list-bookings = My bookings
 
 # master.menu.flightCrewMember ##################################################
 
-master.menu.flightCrewMember = Flight Crew Member
+master.menu.flightCrewMember = Flight Assignments
 master.menu.flightCrewMember.list-completed = Completed flight assignments
 master.menu.flightCrewMember.list-planned = Planned flight assignments
 

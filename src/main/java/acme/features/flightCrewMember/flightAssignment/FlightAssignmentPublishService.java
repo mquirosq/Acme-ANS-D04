@@ -7,10 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
 import acme.client.components.views.SelectChoices;
+import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
+import acme.datatypes.AvailabilityStatus;
 import acme.datatypes.CurrentStatus;
 import acme.datatypes.Duty;
+import acme.datatypes.FlightLegStatus;
 import acme.entities.FlightAssignment;
 import acme.entities.FlightLeg;
 import acme.realms.FlightCrewMember;
@@ -40,6 +43,32 @@ public class FlightAssignmentPublishService extends AbstractGuiService<FlightCre
 
 	@Override
 	public void validate(final FlightAssignment flightAssignment) {
+		boolean legHasOccured = flightAssignment.getLeg().getStatus().equals(FlightLegStatus.LANDED);
+		super.state(!legHasOccured, "leg", "acme.validation.flightAssignment.pastLeg.message");
+
+		boolean flightCrewMemberIsAvailable = flightAssignment.getAllocatedFlightCrewMember().getAvailabilityStatus().equals(AvailabilityStatus.AVAILABLE);
+		super.state(flightCrewMemberIsAvailable, "allocatedFlightCrewMember", "acme.validation.flightAssignment.unavailableFlightCrewMember.message");
+
+		FlightCrewMember fcm = flightAssignment.getAllocatedFlightCrewMember();
+		Collection<FlightAssignment> flightAssignmentsForFlightCrewMember = this.repository.findFlightAssignmentsByFlightCrewMemberId(fcm.getId());
+		flightAssignmentsForFlightCrewMember.remove(flightAssignment);
+
+		boolean simultaneousLegs = flightAssignmentsForFlightCrewMember.stream()
+			.anyMatch(x -> MomentHelper.isBefore(x.getLeg().getScheduledDeparture(), flightAssignment.getLeg().getScheduledArrival()) && MomentHelper.isBefore(flightAssignment.getLeg().getScheduledDeparture(), x.getLeg().getScheduledArrival()));
+		super.state(!simultaneousLegs, "leg", "acme.validation.flightAssignment.overlappingLegs.message");
+
+		Collection<FlightAssignment> flightAssignmentsForTheLeg = this.repository.findFlightAssignmentsByFlightLegId(flightAssignment.getLeg().getId());
+		boolean pilot = false;
+		boolean copilot = false;
+
+		pilot = flightAssignmentsForTheLeg.stream().anyMatch(x -> x.getDuty().equals(Duty.PILOT));
+		copilot = flightAssignmentsForTheLeg.stream().anyMatch(x -> x.getDuty().equals(Duty.COPILOT));
+
+		boolean extraPilot = pilot && flightAssignment.getDuty().equals(Duty.PILOT);
+		boolean extraCopilot = copilot && flightAssignment.getDuty().equals(Duty.COPILOT);
+		super.state(!extraPilot, "duty", "acme.validation.flightAssignment.extraPilot.message");
+		super.state(!extraCopilot, "duty", "acme.validation.flightAssignment.extraCopilot.message");
+
 	}
 
 	@Override

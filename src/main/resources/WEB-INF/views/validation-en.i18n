@@ -59,8 +59,13 @@ acme.validation.flight.missingLegs.message = This flight does not have associate
 acme.validation.airport.notUniqueIATA.message = This IATA code already exists
 acme.validation.aircraft.registrationNumber.message			= The registration number must be unique
 
-
 acme.validation.confirmation.message = You must confirm before performing this operation
+
+acme.validation.flightAssignment.overlappingLegs.message = Flight Crew Members cannot be assigned to overlapping flights
+acme.validation.flightAssignment.pastLeg.message = The selected leg has already occured
+acme.validation.flightAssignment.extraPilot.message = The pilot role is already filled for this leg
+acme.validation.flightAssignment.extraCopilot.message = The copilot role is already filled for this leg
+acme.validation.flightAssignment.unavailableFlightCrewMember.message = The selected flight crew member is not available
 
 acme.validation.claim.isPublished.message 			= You cannot publish a claim that has not been completed
 acme.validation.claim.leg.message					= A claim cannot be linked to an unpublished leg

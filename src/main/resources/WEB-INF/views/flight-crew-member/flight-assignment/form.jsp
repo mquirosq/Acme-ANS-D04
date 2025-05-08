@@ -5,24 +5,22 @@
 
 <acme:form>
 	<acme:input-select code = "flightCrewMember.flightAssignment.form.label.duty" path = "duty" choices="${duties}"/>	
-	<acme:input-moment code = "flightCrewMember.flightAssignment.form.label.moment" path = "moment"/>
+	<acme:input-moment code = "flightCrewMember.flightAssignment.form.label.moment" path = "moment" readonly = "${true}"/>
 	<acme:input-select code = "flightCrewMember.flightAssignment.form.label.currentStatus" path = "currentStatus" choices="${statusChoices}"/>
 	<acme:input-textbox code = "flightCrewMember.flightAssignment.form.label.remarks" path = "remarks"/>
 	<acme:input-select code = "flightCrewMember.flightAssignment.form.label.allocatedFlightCrewMember" path = "allocatedFlightCrewMember" choices="${flightCrewMembers}"/>
 	<acme:input-select code = "flightCrewMember.flightAssignment.form.label.leg" path = "leg" choices="${legs}"/>
-	<acme:input-checkbox code = "flightCrewMember.flightAssignment.form.label.isPublished" path = "published" readonly = "${true}"/>
-	
+	<jstl:if test="${acme:anyOf(_command, 'show')}">
+		<acme:input-checkbox code = "flightCrewMember.flightAssignment.form.label.isPublished" path = "published" readonly = "${true}"/>
+	</jstl:if>
 	 <jstl:choose>	 
 		<jstl:when test="${_command == 'create'}">
 			<acme:submit code="flight-crew-member.flight-assignment.list.button.create" action="/flight-crew-member/flight-assignment/create"/>
 		</jstl:when>
-		<jstl:when test="${_command == 'show' && !published }">
-			<acme:button code = "flight-crew-member.flight-assignment.form.button.update" action = "/flight-crew-member/flight-assignment/update?id=${id}"/>
-			<acme:submit code = "flight-crew-member.flight-assignment.form.button.publish" action = "/flight-crew-member/flight-assignment/publish"/>
-			<acme:submit code = "flight-crew-member.flight-assignment.form.button.delete" action = "/flight-crew-member/flight-assignment/delete"/>
-		</jstl:when>
-		<jstl:when test="${_command == 'update'}">
-			<acme:submit code="flight-crew-member.flight-assignment.form.button.update" action="/flight-crew-member/flight-assignment/update"/>
+		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish') && published == false}">
+			<acme:submit code="flight-crew-member.flight-assignment.form.button.update" action="/flight-crew-member/flight-assignment/update?id=${id}"/>
+			<acme:submit code="flight-crew-member.flight-assignment.form.button.delete" action="/flight-crew-member/flight-assignment/delete"/>
+			<acme:submit code="flight-crew-member.flight-assignment.form.button.publish" action="/flight-crew-member/flight-assignment/publish"/>
 		</jstl:when>		
 	</jstl:choose>
 </acme:form>
