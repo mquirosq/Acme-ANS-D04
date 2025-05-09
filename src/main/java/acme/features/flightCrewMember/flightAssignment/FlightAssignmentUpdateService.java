@@ -31,19 +31,26 @@ public class FlightAssignmentUpdateService extends AbstractGuiService<FlightCrew
 		String requestFlightLegId;
 		FlightLeg leg;
 
+		int flightCrewMemberId;
+		String requestFlightCrewMemberId;
+		FlightCrewMember flightCrewMember;
+
 		int flightAssignmentId;
 		String requestFlightAssignmentId;
 		FlightAssignment flightAssignment;
 
-		if (super.getRequest().hasData("leg")) {
+		if (super.getRequest().hasData("leg") && super.getRequest().hasData("allocatedFlightCrewMember") && super.getRequest().hasData("id")) {
 			requestFlightLegId = super.getRequest().getData("leg", String.class);
 			requestFlightAssignmentId = super.getRequest().getData("id", String.class);
+			requestFlightCrewMemberId = super.getRequest().getData("allocatedFlightCrewMember", String.class);
 			try {
 				flightLegId = Integer.parseInt(requestFlightLegId);
 				flightAssignmentId = Integer.parseInt(requestFlightAssignmentId);
+				flightCrewMemberId = Integer.parseInt(requestFlightCrewMemberId);
 				leg = this.repository.findByLegId(flightLegId);
 				flightAssignment = this.repository.findFlightAssignmentById(flightAssignmentId);
-				authorised = leg != null && flightAssignment != null && !flightAssignment.getPublished();
+				flightCrewMember = this.repository.findByFlightCrewMemberId(flightCrewMemberId);
+				authorised = leg != null && flightAssignment != null && flightCrewMember != null && !flightAssignment.getPublished();
 			} catch (NumberFormatException e) {
 				authorised = false;
 			}

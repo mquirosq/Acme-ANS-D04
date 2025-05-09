@@ -35,7 +35,7 @@ public class FlightAssignmentCreateService extends AbstractGuiService<FlightCrew
 		String requestFlightCrewMemberId;
 		FlightCrewMember flightCrewMember;
 
-		if (super.getRequest().hasData("leg")) {
+		if (super.getRequest().hasData("leg") && super.getRequest().hasData("allocatedFlightCrewMember")) {
 			requestFlightLegId = super.getRequest().getData("leg", String.class);
 			requestFlightCrewMemberId = super.getRequest().getData("allocatedFlightCrewMember", String.class);
 			try {

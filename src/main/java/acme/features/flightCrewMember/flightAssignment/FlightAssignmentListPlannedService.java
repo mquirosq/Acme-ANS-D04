@@ -41,7 +41,7 @@ public class FlightAssignmentListPlannedService extends AbstractGuiService<Fligh
 	public void unbind(final FlightAssignment flightAssignment) {
 		Dataset dataset;
 
-		dataset = super.unbindObject(flightAssignment, "duty", "moment", "currentStatus");
+		dataset = super.unbindObject(flightAssignment, "duty", "moment", "currentStatus", "allocatedFlightCrewMember.employeeCode", "leg.flightNumber");
 
 		super.addPayload(dataset, flightAssignment, "remarks");
 		super.getResponse().addData(dataset);

@@ -45,7 +45,7 @@ public class FlightAssignmentDeleteService extends AbstractGuiService<FlightCrew
 		String requestFlightAssignmentId;
 		FlightAssignment flightAssignment;
 
-		if (super.getRequest().hasData("leg")) {
+		if (super.getRequest().hasData("leg") && super.getRequest().hasData("allocatedFlightCrewMember") && super.getRequest().hasData("id")) {
 			requestFlightLegId = super.getRequest().getData("leg", String.class);
 			requestFlightCrewMemberId = super.getRequest().getData("allocatedFlightCrewMember", String.class);
 			requestFlightAssignmentId = super.getRequest().getData("id", String.class);
