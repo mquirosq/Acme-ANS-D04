@@ -2,11 +2,11 @@
 flight-crew-member.flight-assignment.list.title = Flight assignments
 flight-crew-member.flight-assignment.form.title = Flight assignment
 
-flightCrewMember.list.label.duty = Duty
-flightCrewMember.list.label.moment = Moment
-flightCrewMember.list.label.currentStatus = Current status
-flightCrewMember.list.label.allocatedFlightCrewMember = Crew member code
-flightCrewMember.list.label.leg = Leg IATA code
+flightCrewMember.flightAssignment.list.label.duty = Duty
+flightCrewMember.flightAssignment.list.label.moment = Moment
+flightCrewMember.flightAssignment.list.label.currentStatus = Current status
+flightCrewMember.flightAssignment.list.label.allocatedFlightCrewMember = Crew member code
+flightCrewMember.flightAssignment.list.label.leg = Leg IATA code
 
 flightCrewMember.flightAssignment.form.label.duty = Duty
 flightCrewMember.flightAssignment.form.label.moment = Moment

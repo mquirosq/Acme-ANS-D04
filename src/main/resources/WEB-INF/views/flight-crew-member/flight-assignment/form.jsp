@@ -13,7 +13,8 @@
 	<jstl:if test="${acme:anyOf(_command, 'show')}">
 		<acme:input-checkbox code = "flightCrewMember.flightAssignment.form.label.isPublished" path = "published" readonly = "${true}"/>
 	</jstl:if>
-	 <jstl:choose>	 
+	<acme:button code = "assistance-agent.claim.form.button.trackingLogs" action = "/flight-crew-member/activity-log/list?masterId=${id}"/>
+	 <jstl:choose> 
 		<jstl:when test="${_command == 'create'}">
 			<acme:submit code="flight-crew-member.flight-assignment.list.button.create" action="/flight-crew-member/flight-assignment/create"/>
 		</jstl:when>

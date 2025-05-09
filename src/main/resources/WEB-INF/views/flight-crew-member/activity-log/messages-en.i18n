@@ -1,0 +1,9 @@
+
+flight-crew-member.activity-log.list.title = Activity Logs
+flight-crew-member.activity-log.form.title = Activity Log
+
+flightCrewMember.activityLog.list.label.typeOfIncident = Type of incident
+flightCrewMember.activityLog.list.label.registrationMoment = Registration moment
+flightCrewMember.activityLog.list.label.severityLevel = Severity level
+
+flight-crew-member.activity-log.list.button.create = Create

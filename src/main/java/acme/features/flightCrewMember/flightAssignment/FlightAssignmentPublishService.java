@@ -27,7 +27,30 @@ public class FlightAssignmentPublishService extends AbstractGuiService<FlightCre
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean authorised = true;
+
+		int flightLegId;
+		String requestFlightLegId;
+		FlightLeg leg;
+
+		int flightCrewMemberId;
+		String requestFlightCrewMemberId;
+		FlightCrewMember flightCrewMember;
+
+		if (super.getRequest().hasData("leg") && super.getRequest().hasData("allocatedFlightCrewMember")) {
+			requestFlightLegId = super.getRequest().getData("leg", String.class);
+			requestFlightCrewMemberId = super.getRequest().getData("allocatedFlightCrewMember", String.class);
+			try {
+				flightLegId = Integer.parseInt(requestFlightLegId);
+				flightCrewMemberId = Integer.parseInt(requestFlightCrewMemberId);
+				leg = this.repository.findByLegId(flightLegId);
+				flightCrewMember = this.repository.findByFlightCrewMemberId(flightCrewMemberId);
+				authorised = leg != null && flightCrewMember != null;
+			} catch (NumberFormatException e) {
+				authorised = false;
+			}
+		}
+		super.getResponse().setAuthorised(authorised);
 	}
 
 	@Override
