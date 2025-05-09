@@ -25,7 +25,6 @@ public class FlightAssignmentShowService extends AbstractGuiService<FlightCrewMe
 	@Override
 	public void authorise() {
 		boolean authorised = true;
-		int requesterId;
 
 		int flightAssignmentId;
 		String requestFlightAssignmentId;
@@ -36,8 +35,7 @@ public class FlightAssignmentShowService extends AbstractGuiService<FlightCrewMe
 			try {
 				flightAssignmentId = Integer.parseInt(requestFlightAssignmentId);
 				flightAssignment = this.repository.findFlightAssignmentById(flightAssignmentId);
-				requesterId = super.getRequest().getPrincipal().getActiveRealm().getId();
-				authorised = flightAssignment.getAllocatedFlightCrewMember().getId() == requesterId;
+				authorised = super.getRequest().getPrincipal().hasRealm(flightAssignment.getAllocatedFlightCrewMember());
 			} catch (NumberFormatException e) {
 				authorised = false;
 			}
@@ -59,21 +57,17 @@ public class FlightAssignmentShowService extends AbstractGuiService<FlightCrewMe
 	@Override
 	public void unbind(final FlightAssignment flightAssignment) {
 		Dataset dataset;
-		SelectChoices legChoices, flightCrewMemberChoices, statusChoices, dutyChoices;
+		SelectChoices legChoices, statusChoices, dutyChoices;
 
 		Collection<FlightLeg> flightLegs = this.repository.findAllLegs();
-		Collection<FlightCrewMember> flightCrewMembers = this.repository.findAllFlightCrewMembers();
 
 		legChoices = SelectChoices.from(flightLegs, "flightNumber", flightAssignment.getLeg());
-		flightCrewMemberChoices = SelectChoices.from(flightCrewMembers, "employeeCode", flightAssignment.getAllocatedFlightCrewMember());
 		statusChoices = SelectChoices.from(CurrentStatus.class, flightAssignment.getCurrentStatus());
 		dutyChoices = SelectChoices.from(Duty.class, flightAssignment.getDuty());
 
 		dataset = super.unbindObject(flightAssignment, "moment", "remarks", "published");
 		dataset.put("legs", legChoices);
 		dataset.put("leg", legChoices.getSelected().getKey());
-		dataset.put("flightCrewMembers", flightCrewMemberChoices);
-		dataset.put("allocatedFlightCrewMember", flightCrewMemberChoices.getSelected().getKey());
 		dataset.put("duties", dutyChoices);
 		dataset.put("duty", dutyChoices.getSelected().getKey());
 		dataset.put("statusChoices", statusChoices);

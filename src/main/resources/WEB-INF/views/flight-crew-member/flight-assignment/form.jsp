@@ -8,7 +8,6 @@
 	<acme:input-moment code = "flightCrewMember.flightAssignment.form.label.moment" path = "moment" readonly = "${true}"/>
 	<acme:input-select code = "flightCrewMember.flightAssignment.form.label.currentStatus" path = "currentStatus" choices="${statusChoices}"/>
 	<acme:input-textbox code = "flightCrewMember.flightAssignment.form.label.remarks" path = "remarks"/>
-	<acme:input-select code = "flightCrewMember.flightAssignment.form.label.allocatedFlightCrewMember" path = "allocatedFlightCrewMember" choices="${flightCrewMembers}"/>
 	<acme:input-select code = "flightCrewMember.flightAssignment.form.label.leg" path = "leg" choices="${legs}"/>
 	<jstl:if test="${acme:anyOf(_command, 'show')}">
 		<acme:input-checkbox code = "flightCrewMember.flightAssignment.form.label.isPublished" path = "published" readonly = "${true}"/>

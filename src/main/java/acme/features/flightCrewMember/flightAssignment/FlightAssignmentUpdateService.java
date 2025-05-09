@@ -31,26 +31,21 @@ public class FlightAssignmentUpdateService extends AbstractGuiService<FlightCrew
 		String requestFlightLegId;
 		FlightLeg leg;
 
-		int flightCrewMemberId;
-		String requestFlightCrewMemberId;
-		FlightCrewMember flightCrewMember;
-
 		int flightAssignmentId;
 		String requestFlightAssignmentId;
 		FlightAssignment flightAssignment;
 
-		if (super.getRequest().hasData("leg") && super.getRequest().hasData("allocatedFlightCrewMember") && super.getRequest().hasData("id")) {
+		if (super.getRequest().hasData("leg") && super.getRequest().hasData("id")) {
 			requestFlightLegId = super.getRequest().getData("leg", String.class);
 			requestFlightAssignmentId = super.getRequest().getData("id", String.class);
-			requestFlightCrewMemberId = super.getRequest().getData("allocatedFlightCrewMember", String.class);
 			try {
 				flightLegId = Integer.parseInt(requestFlightLegId);
 				flightAssignmentId = Integer.parseInt(requestFlightAssignmentId);
-				flightCrewMemberId = Integer.parseInt(requestFlightCrewMemberId);
 				leg = this.repository.findByLegId(flightLegId);
 				flightAssignment = this.repository.findFlightAssignmentById(flightAssignmentId);
-				flightCrewMember = this.repository.findByFlightCrewMemberId(flightCrewMemberId);
-				authorised = leg != null && flightAssignment != null && flightCrewMember != null && !flightAssignment.getPublished();
+
+				authorised = leg != null && flightAssignment != null && !flightAssignment.getPublished() && flightAssignment.getAllocatedFlightCrewMember() != null
+					&& super.getRequest().getPrincipal().hasRealm(flightAssignment.getAllocatedFlightCrewMember());
 			} catch (NumberFormatException e) {
 				authorised = false;
 			}
@@ -76,7 +71,7 @@ public class FlightAssignmentUpdateService extends AbstractGuiService<FlightCrew
 		flightLegId = super.getRequest().getData("leg", int.class);
 		flightLeg = this.repository.findByLegId(flightLegId);
 
-		flightCrewMemberId = super.getRequest().getData("allocatedFlightCrewMember", int.class);
+		flightCrewMemberId = super.getRequest().getPrincipal().getActiveRealm().getId();
 		flightCrewMember = this.repository.findByFlightCrewMemberId(flightCrewMemberId);
 
 		super.bindObject(flightAssignment, "duty", "currentStatus", "remarks");
@@ -98,21 +93,17 @@ public class FlightAssignmentUpdateService extends AbstractGuiService<FlightCrew
 	@Override
 	public void unbind(final FlightAssignment flightAssignment) {
 		Dataset dataset;
-		SelectChoices legChoices, flightCrewMemberChoices, statusChoices, dutyChoices;
+		SelectChoices legChoices, statusChoices, dutyChoices;
 
 		Collection<FlightLeg> flightLegs = this.repository.findAllLegs();
-		Collection<FlightCrewMember> flightCrewMembers = this.repository.findAllFlightCrewMembers();
 
 		legChoices = SelectChoices.from(flightLegs, "flightNumber", flightAssignment.getLeg());
-		flightCrewMemberChoices = SelectChoices.from(flightCrewMembers, "employeeCode", flightAssignment.getAllocatedFlightCrewMember());
 		statusChoices = SelectChoices.from(CurrentStatus.class, flightAssignment.getCurrentStatus());
 		dutyChoices = SelectChoices.from(Duty.class, flightAssignment.getDuty());
 
 		dataset = super.unbindObject(flightAssignment, "moment", "remarks", "published");
 		dataset.put("legs", legChoices);
 		dataset.put("leg", legChoices.getSelected().getKey());
-		dataset.put("flightCrewMembers", flightCrewMemberChoices);
-		dataset.put("allocatedFlightCrewMember", flightCrewMemberChoices.getSelected().getKey());
 		dataset.put("duties", dutyChoices);
 		dataset.put("duty", dutyChoices.getSelected().getKey());
 		dataset.put("statusChoices", statusChoices);

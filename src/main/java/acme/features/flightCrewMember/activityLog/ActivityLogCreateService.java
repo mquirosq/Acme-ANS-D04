@@ -1,11 +1,9 @@
 
 package acme.features.flightCrewMember.activityLog;
 
-import java.util.Collection;
-
 import org.springframework.beans.factory.annotation.Autowired;
 
-import acme.client.components.models.Dataset;
+import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.ActivityLog;
@@ -14,10 +12,10 @@ import acme.features.flightCrewMember.flightAssignment.FlightAssignmentRepositor
 import acme.realms.FlightCrewMember;
 
 @GuiService
-public class ActivityLogListService extends AbstractGuiService<FlightCrewMember, ActivityLog> {
+public class ActivityLogCreateService extends AbstractGuiService<FlightCrewMember, ActivityLog> {
 
 	@Autowired
-	private ActivityLogRepository		repository;
+	ActivityLogRepository				repository;
 
 	@Autowired
 	private FlightAssignmentRepository	flightAssignmentRepository;
@@ -46,22 +44,34 @@ public class ActivityLogListService extends AbstractGuiService<FlightCrewMember,
 
 	@Override
 	public void load() {
-		Collection<ActivityLog> activityLogs;
-		String requestFlightAssignmentId = super.getRequest().getData("masterId", String.class);
-		int flightAssignmentId = Integer.parseInt(requestFlightAssignmentId);
-		activityLogs = this.repository.findByFlightAssignmentId(flightAssignmentId);
+		ActivityLog activityLog = new ActivityLog();
+		activityLog.setPublished(false);
+		super.getBuffer().addData(activityLog);
+	}
 
-		super.getBuffer().addData(activityLogs);
+	@Override
+	public void bind(final ActivityLog activityLog) {
+		int requestFlightAssignmentId = super.getRequest().getData("masterId", int.class);
+		FlightAssignment flightAssignment = this.flightAssignmentRepository.findFlightAssignmentById(requestFlightAssignmentId);
+
+		super.bindObject(activityLog, "typeOfIncident", "description", "severityLevel");
+		activityLog.setAssignment(flightAssignment);
+		activityLog.setRegistrationMoment(MomentHelper.getCurrentMoment());
+		activityLog.setPublished(false);
+	}
+
+	@Override
+	public void validate(final ActivityLog activityLog) {
+		;
+	}
+
+	@Override
+	public void perform(final ActivityLog activityLog) {
+		this.repository.save(activityLog);
 	}
 
 	@Override
 	public void unbind(final ActivityLog activityLog) {
-		Dataset dataset;
-
-		dataset = super.unbindObject(activityLog, "typeOfIncident", "registrationMoment", "severityLevel");
-
-		super.addPayload(dataset, activityLog, "description");
-		super.getResponse().addData(dataset);
+		;
 	}
-
 }

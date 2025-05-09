@@ -90,21 +90,18 @@ public class FlightAssignmentDeleteService extends AbstractGuiService<FlightCrew
 	@Override
 	public void unbind(final FlightAssignment flightAssignment) {
 		Dataset dataset;
-		SelectChoices legChoices, flightCrewMemberChoices, statusChoices, dutyChoices;
+		SelectChoices legChoices, statusChoices, dutyChoices;
 
 		Collection<FlightLeg> flightLegs = this.repository.findAllLegs();
-		Collection<FlightCrewMember> flightCrewMembers = this.repository.findAllFlightCrewMembers();
 
 		legChoices = SelectChoices.from(flightLegs, "flightNumber", flightAssignment.getLeg());
-		flightCrewMemberChoices = SelectChoices.from(flightCrewMembers, "employeeCode", flightAssignment.getAllocatedFlightCrewMember());
+
 		statusChoices = SelectChoices.from(CurrentStatus.class, flightAssignment.getCurrentStatus());
 		dutyChoices = SelectChoices.from(Duty.class, flightAssignment.getDuty());
 
 		dataset = super.unbindObject(flightAssignment, "remarks", "moment", "published");
 		dataset.put("legs", legChoices);
 		dataset.put("leg", legChoices.getSelected().getKey());
-		dataset.put("flightCrewMembers", flightCrewMemberChoices);
-		dataset.put("allocatedFlightCrewMember", flightCrewMemberChoices.getSelected().getKey());
 		dataset.put("duties", dutyChoices);
 		dataset.put("duty", dutyChoices.getSelected().getKey());
 		dataset.put("statusChoices", statusChoices);
