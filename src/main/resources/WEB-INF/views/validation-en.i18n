@@ -48,6 +48,7 @@ acme.validation.customer.liftedAt.message 					= The lifting date must be after 
 
 acme.validation.flightLeg.scheduledDates.message = The scheduled departure must be before the scheduled arrival
 acme.validation.flightLeg.scheduledDates.message = The scheduled departure must be before the scheduled arrival
+acme.validation.flightLeg.scheduledDeparture.message = The scheduled departure must be in the future
 acme.validation.flightLeg.flightNumber.message = The flight number must begin with the airline's IATA code
 acme.validation.flightLeg.flightNumberPattern.message = The flight number must contain 3 upper case letters and 4 digits
 acme.validation.flightLeg.flightNumberUnique.message = The flight number must be unique
