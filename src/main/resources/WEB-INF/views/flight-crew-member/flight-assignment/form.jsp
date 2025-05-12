@@ -4,15 +4,15 @@
 <%@taglib prefix = "acme" uri = "http://acme-framework.org/"%>
 
 <acme:form>
-	<acme:input-select code = "flightCrewMember.flightAssignment.form.label.duty" path = "duty" choices="${duties}"/>	
-	<acme:input-moment code = "flightCrewMember.flightAssignment.form.label.moment" path = "moment" readonly = "${true}"/>
-	<acme:input-select code = "flightCrewMember.flightAssignment.form.label.currentStatus" path = "currentStatus" choices="${statusChoices}"/>
-	<acme:input-textbox code = "flightCrewMember.flightAssignment.form.label.remarks" path = "remarks"/>
-	<acme:input-select code = "flightCrewMember.flightAssignment.form.label.leg" path = "leg" choices="${legs}"/>
+	<acme:input-select code = "flight-crew-member.flight-assignment.form.label.duty" path = "duty" choices="${duties}"/>	
+	<acme:input-moment code = "flight-crew-member.flight-assignment.form.label.moment" path = "moment" readonly = "${true}"/>
+	<acme:input-select code = "flight-crew-member.flight-assignment.form.label.currentStatus" path = "currentStatus" choices="${statusChoices}"/>
+	<acme:input-textbox code = "flight-crew-member.flight-assignment.form.label.remarks" path = "remarks"/>
+	<acme:input-select code = "flight-crew-member.flight-assignment.form.label.leg" path = "leg" choices="${legs}"/>
 	<jstl:if test="${acme:anyOf(_command, 'show')}">
-		<acme:input-checkbox code = "flightCrewMember.flightAssignment.form.label.isPublished" path = "published" readonly = "${true}"/>
+		<acme:input-checkbox code = "flight-crew-member.flight-assignment.form.label.isPublished" path = "published" readonly = "${true}"/>
 	</jstl:if>
-	<acme:button code = "assistance-agent.claim.form.button.trackingLogs" action = "/flight-crew-member/activity-log/list?masterId=${id}"/>
+	<acme:button code = "flight-crew-member.flight-assignment.form.button.activityLogs" action = "/flight-crew-member/activity-log/list?masterId=${id}"/>
 	 <jstl:choose> 
 		<jstl:when test="${_command == 'create'}">
 			<acme:submit code="flight-crew-member.flight-assignment.list.button.create" action="/flight-crew-member/flight-assignment/create"/>

@@ -2,12 +2,12 @@
 package acme.features.flightCrewMember.flightAssignment;
 
 import java.util.Collection;
-import java.util.Date;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import acme.client.repositories.AbstractRepository;
+import acme.datatypes.FlightLegStatus;
 import acme.entities.ActivityLog;
 import acme.entities.FlightAssignment;
 import acme.entities.FlightLeg;
@@ -16,11 +16,11 @@ import acme.realms.FlightCrewMember;
 @Repository
 public interface FlightAssignmentRepository extends AbstractRepository {
 
-	@Query("select f from FlightAssignment f where f.moment <= :moment and f.allocatedFlightCrewMember.id = :id")
-	Collection<FlightAssignment> findCompletedFlightAssignments(Date moment, int id);
+	@Query("select f from FlightAssignment f where f.leg.status = :status and f.allocatedFlightCrewMember.id = :id")
+	Collection<FlightAssignment> findCompletedFlightAssignments(FlightLegStatus status, int id);
 
-	@Query("select f from FlightAssignment f where f.moment > :moment and f.allocatedFlightCrewMember.id = :id")
-	Collection<FlightAssignment> findPlannedFlightAssignments(Date moment, int id);
+	@Query("select f from FlightAssignment f where f.leg.status != :status and f.allocatedFlightCrewMember.id = :id")
+	Collection<FlightAssignment> findPlannedFlightAssignments(FlightLegStatus status, int id);
 
 	@Query("select f from FlightAssignment f where f.id = :id")
 	FlightAssignment findFlightAssignmentById(int id);

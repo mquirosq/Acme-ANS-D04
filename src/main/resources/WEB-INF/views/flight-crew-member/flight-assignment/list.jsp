@@ -4,10 +4,10 @@
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
 <acme:list>
-	<acme:list-column code="flightCrewMember.flightAssignment.list.label.duty" path="duty"/>
-	<acme:list-column code="flightCrewMember.flightAssignment.list.label.moment" path="moment"/>
-	<acme:list-column code="flightCrewMember.flightAssignment.list.label.currentStatus" path="currentStatus"/>
-	<acme:list-column code="flightCrewMember.flightAssignment.list.label.leg" path="leg.flightNumber"/>
+	<acme:list-column code="flight-crew-member.flight-assignment.list.label.duty" path="duty"/>
+	<acme:list-column code="flight-crew-member.flight-assignment.list.label.moment" path="moment"/>
+	<acme:list-column code="flight-crew-member.flight-assignment.list.label.currentStatus" path="currentStatus"/>
+	<acme:list-column code="flight-crew-member.flight-assignment.list.label.leg" path="leg.flightNumber"/>
 	<acme:list-payload path="payload"/>
 </acme:list>
 

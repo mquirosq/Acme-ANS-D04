@@ -3,6 +3,7 @@ package acme.features.flightCrewMember.activityLog;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import acme.client.components.models.Dataset;
 import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
@@ -45,7 +46,6 @@ public class ActivityLogCreateService extends AbstractGuiService<FlightCrewMembe
 	@Override
 	public void load() {
 		ActivityLog activityLog = new ActivityLog();
-		activityLog.setPublished(false);
 		super.getBuffer().addData(activityLog);
 	}
 
@@ -72,6 +72,11 @@ public class ActivityLogCreateService extends AbstractGuiService<FlightCrewMembe
 
 	@Override
 	public void unbind(final ActivityLog activityLog) {
-		;
+		Dataset dataset;
+		int masterId = super.getRequest().getData("masterId", int.class);
+		dataset = super.unbindObject(activityLog, "registrationMoment", "typeOfIncident", "description", "severityLevel", "published");
+		dataset.put("readonly", false);
+		super.getResponse().addData(dataset);
+		super.getResponse().addGlobal("masterId", masterId);
 	}
 }

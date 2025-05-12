@@ -2,21 +2,22 @@
 flight-crew-member.flight-assignment.list.title = Asignaciones de vuelo
 flight-crew-member.flight-assignment.form.title = Asignación de vuelo
 
-flightCrewMember.flightAssignment.list.label.duty = Cargo
-flightCrewMember.flightAssignment.list.label.moment = Fecha
-flightCrewMember.flightAssignment.list.label.currentStatus = Estado actual
-flightCrewMember.flightAssignment.list.label.allocatedFlightCrewMember = Código del tripulante
-flightCrewMember.flightAssignment.list.label.leg = Código IATA del tramo
+flight-crew-member.flight-assignment.list.label.duty = Cargo
+flight-crew-member.flight-assignment.list.label.moment = Fecha
+flight-crew-member.flight-assignment.list.label.currentStatus = Estado actual
+flight-crew-member.flight-assignment.list.label.allocatedFlightCrewMember = Código del tripulante
+flight-crew-member.flight-assignment.list.label.leg = Código IATA del tramo
 
-flightCrewMember.flightAssignment.form.label.duty = Cargo
-flightCrewMember.flightAssignment.form.label.moment = Fecha
-flightCrewMember.flightAssignment.form.label.currentStatus = Estado actual
-flightCrewMember.flightAssignment.form.label.remarks = Observaciones
-flightCrewMember.flightAssignment.form.label.allocatedFlightCrewMember = Código del tripulante de cabina asignado
-flightCrewMember.flightAssignment.form.label.leg = Código IATA del tramo
-flightCrewMember.flightAssignment.form.label.isPublished = Publicado
+flight-crew-member.flight-assignment.form.label.duty = Cargo
+flight-crew-member.flight-assignment.form.label.moment = Fecha
+flight-crew-member.flight-assignment.form.label.currentStatus = Estado actual
+flight-crew-member.flight-assignment.form.label.remarks = Observaciones
+flight-crew-member.flight-assignment.form.label.allocatedFlightCrewMember = Código del tripulante de cabina asignado
+flight-crew-member.flight-assignment.form.label.leg = Código IATA del tramo
+flight-crew-member.flight-assignment.form.label.isPublished = Publicado
 
 flight-crew-member.flight-assignment.list.button.create = Crear
 flight-crew-member.flight-assignment.form.button.update = Editar
 flight-crew-member.flight-assignment.form.button.delete = Borrar
 flight-crew-member.flight-assignment.form.button.publish = Publicar
+flight-crew-member.flight-assignment.button.activityLogs = Registros de actividad
