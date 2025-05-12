@@ -10,10 +10,10 @@ import acme.entities.ActivityLog;
 import acme.realms.FlightCrewMember;
 
 @GuiService
-public class ActivityLogShowService extends AbstractGuiService<FlightCrewMember, ActivityLog> {
+public class FlightCrewMemberActivityLogPublishService extends AbstractGuiService<FlightCrewMember, ActivityLog> {
 
 	@Autowired
-	private ActivityLogRepository repository;
+	FlightCrewMemberActivityLogRepository repository;
 
 
 	@Override
@@ -29,7 +29,8 @@ public class ActivityLogShowService extends AbstractGuiService<FlightCrewMember,
 			try {
 				activityLogId = Integer.parseInt(requestActivityLogId);
 				activityLog = this.repository.findActivityLogById(activityLogId);
-				authorised = activityLog != null && activityLog.getAssignment() != null && super.getRequest().getPrincipal().hasRealm(activityLog.getAssignment().getAllocatedFlightCrewMember());
+				authorised = activityLog != null && activityLog.getAssignment() != null && super.getRequest().getPrincipal().hasRealm(activityLog.getAssignment().getAllocatedFlightCrewMember()) && !activityLog.getPublished()
+					&& activityLog.getAssignment().getPublished();
 			} catch (NumberFormatException e) {
 				authorised = false;
 			}
@@ -49,13 +50,28 @@ public class ActivityLogShowService extends AbstractGuiService<FlightCrewMember,
 	}
 
 	@Override
+	public void bind(final ActivityLog activityLog) {
+		super.bindObject(activityLog, "typeOfIncident", "description", "severityLevel");
+	}
+
+	@Override
+	public void validate(final ActivityLog activityLog) {
+		boolean publishedAssignment = activityLog.getAssignment().getPublished();
+		super.state(publishedAssignment, "*", "acme.validation.activityLog.publishedAssignment.message");
+	}
+
+	@Override
+	public void perform(final ActivityLog activityLog) {
+		activityLog.setPublished(true);
+		this.repository.save(activityLog);
+	}
+
+	@Override
 	public void unbind(final ActivityLog activityLog) {
 		Dataset dataset;
-
 		dataset = super.unbindObject(activityLog, "registrationMoment", "typeOfIncident", "description", "severityLevel", "published");
 		dataset.put("readonly", false);
 		super.getResponse().addData(dataset);
-
 	}
 
 }

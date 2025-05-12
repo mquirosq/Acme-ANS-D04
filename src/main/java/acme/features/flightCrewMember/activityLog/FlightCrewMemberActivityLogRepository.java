@@ -10,7 +10,7 @@ import acme.client.repositories.AbstractRepository;
 import acme.entities.ActivityLog;
 
 @Repository
-public interface ActivityLogRepository extends AbstractRepository {
+public interface FlightCrewMemberActivityLogRepository extends AbstractRepository {
 
 	@Query("select a from ActivityLog a")
 	Collection<ActivityLog> findAllActivityLogs();

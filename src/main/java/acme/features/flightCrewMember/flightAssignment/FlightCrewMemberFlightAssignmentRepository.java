@@ -14,7 +14,7 @@ import acme.entities.FlightLeg;
 import acme.realms.FlightCrewMember;
 
 @Repository
-public interface FlightAssignmentRepository extends AbstractRepository {
+public interface FlightCrewMemberFlightAssignmentRepository extends AbstractRepository {
 
 	@Query("select f from FlightAssignment f where f.leg.status = :status and f.allocatedFlightCrewMember.id = :id")
 	Collection<FlightAssignment> findCompletedFlightAssignments(FlightLegStatus status, int id);

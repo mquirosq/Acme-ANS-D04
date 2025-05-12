@@ -11,28 +11,28 @@ import acme.entities.FlightAssignment;
 import acme.realms.FlightCrewMember;
 
 @GuiController
-public class FlightAssignmentController extends AbstractGuiController<FlightCrewMember, FlightAssignment> {
+public class FlightCrewMemberFlightAssignmentController extends AbstractGuiController<FlightCrewMember, FlightAssignment> {
 
 	@Autowired
-	private FlightAssignmentListCompletedService	listCompletedService;
+	private FlightCrewMemberFlightAssignmentListCompletedService	listCompletedService;
 
 	@Autowired
-	private FlightAssignmentListPlannedService		listPlannedService;
+	private FlightCrewMemberFlightAssignmentListPlannedService		listPlannedService;
 
 	@Autowired
-	private FlightAssignmentShowService				showService;
+	private FlightCrewMemberFlightAssignmentShowService				showService;
 
 	@Autowired
-	private FlightAssignmentCreateService			createService;
+	private FlightCrewMemberFlightAssignmentCreateService			createService;
 
 	@Autowired
-	private FlightAssignmentUpdateService			updateService;
+	private FlightCrewMemberFlightAssignmentUpdateService			updateService;
 
 	@Autowired
-	private FlightAssignmentDeleteService			deleteService;
+	private FlightCrewMemberFlightAssignmentDeleteService			deleteService;
 
 	@Autowired
-	private FlightAssignmentPublishService			publishService;
+	private FlightCrewMemberFlightAssignmentPublishService			publishService;
 
 
 	@PostConstruct

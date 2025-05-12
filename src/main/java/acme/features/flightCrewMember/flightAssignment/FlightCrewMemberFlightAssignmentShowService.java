@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
 import acme.client.components.views.SelectChoices;
-import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.datatypes.CurrentStatus;
@@ -17,26 +16,26 @@ import acme.entities.FlightLeg;
 import acme.realms.FlightCrewMember;
 
 @GuiService
-public class FlightAssignmentCreateService extends AbstractGuiService<FlightCrewMember, FlightAssignment> {
+public class FlightCrewMemberFlightAssignmentShowService extends AbstractGuiService<FlightCrewMember, FlightAssignment> {
 
 	@Autowired
-	FlightAssignmentRepository repository;
+	private FlightCrewMemberFlightAssignmentRepository repository;
 
 
 	@Override
 	public void authorise() {
 		boolean authorised = true;
 
-		int flightLegId;
-		String requestFlightLegId;
-		FlightLeg leg;
+		int flightAssignmentId;
+		String requestFlightAssignmentId;
+		FlightAssignment flightAssignment;
 
-		if (super.getRequest().hasData("leg")) {
-			requestFlightLegId = super.getRequest().getData("leg", String.class);
+		if (super.getRequest().hasData("id")) {
+			requestFlightAssignmentId = super.getRequest().getData("id", String.class);
 			try {
-				flightLegId = Integer.parseInt(requestFlightLegId);
-				leg = this.repository.findByLegId(flightLegId);
-				authorised = leg != null;
+				flightAssignmentId = Integer.parseInt(requestFlightAssignmentId);
+				flightAssignment = this.repository.findFlightAssignmentById(flightAssignmentId);
+				authorised = super.getRequest().getPrincipal().hasRealm(flightAssignment.getAllocatedFlightCrewMember());
 			} catch (NumberFormatException e) {
 				authorised = false;
 			}
@@ -46,40 +45,13 @@ public class FlightAssignmentCreateService extends AbstractGuiService<FlightCrew
 
 	@Override
 	public void load() {
-		FlightAssignment flightAssignment = new FlightAssignment();
-		flightAssignment.setPublished(false);
+		FlightAssignment flightAssignment;
+		int flightAssignmentId;
+
+		flightAssignmentId = super.getRequest().getData("id", int.class);
+		flightAssignment = this.repository.findFlightAssignmentById(flightAssignmentId);
+
 		super.getBuffer().addData(flightAssignment);
-	}
-
-	@Override
-	public void bind(final FlightAssignment flightAssignment) {
-		int flightLegId;
-		FlightLeg flightLeg;
-
-		int flightCrewMemberId;
-		FlightCrewMember flightCrewMember;
-
-		flightLegId = super.getRequest().getData("leg", int.class);
-		flightLeg = this.repository.findByLegId(flightLegId);
-
-		flightCrewMemberId = super.getRequest().getPrincipal().getActiveRealm().getId();
-		flightCrewMember = this.repository.findByFlightCrewMemberId(flightCrewMemberId);
-
-		super.bindObject(flightAssignment, "duty", "currentStatus", "remarks");
-		flightAssignment.setLeg(flightLeg);
-		flightAssignment.setAllocatedFlightCrewMember(flightCrewMember);
-		flightAssignment.setPublished(false);
-		flightAssignment.setMoment(MomentHelper.getCurrentMoment());
-	}
-
-	@Override
-	public void validate(final FlightAssignment flightAssignment) {
-		;
-	}
-
-	@Override
-	public void perform(final FlightAssignment flightAssignment) {
-		this.repository.save(flightAssignment);
 	}
 
 	@Override
@@ -103,4 +75,5 @@ public class FlightAssignmentCreateService extends AbstractGuiService<FlightCrew
 
 		super.getResponse().addData(dataset);
 	}
+
 }

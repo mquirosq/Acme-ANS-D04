@@ -19,10 +19,10 @@ import acme.entities.FlightLeg;
 import acme.realms.FlightCrewMember;
 
 @GuiService
-public class FlightAssignmentPublishService extends AbstractGuiService<FlightCrewMember, FlightAssignment> {
+public class FlightCrewMemberFlightAssignmentPublishService extends AbstractGuiService<FlightCrewMember, FlightAssignment> {
 
 	@Autowired
-	FlightAssignmentRepository repository;
+	FlightCrewMemberFlightAssignmentRepository repository;
 
 
 	@Override

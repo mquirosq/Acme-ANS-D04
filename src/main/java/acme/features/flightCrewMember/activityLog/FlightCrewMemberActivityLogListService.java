@@ -1,25 +1,26 @@
 
 package acme.features.flightCrewMember.activityLog;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
-import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.ActivityLog;
 import acme.entities.FlightAssignment;
-import acme.features.flightCrewMember.flightAssignment.FlightAssignmentRepository;
+import acme.features.flightCrewMember.flightAssignment.FlightCrewMemberFlightAssignmentRepository;
 import acme.realms.FlightCrewMember;
 
 @GuiService
-public class ActivityLogCreateService extends AbstractGuiService<FlightCrewMember, ActivityLog> {
+public class FlightCrewMemberActivityLogListService extends AbstractGuiService<FlightCrewMember, ActivityLog> {
 
 	@Autowired
-	ActivityLogRepository				repository;
+	private FlightCrewMemberActivityLogRepository		repository;
 
 	@Autowired
-	private FlightAssignmentRepository	flightAssignmentRepository;
+	private FlightCrewMemberFlightAssignmentRepository	flightAssignmentRepository;
 
 
 	@Override
@@ -45,38 +46,22 @@ public class ActivityLogCreateService extends AbstractGuiService<FlightCrewMembe
 
 	@Override
 	public void load() {
-		ActivityLog activityLog = new ActivityLog();
-		super.getBuffer().addData(activityLog);
-	}
+		Collection<ActivityLog> activityLogs;
+		String requestFlightAssignmentId = super.getRequest().getData("masterId", String.class);
+		int flightAssignmentId = Integer.parseInt(requestFlightAssignmentId);
+		activityLogs = this.repository.findByFlightAssignmentId(flightAssignmentId);
 
-	@Override
-	public void bind(final ActivityLog activityLog) {
-		int requestFlightAssignmentId = super.getRequest().getData("masterId", int.class);
-		FlightAssignment flightAssignment = this.flightAssignmentRepository.findFlightAssignmentById(requestFlightAssignmentId);
-
-		super.bindObject(activityLog, "typeOfIncident", "description", "severityLevel");
-		activityLog.setAssignment(flightAssignment);
-		activityLog.setRegistrationMoment(MomentHelper.getCurrentMoment());
-		activityLog.setPublished(false);
-	}
-
-	@Override
-	public void validate(final ActivityLog activityLog) {
-		;
-	}
-
-	@Override
-	public void perform(final ActivityLog activityLog) {
-		this.repository.save(activityLog);
+		super.getBuffer().addData(activityLogs);
 	}
 
 	@Override
 	public void unbind(final ActivityLog activityLog) {
 		Dataset dataset;
+		dataset = super.unbindObject(activityLog, "typeOfIncident", "registrationMoment", "severityLevel");
 		int masterId = super.getRequest().getData("masterId", int.class);
-		dataset = super.unbindObject(activityLog, "registrationMoment", "typeOfIncident", "description", "severityLevel", "published");
-		dataset.put("readonly", false);
+		super.addPayload(dataset, activityLog, "description");
 		super.getResponse().addData(dataset);
 		super.getResponse().addGlobal("masterId", masterId);
 	}
+
 }
