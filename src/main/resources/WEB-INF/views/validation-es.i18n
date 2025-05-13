@@ -54,6 +54,7 @@ acme.validation.flightLeg.flightNumberUnique.message = El número de vuelo debe 
 acme.validation.flight.overlappingDates.message = Este vuelo tiene tramos solapados
 acme.validation.flight.notPublishedLeg.message = Este vuelo tiene tramos sin publicar
 acme.validation.flight.missingLegs.message = Este vuelo no tiene tramos
+acme.validation.flight.publishedLegs.message = Este vuelo tiene tramos publicados
 
 acme.validation.aircraft.registrationNumber.message			= El número de registro debe ser único
 acme.validation.airport.notUniqueIATA.message = Este codigo IATA ya existe

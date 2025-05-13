@@ -56,6 +56,7 @@ acme.validation.flightLeg.flightNumberUnique.message = The flight number must be
 acme.validation.flight.overlappingDates.message = This flight has legs with overlapping dates
 acme.validation.flight.notPublishedLeg.message = This flight has unpublished legs
 acme.validation.flight.missingLegs.message = This flight does not have associated legs
+acme.validation.flight.publishedLegs.message = This flight has published legs
 
 acme.validation.airport.notUniqueIATA.message = This IATA code already exists
 acme.validation.aircraft.registrationNumber.message			= The registration number must be unique
