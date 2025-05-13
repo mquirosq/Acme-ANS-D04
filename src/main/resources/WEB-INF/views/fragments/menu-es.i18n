@@ -17,6 +17,12 @@ master.menu.anonymous.guillermo-favourite-link = 45995645S: Rodríguez Narbona, 
 master.menu.anonymous.alejandro-favourite-link = 75968043D: Parody Quirós, Alejandro
 master.menu.anonymous.daniel-favourite-link = 45940260Z: Herrera Urbano, Daniel
 master.menu.anonymous.ignacio-favourite-link = 29548261T: Mora Perez, Ignacio
+master.menu.anonymous.list-reviews = Ver Reseñas
+
+# master.menu.authenticated ###################################################
+
+master.menu.authenticated = Autenticado
+master.menu.authenticated.list-reviews = Ver reseñas
 
 # master.menu.administrator ###################################################
 
@@ -26,6 +32,11 @@ master.menu.administrator.list-airports = Ver aeropuertos
 master.menu.administrator.list-airlines = Ver aerolíneas
 master.menu.administrator.list-aircrafts = Ver aeronaves
 master.menu.administrator.list-bookings = Ver reservas
+<<<<<<< HEAD
+master.menu.administrator.recommendation = Nueva recomendación
+=======
+master.menu.administrator.show-systemConfiguration = Ver la configuración del sistema
+>>>>>>> task057
 master.menu.administrator.populate-db-initial = Poblar BD (inicial)
 master.menu.administrator.populate-db-sample = Poblar BD (ejemplos)
 master.menu.administrator.shut-system-down = Parar el sistema
@@ -46,7 +57,14 @@ master.menu.technician.list-tasks			= Tareas
 master.menu.customer = Cliente
 master.menu.customer.list-passengers = Mis pasajeros
 master.menu.customer.list-bookings = Mis reservas
+master.menu.customer.list-recommendations = Mis recomendaciones
 master.menu.customer.show-dashboard = Mis estadísticas
+
+# master.menu.flightCrewMember ##################################################
+
+master.menu.flightCrewMember = Asignaciones de vuelo
+master.menu.flightCrewMember.list-completed = Asignaciones de vuelo completadas
+master.menu.flightCrewMember.list-planned = Asignaciones de vuelo planeadas
 
 # master.menu.user-account ####################################################
 
