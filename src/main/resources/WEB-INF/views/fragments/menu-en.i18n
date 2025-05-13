@@ -60,6 +60,12 @@ master.menu.customer.list-bookings = My bookings
 master.menu.customer.list-recommendations = My recommendations
 master.menu.customer.show-dashboard = My dashboard
 
+# master.menu.flightCrewMember ##################################################
+
+master.menu.flightCrewMember = Flight Assignments
+master.menu.flightCrewMember.list-completed = Completed flight assignments
+master.menu.flightCrewMember.list-planned = Planned flight assignments
+
 # master.menu.user-account ####################################################
 
 master.menu.user-account = Account

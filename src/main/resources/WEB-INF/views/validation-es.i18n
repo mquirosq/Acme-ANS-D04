@@ -60,15 +60,21 @@ acme.validation.airport.notUniqueIATA.message = Este codigo IATA ya existe
 
 acme.validation.confirmation.message = Debes confirmar antes de realizar esta operación
 
+acme.validation.flightAssignment.overlappingLegs.message = Los miembros de tripulación no pueden ser asignados a vuelos que se solapan
+acme.validation.flightAssignment.pastLeg.message = El tramo escogido ya ha ocurrido
+acme.validation.flightAssignment.extraPilot.message = El rol de piloto ya esta cubierto para este tramo
+acme.validation.flightAssignment.extraCopilot.message = El rol de copiloto ya esta cubierto para este tramo
+acme.validation.flightAssignment.unavailableFlightCrewMember.message = El miembro de cabina no esta disponible
+
 acme.validation.claim.isPublished.message			= No se puede publicar una reclamación que no está completada
 acme.validation.claim.leg.message					= Una reclamación no puede estar enlazada a un tramo no publicado
 acme.validation.claim.registrationMoment.message 	= El momento de registro de una reclamación no puede ser anterior a la fecha de llegada del tramo al que está asociada
 
 acme.validation.realm.identifierPattern.message = El identificador debe de incluir 2-3 letras en mayúscula y 6 dígitos.
 
-<<<<<<< HEAD
 acme.validation.recommendation.uniquePlaceId.message = El identificador del lugar debe ser único.
-=======
+
 acme.validation.systemConfiguration.systemCurrency.message = Las monedas deben estar representadas por 3 letras mayúsculas.
 acme.validation.systemConfiguration.acceptedCurrencies.message = Debe ser una lista de monedas representadas con tres letras mayúsculas y separadas por comas.
->>>>>>> task057
+
+acme.validation.activityLog.publishedAssignment.message = La asignación de vuelo para este registro de actividad no esta publicado
