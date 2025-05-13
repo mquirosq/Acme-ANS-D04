@@ -5,6 +5,7 @@ import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import acme.client.components.datatypes.Money;
 import acme.client.components.models.Dataset;
 import acme.client.components.views.SelectChoices;
 import acme.client.services.AbstractGuiService;
@@ -98,6 +99,12 @@ public class CustomerBookingRecordCreateService extends AbstractGuiService<Custo
 	@Override
 	public void perform(final BookingRecord bookingRecord) {
 		this.repository.save(bookingRecord);
+
+		Booking booking = bookingRecord.getBooking();
+		Money price = booking.getPrice();
+		price.setAmount(price.getAmount() + booking.getFlight().getCost().getAmount());
+		booking.setPrice(price);
+		this.repository.save(booking);
 	}
 
 	@Override
