@@ -37,16 +37,9 @@ public class CustomerBookingListService extends AbstractGuiService<Customer, Boo
 	@Override
 	public void unbind(final Booking booking) {
 		Dataset dataset;
-		String draftMode = "";
 		String flight;
 
-		dataset = super.unbindObject(booking, "locatorCode", "purchasedAt", "price");
-
-		if (booking.isDraftMode())
-			draftMode = "Pending";
-		else
-			draftMode = "Complete";
-		dataset.put("draftMode", draftMode);
+		dataset = super.unbindObject(booking, "locatorCode", "purchasedAt", "price", "draftMode");
 
 		flight = booking.getFlight().getIdentifierCode();
 		dataset.put("flight", flight);
