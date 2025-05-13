@@ -28,6 +28,9 @@ public class AirlineManagerFlightController extends AbstractGuiController<Airlin
 	@Autowired
 	private AirlineManagerFlightPublishService	publishService;
 
+	@Autowired
+	private AirlineManagerFlightDeleteService	deleteService;
+
 
 	@PostConstruct
 	protected void initialise() {
@@ -35,6 +38,7 @@ public class AirlineManagerFlightController extends AbstractGuiController<Airlin
 		super.addBasicCommand("show", this.showService);
 		super.addBasicCommand("update", this.editService);
 		super.addBasicCommand("create", this.createService);
+		super.addBasicCommand("delete", this.deleteService);
 		super.addCustomCommand("publish", "update", this.publishService);
 	}
 

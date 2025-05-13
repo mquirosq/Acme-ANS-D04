@@ -21,7 +21,8 @@
 		<jstl:when test="${_command == 'show' && draftMode}">
 			<acme:button code="airline-manager.flight.form.button.flight-legs" action="/airline-manager/flight-leg/list?parentId=${id}"/>	
 			<acme:submit code="airline-manager.flight.form.button.update" action="/airline-manager/flight/update"/>
-			<acme:submit code="airline-manager.flight.form.button.publish" action="/airline-manager/flight/publish"/>		
+			<acme:submit code="airline-manager.flight.form.button.publish" action="/airline-manager/flight/publish"/>	
+			<acme:submit code="airline-manager.flight.form.button.delete" action = "/airline-manager/flight/delete"/>				
 		</jstl:when>
 		<jstl:when test="${_command == 'show'}">
 			<acme:button code="airline-manager.flight.form.button.flight-legs" action="/airline-manager/flight-leg/list?parentId=${id}"/>			
@@ -30,6 +31,7 @@
 			<acme:button code="airline-manager.flight.form.button.flight-legs" action="/airline-manager/flight-leg/list?parentId=${id}"/>
 			<acme:submit code="airline-manager.flight.form.button.update" action="/airline-manager/flight/update"/>
 			<acme:submit code="airline-manager.flight.form.button.publish" action="/airline-manager/flight/publish"/>
+			<acme:submit code="airline-manager.flight.form.button.delete" action = "/airline-manager/flight/delete"/>				
 		</jstl:when>
 		<jstl:when test="${_command == 'create'}">
 			<acme:submit code="airline-manager.flight.form.button.create" action="/airline-manager/flight/create"/>
