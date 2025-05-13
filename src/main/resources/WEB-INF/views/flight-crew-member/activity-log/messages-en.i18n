@@ -1,4 +1,3 @@
-
 flight-crew-member.activity-log.list.title = Activity Logs
 flight-crew-member.activity-log.form.title = Activity Log
 
@@ -13,4 +12,3 @@ flightCrewMember.activityLog.form.label.typeOfIncident = Type of incident
 flightCrewMember.activityLog.form.label.description = Description
 flightCrewMember.activityLog.form.label.severityLevel = Severity level
 flightCrewMember.activityLog.form.label.isPublished = Published
-
