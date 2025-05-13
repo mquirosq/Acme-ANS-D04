@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>340</x>
+      <y>330</y>
+      <w>650</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Role&gt;&gt;
+Technician {ValidTechnician}
+--
++ license: String {Mandatory, ValidString(pattern = "^[A-Z]{2-3}\\d{6}$"), Column(unique = true)}
++ phoneNumber: String {Mandatory, ValidPhoneNumber, Automapped}
++ specialisation: String {Mandatory, ValidString(min = 1, max = 50), Automapped}
++ healthPassed: Boolean {Mandatory, Valid, Autommaped}
++ expYears: Integer {Mandatory, ValidNumber(min = 0, max = 120), Automapped}
++ certifications: String {Optional, ValidString(max = 255), Automapped}
+bg=pink</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
