@@ -5,10 +5,12 @@ import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import acme.client.components.datatypes.Money;
 import acme.client.components.models.Dataset;
 import acme.client.components.views.SelectChoices;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
+import acme.entities.Booking;
 import acme.entities.BookingRecord;
 import acme.entities.Passenger;
 import acme.realms.Customer;
@@ -71,6 +73,12 @@ public class CustomerBookingRecordDeleteService extends AbstractGuiService<Custo
 	@Override
 	public void perform(final BookingRecord bookingRecord) {
 		this.repository.delete(bookingRecord);
+
+		Booking booking = bookingRecord.getBooking();
+		Money price = booking.getPrice();
+		price.setAmount(price.getAmount() - booking.getFlight().getCost().getAmount());
+		booking.setPrice(price);
+		this.repository.save(booking);
 	}
 
 	@Override

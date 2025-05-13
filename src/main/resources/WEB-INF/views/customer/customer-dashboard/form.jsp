@@ -119,7 +119,7 @@
 		        <th scope="row">
 		            <acme:print code="customer.dashboard.form.label.deviation-cost"/>
 		        </th>
-			    <jstl:forEach items="${standardDeviationCostOfBookings}" var="money">
+			    <jstl:forEach items="${standardDeviationOfCostOfBookings}" var="money">
 			        <td>
 			            <jstl:choose>
 			                <jstl:when test="${money.amount != null}">

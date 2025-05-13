@@ -14,7 +14,7 @@ customer.dashboard.form.label.minimum-cost = Minimum cost of my bookings
 customer.dashboard.form.label.maximum-cost = Maximum cost of my bookings
 customer.dashboard.form.label.deviation-cost = Standard deviation of the cost of my bookings
 
-customer.dashboard.form.label.total-passengers = Total unique passengers in bookings
+customer.dashboard.form.label.total-passengers = Total passengers in bookings
 customer.dashboard.form.label.average-passengers = Average passengers in a booking
 customer.dashboard.form.label.minimum-passengers = Minimum passengers in a booking
 customer.dashboard.form.label.maximum-passengers = Maximum passengers in a booking
