@@ -19,13 +19,16 @@
 	<jstl:choose>
 		<jstl:when test = "${_command == 'show'}">
 			<acme:button code = "administrator.aircraft.form.button.edit" action = "/administrator/aircraft/update?id=${id}"/>
+			<jstl:if test = "${status != 'UNDER_MAINTENANCE'}">
+				<acme:button code = "administrator.aircraft.form.button.disable" action = "/administrator/aircraft/disable?id=${id}"/>
+			</jstl:if>
 		</jstl:when>
-		<jstl:when test = "${acme:anyOf(_command, 'update|disable')}">
+		<jstl:when test = "${_command == 'update'}">
 			<acme:submit code = "administrator.aircraft.form.button.update" action = "/administrator/aircraft/update"/>			
 			
-			<jstl:if test = "${status != 'UNDER_MAINTENANCE'}">
-				<acme:submit code = "administrator.aircraft.form.button.disable" action = "/administrator/aircraft/disable"/>
-			</jstl:if>
+		</jstl:when>
+		<jstl:when test = "${_command == 'disable'}">
+			<acme:submit code = "administrator.aircraft.form.button.disable" action = "/administrator/aircraft/disable"/>
 		</jstl:when>
 		<jstl:when test = "${_command == 'create'}">
 			<acme:submit code = "administrator.aircraft.form.button.create" action = "/administrator/aircraft/create"/>

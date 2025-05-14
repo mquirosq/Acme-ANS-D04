@@ -25,9 +25,10 @@ public class AdministratorAircraftDisableService extends AbstractGuiService<Admi
 	public void authorise() {
 		boolean authorised;
 
-		int aircraftId;
-		String aircraftIdRaw;
+		int aircraftId, airlineId;
+		String aircraftIdRaw, airlineIdRaw;
 		Aircraft aircraft;
+		Airline airline;
 
 		authorised = true;
 
@@ -42,6 +43,22 @@ public class AdministratorAircraftDisableService extends AbstractGuiService<Admi
 			}
 			aircraft = this.repository.findAircraftById(aircraftId);
 			authorised &= aircraft != null && !aircraft.getStatus().equals(AircraftStatus.UNDER_MAINTENANCE);
+		}
+
+		if (super.getRequest().hasData("airline")) {
+			airlineIdRaw = super.getRequest().getData("airline", String.class);
+
+			try {
+				airlineId = Integer.parseInt(airlineIdRaw);
+			} catch (NumberFormatException e) {
+				airlineId = -1;
+				authorised = false;
+			}
+
+			if (airlineId != 0) {
+				airline = this.repository.findAirlineById(airlineId);
+				authorised &= airline != null;
+			}
 		}
 		super.getResponse().setAuthorised(authorised);
 	}
@@ -59,7 +76,14 @@ public class AdministratorAircraftDisableService extends AbstractGuiService<Admi
 
 	@Override
 	public void bind(final Aircraft aircraft) {
+		int airlineId;
+		Airline airline;
 
+		airlineId = super.getRequest().getData("airline", int.class);
+		airline = this.repository.findAirlineById(airlineId);
+
+		super.bindObject(aircraft, "model", "registrationNumber", "capacity", "cargoWeight", "details");
+		aircraft.setAirline(airline);
 	}
 
 	@Override
