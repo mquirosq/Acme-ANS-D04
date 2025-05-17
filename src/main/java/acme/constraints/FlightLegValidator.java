@@ -10,6 +10,7 @@ import acme.client.components.validation.Validator;
 import acme.client.helpers.MomentHelper;
 import acme.entities.FlightLeg;
 import acme.entities.FlightLegRepository;
+import acme.helpers.ValidatorHelper;
 
 @Validator
 public class FlightLegValidator extends AbstractValidator<ValidFlightLeg, FlightLeg> {
@@ -48,7 +49,7 @@ public class FlightLegValidator extends AbstractValidator<ValidFlightLeg, Flight
 			}
 			if (leg.getFlightNumber() != null) {
 				FlightLeg existingLeg = this.repository.getByFlightNumber(leg.getFlightNumber());
-				boolean uniqueFlightNumber = existingLeg == null || existingLeg.equals(leg);
+				boolean uniqueFlightNumber = ValidatorHelper.checkUniqueness(leg, existingLeg);
 				super.state(context, uniqueFlightNumber, "flightNumber", "acme.validation.flightLeg.flightNumberUnique.message");
 			}
 		}

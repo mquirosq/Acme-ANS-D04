@@ -83,6 +83,6 @@ acme.validation.recommendation.uniquePlaceId.message = El identificador del luga
 acme.validation.service.promotionCodePattern.message = El código de promoción debe de contener de 3-4 letras, un guión y 2 números.
 
 acme.validation.systemConfiguration.systemCurrency.message = Las monedas deben estar representadas por 3 letras mayúsculas.
-acme.validation.systemConfiguration.acceptedCurrencies.message = Debe ser una lista de monedas representadas con tres letras mayúsculas y separadas por comas.
+acme.validation.systemConfiguration.acceptedCurrencies.message = Debe ser una lista de monedas representadas con tres letras mayúsculas y separadas por comas seguidas de un espacio.
 
 acme.validation.activityLog.publishedAssignment.message = La asignación de vuelo para este registro de actividad no esta publicado
