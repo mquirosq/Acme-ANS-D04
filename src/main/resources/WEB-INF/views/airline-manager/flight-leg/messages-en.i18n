@@ -22,3 +22,4 @@ airline-manager.flight-leg.form.label.draftMode = Draft mode
 airline-manager.flight-leg.form.button.update = Update
 airline-manager.flight-leg.form.button.publish = Publish
 airline-manager.flight-leg.form.button.create = Create
+airline-manager.flight-leg.form.button.delete = Delete

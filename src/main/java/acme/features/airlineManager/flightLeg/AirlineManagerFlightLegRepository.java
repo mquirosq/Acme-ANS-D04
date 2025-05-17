@@ -7,9 +7,11 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import acme.client.repositories.AbstractRepository;
+import acme.entities.ActivityLog;
 import acme.entities.Aircraft;
 import acme.entities.Airport;
 import acme.entities.Flight;
+import acme.entities.FlightAssignment;
 import acme.entities.FlightLeg;
 import acme.realms.AirlineManager;
 
@@ -36,5 +38,11 @@ public interface AirlineManagerFlightLegRepository extends AbstractRepository {
 
 	@Query("select a from Aircraft a where a.status = 'IN_ACTIVE_SERVICE'")
 	Collection<Aircraft> findActiveAircrafts();
+
+	@Query("select fa from FlightAssignment fa where fa.leg.id = :legId")
+	Collection<FlightAssignment> findAllAssignmentsByFlightLegId(int legId);
+
+	@Query("select al from ActivityLog al where al.assignment.leg.id = :legId")
+	Collection<ActivityLog> findAllActivityLogsByFlightLegId(int legId);
 
 }

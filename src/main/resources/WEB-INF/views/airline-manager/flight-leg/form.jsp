@@ -17,13 +17,10 @@
 		<acme:input-checkbox code="airline-manager.flight-leg.form.label.draftMode" path="draftMode" readonly = "${true}"/>
 	</jstl:if>
 		<jstl:choose>	 
-		<jstl:when test="${_command == 'show' && draftMode}">
-			<acme:submit code="airline-manager.flight-leg.form.button.update" action="/airline-manager/flight-leg/update"/>
-			<acme:submit code="airline-manager.flight-leg.form.button.publish" action="/airline-manager/flight-leg/publish"/>		
-		</jstl:when>
-		<jstl:when test="${acme:anyOf(_command, 'update || publish')}">
+		<jstl:when test="${acme:anyOf(_command, 'show || update || publish') && draftMode}">
 			<acme:submit code="airline-manager.flight-leg.form.button.update" action="/airline-manager/flight-leg/update"/>
 			<acme:submit code="airline-manager.flight-leg.form.button.publish" action="/airline-manager/flight-leg/publish"/>
+			<acme:submit code="airline-manager.flight-leg.form.button.delete" action="/airline-manager/flight-leg/delete"/>
 		</jstl:when>
 		<jstl:when test="${_command == 'create'}">
 			<acme:submit code="airline-manager.flight-leg.form.button.create" action="/airline-manager/flight-leg/create?parentId=${parentId}"/>
