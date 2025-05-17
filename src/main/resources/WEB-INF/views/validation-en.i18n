@@ -4,11 +4,16 @@
 acme.validation.phoneNumber.message = The phone number must be composed of 6 to 15 digits preceded or not by "+"
 
 acme.validation.airline.IATACode.message = The IATA Code must be unique
+acme.validation.airline.IATACodePattern.message = The IATA Code must include 3 upper-case letters
+
+acme.validation.airport.IATACodePattern.message = The IATA Code must include 3 upper-case letters
 
 acme.validation.customer.identifier.message = The identifier must start with the initials of the customer
 acme.validation.customer.identifier.unique.message = The identifier must be unique
 
-acme.validation.booking.locatorCode.message = The locator code must be unique
+acme.validation.bannedPassenger.passportNumberPattern.message = The passport number must contain 6 to 9 letters and/or numbers
+
+acme.validation.booking.locatorCode.message = The Locator Code must be unique
 acme.validation.booking.locatorCode.pattern = Must be composed of six to eight upper-case letters and numbers
 acme.validation.booking.lastCardNibble.pattern = Must be composed of four digits
 acme.validation.booking.lastCreditCardNibble.message = To publish a booking, it must store the last nibble of the credit card used to pay

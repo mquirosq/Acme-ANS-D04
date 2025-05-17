@@ -8,9 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import acme.client.components.principals.DefaultUserIdentity;
 import acme.client.components.validation.AbstractValidator;
 import acme.client.components.validation.Validator;
-import acme.entities.FlightCrewMemberRepository;
 import acme.helpers.ValidatorHelper;
 import acme.realms.FlightCrewMember;
+import acme.realms.FlightCrewMemberRepository;
 
 @Validator
 public class FlightCrewMemberValidator extends AbstractValidator<ValidFlightCrewMember, FlightCrewMember> {

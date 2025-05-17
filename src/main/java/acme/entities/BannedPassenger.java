@@ -36,7 +36,7 @@ public class BannedPassenger extends AbstractEntity {
 	private Date				dateOfBirth;
 
 	@Mandatory
-	@ValidString(pattern = "^[A-Z0-9]{6,9}$")
+	@ValidString(pattern = "^[A-Z0-9]{6,9}$", message = "{acme.validation.bannedPassenger.passportNumberPattern.message}")
 	@Automapped
 	private String				passportNumber;
 

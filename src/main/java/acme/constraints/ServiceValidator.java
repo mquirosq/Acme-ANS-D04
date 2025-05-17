@@ -9,6 +9,7 @@ import acme.client.components.validation.AbstractValidator;
 import acme.client.helpers.MomentHelper;
 import acme.entities.Service;
 import acme.entities.ServiceRepository;
+import acme.helpers.ValidatorHelper;
 
 public class ServiceValidator extends AbstractValidator<ValidService, Service> {
 
@@ -42,7 +43,7 @@ public class ServiceValidator extends AbstractValidator<ValidService, Service> {
 			Service existingService;
 
 			existingService = this.repository.findByPromotionCode(promotionCode);
-			uniqueService = existingService == null || existingService.equals(service);
+			uniqueService = ValidatorHelper.checkUniqueness(service, existingService);
 
 			super.state(context, uniqueService, "promotionCode", "acme.validation.service.promotioncodeuniqueness.message");
 		}

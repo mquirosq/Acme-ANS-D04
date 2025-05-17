@@ -4,9 +4,14 @@
 acme.validation.phoneNumber.message = El número de teléfono debe estar compuesto de entre seis y quince dígitos, opcionalmente precedido de "+"
 
 acme.validation.airline.IATACode.message = El código IATA debe ser único
+acme.validation.airline.IATACodePattern.message = El código IATA debe de contener tres letras mayúsculas
+
+acme.validation.airport.IATACodePattern.message = El código IATA debe de contener tres letras mayúsculas
 
 acme.validation.customer.identifier.message = El identificador debe comenzar con las iniciales del cliente
 acme.validation.customer.identifier.unique.message = El identificador debe ser único
+
+acme.validation.bannedPassenger.passportNumberPattern.message = El número de pasaporte debe de contener de 6 a 9 letras y/o números
 
 acme.validation.booking.locatorCode.message = The código de localización debe ser único
 acme.validation.booking.lastCreditCardNibble.message = Para publicar una reserva debe incluir los últimos cuatro dígitos de la tarjeta de crédito usada para pagar

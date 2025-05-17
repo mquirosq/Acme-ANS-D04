@@ -9,6 +9,7 @@ import acme.client.components.validation.AbstractValidator;
 import acme.client.components.validation.Validator;
 import acme.entities.BookingRecord;
 import acme.entities.BookingRecordRepository;
+import acme.helpers.ValidatorHelper;
 
 @Validator
 public class BookingRecordValidator extends AbstractValidator<ValidBookingRecord, BookingRecord> {
@@ -35,7 +36,7 @@ public class BookingRecordValidator extends AbstractValidator<ValidBookingRecord
 			BookingRecord bookingRecordObtained;
 
 			bookingRecordObtained = this.repository.getSameBookingAndPassenger(bookingRecord.getPassenger(), bookingRecord.getBooking());
-			uniquePassengerInBooking = bookingRecordObtained == null || bookingRecordObtained.equals(bookingRecord);
+			uniquePassengerInBooking = ValidatorHelper.checkUniqueness(bookingRecord, bookingRecordObtained);
 
 			super.state(context, uniquePassengerInBooking, "*", "acme.validation.bookingRecord.uniquePassengerInBooking.message");
 		}
