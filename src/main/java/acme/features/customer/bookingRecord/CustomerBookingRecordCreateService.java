@@ -5,6 +5,7 @@ import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import acme.client.components.datatypes.Money;
 import acme.client.components.models.Dataset;
 import acme.client.components.views.SelectChoices;
 import acme.client.services.AbstractGuiService;
@@ -37,9 +38,12 @@ public class CustomerBookingRecordCreateService extends AbstractGuiService<Custo
 			rawId = super.getRequest().getData("masterId", String.class);
 			bookingId = Integer.parseInt(rawId);
 			booking = this.repository.findBookingById(bookingId);
-			Customer customer = booking.getCustomer();
-			legalPassengers = this.repository.findMyPassengersNotAlreadyInBooking(super.getRequest().getPrincipal().getActiveRealm().getId(), bookingId);
-			authorised = booking != null && booking.isDraftMode() && super.getRequest().getPrincipal().getActiveRealm().equals(customer);
+			authorised = booking != null;
+			if (authorised) {
+				Customer customer = booking.getCustomer();
+				legalPassengers = this.repository.findMyPassengersNotAlreadyInBooking(super.getRequest().getPrincipal().getActiveRealm().getId(), bookingId);
+				authorised = authorised && booking.isDraftMode() && super.getRequest().getPrincipal().getActiveRealm().equals(customer);
+			}
 		} catch (NumberFormatException | AssertionError e) {
 			authorised = false;
 		}
@@ -95,6 +99,12 @@ public class CustomerBookingRecordCreateService extends AbstractGuiService<Custo
 	@Override
 	public void perform(final BookingRecord bookingRecord) {
 		this.repository.save(bookingRecord);
+
+		Booking booking = bookingRecord.getBooking();
+		Money price = booking.getPrice();
+		price.setAmount(price.getAmount() + booking.getFlight().getCost().getAmount());
+		booking.setPrice(price);
+		this.repository.save(booking);
 	}
 
 	@Override

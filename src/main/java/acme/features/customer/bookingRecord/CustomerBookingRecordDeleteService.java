@@ -5,10 +5,12 @@ import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import acme.client.components.datatypes.Money;
 import acme.client.components.models.Dataset;
 import acme.client.components.views.SelectChoices;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
+import acme.entities.Booking;
 import acme.entities.BookingRecord;
 import acme.entities.Passenger;
 import acme.realms.Customer;
@@ -35,8 +37,11 @@ public class CustomerBookingRecordDeleteService extends AbstractGuiService<Custo
 			rawId = super.getRequest().getData("id", String.class);
 			id = Integer.parseInt(rawId);
 			bookingRecord = this.repository.findBookingRecordById(id);
-			Customer customer = bookingRecord.getBooking().getCustomer();
-			authorised = bookingRecord != null && bookingRecord.getBooking() != null && bookingRecord.getBooking().isDraftMode() && super.getRequest().getPrincipal().getActiveRealm().equals(customer);
+			authorised = bookingRecord != null;
+			if (authorised) {
+				Customer customer = bookingRecord.getBooking().getCustomer();
+				authorised &= bookingRecord.getBooking() != null && bookingRecord.getBooking().isDraftMode() && super.getRequest().getPrincipal().getActiveRealm().equals(customer);
+			}
 		} catch (NumberFormatException | AssertionError e) {
 			authorised = false;
 		}
@@ -68,6 +73,12 @@ public class CustomerBookingRecordDeleteService extends AbstractGuiService<Custo
 	@Override
 	public void perform(final BookingRecord bookingRecord) {
 		this.repository.delete(bookingRecord);
+
+		Booking booking = bookingRecord.getBooking();
+		Money price = booking.getPrice();
+		price.setAmount(price.getAmount() - booking.getFlight().getCost().getAmount());
+		booking.setPrice(price);
+		this.repository.save(booking);
 	}
 
 	@Override

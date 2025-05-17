@@ -5,7 +5,7 @@ customer.booking.form.title = Detalles de la reserva
 customer.booking.list.label.locatorCode = Código de seguimiento
 customer.booking.list.label.price = Precio
 customer.booking.list.label.flight = Vuelo
-customer.booking.list.label.draftMode = Estado
+customer.booking.list.label.draftMode = Pendiente
 
 customer.booking.form.label.locatorCode = Código de seguimiento:
 customer.booking.form.label.flight = Vuelo:
