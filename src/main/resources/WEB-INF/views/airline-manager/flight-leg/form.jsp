@@ -13,7 +13,7 @@
 	<acme:input-select code = "airline-manager.flight-leg.form.label.arrivalAirport" path = "arrivalAirport" choices = "${arrivalAirports}"/>
 	<acme:input-select code = "airline-manager.flight-leg.form.label.deployedAircraft" path = "deployedAircraft" choices = "${deployedAircrafts}"/>
 	<jstl:if test="${_command != 'create'}">
-		<acme:input-select code = "airline-manager.flight-leg.form.label.parentFlight" path = "parentFlight" choices = "${parentFlights}"/>
+		<acme:input-select code = "airline-manager.flight-leg.form.label.parentFlight" path = "parentFlight" choices = "${parentFlights}" readonly = "${true}"/>
 		<acme:input-checkbox code="airline-manager.flight-leg.form.label.draftMode" path="draftMode" readonly = "${true}"/>
 	</jstl:if>
 		<jstl:choose>	 
