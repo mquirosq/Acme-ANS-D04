@@ -16,7 +16,7 @@ acme.validation.booking.passengers.message = Para publicar una reserva debe asoc
 
 acme.validation.bookingRecord.uniquePassengerInBooking.message = Este pasajero ya está en esta reserva
 
-acme.validation.passenger.passportNumber.pattern = De seis a nueve letras mayúsculas y números.
+acme.validation.passenger.passportNumber.pattern = De seis a nueve letras mayúsculas y números
 
 acme.validation.airlineManager.identifierFormat.message = El identificador debe comenzar con las iniciales del gestor
 acme.validation.airlineManager.identifierUniqueness.message = El identificador debe de ser único
@@ -71,11 +71,13 @@ acme.validation.claim.isPublished.message			= No se puede publicar una reclamaci
 acme.validation.claim.leg.message					= Una reclamación no puede estar enlazada a un tramo no publicado
 acme.validation.claim.registrationMoment.message 	= El momento de registro de una reclamación no puede ser anterior a la fecha de llegada del tramo al que está asociada
 
-acme.validation.realm.identifierPattern.message = El identificador debe de incluir 2-3 letras en mayúscula y 6 dígitos.
+acme.validation.realm.identifierPattern.message = El identificador debe de incluir 2-3 letras en mayúscula y 6 dígitos
 
-acme.validation.recommendation.uniquePlaceId.message = El identificador del lugar debe ser único.
+acme.validation.recommendation.uniquePlaceId.message = El identificador del lugar debe ser único
 
-acme.validation.systemConfiguration.systemCurrency.message = Las monedas deben estar representadas por 3 letras mayúsculas.
-acme.validation.systemConfiguration.acceptedCurrencies.message = Debe ser una lista de monedas representadas con tres letras mayúsculas y separadas por comas.
+acme.validation.service.promotionCodePattern.message = El código de promoción debe de contener de 3-4 letras, un guión y 2 números
+
+acme.validation.systemConfiguration.systemCurrency.message = Las monedas deben estar representadas por 3 letras mayúsculas
+acme.validation.systemConfiguration.acceptedCurrencies.message = Debe ser una lista de monedas representadas con tres letras mayúsculas y separadas por comas seguidas de un espacio
 
 acme.validation.activityLog.publishedAssignment.message = La asignación de vuelo para este registro de actividad no esta publicado
