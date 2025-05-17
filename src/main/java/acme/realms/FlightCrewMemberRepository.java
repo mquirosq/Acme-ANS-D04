@@ -1,11 +1,10 @@
 
-package acme.entities;
+package acme.realms;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import acme.client.repositories.AbstractRepository;
-import acme.realms.FlightCrewMember;
 
 @Repository
 public interface FlightCrewMemberRepository extends AbstractRepository {
