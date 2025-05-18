@@ -73,16 +73,4 @@ public class Passenger extends AbstractEntity {
 
 		return identifierCode;
 	}
-
-	@Transient
-	public String getDraftModeString() {
-		String draftModeString;
-
-		if (this.isDraftMode())
-			draftModeString = "Draft";
-		else
-			draftModeString = "Published";
-
-		return draftModeString;
-	}
 }

@@ -24,7 +24,17 @@ public class CustomerPassengerListService extends AbstractGuiService<Customer, P
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		Boolean authorised;
+		String rawBoolean;
+
+		try {
+			rawBoolean = super.getRequest().getData("all", String.class);
+			authorised = rawBoolean.equals("true") || rawBoolean.equals("false");
+		} catch (AssertionError e) {
+			authorised = false;
+		}
+
+		super.getResponse().setAuthorised(authorised);
 	}
 
 	@Override
@@ -47,7 +57,7 @@ public class CustomerPassengerListService extends AbstractGuiService<Customer, P
 		Dataset dataset;
 
 		dataset = super.unbindObject(passenger, "fullName", "passportNumber");
-		super.addPayload(dataset, passenger, "email", "birthDate", "draftModeString");
+		super.addPayload(dataset, passenger, "email", "birthDate", "draftMode");
 
 		super.getResponse().addData(dataset);
 	}
