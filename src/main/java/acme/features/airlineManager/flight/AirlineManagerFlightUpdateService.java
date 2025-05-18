@@ -7,6 +7,7 @@ import acme.client.components.models.Dataset;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.Flight;
+import acme.helpers.FlightHelper;
 import acme.realms.AirlineManager;
 
 @GuiService
@@ -60,10 +61,8 @@ public class AirlineManagerFlightUpdateService extends AbstractGuiService<Airlin
 
 	@Override
 	public void unbind(final Flight flight) {
-		Dataset dataset;
-
-		dataset = super.unbindObject(flight, "tag", "requiresSelfTransfer", "cost", "description");
-
+		Dataset dataset = super.unbindObject(flight, "tag", "requiresSelfTransfer", "cost", "description", "draftMode");
+		dataset = FlightHelper.unbindFlightDerivatedProperties(dataset, flight);
 		super.getResponse().addData(dataset);
 	}
 
