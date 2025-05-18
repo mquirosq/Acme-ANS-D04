@@ -10,6 +10,7 @@ import acme.client.components.validation.Validator;
 import acme.client.helpers.MomentHelper;
 import acme.entities.FlightLeg;
 import acme.entities.FlightLegRepository;
+import acme.helpers.ValidatorHelper;
 
 @Validator
 public class FlightLegValidator extends AbstractValidator<ValidFlightLeg, FlightLeg> {
@@ -43,11 +44,12 @@ public class FlightLegValidator extends AbstractValidator<ValidFlightLeg, Flight
 			if (leg.getScheduledDeparture() != null && leg.getScheduledArrival() != null) {
 				boolean departureIsBeforeArrival = MomentHelper.isBefore(leg.getScheduledDeparture(), leg.getScheduledArrival());
 
-				super.state(context, departureIsBeforeArrival, "dates", "acme.validation.flightLeg.scheduledDates.message");
+				super.state(context, departureIsBeforeArrival, "scheduledDeparture", "acme.validation.flightLeg.scheduledDates.message");
+				super.state(context, departureIsBeforeArrival, "scheduledArrival", "acme.validation.flightLeg.scheduledDates.message");
 			}
 			if (leg.getFlightNumber() != null) {
 				FlightLeg existingLeg = this.repository.getByFlightNumber(leg.getFlightNumber());
-				boolean uniqueFlightNumber = existingLeg == null || existingLeg.equals(leg);
+				boolean uniqueFlightNumber = ValidatorHelper.checkUniqueness(leg, existingLeg);
 				super.state(context, uniqueFlightNumber, "flightNumber", "acme.validation.flightLeg.flightNumberUnique.message");
 			}
 		}

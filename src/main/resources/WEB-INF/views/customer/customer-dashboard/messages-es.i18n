@@ -6,7 +6,7 @@ customer.dashboard.form.title.booking-costs = Tus reservas durante los últimos 
 customer.dashboard.form.title.passengers-statistics = Tus pasajeros:
 customer.dashboard.form.title.bookings-by-travel-class = Reservas por clase:
 
-customer.dashboard.form.no-bookings-message = Necesitas hacer más reservas para acceder a estos indicadores.
+customer.dashboard.form.no-bookings-message = Necesitas más reservas recientes para acceder a estos indicadores.
 
 customer.dashboard.form.label.total-cost = Coste total de las reservas
 customer.dashboard.form.label.average-cost = Coste medio de las reservas

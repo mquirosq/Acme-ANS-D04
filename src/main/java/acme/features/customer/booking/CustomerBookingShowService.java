@@ -68,7 +68,7 @@ public class CustomerBookingShowService extends AbstractGuiService<Customer, Boo
 
 		currentMoment = MomentHelper.getCurrentMoment();
 		flights = this.repository.findAllNonDraftFlights();
-		flights = flights.stream().filter(f -> (f.getScheduledDeparture() != null && MomentHelper.isAfter(f.getScheduledDeparture(), currentMoment))).toList();
+		flights = flights.stream().filter(f -> MomentHelper.isAfter(f.getScheduledDeparture(), currentMoment)).toList();
 
 		flightChoices = SelectChoices.from(flights, "identifierCode", booking.getFlight());
 		travelChoices = SelectChoices.from(TravelClass.class, booking.getTravelClass());

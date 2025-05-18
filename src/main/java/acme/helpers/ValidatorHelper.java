@@ -21,13 +21,13 @@ public abstract class ValidatorHelper {
 
 	}
 
-	public static boolean checkFormatIsCorrect(final String employeeCode, final DefaultUserIdentity dui) {
-		return employeeCode != null && dui != null && !StringHelper.isBlank(dui.getName()) && !StringHelper.isBlank(dui.getSurname()) && !StringHelper.isBlank(employeeCode) && employeeCode.trim().length() >= 2
-			&& dui.getName().charAt(0) == employeeCode.charAt(0) && dui.getSurname().charAt(0) == employeeCode.charAt(1);
+	public static boolean checkFormatIsCorrect(final String identifier, final DefaultUserIdentity dui) {
+		return identifier != null && dui != null && !StringHelper.isBlank(dui.getName()) && !StringHelper.isBlank(dui.getSurname()) && !StringHelper.isBlank(identifier) && identifier.trim().length() >= 2 && dui.getName().charAt(0) == identifier.charAt(0)
+			&& dui.getSurname().charAt(0) == identifier.charAt(1);
 	}
 
-	public static boolean checkUniqueness(final Object inputEmployee, final Object obtainedEmployee) {
-		return obtainedEmployee == null || obtainedEmployee.equals(inputEmployee);
+	public static boolean checkUniqueness(final Object inputIdentity, final Object obtainedIdentity) {
+		return obtainedIdentity == null || obtainedIdentity.equals(inputIdentity);
 	}
 
 	public static List<Boolean> validatePublishedFlight(final Flight flight) {

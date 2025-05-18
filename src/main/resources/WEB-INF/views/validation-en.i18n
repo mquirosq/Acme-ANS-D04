@@ -4,19 +4,24 @@
 acme.validation.phoneNumber.message = The phone number must be composed of 6 to 15 digits preceded or not by "+"
 
 acme.validation.airline.IATACode.message = The IATA Code must be unique
+acme.validation.airline.IATACodePattern.message = The IATA Code must include 3 upper-case letters
+
+acme.validation.airport.IATACodePattern.message = The IATA Code must include 3 upper-case letters
 
 acme.validation.customer.identifier.message = The identifier must start with the initials of the customer
 acme.validation.customer.identifier.unique.message = The identifier must be unique
 
+acme.validation.bannedPassenger.passportNumberPattern.message = The passport number must contain 6 to 9 letters and/or numbers
+
 acme.validation.booking.locatorCode.message = The Locator Code must be unique
-acme.validation.booking.locatorCode.pattern = Must be composed of six to eight upper-case letters and numbers.
-acme.validation.booking.lastCardNibble.pattern = Must be composed of four digits.
+acme.validation.booking.locatorCode.pattern = Must be composed of six to eight upper-case letters and numbers
+acme.validation.booking.lastCardNibble.pattern = Must be composed of four digits
 acme.validation.booking.lastCreditCardNibble.message = To publish a booking, it must store the last nibble of the credit card used to pay
 acme.validation.booking.passengers.message = To publish a booking, it must have at least one passenger
 
 acme.validation.bookingRecord.uniquePassengerInBooking.message = This passenger is already on the booking
 
-acme.validation.passenger.passportNumber.pattern = Must be composed of six to nine upper-case letters and digits.
+acme.validation.passenger.passportNumber.pattern = Must be composed of six to nine upper-case letters and digits
 
 acme.validation.airlineManager.identifierFormat.message = The identifier must start with the initials of the manager
 acme.validation.airlineManager.identifierUniqueness.message = The identifier must be unique
@@ -48,28 +53,40 @@ acme.validation.customer.liftedAt.message 					= The lifting date must be after 
 
 acme.validation.flightLeg.scheduledDates.message = The scheduled departure must be before the scheduled arrival
 acme.validation.flightLeg.scheduledDates.message = The scheduled departure must be before the scheduled arrival
+acme.validation.flightLeg.scheduledDeparture.message = The scheduled departure must be in the future
 acme.validation.flightLeg.flightNumber.message = The flight number must begin with the airline's IATA code
 acme.validation.flightLeg.flightNumberPattern.message = The flight number must contain 3 upper case letters and 4 digits
 acme.validation.flightLeg.flightNumberUnique.message = The flight number must be unique
+acme.validation.flightLeg.overlappingDates.message = Dates of this leg overlap with other published legs
 
 acme.validation.flight.overlappingDates.message = This flight has legs with overlapping dates
 acme.validation.flight.notPublishedLeg.message = This flight has unpublished legs
 acme.validation.flight.missingLegs.message = This flight does not have associated legs
+acme.validation.flight.publishedLegs.message = This flight has published legs
 
 acme.validation.airport.notUniqueIATA.message = This IATA code already exists
 acme.validation.aircraft.registrationNumber.message			= The registration number must be unique
 
-
 acme.validation.confirmation.message = You must confirm before performing this operation
+
+acme.validation.flightAssignment.overlappingLegs.message = Flight Crew Members cannot be assigned to overlapping flights
+acme.validation.flightAssignment.pastLeg.message = The selected leg has already occurred
+acme.validation.flightAssignment.extraPilot.message = The pilot role is already filled for this leg
+acme.validation.flightAssignment.extraCopilot.message = The copilot role is already filled for this leg
+acme.validation.flightAssignment.unavailableFlightCrewMember.message = The selected flight crew member is not available
 
 acme.validation.claim.isPublished.message 			= You cannot publish a claim that has not been completed
 acme.validation.claim.leg.message					= A claim cannot be linked to an unpublished leg
 acme.validation.claim.registrationMoment.message 	= A claim's registration moment cannot be before the arrival of the leg to which it is associated
 
-acme.validation.realm.identifierPattern.message = The identifier must include 2-3 upper case letters and 6 digits.
+acme.validation.realm.identifierPattern.message = The identifier must include 2-3 upper case letters and 6 digits
 
-acme.validation.recommendation.uniquePlaceId.message = The place identifier must be unique.
+acme.validation.recommendation.uniquePlaceId.message = The place identifier must be unique
+
+acme.validation.service.promotionCodePattern.message = The promotion code must contain 3-4 letters, a hyphen and 2 numbers
 
 acme.validation.systemConfiguration.systemCurrency.message = Should be a three-letters currency code
-acme.validation.systemConfiguration.acceptedCurrencies.message = Should be a list of three-letters currency codes separated by commas
+acme.validation.systemConfiguration.acceptedCurrencies.message = Should be a list of three-letter currency codes, separated by commas followed by a space
 acme.validation.systemConfiguration.acceptedCurrencies.repeated = No currency should be repeated
+
+acme.validation.activityLog.publishedAssignment.message = The assignment for this activity log is not published

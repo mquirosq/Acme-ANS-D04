@@ -9,6 +9,7 @@ import acme.client.components.validation.AbstractValidator;
 import acme.client.components.validation.Validator;
 import acme.entities.Booking;
 import acme.entities.BookingRepository;
+import acme.helpers.ValidatorHelper;
 
 @Validator
 public class BookingValidator extends AbstractValidator<ValidBooking, Booking> {
@@ -33,10 +34,11 @@ public class BookingValidator extends AbstractValidator<ValidBooking, Booking> {
 		else {
 			if (booking.getLocatorCode() != null) {
 				Booking existingBooking = this.repository.getSameLocatorCode(booking.getLocatorCode());
-				boolean uniqueLocatorCode = existingBooking == null || existingBooking.equals(booking);
+				boolean uniqueLocatorCode = ValidatorHelper.checkUniqueness(booking, existingBooking);
 				super.state(context, uniqueLocatorCode, "locatorCode", "acme.validation.booking.locatorCode.message");
 			}
 			if (!booking.isDraftMode()) {
+				// Validation for initial/sample data - cannot be fully covered in tests
 				boolean hasCreditCardNibble;
 				boolean hasSomePassengers;
 
