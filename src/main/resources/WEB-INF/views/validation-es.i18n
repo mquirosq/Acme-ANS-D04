@@ -86,7 +86,7 @@ acme.validation.service.promotionCodePattern.message = El código de promoción 
 acme.validation.systemConfiguration.systemCurrency.message = Las monedas deben estar representadas por 3 letras mayúsculas
 acme.validation.systemConfiguration.acceptedCurrencies.message = Debe ser una lista de monedas representadas con tres letras mayúsculas y separadas por comas seguidas de un espacio
 acme.validation.systemConfiguration.acceptedCurrencies.repeated = Ninguna moneda debería estar repetida
-
+acme.validation.systemConfiguration.acceptedCurrencies.contained = La moneda del sistema debe estar en la lista de monedas aceptadas
 
 acme.validation.activityLog.publishedAssignment.message = La asignación de vuelo para este registro de actividad no esta publicado
 

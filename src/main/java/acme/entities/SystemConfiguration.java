@@ -25,7 +25,7 @@ public class SystemConfiguration extends AbstractEntity {
 	private String				systemCurrency;
 
 	@Mandatory
-	@ValidString(pattern = "([A-Z]{3})(, [A-Z]{3})+", min = 1, max = 255, message = "{acme.validation.systemConfiguration.acceptedCurrencies.message}")
+	@ValidString(pattern = "([A-Z]{3})(, [A-Z]{3})*", min = 1, max = 255, message = "{acme.validation.systemConfiguration.acceptedCurrencies.message}")
 	@Automapped
 	private String				acceptedCurrencies;
 }
