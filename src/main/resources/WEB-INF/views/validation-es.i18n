@@ -65,9 +65,9 @@ acme.validation.claim.registrationMoment.message 	= El momento de registro de un
 
 acme.validation.realm.identifierPattern.message = El identificador debe de incluir 2-3 letras en mayúscula y 6 dígitos.
 
-<<<<<<< HEAD
 acme.validation.recommendation.uniquePlaceId.message = El identificador del lugar debe ser único.
-=======
+
 acme.validation.systemConfiguration.systemCurrency.message = Las monedas deben estar representadas por 3 letras mayúsculas.
 acme.validation.systemConfiguration.acceptedCurrencies.message = Debe ser una lista de monedas representadas con tres letras mayúsculas y separadas por comas.
->>>>>>> task057
+acme.validation.systemConfiguration.acceptedCurrencies.repeated = Ninguna moneda debería estar repetida
+
