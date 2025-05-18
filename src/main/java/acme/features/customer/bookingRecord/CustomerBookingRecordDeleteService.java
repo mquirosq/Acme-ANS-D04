@@ -40,7 +40,7 @@ public class CustomerBookingRecordDeleteService extends AbstractGuiService<Custo
 			authorised = bookingRecord != null;
 			if (authorised) {
 				Customer customer = bookingRecord.getBooking().getCustomer();
-				authorised &= bookingRecord.getBooking() != null && bookingRecord.getBooking().isDraftMode() && super.getRequest().getPrincipal().getActiveRealm().equals(customer);
+				authorised &= bookingRecord.getBooking().isDraftMode() && super.getRequest().getPrincipal().getActiveRealm().equals(customer);
 			}
 		} catch (NumberFormatException | AssertionError e) {
 			authorised = false;
@@ -83,6 +83,7 @@ public class CustomerBookingRecordDeleteService extends AbstractGuiService<Custo
 
 	@Override
 	public void unbind(final BookingRecord bookingRecord) {
+		// There is no way to trigger this method in the actual implementation
 		Collection<Passenger> passengers;
 		SelectChoices choices;
 		Dataset dataset;

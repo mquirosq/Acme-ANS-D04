@@ -38,6 +38,7 @@ public class BookingValidator extends AbstractValidator<ValidBooking, Booking> {
 				super.state(context, uniqueLocatorCode, "locatorCode", "acme.validation.booking.locatorCode.message");
 			}
 			if (!booking.isDraftMode()) {
+				// Validation for initial/sample data - cannot be fully covered in tests
 				boolean hasCreditCardNibble;
 				boolean hasSomePassengers;
 

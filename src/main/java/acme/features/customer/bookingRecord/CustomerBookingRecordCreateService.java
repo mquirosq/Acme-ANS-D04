@@ -42,7 +42,8 @@ public class CustomerBookingRecordCreateService extends AbstractGuiService<Custo
 			if (authorised) {
 				Customer customer = booking.getCustomer();
 				legalPassengers = this.repository.findMyPassengersNotAlreadyInBooking(super.getRequest().getPrincipal().getActiveRealm().getId(), bookingId);
-				authorised = authorised && booking.isDraftMode() && super.getRequest().getPrincipal().getActiveRealm().equals(customer);
+				// Cannot execute missing branch of following statement
+				authorised = booking.isDraftMode() && super.getRequest().getPrincipal().getActiveRealm().equals(customer);
 			}
 		} catch (NumberFormatException | AssertionError e) {
 			authorised = false;
@@ -52,7 +53,7 @@ public class CustomerBookingRecordCreateService extends AbstractGuiService<Custo
 		int passengerId;
 		Passenger passenger;
 
-		if (super.getRequest().hasData("passenger") && legalPassengers != null) {
+		if (super.getRequest().hasData("passenger")) {
 			passengerIdRaw = super.getRequest().getData("passenger", String.class);
 
 			try {

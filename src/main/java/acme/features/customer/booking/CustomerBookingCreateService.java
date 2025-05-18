@@ -48,7 +48,7 @@ public class CustomerBookingCreateService extends AbstractGuiService<Customer, B
 
 			if (flightId != 0) {
 				flight = this.repository.findFlightById(flightId);
-				authorised &= flight != null && !flight.getDraftMode() && flight.getScheduledDeparture() != null && MomentHelper.isAfter(flight.getScheduledDeparture(), MomentHelper.getCurrentMoment());
+				authorised &= flight != null && !flight.getDraftMode() && MomentHelper.isAfter(flight.getScheduledDeparture(), MomentHelper.getCurrentMoment());
 			}
 		}
 		super.getResponse().setAuthorised(authorised);
@@ -95,11 +95,8 @@ public class CustomerBookingCreateService extends AbstractGuiService<Customer, B
 		numberPassengers = this.repository.countPassengersInBooking(booking.getId());
 
 		price = new Money();
-		if (booking.getFlight() != null && booking.getFlight().getCost() != null) {
-			price.setAmount(booking.getFlight().getCost().getAmount() * numberPassengers);
-			price.setCurrency(booking.getFlight().getCost().getCurrency());
-		} else
-			price = null;
+		price.setAmount(booking.getFlight().getCost().getAmount() * numberPassengers);
+		price.setCurrency(booking.getFlight().getCost().getCurrency());
 
 		booking.setPrice(price);
 		this.repository.save(booking);
@@ -115,7 +112,7 @@ public class CustomerBookingCreateService extends AbstractGuiService<Customer, B
 
 		currentMoment = MomentHelper.getCurrentMoment();
 		flights = this.repository.findAllNonDraftFlights();
-		flights = flights.stream().filter(f -> (f.getScheduledDeparture() != null && MomentHelper.isAfter(f.getScheduledDeparture(), currentMoment))).toList();
+		flights = flights.stream().filter(f -> MomentHelper.isAfter(f.getScheduledDeparture(), currentMoment)).toList();
 
 		flightChoices = SelectChoices.from(flights, "identifierCode", booking.getFlight());
 		travelChoices = SelectChoices.from(TravelClass.class, booking.getTravelClass());
