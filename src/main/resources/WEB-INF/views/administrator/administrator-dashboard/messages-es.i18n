@@ -1,0 +1,20 @@
+administrator.administrator-dashboard.form.title											= Panel de indicadores del administrador
+
+administrator.dashboard.label.totalNumberOfAirportsByOperationalScope 						= Número total de aeropuertos según alcance operativo:
+administrator.dashboard.form.message.no-airports											= No hay aeropuertos
+
+administrator.dashboard.label.numberOfAirlinesByType										= Números de aerolíneas según tipo:
+administrator.dashboard.form.message.no-airlines											= No hay aerolíneas
+
+administrator.dashboard.form.label.ratioOfAirlinesWithEmailAddressAndPhoneNumber			= Proporción de aerolíneas con dirección de email y número de teléfono:
+
+administrator.dashboard.form.label.ratioOfActiveAircrafts									= Proporción de aeronaves activas:
+
+administrator.dashboard.form.label.ratioOfReviewsWithScoreAboveFive							= Proporción de reseñas con puntuación superior a 5:
+
+administrator.dashboard.form.title.reviewsInLastTenWeeksIndicators							= Indicadores de reseñas en las últimas 10 semanas:
+administrator.dashboard.form.label.numberOfReviewsPostedInLastTenWeeks						= Número de reseñas creadas
+administrator.dashboard.form.label.minimumNumberOfReviewsPostedInLastTenWeeks				= Mínimo número de reseñas creadas
+administrator.dashboard.form.label.maximumNumberOfReviewsPostedInLastTenWeeks				= Máximo número de reseñas creadas
+administrator.dashboard.form.label.averageNumberOfReviewsPostedInLastTenWeeks				= Promedio de reseñas creadas
+administrator.dashboard.form.label.standardDeviationOfNumberOfReviewsPostedInLastTenWeeks	= Desviación típica del número de reseñas creadas
