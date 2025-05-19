@@ -88,5 +88,6 @@ acme.validation.service.promotionCodePattern.message = The promotion code must c
 acme.validation.systemConfiguration.systemCurrency.message = Should be a three-letters currency code
 acme.validation.systemConfiguration.acceptedCurrencies.message = Should be a list of three-letter currency codes, separated by commas followed by a space
 acme.validation.systemConfiguration.acceptedCurrencies.repeated = No currency should be repeated
+acme.validation.systemConfiguration.acceptedCurrencies.contained = The system currency must be in the list of accepted currencies
 
 acme.validation.activityLog.publishedAssignment.message = The assignment for this activity log is not published
