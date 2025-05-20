@@ -1,0 +1,25 @@
+airline-manager.flight-leg.list.title = Tramos de vuelo
+
+airline-manager.flight-leg.list.label.flightNumber = Nº de vuelo
+airline-manager.flight-leg.list.label.draftMode = Estado
+airline-manager.flight-leg.list.label.departureAirport = Aeropuerto origen
+airline-manager.flight-leg.list.label.arrivalAirport = Aeropuerto destino
+
+airline-manager.flight-leg.list.button.create = Crear
+
+airline-manager.flight-leg.form.title = Detalles del tramo de vuelo
+
+airline-manager.flight-leg.form.label.flightNumber = Nº de vuelo
+airline-manager.flight-leg.form.label.scheduledDeparture = Salida prevista
+airline-manager.flight-leg.form.label.scheduledArrival = Llegada prevista
+airline-manager.flight-leg.form.label.status = Estado
+airline-manager.flight-leg.form.label.departureAirport = Aeropuerto origen
+airline-manager.flight-leg.form.label.arrivalAirport = Aeropuerto destino
+airline-manager.flight-leg.form.label.deployedAircraft = Avión
+airline-manager.flight-leg.form.label.parentFlight = Vuelo padre
+airline-manager.flight-leg.form.label.draftMode = Modo borrador
+
+airline-manager.flight-leg.form.button.update = Actualizar
+airline-manager.flight-leg.form.button.publish = Publicar
+airline-manager.flight-leg.form.button.create = Crear
+airline-manager.flight-leg.form.button.delete = Eliminar

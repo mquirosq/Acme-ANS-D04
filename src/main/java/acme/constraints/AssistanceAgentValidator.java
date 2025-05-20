@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import acme.client.components.principals.DefaultUserIdentity;
 import acme.client.components.validation.AbstractValidator;
 import acme.client.components.validation.Validator;
-import acme.helpers.EmployeeCodeHelper;
+import acme.helpers.ValidatorHelper;
 import acme.realms.AssistanceAgent;
 import acme.realms.AssistanceAgentRepository;
 
@@ -42,10 +42,10 @@ public class AssistanceAgentValidator extends AbstractValidator<ValidAssistanceA
 			employeeCode = assistanceAgent.getEmployeeCode();
 			obtainedAssistanceAgent = this.repository.findByEmployeeCode(employeeCode);
 
-			isCorrectlyFormatted = EmployeeCodeHelper.checkFormatIsCorrect(employeeCode, identity);
+			isCorrectlyFormatted = ValidatorHelper.checkFormatIsCorrect(employeeCode, identity);
 			super.state(context, isCorrectlyFormatted, "employeeCode", "acme.validation.assistanceAgent.employeeCodeFormat.message");
 
-			isUnique = EmployeeCodeHelper.checkUniqueness(assistanceAgent, obtainedAssistanceAgent);
+			isUnique = ValidatorHelper.checkUniqueness(assistanceAgent, obtainedAssistanceAgent);
 			super.state(context, isUnique, "employeeCode", "acme.validation.assistanceAgent.employeeCodeUniqueness.message");
 		}
 		result = !super.hasErrors(context);

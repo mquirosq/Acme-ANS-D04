@@ -9,6 +9,7 @@ import acme.client.components.validation.AbstractValidator;
 import acme.client.components.validation.Validator;
 import acme.entities.Booking;
 import acme.entities.BookingRepository;
+import acme.helpers.ValidatorHelper;
 
 @Validator
 public class BookingValidator extends AbstractValidator<ValidBooking, Booking> {
@@ -30,10 +31,23 @@ public class BookingValidator extends AbstractValidator<ValidBooking, Booking> {
 
 		if (booking == null)
 			super.state(context, false, "*", "javax.validation.constraints.NotNull.message");
-		else if (booking.getLocatorCode() != null) {
-			Booking existingBooking = this.repository.getSameLocatorCode(booking.getLocatorCode());
-			boolean uniqueLocatorCode = existingBooking == null || existingBooking.equals(booking);
-			super.state(context, uniqueLocatorCode, "locatorCode", "acme.validation.booking.locatorCode.message");
+		else {
+			if (booking.getLocatorCode() != null) {
+				Booking existingBooking = this.repository.getSameLocatorCode(booking.getLocatorCode());
+				boolean uniqueLocatorCode = ValidatorHelper.checkUniqueness(booking, existingBooking);
+				super.state(context, uniqueLocatorCode, "locatorCode", "acme.validation.booking.locatorCode.message");
+			}
+			if (!booking.isDraftMode()) {
+				// Validation for initial/sample data - cannot be fully covered in tests
+				boolean hasCreditCardNibble;
+				boolean hasSomePassengers;
+
+				hasCreditCardNibble = booking.getLastCardNibble() != null && !booking.getLastCardNibble().isBlank();
+				super.state(context, hasCreditCardNibble, "lastCreditCardNibble", "acme.validation.booking.lastCreditCardNibble.message");
+
+				hasSomePassengers = this.repository.getNumberOfPassengers(booking.getId()).compareTo(0L) > 0;
+				super.state(context, hasSomePassengers, "*", "acme.validation.booking.passengers.message");
+			}
 		}
 
 		result = !super.hasErrors(context);

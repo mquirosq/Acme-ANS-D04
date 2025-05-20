@@ -1,0 +1,21 @@
+customer.customer-dashboard.form.title = Customer Dashboard:
+
+customer.dashboard.label.lastFiveDestinations = Last five destinations:
+customer.dashboard.form.title.money-spent-last-year = Money spent in the last year:
+customer.dashboard.form.title.booking-costs = Statistics about booking in the last five years:
+customer.dashboard.form.title.passengers-statistics = Statistics about passengers:
+customer.dashboard.form.title.bookings-by-travel-class = Bookings per travel class:
+
+customer.dashboard.form.no-bookings-message = You need more recent bookings to access these indicators.
+
+customer.dashboard.form.label.total-cost = Total cost of my bookings
+customer.dashboard.form.label.average-cost = Average cost of my bookings
+customer.dashboard.form.label.minimum-cost = Minimum cost of my bookings
+customer.dashboard.form.label.maximum-cost = Maximum cost of my bookings
+customer.dashboard.form.label.deviation-cost = Standard deviation of the cost of my bookings
+
+customer.dashboard.form.label.total-passengers = Total passengers in bookings
+customer.dashboard.form.label.average-passengers = Average passengers in a booking
+customer.dashboard.form.label.minimum-passengers = Minimum passengers in a booking
+customer.dashboard.form.label.maximum-passengers = Maximum passengers in a booking
+customer.dashboard.form.label.deviation-passengers = Standard deviation of passengers in a booking

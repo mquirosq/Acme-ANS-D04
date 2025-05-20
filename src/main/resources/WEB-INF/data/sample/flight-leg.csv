@@ -1,21 +1,30 @@
-key,flight-number,scheduled-departure,scheduled-arrival,status,key:departure-airport,key:arrival-airport,key:deployed-aircraft,key:parent-flight
+key,flight-number,scheduled-departure,scheduled-arrival,status,key:departure-airport,key:arrival-airport,key:deployed-aircraft,key:parent-flight,draft-mode
 # Base entity
-flight-leg-01,ESP1234,2025/05/05 0:00,2025/05/06 0:00,"ON_TIME",airport-01,airport-02,aircraft-01,flight-01
+flight-leg-01,ESP1234,2025/01/08 00:00,2025/01/09 00:00,"ON_TIME",airport-01,airport-02,aircraft-01,flight-01,true
 # flight-number - variations
-flight-leg-02,ESP0000,2025/05/07 0:00,2025/05/08 0:00,"ON_TIME",airport-02,airport-01,aircraft-01,flight-01
-flight-leg-03,ESP9999,2025/05/09 0:00,2025/05/10 0:00,"ON_TIME",airport-01,airport-02,aircraft-01,flight-01
-flight-leg-04,ESP0909,2025/05/11 0:00,2025/05/12 0:00,"ON_TIME",airport-02,airport-01,aircraft-01,flight-01
-# scheduled-departure and scheduled-arrival - variations
-flight-leg-05,ESP0001,2025/01/06 00:00,2025/01/06 00:01,"ON_TIME",airport-02,airport-01,aircraft-01,flight-01
-flight-leg-06,ESP0002,2200/01/06 23:58,2200/01/06 23:59,"ON_TIME",airport-02,airport-01,aircraft-01,flight-01
+flight-leg-02,ESP0000,2025/01/10 00:00,2025/01/11 00:00,"ON_TIME",airport-02,airport-01,aircraft-01,flight-01,true
+flight-leg-03,ESP9999,2025/01/12 00:00,2025/01/13 00:00,"ON_TIME",airport-01,airport-02,aircraft-01,flight-01,true
+# scheduled-departure and scheduled-arrival - variations. Different flight will be used (2)
+flight-leg-04,ESP1235,2000/01/01 00:00,2000/01/01 00:01,"ON_TIME",airport-01,airport-02,aircraft-01,flight-02,true
+flight-leg-05,ESP1236,2000/01/01 00:01,2000/01/01 00:02,"ON_TIME",airport-01,airport-02,aircraft-01,flight-02,true
+flight-leg-06,ESP1237,2200/12/31 23:57,2200/12/31 23:58,"ON_TIME",airport-01,airport-02,aircraft-01,flight-02,true
+flight-leg-07,ESP1238,2200/12/31 23:58,2200/12/31 23:59,"ON_TIME",airport-01,airport-02,aircraft-01,flight-02,true
 # status - variations
-flight-leg-07,ESP0003,2025/05/13 0:00,2025/05/14 0:00,"DELAYED",airport-01,airport-02,aircraft-01,flight-01
-flight-leg-08,ESP0004,2025/05/15 0:00,2025/05/16 0:00,"CANCELLED",airport-02,airport-01,aircraft-01,flight-01
-flight-leg-09,ESP0005,2025/05/17 0:00,2025/05/18 0:00,"LANDED",airport-01,airport-02,aircraft-01,flight-01
+flight-leg-08,ESP1239,2025/01/14 00:00,2025/01/15 00:00,"DELAYED",airport-02,airport-01,aircraft-01,flight-01,true
+flight-leg-09,ESP1240,2025/01/16 00:00,2025/01/17 00:00,"CANCELLED",airport-01,airport-02,aircraft-01,flight-01,true
+flight-leg-10,ESP1241,2025/01/18 00:00,2025/01/19 00:00,"LANDED",airport-02,airport-01,aircraft-01,flight-01,true
 # departure-airport and arrival-airport - variations
-flight-leg-10,ESP0006,2025/05/19 0:00,2025/05/20 0:00,"ON_TIME",airport-02,airport-03,aircraft-01,flight-01
-flight-leg-11,ESP0007,2025/05/21 0:00,2025/05/22 0:00,"ON_TIME",airport-03,airport-01,aircraft-01,flight-01
+flight-leg-11,ESP1242,2025/01/20 00:00,2025/01/21 00:00,"ON_TIME",airport-01,airport-03,aircraft-01,flight-01,true
+flight-leg-12,ESP1243,2025/01/22 00:00,2025/01/23 00:00,"ON_TIME",airport-03,airport-02,aircraft-01,flight-01,true
 # deployed-aircraft - variations
-flight-leg-12,ESP0008,2025/05/23 0:00,2025/05/24 0:00,"ON_TIME",airport-01,airport-02,aircraft-02,flight-01
+flight-leg-13,ESP1244,2025/01/24 00:00,2025/01/25 00:00,"ON_TIME",airport-02,airport-01,aircraft-02,flight-01,true
+# draft mode - variations. Will belong to a published flight (32).
+flight-leg-14,ESP1246,2025/01/28 00:00,2025/01/29 00:00,"ON_TIME",airport-01,airport-02,aircraft-01,flight-32,false
 # parent-flight - variations
-flight-leg-13,ESP0009,2025/05/25 0:00,2025/05/26 0:00,"ON_TIME",airport-01,airport-02,aircraft-01,flight-02
+flight-leg-15,ESP1245,2025/01/26 00:00,2025/01/27 00:00,"ON_TIME",airport-01,airport-02,aircraft-01,flight-03,true
+# Other published legs are included, to be used, in other sample data.
+flight-leg-16,ESP1247,2025/01/30 00:00,2025/01/31 00:00,"LANDED",airport-01,airport-02,aircraft-01,flight-33,false
+flight-leg-17,ESP1248,2025/02/01 00:00,2025/02/02 00:00,"LANDED",airport-02,airport-01,aircraft-01,flight-33,false
+flight-leg-18,ESP1249,2000/01/01 00:00,2000/01/01 00:01,"LANDED",airport-01,airport-02,aircraft-01,flight-34,false
+flight-leg-19,ESP1250,2012/06/05 00:00,2012/06/06 00:00,"LANDED",airport-02,airport-01,aircraft-01,flight-34,false
+flight-leg-20,ESP1251,2024/12/31 23:58,2024/12/31 23:59,"LANDED",airport-01,airport-02,aircraft-01,flight-34,false

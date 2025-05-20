@@ -1,0 +1,28 @@
+airline-manager.flight.list.title = My flights
+
+airline-manager.flight.list.label.tag = Tag
+airline-manager.flight.list.label.draftMode = State
+airline-manager.flight.list.label.identifierCode = Route
+airline-manager.flight.list.label.numberOfLayovers = Nº of layovers
+
+airline-manager.flight.list.button.create = Create
+
+airline-manager.flight.form.title = Details of the flight
+
+airline-manager.flight.form.label.tag = Tag
+airline-manager.flight.form.label.requiresSelfTransfer = Self transfer required
+airline-manager.flight.form.label.cost = Cost
+airline-manager.flight.form.label.description = Description
+airline-manager.flight.form.label.draftMode = Draft mode
+airline-manager.flight.form.label.manager = Airline manager
+airline-manager.flight.form.label.scheduledDeparture = Scheduled departure
+airline-manager.flight.form.label.scheduledArrival = Scheduled arrival
+airline-manager.flight.form.label.originCity = Origin city
+airline-manager.flight.form.label.destinationCity = Destination city
+airline-manager.flight.form.label.numberOfLayovers = Nº of layovers
+
+airline-manager.flight.form.button.update = Update
+airline-manager.flight.form.button.publish = Publish
+airline-manager.flight.form.button.create = Create
+airline-manager.flight.form.button.delete = Delete
+airline-manager.flight.form.button.flight-legs = Legs

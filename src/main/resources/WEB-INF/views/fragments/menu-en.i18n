@@ -12,38 +12,69 @@
 
 master.menu.anonymous = Anonymous
 master.menu.anonymous.favourite-link = Favourite link
-master.menu.anonymous.maria-favourite-link = 78250257W:Quirós Quiroga, María
+master.menu.anonymous.maria-favourite-link = 78250257W: Quirós Quiroga, María
 master.menu.anonymous.guillermo-favourite-link = 45995645S: Rodríguez Narbona, Guillermo
 master.menu.anonymous.alejandro-favourite-link = 75968043D: Parody Quirós, Alejandro
 master.menu.anonymous.daniel-favourite-link = 45940260Z: Herrera Urbano, Daniel
 master.menu.anonymous.ignacio-favourite-link = 29548261T: Mora Perez, Ignacio
+master.menu.anonymous.list-reviews = List of reviews
+
+# master.menu.authenticated ###################################################
+
+master.menu.authenticated = Authenticated
+master.menu.authenticated.list-reviews = List of reviews
 
 # master.menu.administrator ###################################################
 
 master.menu.administrator = Administrator
 master.menu.administrator.list-user-accounts = List user accounts
+master.menu.administrator.list-airports = List airports
 master.menu.administrator.list-airlines = List airlines
 master.menu.administrator.list-aircrafts = List aircrafts
+master.menu.administrator.list-bookings = List bookings
+<<<<<<< HEAD
+master.menu.administrator.recommendation = Add a recommendation
+=======
+master.menu.administrator.show-systemConfiguration = See system configuration
+>>>>>>> task057
 master.menu.administrator.list-services = List services
 master.menu.administrator.populate-db-initial = Populate DB (initial)
 master.menu.administrator.populate-db-sample = Populate DB (samples)
 master.menu.administrator.shut-system-down = Shut system down
 
-# master.menu.provider ########################################################
+# master.menu.assistance-agent ###################################################
 
-master.menu.provider = Provider
-master.menu.provider.favourite-link = Favourite link
+master.menu.assistance-agent 						= Assistance agent
+master.menu.assistance-agent.list-claims 			= List claims
 
-# master.menu.consumer ##########################################################
+# master.menu.technician ###################################################
 
-master.menu.consumer = Consumer
-master.menu.consumer.favourite-link = Favourite link
+master.menu.technician 						= Technician
+master.menu.technician.list-maintenance-records			= Maintenance Records
+master.menu.technician.list-tasks			= Tasks
+
+# master.menu.customer ##########################################################
+
+master.menu.customer = Customer
+master.menu.customer.list-passengers = My passengers
+master.menu.customer.list-bookings = My bookings
+master.menu.customer.list-recommendations = My recommendations
+master.menu.customer.show-dashboard = My dashboard
+
+# master.menu.flightCrewMember ##################################################
+
+master.menu.flightCrewMember = Flight Assignments
+master.menu.flightCrewMember.list-completed = Completed flight assignments
+master.menu.flightCrewMember.list-planned = Planned flight assignments
 
 # master.menu.user-account ####################################################
 
 master.menu.user-account = Account
 master.menu.user-account.general-profile = General profile
-master.menu.user-account.become-provider = Become a provider
-master.menu.user-account.provider-profile = Provider profile
-master.menu.user-account.become-consumer = Become a consumer
-master.menu.user-account.consumer-profile = Consumer profile
+master.menu.user-account.become-customer = Become a customer
+master.menu.user-account.customer-profile = Customer profile
+
+# master.menu.airline-manager ####################################################
+
+master.menu.airline-manager = Airline Manager
+master.menu.airline-manager.list-flights = List flights

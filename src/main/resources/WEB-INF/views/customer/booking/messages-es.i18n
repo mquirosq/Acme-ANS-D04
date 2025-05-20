@@ -1,0 +1,26 @@
+
+customer.booking.list.title = Listado de reservas
+customer.booking.form.title = Detalles de la reserva
+
+customer.booking.list.label.locatorCode = Código de seguimiento
+customer.booking.list.label.price = Precio
+customer.booking.list.label.flight = Vuelo
+customer.booking.list.label.draftMode = Pendiente
+
+customer.booking.form.label.locatorCode = Código de seguimiento:
+customer.booking.form.label.flight = Vuelo:
+customer.booking.form.label.travelClass = Clase:
+customer.booking.form.label.lastCardNibble = Últimos cuatro dígitos de la tarjeta de crédito:
+customer.booking.form.label.price = Precio:
+customer.booking.form.label.purchasedAt = Fecha de compra:
+customer.booking.form.label.draft = Incompleto
+
+customer.booking.form.placeholder.lastCardNibble = Cuatro últimos dígitos de la tarjeta usada para pagar
+
+customer.booking.list.button.create = Crear
+
+customer.booking.form.button.passengers = Pasajeros
+customer.booking.form.button.edit = Editar
+customer.booking.form.button.update = Actualizar
+customer.booking.form.button.publish = Publicar
+customer.booking.form.button.create = Crear

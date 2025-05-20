@@ -2,16 +2,16 @@ key,last-update-moment,creation-moment,step,resolution-percentage,status,resolut
 # Base entity
 tracking-log-01,2012/07/02 0:00,2012/07/02 0:00,Lorem ipsum dolor sit ame,50.00,PENDING,null,false,claim-01
 # Last update moment - standard variations
-tracking-log-02,2000/01/01 0:00,2000/01/01 0:00,Lorem ipsum dolor sit ame,30.00,PENDING,null,false,claim-01
-tracking-log-03,2000/01/01 0:01,2000/01/01 0:00,Lorem ipsum dolor sit ame,30.01,PENDING,null,false,claim-01
-tracking-log-04,2024/12/31 23:59,2012/07/02 0:01,Lorem ipsum dolor sit ame,60.00,PENDING,null,false,claim-01
-tracking-log-05,2025/01/01 0:00,2012/07/02 0:02,Lorem ipsum dolor sit ame,60.01,PENDING,null,false,claim-01
+tracking-log-02,2000/01/01 0:01,2000/01/01 0:01,Lorem ipsum dolor sit ame,30.00,PENDING,null,false,claim-02
+tracking-log-03,2000/01/01 0:02,2000/01/01 0:01,Lorem ipsum dolor sit ame,30.01,PENDING,null,false,claim-02
+tracking-log-04,2024/12/31 23:59,2012/07/02 0:00,Lorem ipsum dolor sit ame,60.00,PENDING,null,false,claim-01
+tracking-log-05,2025/01/01 0:00,2012/07/02 0:00,Lorem ipsum dolor sit ame,60.01,PENDING,null,false,claim-01
 # Last update moment - singular values
 tracking-log-06,2019/02/28 0:00,2012/07/02 0:03,Lorem ipsum dolor sit ame,70.00,PENDING,null,false,claim-01
 tracking-log-07,2020/02/29 0:00,2012/07/02 0:04,Lorem ipsum dolor sit ame,70.01,PENDING,null,false,claim-01
 # Creation moment - standard variations
-tracking-log-08,2012/07/02 0:00,2000/01/01 0:00,Lorem ipsum dolor sit ame,50.00,PENDING,null,false,claim-02
-tracking-log-09,2012/07/02 0:00,2000/01/01 0:01,Lorem ipsum dolor sit ame,50.01,PENDING,null,false,claim-02
+tracking-log-08,2012/07/02 0:00,2000/01/01 0:01,Lorem ipsum dolor sit ame,50.00,PENDING,null,false,claim-02
+tracking-log-09,2012/07/02 0:00,2000/01/01 0:02,Lorem ipsum dolor sit ame,50.01,PENDING,null,false,claim-02
 tracking-log-10,2025/01/01 0:00,2024/12/31 23:59,Lorem ipsum dolor sit ame,70.00,PENDING,null,false,claim-02
 tracking-log-11,2025/01/01 0:00,2025/01/01 0:00,Lorem ipsum dolor sit ame,70.01,PENDING,null,false,claim-02
 # Creation moment - singular values
@@ -30,37 +30,38 @@ tracking-log-22,2012/07/02 0:00,2012/07/02 0:00,<script>alert(‘Hacked!’);</s
 tracking-log-23,2012/07/02 0:00,2012/07/02 0:00,' or 'A' = 'A,50.10,PENDING,null,false,claim-03
 # Step - no singular values
 # Resolution percentage - standard variations
-tracking-log-24,2012/07/02 0:00,2012/07/02 0:00,Lorem ipsum dolor sit ame,0.00,PENDING,null,false,claim-04
-tracking-log-25,2012/07/02 0:00,2012/07/02 0:00,Lorem ipsum dolor sit ame,0.01,PENDING,null,false,claim-04
-tracking-log-26,2012/07/02 0:00,2012/07/02 0:00,Lorem ipsum dolor sit ame,99.99,PENDING,null,false,claim-04
-tracking-log-27,2012/07/02 0:00,2012/07/02 0:00,Lorem ipsum dolor sit ame,100.00,ACCEPTED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",false,claim-04
+tracking-log-24,2012/07/02 0:00,2012/07/02 0:00,Lorem ipsum dolor sit ame,0.00,PENDING,null,false,claim-08
+tracking-log-25,2012/07/02 0:00,2012/07/02 0:00,Lorem ipsum dolor sit ame,0.01,PENDING,null,false,claim-08
+tracking-log-26,2012/07/02 0:00,2012/07/02 0:00,Lorem ipsum dolor sit ame,99.99,PENDING,null,false,claim-08
+tracking-log-27,2012/07/02 0:00,2012/07/02 0:00,Lorem ipsum dolor sit ame,100.00,ACCEPTED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",false,claim-08
 # Resolution percentage - no singular values
 # Status - standard variations
-tracking-log-28,2012/07/02 0:00,2012/07/02 0:00,Lorem ipsum dolor sit ame,50.00,PENDING,null,false,claim-05
-tracking-log-29,2012/07/02 0:00,2012/07/02 0:00,Lorem ipsum dolor sit ame,100.00,ACCEPTED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",false,claim-05
-tracking-log-30,2012/07/02 0:00,2012/07/02 0:00,Lorem ipsum dolor sit ame,100.00,REJECTED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",false,claim-06
-# Status - no singular values
+tracking-log-28,2012/07/02 0:00,2012/07/02 0:00,Lorem ipsum dolor sit ame,50.00,PENDING,null,false,claim-09
+tracking-log-29,2012/07/02 0:00,2012/07/02 0:00,Lorem ipsum dolor sit ame,100.00,ACCEPTED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",false,claim-09
+tracking-log-30,2012/07/02 1:00,2012/07/02 1:00,Lorem ipsum dolor sit ame,100.00,REJECTED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",true,claim-28
+# Status - singular values
+tracking-log-31,2012/07/02 2:00,2012/07/02 2:00,Lorem ipsum dolor sit ame,100.00,REJECTED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",false,claim-28
 # Resolution - standard variations
-tracking-log-31,2012/07/02 0:00,2012/07/02 0:00,Lorem ipsum dolor sit ame,50.00,PENDING,null,false,claim-07
-tracking-log-32,2012/07/02 0:00,2012/07/02 0:00,Lorem ipsum dolor sit ame,50.00,PENDING,,false,claim-08
-tracking-log-33,2012/07/02 0:00,2012/07/02 0:00,Lorem ipsum dolor sit ame,50.00,PENDING,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",false,claim-09
-tracking-log-34,2012/07/02 0:00,2012/07/02 0:00,Lorem ipsum dolor sit ame,100.00,ACCEPTED,L,false,claim-10
-tracking-log-35,2012/07/02 0:00,2012/07/02 0:00,Lorem ipsum dolor sit ame,100.00,ACCEPTED,Lo,false,claim-11
-tracking-log-36,2012/07/02 0:00,2012/07/02 0:00,Lorem ipsum dolor sit ame,100.00,ACCEPTED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor",false,claim-12
-tracking-log-37,2012/07/02 0:00,2012/07/02 0:00,Lorem ipsum dolor sit ame,100.00,ACCEPTED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor*",false,claim-13
-tracking-log-38,2012/07/02 0:00,2012/07/02 0:00,Lorem ipsum dolor sit ame,100.00,ACCEPTED,โลเร็ม อิปซัม,false,claim-14
-tracking-log-39,2012/07/02 0:00,2012/07/02 0:00,Lorem ipsum dolor sit ame,100.00,ACCEPTED,لوريم إيبسوم,false,claim-15
-tracking-log-40,2012/07/02 0:00,2012/07/02 0:00,Lorem ipsum dolor sit ame,100.00,ACCEPTED,洛伦·伊普森,false,claim-16
-tracking-log-41,2012/07/02 0:00,2012/07/02 0:00,Lorem ipsum dolor sit ame,100.00,ACCEPTED,<marquee>Hacked</marquee>,false,claim-17
-tracking-log-42,2012/07/02 0:00,2012/07/02 0:00,Lorem ipsum dolor sit ame,100.00,ACCEPTED,<script>alert(‘Hacked!’);</script>,false,claim-18
-tracking-log-43,2012/07/02 0:00,2012/07/02 0:00,Lorem ipsum dolor sit ame,100.00,ACCEPTED,' or 'A' = 'A,false,claim-19
+tracking-log-32,2012/07/02 0:00,2012/07/02 0:00,Lorem ipsum dolor sit ame,50.00,PENDING,null,false,claim-10
+tracking-log-33,2012/07/02 0:00,2012/07/02 0:00,Lorem ipsum dolor sit ame,50.00,PENDING,,false,claim-11
+tracking-log-34,2012/07/02 0:00,2012/07/02 0:00,Lorem ipsum dolor sit ame,50.00,PENDING,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",false,claim-12
+tracking-log-35,2012/07/02 0:00,2012/07/02 0:00,Lorem ipsum dolor sit ame,100.00,ACCEPTED,L,false,claim-13
+tracking-log-36,2012/07/02 0:00,2012/07/02 0:00,Lorem ipsum dolor sit ame,100.00,ACCEPTED,Lo,false,claim-14
+tracking-log-37,2012/07/02 0:00,2012/07/02 0:00,Lorem ipsum dolor sit ame,100.00,ACCEPTED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor",false,claim-15
+tracking-log-38,2012/07/02 0:00,2012/07/02 0:00,Lorem ipsum dolor sit ame,100.00,ACCEPTED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor*",false,claim-16
+tracking-log-39,2012/07/02 0:00,2012/07/02 0:00,Lorem ipsum dolor sit ame,100.00,ACCEPTED,โลเร็ม อิปซัม,false,claim-17
+tracking-log-40,2012/07/02 0:00,2012/07/02 0:00,Lorem ipsum dolor sit ame,100.00,ACCEPTED,لوريم إيبسوم,false,claim-18
+tracking-log-41,2012/07/02 0:00,2012/07/02 0:00,Lorem ipsum dolor sit ame,100.00,ACCEPTED,洛伦·伊普森,false,claim-19
+tracking-log-42,2012/07/02 0:00,2012/07/02 0:00,Lorem ipsum dolor sit ame,100.00,ACCEPTED,<marquee>Hacked</marquee>,false,claim-20
+tracking-log-43,2012/07/02 0:00,2012/07/02 0:00,Lorem ipsum dolor sit ame,100.00,ACCEPTED,<script>alert(‘Hacked!’);</script>,false,claim-21
+tracking-log-44,2012/07/02 0:00,2012/07/02 0:00,Lorem ipsum dolor sit ame,100.00,ACCEPTED,' or 'A' = 'A,false,claim-22
 # Resolution - no singular values
 # Published - standard variations
-tracking-log-44,2012/07/02 0:00,2012/07/02 0:00,Lorem ipsum dolor sit ame,50.00,PENDING,null,false,claim-20
-tracking-log-45,2012/07/02 0:00,2012/07/02 0:00,Lorem ipsum dolor sit ame,50.00,PENDING,null,true,claim-28
+tracking-log-45,2012/07/02 0:00,2012/07/02 0:00,Lorem ipsum dolor sit ame,50.00,PENDING,null,false,claim-23
+tracking-log-46,2012/07/02 0:00,2012/07/02 0:00,Lorem ipsum dolor sit ame,50.00,PENDING,null,true,claim-28
 # Published - no singular values
 # Claim - standard variations
-tracking-log-47,2012/07/02 0:00,2012/07/02 0:00,Lorem ipsum dolor sit ame,50.00,PENDING,null,false,claim-21
-tracking-log-48,2012/07/02 0:00,2012/07/02 0:00,Lorem ipsum dolor sit ame,100.00,ACCEPTED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",false,claim-21
-tracking-log-49,2012/07/02 0:00,2012/07/02 0:00,Lorem ipsum dolor sit ame,50.00,PENDING,null,false,claim-22
+tracking-log-47,2012/07/02 0:00,2012/07/02 0:00,Lorem ipsum dolor sit ame,50.00,PENDING,null,false,claim-24
+tracking-log-48,2012/07/02 0:00,2012/07/02 0:00,Lorem ipsum dolor sit ame,100.00,ACCEPTED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",false,claim-25
+tracking-log-49,2012/07/02 0:00,2012/07/02 0:00,Lorem ipsum dolor sit ame,50.00,PENDING,null,false,claim-26
 # Claim - no singular values

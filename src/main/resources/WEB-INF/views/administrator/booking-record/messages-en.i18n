@@ -1,0 +1,6 @@
+administrator.booking-record.form.title = Passenger form
+administrator.booking-record.list.title = List of passengers
+
+administrator.bookingRecord.form.label.passenger = Passenger:
+
+administrator.bookingRecord.list.label.passenger = Passenger

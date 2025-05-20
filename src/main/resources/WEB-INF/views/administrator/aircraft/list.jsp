@@ -9,3 +9,5 @@
 	<acme:list-column code = "administrator.aircraft.list.label.airline" path = "airline.name"/>
 	<acme:list-column code = "administrator.aircraft.list.label.status" path = "status"/>
 </acme:list>
+
+<acme:button code = "administrator.aircraft.list.button.create" action = "/administrator/aircraft/create"/>

@@ -7,12 +7,14 @@ import javax.validation.Valid;
 
 import acme.client.components.basis.AbstractEntity;
 import acme.client.components.validation.Mandatory;
+import acme.constraints.ValidBookingRecord;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
+@ValidBookingRecord
 public class BookingRecord extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
