@@ -38,7 +38,7 @@ public class AirlineManagerFlightLegCreateService extends AbstractGuiService<Air
 
 		authorised &= ValidatorHelper.isValidEntityReference("departureAirport", super.getRequest(), this.repository.findAllAirports());
 		authorised &= ValidatorHelper.isValidEntityReference("arrivalAirport", super.getRequest(), this.repository.findAllAirports());
-		authorised &= ValidatorHelper.isValidEntityReference("deployedAircraft", super.getRequest(), this.repository.findActiveAircrafts());
+		authorised &= ValidatorHelper.isValidEntityReference("deployedAircraft", super.getRequest(), this.repository.findAllAircrafts());
 
 		super.getResponse().setAuthorised(authorised);
 	}
