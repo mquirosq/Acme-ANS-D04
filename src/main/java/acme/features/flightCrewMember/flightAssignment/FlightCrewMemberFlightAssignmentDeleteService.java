@@ -31,33 +31,33 @@ public class FlightCrewMemberFlightAssignmentDeleteService extends AbstractGuiSe
 	public void authorise() {
 		boolean authorised = true;
 
-		int requesterId;
-
 		int flightLegId;
 		String requestFlightLegId;
 		FlightLeg leg;
-
-		int flightCrewMemberId;
-		String requestFlightCrewMemberId;
-		FlightCrewMember flightCrewMember;
 
 		int flightAssignmentId;
 		String requestFlightAssignmentId;
 		FlightAssignment flightAssignment;
 
-		if (super.getRequest().hasData("leg") && super.getRequest().hasData("allocatedFlightCrewMember") && super.getRequest().hasData("id")) {
+		if (super.getRequest().hasData("leg")) {
 			requestFlightLegId = super.getRequest().getData("leg", String.class);
-			requestFlightCrewMemberId = super.getRequest().getData("allocatedFlightCrewMember", String.class);
-			requestFlightAssignmentId = super.getRequest().getData("id", String.class);
 			try {
 				flightLegId = Integer.parseInt(requestFlightLegId);
-				flightCrewMemberId = Integer.parseInt(requestFlightCrewMemberId);
-				flightAssignmentId = Integer.parseInt(requestFlightAssignmentId);
 				leg = this.repository.findByLegId(flightLegId);
-				flightCrewMember = this.repository.findByFlightCrewMemberId(flightCrewMemberId);
+
+				authorised = leg != null && !leg.getDraftMode();
+			} catch (NumberFormatException e) {
+				authorised = false;
+			}
+		}
+
+		if (super.getRequest().hasData("id")) {
+			requestFlightAssignmentId = super.getRequest().getData("id", String.class);
+			try {
+				flightAssignmentId = Integer.parseInt(requestFlightAssignmentId);
 				flightAssignment = this.repository.findFlightAssignmentById(flightAssignmentId);
-				requesterId = super.getRequest().getPrincipal().getActiveRealm().getId();
-				authorised = leg != null && flightCrewMember != null && flightCrewMember.getId() == requesterId && flightAssignment != null && !flightAssignment.getPublished();
+
+				authorised &= flightAssignment != null && !flightAssignment.getPublished() && flightAssignment.getAllocatedFlightCrewMember() != null && super.getRequest().getPrincipal().hasRealm(flightAssignment.getAllocatedFlightCrewMember());
 			} catch (NumberFormatException e) {
 				authorised = false;
 			}
@@ -92,7 +92,7 @@ public class FlightCrewMemberFlightAssignmentDeleteService extends AbstractGuiSe
 		Dataset dataset;
 		SelectChoices legChoices, statusChoices, dutyChoices;
 
-		Collection<FlightLeg> flightLegs = this.repository.findAllLegs();
+		Collection<FlightLeg> flightLegs = this.repository.findAllPublishedLegs();
 
 		legChoices = SelectChoices.from(flightLegs, "flightNumber", flightAssignment.getLeg());
 

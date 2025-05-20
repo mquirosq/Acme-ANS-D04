@@ -37,17 +37,25 @@ public class FlightCrewMemberFlightAssignmentPublishService extends AbstractGuiS
 		String requestFlightAssignmentId;
 		FlightAssignment flightAssignment;
 
-		if (super.getRequest().hasData("leg") && super.getRequest().hasData("id")) {
+		if (super.getRequest().hasData("leg")) {
 			requestFlightLegId = super.getRequest().getData("leg", String.class);
-			requestFlightAssignmentId = super.getRequest().getData("id", String.class);
 			try {
 				flightLegId = Integer.parseInt(requestFlightLegId);
-				flightAssignmentId = Integer.parseInt(requestFlightAssignmentId);
 				leg = this.repository.findByLegId(flightLegId);
+
+				authorised = leg != null && !leg.getDraftMode();
+			} catch (NumberFormatException e) {
+				authorised = false;
+			}
+		}
+
+		if (super.getRequest().hasData("id")) {
+			requestFlightAssignmentId = super.getRequest().getData("id", String.class);
+			try {
+				flightAssignmentId = Integer.parseInt(requestFlightAssignmentId);
 				flightAssignment = this.repository.findFlightAssignmentById(flightAssignmentId);
 
-				authorised = leg != null && flightAssignment != null && !flightAssignment.getPublished() && flightAssignment.getAllocatedFlightCrewMember() != null
-					&& super.getRequest().getPrincipal().hasRealm(flightAssignment.getAllocatedFlightCrewMember());
+				authorised &= flightAssignment != null && !flightAssignment.getPublished() && flightAssignment.getAllocatedFlightCrewMember() != null && super.getRequest().getPrincipal().hasRealm(flightAssignment.getAllocatedFlightCrewMember());
 			} catch (NumberFormatException e) {
 				authorised = false;
 			}
@@ -107,7 +115,8 @@ public class FlightCrewMemberFlightAssignmentPublishService extends AbstractGuiS
 		Dataset dataset;
 		SelectChoices legChoices, statusChoices, dutyChoices;
 
-		Collection<FlightLeg> flightLegs = this.repository.findAllLegs();
+		Collection<FlightLeg> flightLegs = this.repository.findAllPublishedLegs();
+		;
 
 		legChoices = SelectChoices.from(flightLegs, "flightNumber", flightAssignment.getLeg());
 		statusChoices = SelectChoices.from(CurrentStatus.class, flightAssignment.getCurrentStatus());
