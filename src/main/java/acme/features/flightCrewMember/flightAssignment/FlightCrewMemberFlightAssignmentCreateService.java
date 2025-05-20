@@ -36,7 +36,7 @@ public class FlightCrewMemberFlightAssignmentCreateService extends AbstractGuiSe
 			try {
 				flightLegId = Integer.parseInt(requestFlightLegId);
 				leg = this.repository.findByLegId(flightLegId);
-				authorised = leg != null;
+				authorised = leg != null && !leg.getDraftMode();
 			} catch (NumberFormatException e) {
 				authorised = false;
 			}
@@ -87,7 +87,7 @@ public class FlightCrewMemberFlightAssignmentCreateService extends AbstractGuiSe
 		Dataset dataset;
 		SelectChoices legChoices, statusChoices, dutyChoices;
 
-		Collection<FlightLeg> flightLegs = this.repository.findAllLegs();
+		Collection<FlightLeg> flightLegs = this.repository.findAllPublishedLegs();
 
 		legChoices = SelectChoices.from(flightLegs, "flightNumber", flightAssignment.getLeg());
 		statusChoices = SelectChoices.from(CurrentStatus.class, flightAssignment.getCurrentStatus());
