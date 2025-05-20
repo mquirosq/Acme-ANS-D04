@@ -1,10 +1,10 @@
 administrator.administrator-dashboard.form.title											= Administrator Dashboard
 
 administrator.dashboard.label.totalNumberOfAirportsByOperationalScope 						= Total number of airports by operational scope:
-administrator.dashboard.form.message.no-airports											= There are no airports
+administrator.dashboard.form.message.no-airports											= There are no airports.
 
 administrator.dashboard.label.numberOfAirlinesByType										= Number of airlines by type:
-administrator.dashboard.form.message.no-airlines											= There are no airlines
+administrator.dashboard.form.message.no-airlines											= There are no airlines.
 
 administrator.dashboard.form.label.ratioOfAirlinesWithEmailAddressAndPhoneNumber			= Ratio of airlines with email address and phone number:
 
@@ -18,3 +18,6 @@ administrator.dashboard.form.label.minimumNumberOfReviewsPostedInLastTenWeeks			
 administrator.dashboard.form.label.maximumNumberOfReviewsPostedInLastTenWeeks				= Maximum number of reviews posted
 administrator.dashboard.form.label.averageNumberOfReviewsPostedInLastTenWeeks				= Average number of reviews posted
 administrator.dashboard.form.label.standardDeviationOfNumberOfReviewsPostedInLastTenWeeks	= Standard deviation of the number of reviews posted
+
+administrator.dashboard.form.message.no-aircrafts											= There are no aircrafts.
+administrator.dashboard.form.message.no-reviews												= There are no reviews.

@@ -122,165 +122,180 @@
 <h2>
 	<acme:print code = "administrator.dashboard.form.label.ratioOfAirlinesWithEmailAddressAndPhoneNumber"/>
 </h2>
-<div>
-	<canvas id = "airline-ratio-chart"></canvas>
-</div>
-<script type = "text/javascript">
-	$(document).ready(
-		function() {
-			var data = {
-				labels : [
-					"Email & Phone", "Only Email / Only Phone / None"
-				], datasets : [
-					{
-						data : [
-							<jstl:out value = "${ratioOfAirlinesWithEmailAddressAndPhoneNumber}"/>, 
-							<jstl:out value = "1.0 - ${ratioOfAirlinesWithEmailAddressAndPhoneNumber}"/>, 
-						]
-					}
-				]
-			};
-			
-			var options = {
-				scales : {
-					yAxes : [
+<jstl:if test = "${ratioOfAirlinesWithEmailAddressAndPhoneNumber != null}">
+	<div>
+		<canvas id = "airline-ratio-chart"></canvas>
+	</div>
+	<script type = "text/javascript">
+		$(document).ready(
+			function() {
+				var data = {
+					labels : [
+						"Email & Phone", "Only Email / Only Phone / None"
+					], datasets : [
 						{
-							ticks : {
-								suggestedMin : 0.0,
-								suggestedMax : 1.0
-							}
+							data : [
+								<jstl:out value = "${ratioOfAirlinesWithEmailAddressAndPhoneNumber}"/>, 
+								<jstl:out value = "1.0 - ${ratioOfAirlinesWithEmailAddressAndPhoneNumber}"/>, 
+							]
 						}
 					]
-				}, legend : {
-					display : false
-				}
-			};
+				};
 			
-			var canvas, context;
-	
-			canvas = document.getElementById("airline-ratio-chart");
-			context = canvas.getContext("2d");
+				var options = {
+					scales : {
+						yAxes : [
+							{
+								ticks : {
+									suggestedMin : 0.0,
+									suggestedMax : 1.0
+								}
+							}
+						]
+					}, legend : {
+						display : false
+					}
+				};
+			
+				var canvas, context;
 		
-			new Chart(
-				context,
-				{
-					type : "bar",
-					data : data,
-					options : options
-				}
-			);
-		}
-	);
-</script>
+				canvas = document.getElementById("airline-ratio-chart");
+				context = canvas.getContext("2d");
+		
+				new Chart(
+					context,
+					{
+						type : "bar",
+						data : data,
+						options : options
+					}
+				);
+			}
+		);
+	</script>
+</jstl:if>
+<jstl:if test = "${ratioOfAirlinesWithEmailAddressAndPhoneNumber == null}">
+    <acme:print code = "administrator.dashboard.form.message.no-airlines"/>
+</jstl:if>
 
 <h2>
 	<acme:print code = "administrator.dashboard.form.label.ratioOfActiveAircrafts"/>
 </h2>
-<div>
-	<canvas id = "aircraft-ratio-chart"></canvas>
-</div>
-<script type = "text/javascript">
-	$(document).ready(
-		function() {
-			var data = {
-				labels : [
-					"Active", "Non-Active"
-				], datasets : [
-					{
-						data : [
-							<jstl:out value = "${ratioOfActiveAircrafts}"/>, 
-							<jstl:out value = "${ratioOfNonActiveAircrafts}"/>, 
-						]
-					}
-				]
-			};
-			
-			var options = {
-				scales : {
-					yAxes : [
+<jstl:if test = "${ratioOfActiveAircrafts != null && ratioOfNonActiveAircrafts != null}">
+	<div>
+		<canvas id = "aircraft-ratio-chart"></canvas>
+	</div>
+	<script type = "text/javascript">
+		$(document).ready(
+			function() {
+				var data = {
+					labels : [
+						"Active", "Non-Active"
+					], datasets : [
 						{
-							ticks : {
-								suggestedMin : 0.0,
-								suggestedMax : 1.0
-							}
+							data : [
+								<jstl:out value = "${ratioOfActiveAircrafts}"/>, 
+								<jstl:out value = "${ratioOfNonActiveAircrafts}"/>, 
+							]
 						}
 					]
-				}, legend : {
-					display : false
-				}
-			};
+				};
 			
-			var canvas, context;
+				var options = {
+					scales : {
+						yAxes : [
+							{
+								ticks : {
+									suggestedMin : 0.0,
+									suggestedMax : 1.0
+								}
+							}
+						]
+					}, legend : {
+						display : false
+					}
+				};
+			
+				var canvas, context;
 	
-			canvas = document.getElementById("aircraft-ratio-chart");
-			context = canvas.getContext("2d");
+				canvas = document.getElementById("aircraft-ratio-chart");
+				context = canvas.getContext("2d");
 		
-			new Chart(
-				context,
-				{
-					type : "bar",
-					data : data,
-					options : options
-				}
-			);
-		}
-	);
-</script>
+				new Chart(
+					context,
+					{
+						type : "bar",
+						data : data,
+						options : options
+					}
+				);
+			}
+		);
+	</script>
+</jstl:if>
+<jstl:if test = "${ratioOfActiveAircrafts == null || ratioOfNonActiveAircrafts == null}">
+    <acme:print code = "administrator.dashboard.form.message.no-aircrafts"/>
+</jstl:if>
 
 <h2>
 	<acme:print code = "administrator.dashboard.form.label.ratioOfReviewsWithScoreAboveFive"/>
 </h2>
-<div>
-	<canvas id = "review-ratio-chart"></canvas>
-</div>
-<script type = "text/javascript">
-	$(document).ready(
-		function() {
-			var data = {
-				labels : [
-					"Score > 5", "Score <= 5"
-				], datasets : [
-					{
-						data : [
-							<jstl:out value = "${ratioOfReviewsWithScoreAboveFive}"/>, 
-							<jstl:out value = "1.0 - ${ratioOfReviewsWithScoreAboveFive}"/>, 
-						]
-					}
-				]
-			};
-			
-			var options = {
-				scales : {
-					yAxes : [
+<jstl:if test = "${ratioOfReviewsWithScoreAboveFive != null}">
+	<div>
+		<canvas id = "review-ratio-chart"></canvas>
+	</div>
+	<script type = "text/javascript">
+		$(document).ready(
+			function() {
+				var data = {
+					labels : [
+						"Score > 5", "Score <= 5"
+					], datasets : [
 						{
-							ticks : {
-								suggestedMin : 0.0,
-								suggestedMax : 1.0
-							}
+							data : [
+								<jstl:out value = "${ratioOfReviewsWithScoreAboveFive}"/>, 
+								<jstl:out value = "1.0 - ${ratioOfReviewsWithScoreAboveFive}"/>, 
+							]
 						}
 					]
-				}, legend : {
-					display : false
-				}
-			};
+				};
+				
+				var options = {
+					scales : {
+						yAxes : [
+							{
+								ticks : {
+									suggestedMin : 0.0,
+									suggestedMax : 1.0
+								}
+							}
+						]
+					}, legend : {
+						display : false
+					}
+				};
 			
-			var canvas, context;
-	
-			canvas = document.getElementById("review-ratio-chart");
-			context = canvas.getContext("2d");
+				var canvas, context;
 		
-			new Chart(
-				context,
-				{
-					type : "bar",
-					data : data,
-					options : options
-				}
-			);
-		}
-	);
-</script>
+				canvas = document.getElementById("review-ratio-chart");
+				context = canvas.getContext("2d");
+		
+				new Chart(
+					context,
+					{
+						type : "bar",
+						data : data,
+						options : options
+					}
+				);
+			}
+		);
+	</script>
+</jstl:if>
+<jstl:if test = "${ratioOfReviewsWithScoreAboveFive == null}">
 
+</jstl:if>
+    <acme:print code = "administrator.dashboard.form.message.no-reviews"/>
 <h2>
 	<acme:print code = "administrator.dashboard.form.title.reviewsInLastTenWeeksIndicators"/>
 </h2>
