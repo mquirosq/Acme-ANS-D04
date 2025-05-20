@@ -40,8 +40,8 @@ public interface AirlineManagerFlightLegRepository extends AbstractRepository {
 	@Query("select a from Airport a")
 	Collection<Airport> findAllAirports();
 
-	@Query("select a from Aircraft a where a.status = 'IN_ACTIVE_SERVICE'")
-	Collection<Aircraft> findActiveAircrafts();
+	@Query("select a from Aircraft a")
+	Collection<Aircraft> findAllAircrafts();
 
 	@Query("select fa from FlightAssignment fa where fa.leg.id = :legId")
 	Collection<FlightAssignment> findAllAssignmentsByFlightLegId(int legId);

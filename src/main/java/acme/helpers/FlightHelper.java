@@ -28,7 +28,7 @@ public class FlightHelper {
 
 		flights = flightLegRepository.findAllFlightsByAirlineManagerId(managerId);
 		airports = flightLegRepository.findAllAirports();
-		aircrafts = flightLegRepository.findActiveAircrafts();
+		aircrafts = flightLegRepository.findAllAircrafts();
 
 		statusChoices = SelectChoices.from(FlightLegStatus.class, leg.getStatus());
 		arrivalAirportChoices = SelectChoices.from(airports, "IATACode", leg.getArrivalAirport());
