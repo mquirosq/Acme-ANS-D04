@@ -1,24 +1,22 @@
 
-package acme.features.authenticated.administrator;
+package acme.features.administrator.dashboard;
 
+import java.util.Collection;
 import java.util.Date;
-import java.util.Map;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import acme.client.repositories.AbstractRepository;
-import acme.datatypes.AirlineType;
-import acme.datatypes.AirportScope;
 
 @Repository
 public interface AdministratorDashboardRepository extends AbstractRepository {
 
 	@Query("select a.scope, count(a) from Airport a group by a.scope")
-	Map<AirportScope, Long> totalNumberOfAirportsByOperationalScope();
+	Collection<Object[]> totalNumberOfAirportsByOperationalScope();
 
 	@Query("select a.type, count(a) from Airline a group by a.type")
-	Map<AirlineType, Long> numberOfAirlinesByType();
+	Collection<Object[]> numberOfAirlinesByType();
 
 	@Query("select 1.0 * count(a) / (select count(b) from Airline b) from Airline a where a.email != null and a.phoneNumber != null")
 	Double ratioOfAirlinesWithEmailAddressAndPhoneNumber();
