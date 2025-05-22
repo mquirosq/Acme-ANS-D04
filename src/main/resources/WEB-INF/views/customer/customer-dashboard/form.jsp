@@ -22,6 +22,7 @@
 <h2>
     <acme:print code="customer.dashboard.form.title.money-spent-last-year"/>
 </h2>
+
 <jstl:choose>
 	<jstl:when test="${not empty moneySpentInBookingsDuringLastYear}">
 		<table class="table table-sm">

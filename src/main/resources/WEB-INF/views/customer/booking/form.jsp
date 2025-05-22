@@ -14,11 +14,20 @@
 		<acme:input-moment code="customer.booking.form.label.purchasedAt" path="purchasedAt" readonly = "${true}"/>
 		<acme:input-checkbox code = "customer.booking.form.label.draft" path = "draftMode" readonly = "${true}"/>
 	</jstl:if>
+	
+	<jstl:if test="${acme:anyOf(_command, 'show') && !updateable && draftMode}">
+		<p>
+			<acme:print code="customer.booking.form.inform.pastDeparture"/>
+		<p>
+	</jstl:if>
+				
 	<jstl:choose>	 
 		<jstl:when test="${acme:anyOf(_command, 'show || publish') && draftMode}">
 			<acme:button code="customer.booking.form.button.passengers" action="/customer/booking-record/list?masterId=${id}"/>	
-			<acme:button code="customer.booking.form.button.edit" action="/customer/booking/update?id=${id}"/>
-			<acme:submit code="customer.booking.form.button.publish" action="/customer/booking/publish?id=${id}"/>	
+			<jstl:if test="${updateable}">
+				<acme:button code="customer.booking.form.button.edit" action="/customer/booking/update?id=${id}"/>
+				<acme:submit code="customer.booking.form.button.publish" action="/customer/booking/publish?id=${id}"/>	
+			</jstl:if>
 		</jstl:when>
 		<jstl:when test="${_command == 'show'}">
 			<acme:button code="customer.booking.form.button.passengers" action="/customer/booking-record/list?masterId=${id}"/>			

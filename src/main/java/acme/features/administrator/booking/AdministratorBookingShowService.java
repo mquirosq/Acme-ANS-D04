@@ -2,14 +2,12 @@
 package acme.features.administrator.booking;
 
 import java.util.Collection;
-import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
 import acme.client.components.principals.Administrator;
 import acme.client.components.views.SelectChoices;
-import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.datatypes.TravelClass;
@@ -65,11 +63,8 @@ public class AdministratorBookingShowService extends AbstractGuiService<Administ
 		SelectChoices travelChoices;
 		SelectChoices customerChoices;
 		Dataset dataset;
-		Date currentMoment;
 
-		currentMoment = MomentHelper.getCurrentMoment();
 		flights = this.repository.findAllNonDraftFlights();
-		flights = flights.stream().filter(f -> (f.getScheduledDeparture() != null && MomentHelper.isAfter(f.getScheduledDeparture(), currentMoment))).toList();
 
 		flightChoices = SelectChoices.from(flights, "identifierCode", booking.getFlight());
 		travelChoices = SelectChoices.from(TravelClass.class, booking.getTravelClass());

@@ -17,6 +17,8 @@ customer.booking.form.label.draft = Pending
 
 customer.booking.form.placeholder.lastCardNibble = Four last digits of the credit card used to pay
 
+customer.booking.form.inform.pastDeparture = This booking cannot be published or updated as this flight has already departed.
+
 customer.booking.list.button.create = Create
 
 customer.booking.form.button.passengers = Passengers
