@@ -21,7 +21,7 @@ import lombok.Setter;
 @Setter
 @ValidRecommendation
 @Table(indexes = {
-	@Index(columnList = "place_id"), @Index(columnList = "country,city")
+	@Index(columnList = "placeId"), @Index(columnList = "country,city")
 })
 public class Recommendation extends AbstractEntity {
 
