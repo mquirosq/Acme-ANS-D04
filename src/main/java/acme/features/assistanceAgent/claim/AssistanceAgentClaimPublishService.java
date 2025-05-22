@@ -45,12 +45,10 @@ public class AssistanceAgentClaimPublishService extends AbstractGuiService<Assis
 			} catch (NumberFormatException e) {
 				claimId = -1;
 			}
-
-			if (claimId != 0) {
-				claim = this.repository.findClaimById(claimId);
-				authorised = claim != null && !claim.getIsPublished() && !claim.getStatus().equals(ClaimStatus.PENDING) && claim.getAgent() != null && super.getRequest().getPrincipal().hasRealm(claim.getAgent());
-			}
-		}
+			claim = this.repository.findClaimById(claimId);
+			authorised = claim != null && !claim.getIsPublished() && !claim.getStatus().equals(ClaimStatus.PENDING) && claim.getAgent() != null && super.getRequest().getPrincipal().hasRealm(claim.getAgent());
+		} else
+			authorised = false;
 
 		if (super.getRequest().hasData("leg")) {
 			legIdRaw = super.getRequest().getData("leg", String.class);
@@ -109,7 +107,7 @@ public class AssistanceAgentClaimPublishService extends AbstractGuiService<Assis
 		SelectChoices typeChoices, statusChoices, legChoices;
 		Collection<FlightLeg> legs;
 
-		legs = this.repository.findAllPublishedLegsBefore(MomentHelper.getCurrentMoment());
+		legs = this.repository.findAllPublishedLegsBefore(claim.getRegistrationMoment());
 
 		typeChoices = SelectChoices.from(ClaimType.class, claim.getType());
 		statusChoices = SelectChoices.from(ClaimStatus.class, claim.getStatus());
