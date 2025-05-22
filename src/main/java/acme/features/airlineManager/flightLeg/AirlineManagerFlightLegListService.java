@@ -52,22 +52,15 @@ public class AirlineManagerFlightLegListService extends AbstractGuiService<Airli
 
 	@Override
 	public void unbind(final FlightLeg leg) {
-		String draftMode = "";
 		String departureAirport = "";
 		String arrivalAirport = "";
 		Dataset dataset;
 
-		dataset = super.unbindObject(leg, "flightNumber");
-
-		if (leg.getDraftMode())
-			draftMode = "Draft mode";
-		else
-			draftMode = "Published";
+		dataset = super.unbindObject(leg, "flightNumber", "draftMode");
 
 		departureAirport = leg.getDepartureAirport().getIATACode();
 		arrivalAirport = leg.getArrivalAirport().getIATACode();
 
-		dataset.put("draftMode", draftMode);
 		dataset.put("departureAirport", departureAirport);
 		dataset.put("arrivalAirport", arrivalAirport);
 

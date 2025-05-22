@@ -1,7 +1,7 @@
 airline-manager.flight.list.title = Mis vuelos
 
 airline-manager.flight.list.label.tag = Etiqueta
-airline-manager.flight.list.label.draftMode = Estado
+airline-manager.flight.list.label.draftMode = Modo borrador
 airline-manager.flight.list.label.identifierCode = Ruta
 airline-manager.flight.list.label.numberOfLayovers = Nº de escalas
 

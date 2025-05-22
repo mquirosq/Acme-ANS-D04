@@ -1,7 +1,7 @@
 airline-manager.flight.list.title = My flights
 
 airline-manager.flight.list.label.tag = Tag
-airline-manager.flight.list.label.draftMode = State
+airline-manager.flight.list.label.draftMode = Draft mode
 airline-manager.flight.list.label.identifierCode = Route
 airline-manager.flight.list.label.numberOfLayovers = Nº of layovers
 
