@@ -56,6 +56,7 @@ acme.validation.flightLeg.flightNumber.message = El número de vuelo debe comenz
 acme.validation.flightLeg.flightNumberPattern.message = El número de vuelo debe contener 3 letras mayúsculas y 4 dígitos
 acme.validation.flightLeg.flightNumberUnique.message = El número de vuelo debe ser único
 acme.validation.flightLeg.overlappingDates.message = Las fechas de este tramo coinciden con las de otro ya publicado
+acme.validation.flightLeg.sameAirports.message = El aeropuerto de llegada no puede ser igual que el de salida
 
 acme.validation.flight.overlappingDates.message = Este vuelo tiene tramos solapados
 acme.validation.flight.notPublishedLeg.message = Este vuelo tiene tramos sin publicar

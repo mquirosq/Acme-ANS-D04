@@ -1,7 +1,7 @@
 airline-manager.flight-leg.list.title = Tramos de vuelo
 
 airline-manager.flight-leg.list.label.flightNumber = Nº de vuelo
-airline-manager.flight-leg.list.label.draftMode = Estado
+airline-manager.flight-leg.list.label.draftMode = Modo borrador
 airline-manager.flight-leg.list.label.departureAirport = Aeropuerto origen
 airline-manager.flight-leg.list.label.arrivalAirport = Aeropuerto destino
 

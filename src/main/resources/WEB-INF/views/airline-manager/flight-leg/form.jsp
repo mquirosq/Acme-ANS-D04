@@ -17,7 +17,7 @@
 		<acme:input-checkbox code="airline-manager.flight-leg.form.label.draftMode" path="draftMode" readonly = "${true}"/>
 	</jstl:if>
 		<jstl:choose>	 
-		<jstl:when test="${acme:anyOf(_command, 'show || update || publish') && draftMode}">
+		<jstl:when test="${acme:anyOf(_command, 'show || update || publish || delete') && draftMode}">
 			<acme:submit code="airline-manager.flight-leg.form.button.update" action="/airline-manager/flight-leg/update"/>
 			<acme:submit code="airline-manager.flight-leg.form.button.publish" action="/airline-manager/flight-leg/publish"/>
 			<acme:submit code="airline-manager.flight-leg.form.button.delete" action="/airline-manager/flight-leg/delete"/>

@@ -1,7 +1,7 @@
 airline-manager.flight-leg.list.title = Flight legs
 
 airline-manager.flight-leg.list.label.flightNumber = Flight number
-airline-manager.flight-leg.list.label.draftMode = State
+airline-manager.flight-leg.list.label.draftMode = Draft mode
 airline-manager.flight-leg.list.label.departureAirport = Departure airport
 airline-manager.flight-leg.list.label.arrivalAirport = Arrival airport
 
