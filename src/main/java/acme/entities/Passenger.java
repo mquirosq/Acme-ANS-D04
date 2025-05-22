@@ -34,7 +34,7 @@ public class Passenger extends AbstractEntity {
 	private static final long	serialVersionUID	= 1L;
 
 	@Mandatory
-	@ValidString(min = 1, max = 255)
+	@ValidString(min = 1, max = 50)
 	@Automapped
 	private String				fullName;
 
