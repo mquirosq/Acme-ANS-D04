@@ -39,7 +39,7 @@ public class CustomerBookingPublishService extends AbstractGuiService<Customer, 
 			bookingId = Integer.parseInt(rawId);
 			booking = this.repository.findBookingById(bookingId);
 
-			authorised = booking != null && booking.isDraftMode() && super.getRequest().getPrincipal().hasRealm(booking.getCustomer());
+			authorised = booking != null && booking.isDraftMode() && super.getRequest().getPrincipal().hasRealm(booking.getCustomer()) && MomentHelper.isAfter(booking.getFlight().getScheduledDeparture(), MomentHelper.getCurrentMoment());
 		} catch (NumberFormatException | AssertionError e) {
 			authorised = false;
 		}
