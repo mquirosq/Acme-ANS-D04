@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="15.1">
-  <zoom_level>3</zoom_level>
+  <zoom_level>10</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>306</x>
-      <y>177</y>
-      <w>30</w>
-      <h>15</h>
+      <x>1310</x>
+      <y>430</y>
+      <w>100</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Role&gt;&gt;
 Customer
@@ -18,10 +18,10 @@ bg=pink</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>0</x>
-      <y>177</y>
-      <w>33</w>
-      <h>15</h>
+      <x>290</x>
+      <y>430</y>
+      <w>110</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 Flight
@@ -31,10 +31,10 @@ bg=green</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>81</x>
-      <y>162</y>
-      <w>183</w>
-      <h>45</h>
+      <x>560</x>
+      <y>380</y>
+      <w>610</w>
+      <h>150</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 Booking {ValidBooking}
@@ -51,10 +51,10 @@ bg=green</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>261</x>
-      <y>180</y>
-      <w>51</w>
-      <h>15</h>
+      <x>1160</x>
+      <y>440</y>
+      <w>170</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>Made by &gt;
 lt=&lt;-x
@@ -65,10 +65,10 @@ m2= *</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>30</x>
-      <y>180</y>
-      <w>57</w>
-      <h>15</h>
+      <x>390</x>
+      <y>440</y>
+      <w>190</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>&lt; Purchased in a
 lt=&lt;-x
@@ -79,10 +79,10 @@ m2= *</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>120</x>
-      <y>243</y>
-      <w>81</w>
-      <h>18</h>
+      <x>690</x>
+      <y>650</y>
+      <w>270</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 BookingRecord {ValidBookingRecord}
@@ -93,10 +93,10 @@ bg=green</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>177</x>
-      <y>204</y>
-      <w>33</w>
-      <h>45</h>
+      <x>880</x>
+      <y>520</y>
+      <w>110</w>
+      <h>150</h>
     </coordinates>
     <panel_attributes>Belongs to ^
 lt=&lt;-x
@@ -107,10 +107,10 @@ m2= *</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>252</x>
-      <y>228</y>
-      <w>165</w>
-      <h>57</h>
+      <x>1130</x>
+      <y>600</y>
+      <w>550</w>
+      <h>170</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 Passenger
@@ -123,17 +123,16 @@ Passenger
 + draftMode: {Mandatory. Valid, Automapped}
 --
 /+ identifier: String {Transient}
-/+ draftModeString: String {Transient}
 bg=green</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>198</x>
-      <y>246</y>
-      <w>60</w>
-      <h>15</h>
+      <x>950</x>
+      <y>660</y>
+      <w>200</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>Refers to &gt;
 lt=&lt;-x
@@ -144,10 +143,10 @@ m2= *</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>318</x>
-      <y>189</y>
-      <w>33</w>
-      <h>45</h>
+      <x>1350</x>
+      <y>470</y>
+      <w>110</w>
+      <h>150</h>
     </coordinates>
     <panel_attributes>Created by ^
 lt=&lt;-x
@@ -158,10 +157,10 @@ m2= *</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>84</x>
-      <y>297</y>
-      <w>162</w>
-      <h>42</h>
+      <x>570</x>
+      <y>830</y>
+      <w>540</w>
+      <h>140</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 Recommendation {ValidRecommendation}

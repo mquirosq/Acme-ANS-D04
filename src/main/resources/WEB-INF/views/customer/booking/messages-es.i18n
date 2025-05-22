@@ -17,6 +17,8 @@ customer.booking.form.label.draft = Incompleto
 
 customer.booking.form.placeholder.lastCardNibble = Cuatro últimos dígitos de la tarjeta usada para pagar
 
+customer.booking.form.inform.pastDeparture = Esta reserva no puede ser publicada ni editada ya que el vuelo al que hace referencia ya ha despegado.
+
 customer.booking.list.button.create = Crear
 
 customer.booking.form.button.passengers = Pasajeros

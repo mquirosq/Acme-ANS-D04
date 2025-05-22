@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="15.1">
-  <zoom_level>7</zoom_level>
+  <zoom_level>10</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>518</x>
-      <y>504</y>
-      <w>532</w>
-      <h>63</h>
+      <x>740</x>
+      <y>610</y>
+      <w>760</w>
+      <h>90</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
-SystemConfiguration
+SystemConfiguration {ValidSystemConfiguration}
 --
 + systemCurrency: String {Mandatory, ValidString(pattern="[A-Z]{3}$"), Automapped}
 + acceptedCurrencies: String {Mandatory, ValidString(pattern ="([A-Z]{3})(, [A-Z]{3})+", min=1, max=255), Automapped}
@@ -21,13 +21,13 @@ bg=green
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>581</x>
-      <y>84</y>
-      <w>378</w>
-      <h>126</h>
+      <x>820</x>
+      <y>10</y>
+      <w>570</w>
+      <h>180</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
-Airport
+Airport {ValidAirport}
 --
 + name: String {Mandatory, ValidString(min=1, max=50), Automapped}
 + IATACode: String {Mandatory, ValidString(pattern="^[A-Z]{3}$"), Column(unique=true)}
@@ -36,7 +36,7 @@ Airport
 + country: String {Mandatory, ValidString(min=1, max=50), Automapped}
 + website: String {Optional, ValidUrl, Automapped}
 + email: String {Optional, ValidEmail, Automapped}
-+ phoneNumber: String {Optional, ValidString(pattern="^\+?\d{6,15}$"), Automapped}
++ phoneNumber: String {Optional, ValidPhoneNumber, Automapped}
 bg=green
 
 
@@ -54,13 +54,13 @@ bg=green
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>574</x>
-      <y>315</y>
-      <w>392</w>
-      <h>119</h>
+      <x>820</x>
+      <y>340</y>
+      <w>570</w>
+      <h>170</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
-Airline
+Airline {ValidAirline}
 --
 + name: String {Mandatory, ValidString(min=1, max=50), Automapped}
 + IATACode: String {Mandatory, ValidString(pattern="^[A-Z]{3}$"), Column(unique=true)}
@@ -68,7 +68,7 @@ Airline
 + type: AirlineType {Mandatory, Valid, Automapped}
 + foundation: Date {Mandatory, ValidMoment(past=true), Temporal(TIMESTAMP)}
 + email: String {Optional, ValidEmail, Automapped}
-+ phoneNumber: String {Optional, ValidString(pattern="^\+?\d{6,15}$"), Automapped}
++ phoneNumber: String {Optional, ValidPhoneNumber, Automapped}
 bg=green
 
 
@@ -88,12 +88,12 @@ bg=green
     <id>UMLClass</id>
     <coordinates>
       <x>0</x>
-      <y>322</y>
-      <w>413</w>
-      <h>105</h>
+      <y>350</y>
+      <w>590</w>
+      <h>150</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
-Aircraft
+Aircraft {ValidAircraft}
 --
 + model: String {Mandatory, ValidString(min=1, max=50), Automapped}
 + registrationNumber: String {Mandatory, ValidString(min=1, max=50), Column(unique=true)}
@@ -119,10 +119,10 @@ bg=green
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1022</x>
-      <y>112</y>
-      <w>476</w>
-      <h>98</h>
+      <x>1460</x>
+      <y>50</y>
+      <w>680</w>
+      <h>140</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 Service {ValidService}
@@ -150,10 +150,10 @@ bg=green
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>406</x>
-      <y>364</y>
-      <w>182</w>
-      <h>35</h>
+      <x>580</x>
+      <y>410</y>
+      <w>260</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>Belongs to &gt;
 lt=&lt;-x
@@ -164,10 +164,10 @@ m2=0..*</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>609</x>
-      <y>252</y>
-      <w>329</w>
-      <h>21</h>
+      <x>870</x>
+      <y>250</y>
+      <w>470</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>The relation between airports and airlines will not be explicitly managed
 bg=blue</panel_attributes>
@@ -176,10 +176,10 @@ bg=blue</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>756</x>
-      <y>203</y>
-      <w>21</w>
-      <h>63</h>
+      <x>1080</x>
+      <y>180</y>
+      <w>30</w>
+      <h>90</h>
     </coordinates>
     <panel_attributes>lt=..</panel_attributes>
     <additional_attributes>10.0;70.0;10.0;10.0</additional_attributes>
@@ -187,10 +187,10 @@ bg=blue</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>756</x>
-      <y>266</y>
-      <w>21</w>
-      <h>63</h>
+      <x>1080</x>
+      <y>270</y>
+      <w>30</w>
+      <h>90</h>
     </coordinates>
     <panel_attributes>lt=..</panel_attributes>
     <additional_attributes>10.0;70.0;10.0;10.0</additional_attributes>
@@ -198,10 +198,10 @@ bg=blue</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1043</x>
-      <y>315</y>
-      <w>413</w>
-      <h>112</h>
+      <x>1500</x>
+      <y>340</y>
+      <w>590</w>
+      <h>160</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 BannedPassenger {ValidBannedPassenger}
@@ -219,19 +219,19 @@ bg=green</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>35</x>
-      <y>98</y>
-      <w>350</w>
-      <h>105</h>
+      <x>30</x>
+      <y>30</y>
+      <w>530</w>
+      <h>150</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 Review
 --
-+ name: String {Mandatory, ValidString(min=1, max=50), Automapped}
-+ date: Date {Mandatory, ValidMoment(past=true), Temporal(TIMESTAMP)}
++ alias: String {Mandatory, ValidString(min=1, max=50), Automapped}
++ moment: Date {Mandatory, ValidMoment(past=true), Temporal(TIMESTAMP)}
 + subject: String {Mandatory, ValidString(min=1, max=50), Automapped}
 + text: String {Mandatory, ValidString(min=1, max=255), Automapped}
-+ score: Double {Optional, ValidNumber(min=0, max=10), Automapped}
++ score: Double {Optional, ValidNumber(min=0, max=10, fraction=2), Automapped}
 + recommended: Boolean {Optional, Valid, Automapped}
 bg=green
 

@@ -115,9 +115,14 @@ public class CustomerDashboardShowService extends AbstractGuiService<Customer, C
 		maximumNumberOfPassengersInBookings = this.repository.getMaximumNumberOfPassengersInBooking(customerId);
 
 		Collection<Long> passengersByBooking = this.repository.getPassengersByBooking(customerId);
-		double sumOfSquaredDifferences = passengersByBooking.stream().mapToDouble(value -> Math.pow(value - averageNumberOfPassengerInBookings, 2)).sum();
-		double variance = sumOfSquaredDifferences / passengersByBooking.size();
-		standardDeviationOfPassengersInBookings = Math.sqrt(variance);
+		if (passengersByBooking.size() > 1) {
+			double sumOfSquaredDifferences = passengersByBooking.stream().mapToDouble(value -> Math.pow(value - averageNumberOfPassengerInBookings, 2)).sum();
+			double variance = sumOfSquaredDifferences / passengersByBooking.size();
+			standardDeviationOfPassengersInBookings = Math.sqrt(variance);
+		} else {
+			standardDeviationOfPassengersInBookings = null;
+			standardDeviationOfCostOfBookings = null;
+		}
 
 		dashboard = new CustomerDashboard();
 		dashboard.setLastFiveDestinations(lastFiveDestinations);
