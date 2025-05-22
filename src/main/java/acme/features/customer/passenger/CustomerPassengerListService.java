@@ -43,7 +43,7 @@ public class CustomerPassengerListService extends AbstractGuiService<Customer, P
 
 		int customerId = super.getRequest().getPrincipal().getActiveRealm().getId();
 		boolean allMode = super.getRequest().getData("all", boolean.class);
-		if (allMode)
+		if (!allMode)
 			passengers = this.repository.findAllPassengersOfCustomer(customerId);
 		else
 			passengers = this.repository.findPassengersOfCustomer(customerId);
