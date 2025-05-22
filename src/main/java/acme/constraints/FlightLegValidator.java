@@ -52,6 +52,10 @@ public class FlightLegValidator extends AbstractValidator<ValidFlightLeg, Flight
 				boolean uniqueFlightNumber = ValidatorHelper.checkUniqueness(leg, existingLeg);
 				super.state(context, uniqueFlightNumber, "flightNumber", "acme.validation.flightLeg.flightNumberUnique.message");
 			}
+			if (leg.getArrivalAirport() != null && leg.getDepartureAirport() != null) {
+				boolean departureIsNotArrival = !leg.getArrivalAirport().equals(leg.getDepartureAirport());
+				super.state(context, departureIsNotArrival, "arrivalAirport", "acme.validation.flightLeg.sameAirports.message");
+			}
 		}
 
 		result = !super.hasErrors(context);

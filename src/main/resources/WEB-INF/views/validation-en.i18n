@@ -58,6 +58,7 @@ acme.validation.flightLeg.flightNumber.message = The flight number must begin wi
 acme.validation.flightLeg.flightNumberPattern.message = The flight number must contain 3 upper case letters and 4 digits
 acme.validation.flightLeg.flightNumberUnique.message = The flight number must be unique
 acme.validation.flightLeg.overlappingDates.message = Dates of this leg overlap with other published legs
+acme.validation.flightLeg.sameAirports.message = The arrival airport cannot be the same as the departure airport
 
 acme.validation.flight.overlappingDates.message = This flight has legs with overlapping dates
 acme.validation.flight.notPublishedLeg.message = This flight has unpublished legs
