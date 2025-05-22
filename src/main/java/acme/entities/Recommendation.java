@@ -3,6 +3,8 @@ package acme.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Index;
+import javax.persistence.Table;
 
 import acme.client.components.basis.AbstractEntity;
 import acme.client.components.mappings.Automapped;
@@ -18,6 +20,9 @@ import lombok.Setter;
 @Getter
 @Setter
 @ValidRecommendation
+@Table(indexes = {
+	@Index(columnList = "place_id"), @Index(columnList = "country,city")
+})
 public class Recommendation extends AbstractEntity {
 
 	public static final long	serialVersionUID	= 1L;
