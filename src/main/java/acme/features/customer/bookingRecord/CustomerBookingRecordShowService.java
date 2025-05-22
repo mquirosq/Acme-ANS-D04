@@ -36,7 +36,7 @@ public class CustomerBookingRecordShowService extends AbstractGuiService<Custome
 			booking = this.repository.findBookingOfBookingRecordById(id);
 			// For coverage, the second part of the condition is being considered as multiple parts. 
 			// However, a test has been made for a booking record that is not the principal's.
-			authorised = bookingRecord != null && super.getRequest().getPrincipal().getActiveRealm().equals(booking.getCustomer());
+			authorised = bookingRecord != null || super.getRequest().getPrincipal().getActiveRealm().equals(booking.getCustomer());
 		} catch (NumberFormatException | AssertionError e) {
 			authorised = false;
 		}
