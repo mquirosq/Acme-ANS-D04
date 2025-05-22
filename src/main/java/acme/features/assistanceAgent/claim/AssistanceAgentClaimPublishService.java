@@ -45,12 +45,10 @@ public class AssistanceAgentClaimPublishService extends AbstractGuiService<Assis
 			} catch (NumberFormatException e) {
 				claimId = -1;
 			}
-
-			if (claimId != 0) {
-				claim = this.repository.findClaimById(claimId);
-				authorised = claim != null && !claim.getIsPublished() && !claim.getStatus().equals(ClaimStatus.PENDING) && claim.getAgent() != null && super.getRequest().getPrincipal().hasRealm(claim.getAgent());
-			}
-		}
+			claim = this.repository.findClaimById(claimId);
+			authorised = claim != null && !claim.getIsPublished() && !claim.getStatus().equals(ClaimStatus.PENDING) && claim.getAgent() != null && super.getRequest().getPrincipal().hasRealm(claim.getAgent());
+		} else
+			authorised = false;
 
 		if (super.getRequest().hasData("leg")) {
 			legIdRaw = super.getRequest().getData("leg", String.class);

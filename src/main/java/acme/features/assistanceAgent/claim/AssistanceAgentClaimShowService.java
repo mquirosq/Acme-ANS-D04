@@ -31,7 +31,7 @@ public class AssistanceAgentClaimShowService extends AbstractGuiService<Assistan
 		String claimIdRaw;
 		Claim claim;
 
-		authorised = true;
+		authorised = false;
 
 		if (super.getRequest().hasData("id")) {
 			claimIdRaw = super.getRequest().getData("id", String.class);

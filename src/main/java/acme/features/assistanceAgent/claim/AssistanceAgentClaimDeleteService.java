@@ -46,12 +46,10 @@ public class AssistanceAgentClaimDeleteService extends AbstractGuiService<Assist
 			} catch (NumberFormatException e) {
 				claimId = -1;
 			}
-
-			if (claimId != 0) {
-				claim = this.repository.findClaimById(claimId);
-				authorised = claim != null && !claim.getIsPublished() && claim.getAgent() != null && super.getRequest().getPrincipal().hasRealm(claim.getAgent());
-			}
-		}
+			claim = this.repository.findClaimById(claimId);
+			authorised = claim != null && !claim.getIsPublished() && claim.getAgent() != null && super.getRequest().getPrincipal().hasRealm(claim.getAgent());
+		} else
+			authorised = false;
 
 		if (super.getRequest().hasData("leg")) {
 			legIdRaw = super.getRequest().getData("leg", String.class);
