@@ -16,6 +16,9 @@ import acme.realms.AirlineManager;
 @Repository
 public interface AirlineManagerFlightRepository extends AbstractRepository {
 
+	@Query("select sc.systemCurrency from SystemConfiguration sc")
+	String getSystemCurrency();
+
 	@Query("select f from Flight f where f.manager.id = :airlineManagerId")
 	Collection<Flight> findAllFlightsByAirlineManagerId(int airlineManagerId);
 

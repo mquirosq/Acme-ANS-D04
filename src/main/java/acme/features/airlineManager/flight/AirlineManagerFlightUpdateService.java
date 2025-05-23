@@ -63,6 +63,7 @@ public class AirlineManagerFlightUpdateService extends AbstractGuiService<Airlin
 	public void unbind(final Flight flight) {
 		Dataset dataset = super.unbindObject(flight, "tag", "requiresSelfTransfer", "cost", "description", "draftMode");
 		dataset = FlightHelper.unbindFlightDerivatedProperties(dataset, flight);
+
 		super.getResponse().addData(dataset);
 	}
 
