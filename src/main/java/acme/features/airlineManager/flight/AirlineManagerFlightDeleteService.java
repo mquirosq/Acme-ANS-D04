@@ -29,14 +29,10 @@ public class AirlineManagerFlightDeleteService extends AbstractGuiService<Airlin
 			String flightIdInput = super.getRequest().getData("id", String.class);
 			int flightId = Integer.parseInt(flightIdInput);
 			Flight flight = this.repository.findFlightById(flightId);
-
-			AirlineManager manager = flight.getManager();
-
-			authorised = flight != null && flight.getDraftMode() && super.getRequest().getPrincipal().hasRealm(manager);
+			authorised = flight != null && flight.getDraftMode() && super.getRequest().getPrincipal().hasRealm(flight.getManager());
 		} catch (NumberFormatException e) {
 			authorised = false;
 		}
-
 		super.getResponse().setAuthorised(authorised);
 	}
 
