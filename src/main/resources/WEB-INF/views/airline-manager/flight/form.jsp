@@ -7,6 +7,9 @@
 <acme:form> 
 	<acme:input-textbox code="airline-manager.flight.form.label.tag" path="tag"/>
 	<acme:input-money code="airline-manager.flight.form.label.cost" path="cost"/>
+	<jstl:if test="${systemCost != null}">
+		<acme:input-money code="airline-manager.flight.form.label.cost-exchange" path="systemCost" readonly = "${true}"/>
+	</jstl:if>
 	<acme:input-textbox code="airline-manager.flight.form.label.description" path="description"/>
 	<acme:input-checkbox code="airline-manager.flight.form.label.requiresSelfTransfer" path="requiresSelfTransfer"/>	
 	<jstl:if test="${_command != 'create'}">

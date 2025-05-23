@@ -11,6 +11,9 @@
 	<acme:input-textbox code="customer.booking.form.label.lastCardNibble" path="lastCardNibble" placeholder = "customer.booking.form.placeholder.lastCardNibble"/>
 	<jstl:if test="${_command != 'create'}">
 		<acme:input-money code="customer.booking.form.label.price" path="price" readonly="True"/>
+		<jstl:if test="${systemPrice != null}">
+			<acme:input-money code="customer.booking.form.label.price-exchange" path="systemPrice"/>
+		</jstl:if>
 		<acme:input-moment code="customer.booking.form.label.purchasedAt" path="purchasedAt" readonly = "${true}"/>
 		<acme:input-checkbox code = "customer.booking.form.label.draft" path = "draftMode" readonly = "${true}"/>
 	</jstl:if>

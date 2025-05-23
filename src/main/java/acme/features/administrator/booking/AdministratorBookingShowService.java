@@ -5,14 +5,17 @@ import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import acme.client.components.datatypes.Money;
 import acme.client.components.models.Dataset;
 import acme.client.components.principals.Administrator;
 import acme.client.components.views.SelectChoices;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
+import acme.components.MoneyExchangeHelper;
 import acme.datatypes.TravelClass;
 import acme.entities.Booking;
 import acme.entities.Flight;
+import acme.forms.MoneyExchange;
 import acme.realms.Customer;
 
 @GuiService
@@ -81,6 +84,21 @@ public class AdministratorBookingShowService extends AbstractGuiService<Administ
 		dataset.put("travelClass", travelChoices.getSelected().getKey());
 		dataset.put("travelClasses", travelChoices);
 
+		String systemCurrency = this.repository.getSystemCurrency();
+
+		Money exchangedPrice;
+		if (systemCurrency.equals(booking.getPrice().getCurrency()))
+			exchangedPrice = null;
+		else {
+			MoneyExchange exchange = new MoneyExchange();
+			exchange.setSource(booking.getPrice());
+			exchange.setTargetCurrency(systemCurrency);
+			exchange = MoneyExchangeHelper.performExchangeToSystemCurrency(exchange);
+			exchangedPrice = exchange.getTarget();
+			super.state(exchange.getOops() == null, "*", exchange.getMessage());
+		}
+
+		dataset.put("systemPrice", exchangedPrice);
 		super.getResponse().addData(dataset);
 	}
 

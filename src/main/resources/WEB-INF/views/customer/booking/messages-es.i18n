@@ -12,6 +12,7 @@ customer.booking.form.label.flight = Vuelo:
 customer.booking.form.label.travelClass = Clase:
 customer.booking.form.label.lastCardNibble = Últimos cuatro dígitos de la tarjeta de crédito:
 customer.booking.form.label.price = Precio:
+customer.booking.form.label.price-exchange = Precio en la moneda del sistema:
 customer.booking.form.label.purchasedAt = Fecha de compra:
 customer.booking.form.label.draft = Incompleto
 

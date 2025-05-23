@@ -5,13 +5,16 @@ import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import acme.client.components.datatypes.Money;
 import acme.client.components.models.Dataset;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
+import acme.components.MoneyExchangeHelper;
 import acme.entities.ActivityLog;
 import acme.entities.Flight;
 import acme.entities.FlightAssignment;
 import acme.entities.FlightLeg;
+import acme.forms.MoneyExchange;
 import acme.helpers.FlightHelper;
 import acme.realms.AirlineManager;
 
@@ -82,6 +85,21 @@ public class AirlineManagerFlightDeleteService extends AbstractGuiService<Airlin
 	public void unbind(final Flight flight) {
 		Dataset dataset = super.unbindObject(flight, "tag", "requiresSelfTransfer", "cost", "description", "draftMode");
 		dataset = FlightHelper.unbindFlightDerivatedProperties(dataset, flight);
+
+		String systemCurrency = this.repository.getSystemCurrency();
+
+		Money exchangedCost;
+		if (systemCurrency.equals(flight.getCost().getCurrency()))
+			exchangedCost = null;
+		else {
+			MoneyExchange exchange = new MoneyExchange();
+			exchange.setSource(flight.getCost());
+			exchange.setTargetCurrency(systemCurrency);
+			exchange = MoneyExchangeHelper.performExchangeToSystemCurrency(exchange);
+			exchangedCost = exchange.getTarget();
+			super.state(exchange.getOops() == null, "*", exchange.getMessage());
+		}
+		dataset.put("systemCost", exchangedCost);
 		super.getResponse().addData(dataset);
 	}
 }
