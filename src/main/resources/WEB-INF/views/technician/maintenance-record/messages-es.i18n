@@ -8,6 +8,7 @@ technician.maintenance-record.form.label.status = Estatus:
 technician.maintenance-record.form.label.aircraft = Aeronave:
 technician.maintenance-record.form.label.inspection-due = Fecha límite de inspección:
 technician.maintenance-record.form.label.cost = Coste:
+technician.maintenance-record.form.label.price-exchange = Precio en la moneda del sistema:
 technician.maintenance-record.form.label.notes = Notas:
 technician.maintenance-record.form.button.create = Crear
 
