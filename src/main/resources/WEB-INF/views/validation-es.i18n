@@ -91,3 +91,4 @@ acme.validation.systemConfiguration.acceptedCurrencies.contained = La moneda del
 
 acme.validation.activityLog.publishedAssignment.message = La asignación de vuelo para este registro de actividad no esta publicado
 
+authenticated.money-exchange.api-error = Ha habido un error con la conversión. Intentelo de nuevo más tarde

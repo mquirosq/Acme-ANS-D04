@@ -12,6 +12,7 @@ customer.booking.form.label.flight = Flight:
 customer.booking.form.label.travelClass = Travel class:
 customer.booking.form.label.lastCardNibble = Last credit card nibble:
 customer.booking.form.label.price = Price:
+customer.booking.form.label.price-exchange = Price in system currency:
 customer.booking.form.label.purchasedAt = Purchase date:
 customer.booking.form.label.draft = Pending
 

@@ -11,6 +11,9 @@
 	<acme:input-textbox code="administrator.booking.form.label.lastCardNibble" path="lastCardNibble" placeholder = "administrator.booking.form.placeholder.lastCardNibble"/>
 	<acme:input-moment code="administrator.booking.form.label.purchasedAt" path="purchasedAt"/>
 	<acme:input-select code="administrator.booking.form.label.customer" path = "customer" choices="${customers}"/>
-
+	<acme:input-money code="administrator.booking.form.label.price" path="price"/>
+	<jstl:if test="${systemPrice != null}">
+		<acme:input-money code="administrator.booking.form.label.price-exchange" path="systemPrice"/>
+	</jstl:if>
 	<acme:button code="administrator.booking.form.button.passengers" action="/administrator/booking-record/list?masterId=${id}"/>
 </acme:form>

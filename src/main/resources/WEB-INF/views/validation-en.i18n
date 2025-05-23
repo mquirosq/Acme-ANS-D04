@@ -92,3 +92,5 @@ acme.validation.systemConfiguration.acceptedCurrencies.repeated = No currency sh
 acme.validation.systemConfiguration.acceptedCurrencies.contained = The system currency must be in the list of accepted currencies
 
 acme.validation.activityLog.publishedAssignment.message = The assignment for this activity log is not published
+
+authenticated.money-exchange.api-error = There was an error with the conversion. Try again later

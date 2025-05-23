@@ -14,6 +14,9 @@ import acme.realms.Customer;
 @Repository
 public interface CustomerBookingRepository extends AbstractRepository {
 
+	@Query("select sc.systemCurrency from SystemConfiguration sc")
+	String getSystemCurrency();
+
 	@Query("select b from Booking b where b.customer.id = :customerId")
 	Collection<Booking> findBookingsByCustomerId(int customerId);
 
