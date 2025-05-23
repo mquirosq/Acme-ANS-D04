@@ -5,13 +5,16 @@ import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import acme.client.components.datatypes.Money;
 import acme.client.components.models.Dataset;
 import acme.client.components.views.SelectChoices;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
+import acme.components.MoneyExchangeHelper;
 import acme.datatypes.recordStatus;
 import acme.entities.Aircraft;
 import acme.entities.MaintenanceRecord;
+import acme.forms.MoneyExchange;
 import acme.realms.Technician;
 
 @GuiService
@@ -64,6 +67,21 @@ public class TechnicianMaintenanceRecordShowService extends AbstractGuiService<T
 		dataset.put("aircrafts", aircraftChoices);
 		dataset.put("aircraft", aircraftChoices.getSelected().getKey());
 		dataset.put("draftMode", draftMode);
+
+		String systemCurrency = this.repository.getSystemCurrency();
+
+		Money exchangedPrice;
+		if (systemCurrency.equals(record.getCost().getCurrency()))
+			exchangedPrice = null;
+		else {
+			MoneyExchange exchange = new MoneyExchange();
+			exchange.setSource(record.getCost());
+			exchange.setTargetCurrency(systemCurrency);
+			exchange = MoneyExchangeHelper.performExchangeToSystemCurrency(exchange);
+			exchangedPrice = exchange.getTarget();
+			super.state(exchange.getOops() == null, "*", exchange.getMessage());
+		}
+		dataset.put("systemPrice", exchangedPrice);
 
 		super.getResponse().addData(dataset);
 
