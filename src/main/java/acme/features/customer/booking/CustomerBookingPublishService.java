@@ -123,6 +123,7 @@ public class CustomerBookingPublishService extends AbstractGuiService<Customer, 
 			super.state(exchange.getOops() == null, "*", exchange.getMessage());
 		}
 		dataset.put("systemPrice", exchangedPrice);
+		dataset.put("updateable", true);
 
 		super.getResponse().addData(dataset);
 	}
