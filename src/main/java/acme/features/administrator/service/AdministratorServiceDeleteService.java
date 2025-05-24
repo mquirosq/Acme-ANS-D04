@@ -10,7 +10,7 @@ import acme.client.services.GuiService;
 import acme.entities.Service;
 
 @GuiService
-public class AdministratorServiceShowService extends AbstractGuiService<Administrator, Service> {
+public class AdministratorServiceDeleteService extends AbstractGuiService<Administrator, Service> {
 
 	@Autowired
 	private AdministratorServiceRepository repository;
@@ -43,6 +43,21 @@ public class AdministratorServiceShowService extends AbstractGuiService<Administ
 		service = this.repository.findServiceById(id);
 
 		super.getBuffer().addData(service);
+	}
+
+	@Override
+	public void bind(final Service service) {
+		;
+	}
+
+	@Override
+	public void validate(final Service service) {
+		;
+	}
+
+	@Override
+	public void perform(final Service service) {
+		this.repository.delete(service);
 	}
 
 	@Override

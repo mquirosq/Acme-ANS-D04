@@ -82,7 +82,7 @@ acme.validation.realm.identifierPattern.message = El identificador debe de inclu
 
 acme.validation.recommendation.uniquePlaceId.message = El identificador del lugar debe ser único
 
-acme.validation.service.promotionCodePattern.message = El código de promoción debe de contener de 3-4 letras, un guión y 2 números
+acme.validation.service.promotionCodePattern.message = El código de promoción debe de contener de 4 letras, un guión y 2 números
 
 acme.validation.systemConfiguration.systemCurrency.message = Las monedas deben estar representadas por 3 letras mayúsculas
 acme.validation.systemConfiguration.acceptedCurrencies.message = Debe ser una lista de monedas representadas con tres letras mayúsculas y separadas por comas seguidas de un espacio

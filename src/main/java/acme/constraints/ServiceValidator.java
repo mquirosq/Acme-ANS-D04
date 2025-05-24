@@ -3,6 +3,7 @@ package acme.constraints;
 
 import javax.validation.ConstraintValidatorContext;
 
+import org.hibernate.validator.internal.util.StringHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.validation.AbstractValidator;
@@ -30,7 +31,7 @@ public class ServiceValidator extends AbstractValidator<ValidService, Service> {
 
 		if (service == null)
 			super.state(context, false, "*", "javax.validation.constraints.NotNull.message");
-		else if (service.getPromotionCode() != null) {
+		else if (!StringHelper.isNullOrEmptyString(service.getPromotionCode())) {
 			Boolean check;
 			Boolean uniqueService;
 

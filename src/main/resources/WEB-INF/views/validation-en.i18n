@@ -84,7 +84,7 @@ acme.validation.realm.identifierPattern.message = The identifier must include 2-
 
 acme.validation.recommendation.uniquePlaceId.message = The place identifier must be unique
 
-acme.validation.service.promotionCodePattern.message = The promotion code must contain 3-4 letters, a hyphen and 2 numbers
+acme.validation.service.promotionCodePattern.message = The promotion code must contain 4 letters, a hyphen and 2 numbers
 
 acme.validation.systemConfiguration.systemCurrency.message = Should be a three-letters currency code
 acme.validation.systemConfiguration.acceptedCurrencies.message = Should be a list of three-letter currency codes, separated by commas followed by a space
