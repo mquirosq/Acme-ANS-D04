@@ -29,9 +29,8 @@ public class AirlineManagerFlightLegShowService extends AbstractGuiService<Airli
 		FlightLeg leg;
 		AirlineManager manager;
 
-		legIdInput = super.getRequest().getData("id", String.class);
-
 		try {
+			legIdInput = super.getRequest().getData("id", String.class);
 			legId = Integer.parseInt(legIdInput);
 			leg = this.repository.findFlightLegById(legId);
 			managerId = super.getRequest().getPrincipal().getActiveRealm().getId();
