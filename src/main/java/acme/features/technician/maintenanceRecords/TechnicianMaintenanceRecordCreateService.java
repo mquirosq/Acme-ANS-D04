@@ -12,6 +12,7 @@ import acme.client.services.GuiService;
 import acme.datatypes.recordStatus;
 import acme.entities.Aircraft;
 import acme.entities.MaintenanceRecord;
+import acme.entities.Task;
 import acme.realms.Technician;
 
 @GuiService
@@ -81,14 +82,22 @@ public class TechnicianMaintenanceRecordCreateService extends AbstractGuiService
 		Dataset dataset;
 		SelectChoices aircraftChoices;
 		Collection<Aircraft> aircrafts;
+		boolean publishable;
+		Collection<Task> tasks;
+
+		tasks = this.repository.findTasksByMaintenanceRecordId(mRecord.getId());
+		publishable = mRecord.isDraftMode() && !tasks.isEmpty() && tasks.stream().allMatch(t -> !t.getIsDraft());
 
 		aircrafts = this.repository.findAllAircrafts();
 		aircraftChoices = SelectChoices.from(aircrafts, "registrationNumber", mRecord.getAircraft());
+		boolean draftMode = mRecord.isDraftMode();
 
 		dataset = super.unbindObject(mRecord, "maintenanceDate", "inspectionDue", "cost", "notes");
 		dataset.put("id", mRecord.getId());
 		dataset.put("aircraft", aircraftChoices.getSelected().getKey());
 		dataset.put("aircrafts", aircraftChoices);
+		dataset.put("draftMode", draftMode);
+		dataset.put("publishable", publishable);
 
 		super.getResponse().addData(dataset);
 	}
