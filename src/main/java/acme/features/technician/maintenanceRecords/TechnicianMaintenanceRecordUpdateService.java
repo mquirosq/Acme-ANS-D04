@@ -24,8 +24,10 @@ public class TechnicianMaintenanceRecordUpdateService extends AbstractGuiService
 
 	@Override
 	public void authorise() {
-		boolean status, acStatus;
-		int mRecordId, aircraftId;
+		boolean status;
+		boolean acStatus;
+		int mRecordId;
+		int aircraftId;
 		MaintenanceRecord mRecord;
 		Technician technician;
 		Aircraft aircraft;

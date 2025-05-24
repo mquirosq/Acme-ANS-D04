@@ -27,7 +27,8 @@ public class MaintenanceRecordValidator extends AbstractValidator<ValidMaintenan
 		if (maintenanceRecord == null)
 			super.state(context, false, "*", "javax.validation.constraints.NotNull.message");
 		else if (maintenanceRecord.getMaintenanceDate() != null && maintenanceRecord.getInspectionDue() != null && maintenanceRecord.getCost() != null) {
-			Boolean check, check2;
+			Boolean check;
+			Boolean check2;
 			Date today;
 			Date inspectionDue;
 			Date maintenanceDate;
@@ -40,7 +41,7 @@ public class MaintenanceRecordValidator extends AbstractValidator<ValidMaintenan
 			super.state(context, check, "inspectionDue", "acme.validation.maintenanceRecord.dueInspection.message");
 
 			check2 = MomentHelper.isBefore(maintenanceDate, inspectionDue);
-			super.state(context, check, "maintenanceDate", "acme.validation.maintenanceRecord.maintenanceDate.message");
+			super.state(context, check2, "maintenanceDate", "acme.validation.maintenanceRecord.maintenanceDate.message");
 		}
 
 		result = !super.hasErrors(context);
