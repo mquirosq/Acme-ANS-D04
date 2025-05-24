@@ -94,7 +94,7 @@ acme.validation.systemConfiguration.acceptedCurrencies.contained = The system cu
 acme.validation.activityLog.publishedAssignment.message = The assignment for this activity log is not published
 
 acme.validation.maintenanceRecord.maintenanceDate.message = The maintenance date must be before the inspection date of the record
-acme.validation.maintenanceRecord.inspectionDue.message = The inspection date must be in the future
+acme.validation.maintenanceRecord.dueInspection.message = The inspection date must be in the future
 acme.validation.taskRecord.task.message = Published records cannot contain non-published tasks
 
 authenticated.money-exchange.api-error = There was an error with the conversion. Try again later
