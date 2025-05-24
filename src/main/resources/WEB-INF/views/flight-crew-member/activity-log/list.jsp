@@ -4,9 +4,9 @@
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
 <acme:list>
-	<acme:list-column code="flightCrewMember.activityLog.list.label.typeOfIncident" path="typeOfIncident"/>
-	<acme:list-column code="flightCrewMember.activityLog.list.label.registrationMoment" path="registrationMoment"/>
-	<acme:list-column code="flightCrewMember.activityLog.list.label.severityLevel" path="severityLevel"/>
+	<acme:list-column code="flightCrewMember.activity-log.list.label.typeOfIncident" path="typeOfIncident"/>
+	<acme:list-column code="flightCrewMember.activity-log.list.label.registrationMoment" path="registrationMoment"/>
+	<acme:list-column code="flightCrewMember.activity-log.list.label.severityLevel" path="severityLevel"/>
 	<acme:list-payload path="payload"/>
 </acme:list>
 
