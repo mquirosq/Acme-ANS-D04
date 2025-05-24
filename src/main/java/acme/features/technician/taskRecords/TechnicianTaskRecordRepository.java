@@ -38,7 +38,16 @@ public interface TechnicianTaskRecordRepository extends AbstractRepository {
 	@Query("select tr.task from TaskRecord tr where tr.id = :id")
 	Task findTaskByTaskRecordId(int id);
 
-	@Query("select t from Task t where t not in (select tr.task from TaskRecord tr where tr.record.id = :id)")
-	Collection<Task> findNewTasksforMaintenanceRecord(int id);
+	@Query("select t from Task t where t not in (select tr.task from TaskRecord tr where tr.record.id = :id) and (t.isDraft = false or t.technician.id = :technicianId)")
+	Collection<Task> findNewTasksforMaintenanceRecord(int id, int technicianId);
+
+	@Query("select tr.task from TaskRecord tr where tr.task.id = :taskId and tr.record.id = :maintenanceRecordId")
+	Task findValidTaskByIdAndMaintenanceRecord(int taskId, int maintenanceRecordId);
+
+	@Query("select t from Task t where t.id = :taskId and (t.technician.id = :technicianId or t.isDraft = false)")
+	Task findTechniciansTaskByIds(int taskId, int technicianId);
+
+	@Query("select t from Task t where t.id = :id")
+	Task findTaskById(int id);
 
 }

@@ -23,31 +23,58 @@ public class TechnicianTaskRecordShowService extends AbstractGuiService<Technici
 
 	@Override
 	public void authorise() {
+		int maintenanceRecordId;
+		MaintenanceRecord maintenanceRecord;
 		boolean status;
-		int id;
-		MaintenanceRecord record;
-		id = super.getRequest().getData("id", int.class);
-		record = this.repository.findMaintenanceRecordOfTaskRecordById(id);
-		status = record != null && super.getRequest().getPrincipal().hasRealm(record.getTechnician());
+		int technicianId;
+		int taskId;
+		Task task;
+		boolean taskStatus;
+		boolean alreadyAddedToTheRecord;
+		Task alreadyAddedTask;
 
+		maintenanceRecordId = super.getRequest().getData("maintenanceRecordId", int.class);
+		maintenanceRecord = this.repository.findMaintenanceRecordById(maintenanceRecordId);
+
+		if (maintenanceRecord == null)
+			status = false;
+		else {
+			if (super.getRequest().getMethod().equals("GET"))
+				taskStatus = true;
+			else {
+				technicianId = super.getRequest().getPrincipal().getActiveRealm().getId();
+
+				taskId = super.getRequest().getData("task", int.class);
+				task = this.repository.findTechniciansTaskByIds(taskId, technicianId);
+				alreadyAddedTask = this.repository.findValidTaskByIdAndMaintenanceRecord(taskId, maintenanceRecordId);
+				alreadyAddedToTheRecord = alreadyAddedTask != null;
+				taskStatus = taskId == 0 || task != null && !alreadyAddedToTheRecord;
+			}
+			status = maintenanceRecord.isDraftMode() && super.getRequest().getPrincipal().hasRealm(maintenanceRecord.getTechnician()) && taskStatus;
+		}
 		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
-		TaskRecord taskRecord;
+		MaintenanceRecord maintenanceRecord;
 		int id;
+		TaskRecord taskRecord;
 
-		id = super.getRequest().getData("id", int.class);
-		taskRecord = this.repository.findTaskRecordById(id);
+		id = super.getRequest().getData("maintenanceRecordId", int.class);
+		maintenanceRecord = this.repository.findMaintenanceRecordById(id);
+
+		taskRecord = new TaskRecord();
+		taskRecord.setRecord(maintenanceRecord);
+
 		super.getBuffer().addData(taskRecord);
-		super.getResponse().addGlobal("maintenanceRecordId", taskRecord.getRecord().getId());
 	}
 
 	@Override
 	public void unbind(final TaskRecord taskRecord) {
 		Collection<Task> tasks;
-		SelectChoices taskChoices, technicianChoices;
+		SelectChoices taskChoices;
+		SelectChoices technicianChoices;
 		Dataset dataset;
 
 		int id = super.getRequest().getData("id", int.class);

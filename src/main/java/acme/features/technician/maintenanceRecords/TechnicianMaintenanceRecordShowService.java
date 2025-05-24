@@ -12,6 +12,7 @@ import acme.client.services.GuiService;
 import acme.datatypes.recordStatus;
 import acme.entities.Aircraft;
 import acme.entities.MaintenanceRecord;
+import acme.entities.Task;
 import acme.realms.Technician;
 
 @GuiService
@@ -26,44 +27,51 @@ public class TechnicianMaintenanceRecordShowService extends AbstractGuiService<T
 		boolean status;
 		int masterId;
 		Technician technician;
-		MaintenanceRecord record;
+		MaintenanceRecord mRecord;
 
 		masterId = super.getRequest().getData("id", int.class);
-		record = this.repository.findMaintenanceRecordbyId(masterId);
-		technician = record == null ? null : record.getTechnician();
-		status = record != null && (!record.isDraftMode() || super.getRequest().getPrincipal().getActiveRealm().getId() == technician.getId());
+		mRecord = this.repository.findMaintenanceRecordbyId(masterId);
+		technician = mRecord == null ? null : mRecord.getTechnician();
+		status = mRecord != null && (!mRecord.isDraftMode() || super.getRequest().getPrincipal().getActiveRealm().getId() == technician.getId());
 
 		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
-		MaintenanceRecord record;
+		MaintenanceRecord mRecord;
 		int id;
 
 		id = super.getRequest().getData("id", int.class);
-		record = this.repository.findMaintenanceRecordbyId(id);
+		mRecord = this.repository.findMaintenanceRecordbyId(id);
 
-		super.getBuffer().addData(record);
+		super.getBuffer().addData(mRecord);
 	}
 
 	@Override
-	public void unbind(final MaintenanceRecord record) {
+	public void unbind(final MaintenanceRecord mRecord) {
 		Collection<Aircraft> aircrafts;
-		SelectChoices statusChoices, aircraftChoices;
+		SelectChoices statusChoices;
+		SelectChoices aircraftChoices;
 		Dataset dataset;
+		boolean publishable;
+		Collection<Task> tasks;
+
+		tasks = this.repository.findTasksByMaintenanceRecordId(mRecord.getId());
+		publishable = mRecord.isDraftMode() && !tasks.isEmpty() && tasks.stream().allMatch(t -> !t.getIsDraft());
 
 		aircrafts = this.repository.findAllAircrafts();
-		statusChoices = SelectChoices.from(recordStatus.class, record.getStatus());
-		aircraftChoices = SelectChoices.from(aircrafts, "model", record.getAircraft());
-		boolean draftMode = record.isDraftMode();
+		statusChoices = SelectChoices.from(recordStatus.class, mRecord.getStatus());
+		aircraftChoices = SelectChoices.from(aircrafts, "model", mRecord.getAircraft());
+		boolean draftMode = mRecord.isDraftMode();
 
-		dataset = super.unbindObject(record, "maintenanceDate", "inspectionDue", "cost", "notes");
+		dataset = super.unbindObject(mRecord, "maintenanceDate", "inspectionDue", "cost", "notes");
 		dataset.put("statuses", statusChoices);
 		dataset.put("status", statusChoices.getSelected().getKey());
 		dataset.put("aircrafts", aircraftChoices);
 		dataset.put("aircraft", aircraftChoices.getSelected().getKey());
 		dataset.put("draftMode", draftMode);
+		dataset.put("publishable", publishable);
 
 		super.getResponse().addData(dataset);
 

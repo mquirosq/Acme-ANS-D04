@@ -9,6 +9,7 @@ import acme.client.components.models.Dataset;
 import acme.client.components.views.SelectChoices;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
+import acme.entities.MaintenanceRecord;
 import acme.entities.Task;
 import acme.entities.TaskRecord;
 import acme.realms.Technician;
@@ -22,47 +23,89 @@ public class TechnicianTaskRecordDeleteService extends AbstractGuiService<Techni
 
 	@Override
 	public void authorise() {
-		boolean authorised;
+		int maintenanceRecordId;
+		MaintenanceRecord maintenanceRecord;
+		boolean status;
+		int technicianId;
+		int taskId;
+		Task task;
+		boolean taskStatus;
+		boolean alreadyAddedToTheRecord;
+		Task alreadyAddedTask;
 
-		int taskRecordId = super.getRequest().getData("id", int.class);
-		TaskRecord taskRecord = this.repository.findTaskRecordById(taskRecordId);
+		maintenanceRecordId = super.getRequest().getData("maintenanceRecordId", int.class);
+		maintenanceRecord = this.repository.findMaintenanceRecordById(maintenanceRecordId);
 
-		Technician technician = taskRecord.getRecord().getTechnician();
+		if (maintenanceRecord == null)
+			status = false;
+		else {
+			if (super.getRequest().getMethod().equals("GET"))
+				taskStatus = true;
+			else {
+				technicianId = super.getRequest().getPrincipal().getActiveRealm().getId();
 
-		authorised = taskRecord != null && super.getRequest().getPrincipal().hasRealm(technician);
-		super.getResponse().setAuthorised(authorised);
+				taskId = super.getRequest().getData("task", int.class);
+				task = this.repository.findTechniciansTaskByIds(taskId, technicianId);
+				alreadyAddedTask = this.repository.findValidTaskByIdAndMaintenanceRecord(taskId, maintenanceRecordId);
+				alreadyAddedToTheRecord = alreadyAddedTask != null;
+				taskStatus = taskId == 0 || task != null && !alreadyAddedToTheRecord;
+			}
+			status = maintenanceRecord.isDraftMode() && super.getRequest().getPrincipal().hasRealm(maintenanceRecord.getTechnician()) && taskStatus;
+		}
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
-		TaskRecord taskRecord;
+		MaintenanceRecord maintenanceRecord;
 		int id;
+		TaskRecord taskRecord;
 
-		id = super.getRequest().getData("id", int.class);
-		taskRecord = this.repository.findTaskRecordById(id);
+		id = super.getRequest().getData("maintenanceRecordId", int.class);
+		maintenanceRecord = this.repository.findMaintenanceRecordById(id);
+
+		taskRecord = new TaskRecord();
+		taskRecord.setRecord(maintenanceRecord);
 
 		super.getBuffer().addData(taskRecord);
 	}
 
 	@Override
 	public void bind(final TaskRecord taskRecord) {
-		super.bindObject(taskRecord);
+		int taskId;
+		Task task;
+
+		taskId = super.getRequest().getData("task", int.class);
+		task = this.repository.findTaskById(taskId);
+
+		taskRecord.setTask(task);
 	}
 
 	@Override
 	public void validate(final TaskRecord taskRecord) {
+		boolean exist;
 
+		if (taskRecord.getTask() != null) {
+			TaskRecord checked = this.repository.findTaskRecordsByMaintenanceRecordId(taskRecord.getRecord().getId()).stream().filter(t -> t.getTask() == taskRecord.getTask()).toList().getFirst();
+			exist = checked != null;
+			super.state(exist, "task", "technician.task-record.form.error.not-null");
+		} else
+			super.state(false, "task", "technician.task-record.form.error.not-null");
 	}
 
 	@Override
 	public void perform(final TaskRecord taskRecord) {
-		this.repository.delete(taskRecord);
+		TaskRecord tr = this.repository.findTaskRecordsByMaintenanceRecordId(taskRecord.getRecord().getId()).stream().filter(t -> t.getTask() == taskRecord.getTask()).toList().getFirst();
+
+		if (tr != null)
+			this.repository.delete(taskRecord);
 	}
 
 	@Override
 	public void unbind(final TaskRecord taskRecord) {
 		Collection<Task> tasks;
-		SelectChoices taskChoices, technicianChoices;
+		SelectChoices taskChoices;
+		SelectChoices technicianChoices;
 		Dataset dataset;
 
 		int id = super.getRequest().getData("id", int.class);
