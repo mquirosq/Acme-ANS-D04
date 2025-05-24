@@ -1,0 +1,11 @@
+administrator.service.list.title = Listado de servicios
+administrator.service.form.title = Detalles del servicio
+
+administrator.service.list.label.name = Nombre
+administrator.service.list.label.avgDwellTime = Tiempo promedio de estancia
+
+administrator.service.form.label.name = Nombre:
+administrator.service.form.label.pictureLink = Enlace a la foto:
+administrator.service.form.label.avgDwellTime = Tiempo promedio de estancia:
+administrator.service.form.label.promotionCode = Código de promoción:
+administrator.service.form.label.promotionDiscount = Descuento de promoción:
