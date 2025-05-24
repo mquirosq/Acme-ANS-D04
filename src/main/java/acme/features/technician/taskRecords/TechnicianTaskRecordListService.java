@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import acme.client.components.models.Dataset;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
+import acme.entities.MaintenanceRecord;
+import acme.entities.Task;
 import acme.entities.TaskRecord;
 import acme.realms.Technician;
 
@@ -20,7 +22,36 @@ public class TechnicianTaskRecordListService extends AbstractGuiService<Technici
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		int maintenanceRecordId;
+		MaintenanceRecord maintenanceRecord;
+		boolean status;
+		int technicianId;
+		int taskId;
+		Task task;
+		boolean taskStatus;
+		boolean alreadyAddedToTheRecord;
+		Task alreadyAddedTask;
+
+		maintenanceRecordId = super.getRequest().getData("maintenanceRecordId", int.class);
+		maintenanceRecord = this.repository.findMaintenanceRecordById(maintenanceRecordId);
+
+		if (maintenanceRecord == null)
+			status = false;
+		else {
+			if (super.getRequest().getMethod().equals("GET"))
+				taskStatus = true;
+			else {
+				technicianId = super.getRequest().getPrincipal().getActiveRealm().getId();
+
+				taskId = super.getRequest().getData("task", int.class);
+				task = this.repository.findTechniciansTaskByIds(taskId, technicianId);
+				alreadyAddedTask = this.repository.findValidTaskByIdAndMaintenanceRecord(taskId, maintenanceRecordId);
+				alreadyAddedToTheRecord = alreadyAddedTask != null;
+				taskStatus = taskId == 0 || task != null && !alreadyAddedToTheRecord;
+			}
+			status = maintenanceRecord.isDraftMode() && super.getRequest().getPrincipal().hasRealm(maintenanceRecord.getTechnician()) && taskStatus;
+		}
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
