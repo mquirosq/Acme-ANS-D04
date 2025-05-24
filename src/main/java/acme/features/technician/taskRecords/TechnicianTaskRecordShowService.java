@@ -73,7 +73,8 @@ public class TechnicianTaskRecordShowService extends AbstractGuiService<Technici
 	@Override
 	public void unbind(final TaskRecord taskRecord) {
 		Collection<Task> tasks;
-		SelectChoices taskChoices, technicianChoices;
+		SelectChoices taskChoices;
+		SelectChoices technicianChoices;
 		Dataset dataset;
 
 		int id = super.getRequest().getData("id", int.class);

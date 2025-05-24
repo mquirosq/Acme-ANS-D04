@@ -25,8 +25,10 @@ public class TechnicianMaintenanceRecordPublishService extends AbstractGuiServic
 	@Override
 	public void authorise() {
 		boolean status;
-		boolean tasksPublished, acStatus;
-		int mRecordId, aircraftId;
+		boolean tasksPublished;
+		boolean acStatus;
+		int mRecordId;
+		int aircraftId;
 		MaintenanceRecord mRecord;
 		Technician technician;
 		Collection<Task> tasks;
@@ -40,14 +42,13 @@ public class TechnicianMaintenanceRecordPublishService extends AbstractGuiServic
 		technician = mRecord == null ? null : mRecord.getTechnician();
 		tasks = this.repository.findTasksByMaintenanceRecordId(mRecordId);
 
-		status = mRecord != null && mRecord.isDraftMode() && super.getRequest().getPrincipal().hasRealm(technician);
 		tasksPublished = !tasks.isEmpty() && tasks.stream().allMatch(t -> !t.getIsDraft());
 
 		if (mRecord == null)
 			status = false;
 		else if (!mRecord.isDraftMode() || !super.getRequest().getPrincipal().hasRealm(technician))
 			status = false;
-		else if (super.getRequest().getMethod().equals("GET"))
+		else if (method.equals("GET"))
 			status = tasksPublished;
 		else {
 			aircraftId = super.getRequest().getData("aircraft", int.class);

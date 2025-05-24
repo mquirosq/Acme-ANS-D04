@@ -36,18 +36,18 @@ public class TechnicianMaintenanceRecordListService extends AbstractGuiService<T
 	}
 
 	@Override
-	public void unbind(final MaintenanceRecord record) {
+	public void unbind(final MaintenanceRecord mRecord) {
 		Aircraft aircraft;
 		Dataset dataset;
 		Boolean isDraft;
 
-		aircraft = this.repository.findAircraftByRecordId(record.getId());
-		isDraft = record.isDraftMode();
+		aircraft = this.repository.findAircraftByRecordId(mRecord.getId());
+		isDraft = mRecord.isDraftMode();
 
-		dataset = super.unbindObject(record, "inspectionDue", "maintenanceDate");
+		dataset = super.unbindObject(mRecord, "inspectionDue", "maintenanceDate");
 		dataset.put("aircraft", aircraft.getModel());
 		dataset.put("draftMode", isDraft);
-		super.addPayload(dataset, record, "cost");
+		super.addPayload(dataset, mRecord, "cost");
 
 		super.getResponse().addData(dataset);
 	}

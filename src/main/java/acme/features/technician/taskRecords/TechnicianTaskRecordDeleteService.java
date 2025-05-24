@@ -104,7 +104,8 @@ public class TechnicianTaskRecordDeleteService extends AbstractGuiService<Techni
 	@Override
 	public void unbind(final TaskRecord taskRecord) {
 		Collection<Task> tasks;
-		SelectChoices taskChoices, technicianChoices;
+		SelectChoices taskChoices;
+		SelectChoices technicianChoices;
 		Dataset dataset;
 
 		int id = super.getRequest().getData("id", int.class);
