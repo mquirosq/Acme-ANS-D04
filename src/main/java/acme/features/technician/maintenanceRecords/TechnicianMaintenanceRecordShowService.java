@@ -14,6 +14,7 @@ import acme.components.MoneyExchangeHelper;
 import acme.datatypes.recordStatus;
 import acme.entities.Aircraft;
 import acme.entities.MaintenanceRecord;
+import acme.entities.Task;
 import acme.forms.MoneyExchange;
 import acme.realms.Technician;
 
@@ -51,31 +52,37 @@ public class TechnicianMaintenanceRecordShowService extends AbstractGuiService<T
 	}
 
 	@Override
-	public void unbind(final MaintenanceRecord record) {
+	public void unbind(final MaintenanceRecord mRecord) {
 		Collection<Aircraft> aircrafts;
 		SelectChoices statusChoices, aircraftChoices;
 		Dataset dataset;
+		boolean publishable;
+		Collection<Task> tasks;
+
+		tasks = this.repository.findTasksByMaintenanceRecordId(mRecord.getId());
+		publishable = mRecord.isDraftMode() && !tasks.isEmpty() && tasks.stream().allMatch(t -> !t.getIsDraft());
 
 		aircrafts = this.repository.findAllAircrafts();
-		statusChoices = SelectChoices.from(recordStatus.class, record.getStatus());
-		aircraftChoices = SelectChoices.from(aircrafts, "model", record.getAircraft());
-		boolean draftMode = record.isDraftMode();
+		statusChoices = SelectChoices.from(recordStatus.class, mRecord.getStatus());
+		aircraftChoices = SelectChoices.from(aircrafts, "model", mRecord.getAircraft());
+		boolean draftMode = mRecord.isDraftMode();
 
-		dataset = super.unbindObject(record, "maintenanceDate", "inspectionDue", "cost", "notes");
+		dataset = super.unbindObject(mRecord, "maintenanceDate", "inspectionDue", "cost", "notes");
 		dataset.put("statuses", statusChoices);
 		dataset.put("status", statusChoices.getSelected().getKey());
 		dataset.put("aircrafts", aircraftChoices);
 		dataset.put("aircraft", aircraftChoices.getSelected().getKey());
 		dataset.put("draftMode", draftMode);
+		dataset.put("publishable", publishable);
 
 		String systemCurrency = this.repository.getSystemCurrency();
 
 		Money exchangedPrice;
-		if (systemCurrency.equals(record.getCost().getCurrency()))
+		if (systemCurrency.equals(mRecord.getCost().getCurrency()))
 			exchangedPrice = null;
 		else {
 			MoneyExchange exchange = new MoneyExchange();
-			exchange.setSource(record.getCost());
+			exchange.setSource(mRecord.getCost());
 			exchange.setTargetCurrency(systemCurrency);
 			exchange = MoneyExchangeHelper.performExchangeToSystemCurrency(exchange);
 			exchangedPrice = exchange.getTarget();

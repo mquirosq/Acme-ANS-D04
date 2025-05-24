@@ -13,7 +13,7 @@
 		<acme:input-checkbox code = "customer.passenger.form.label.draft" path = "draftMode" readonly = "${true}"/>
  	</jstl:if>
  	<jstl:choose>
-		<jstl:when test="${_command == 'show' && draftMode}">
+		<jstl:when test="${acme:anyOf(_command, 'show|publish') && draftMode}">
 			<acme:button code="customer.passenger.form.button.edit" action="/customer/passenger/update?id=${id}"/>
 			<acme:submit code="customer.passenger.form.button.publish" action="/customer/passenger/publish?id=${id}"/>
 		</jstl:when>

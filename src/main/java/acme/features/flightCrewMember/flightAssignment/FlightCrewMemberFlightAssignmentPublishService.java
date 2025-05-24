@@ -72,6 +72,21 @@ public class FlightCrewMemberFlightAssignmentPublishService extends AbstractGuiS
 
 	@Override
 	public void bind(final FlightAssignment flightAssignment) {
+		int flightLegId;
+		FlightLeg flightLeg;
+
+		int flightCrewMemberId;
+		FlightCrewMember flightCrewMember;
+
+		flightLegId = super.getRequest().getData("leg", int.class);
+		flightLeg = this.repository.findByLegId(flightLegId);
+
+		flightCrewMemberId = super.getRequest().getPrincipal().getActiveRealm().getId();
+		flightCrewMember = this.repository.findByFlightCrewMemberId(flightCrewMemberId);
+
+		super.bindObject(flightAssignment, "duty", "currentStatus", "remarks");
+		flightAssignment.setLeg(flightLeg);
+		flightAssignment.setAllocatedFlightCrewMember(flightCrewMember);
 	}
 
 	@Override
@@ -118,10 +133,9 @@ public class FlightCrewMemberFlightAssignmentPublishService extends AbstractGuiS
 		Collection<FlightLeg> flightLegs = this.repository.findAllPublishedLegs();
 		;
 
-		legChoices = SelectChoices.from(flightLegs, "flightNumber", flightAssignment.getLeg());
+		legChoices = SelectChoices.from(flightLegs, "identifier", flightAssignment.getLeg());
 		statusChoices = SelectChoices.from(CurrentStatus.class, flightAssignment.getCurrentStatus());
 		dutyChoices = SelectChoices.from(Duty.class, flightAssignment.getDuty());
-
 		dataset = super.unbindObject(flightAssignment, "moment", "remarks", "published");
 		dataset.put("readonly", false);
 		dataset.put("legs", legChoices);

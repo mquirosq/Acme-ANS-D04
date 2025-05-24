@@ -63,6 +63,16 @@ public class FlightLeg extends AbstractEntity {
 		return result;
 	}
 
+	@Transient
+	public String getIdentifier() {
+		String identifier = " - ";
+
+		if (this.getFlightNumber() != null && this.getStatus() != null)
+			identifier = this.getFlightNumber() + " - " + this.getStatus();
+
+		return identifier;
+	}
+
 
 	@Mandatory
 	@Valid

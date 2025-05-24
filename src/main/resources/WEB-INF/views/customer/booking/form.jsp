@@ -12,7 +12,7 @@
 	<jstl:if test="${_command != 'create'}">
 		<acme:input-money code="customer.booking.form.label.price" path="price" readonly="True"/>
 		<jstl:if test="${systemPrice != null}">
-			<acme:input-money code="customer.booking.form.label.price-exchange" path="systemPrice"/>
+			<acme:input-money code="customer.booking.form.label.price-exchange" path="systemPrice" readonly="True"/>
 		</jstl:if>
 		<acme:input-moment code="customer.booking.form.label.purchasedAt" path="purchasedAt" readonly = "${true}"/>
 		<acme:input-checkbox code = "customer.booking.form.label.draft" path = "draftMode" readonly = "${true}"/>

@@ -40,7 +40,7 @@ public class FlightCrewMemberFlightAssignmentListPlannedService extends Abstract
 
 		dataset = super.unbindObject(flightAssignment, "duty", "moment", "currentStatus", "allocatedFlightCrewMember.employeeCode", "leg.flightNumber");
 
-		super.addPayload(dataset, flightAssignment, "remarks");
+		super.addPayload(dataset, flightAssignment, "remarks", "published");
 		super.getResponse().addData(dataset);
 	}
 

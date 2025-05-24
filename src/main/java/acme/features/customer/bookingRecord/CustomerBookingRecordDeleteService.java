@@ -83,19 +83,19 @@ public class CustomerBookingRecordDeleteService extends AbstractGuiService<Custo
 
 	@Override
 	public void unbind(final BookingRecord bookingRecord) {
-		// There is no way to trigger this method in the actual implementation
 		Collection<Passenger> passengers;
 		SelectChoices choices;
 		Dataset dataset;
 
 		int customerId = super.getRequest().getPrincipal().getActiveRealm().getId();
-		int bookingId = bookingRecord.getBooking().getId();
-		passengers = this.repository.findMyPassengersNotAlreadyInBooking(customerId, bookingId);
+		passengers = this.repository.findMyPassengers(customerId);
 		choices = SelectChoices.from(passengers, "identifier", bookingRecord.getPassenger());
 
 		dataset = super.unbindObject(bookingRecord);
 		dataset.put("passenger", bookingRecord.getPassenger().getId());
 		dataset.put("passengers", choices);
+
+		super.getResponse().addGlobal("draft", bookingRecord.getBooking().isDraftMode());
 
 		super.getResponse().addData(dataset);
 	}
