@@ -91,4 +91,8 @@ acme.validation.systemConfiguration.acceptedCurrencies.contained = La moneda del
 
 acme.validation.activityLog.publishedAssignment.message = La asignación de vuelo para este registro de actividad no esta publicado
 
+acme.validation.maintenanceRecord.maintenanceDate.message = La fecha de mantenimiento debe ser anterior a la fecha de inspección
+acme.validation.maintenanceRecord.dueInspection.message = La fecha de inspección debe estar en el futuro
+acme.validation.taskRecord.task.message = Los registros publicados no pueden contener tareas no publicadas
+
 authenticated.money-exchange.api-error = Ha habido un error con la conversión. Intentelo de nuevo más tarde
