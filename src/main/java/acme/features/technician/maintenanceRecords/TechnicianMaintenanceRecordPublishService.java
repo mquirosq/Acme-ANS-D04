@@ -28,37 +28,35 @@ public class TechnicianMaintenanceRecordPublishService extends AbstractGuiServic
 	@Override
 	public void authorise() {
 		boolean status;
-		boolean tasksPublished;
 		boolean acStatus;
 		int mRecordId;
 		int aircraftId;
 		MaintenanceRecord mRecord;
 		Technician technician;
-		Collection<Task> tasks;
 		Aircraft aircraft;
-		String method;
+		String mRecordIdString;
+		String aircraftIdString;
 
-		method = super.getRequest().getMethod();
-
-		mRecordId = super.getRequest().getData("id", int.class);
-		mRecord = this.repository.findMaintenanceRecordbyId(mRecordId);
-		technician = mRecord == null ? null : mRecord.getTechnician();
-		tasks = this.repository.findTasksByMaintenanceRecordId(mRecordId);
-
-		tasksPublished = !tasks.isEmpty() && tasks.stream().allMatch(t -> !t.getIsDraft());
-
-		if (mRecord == null)
+		try {
+			mRecordIdString = super.getRequest().getData("id", String.class);
+			mRecordId = Integer.parseInt(mRecordIdString);
+			mRecord = this.repository.findMaintenanceRecordbyId(mRecordId);
+			technician = mRecord == null ? null : mRecord.getTechnician();
+			if (mRecord == null)
+				status = false;
+			else if (!mRecord.isDraftMode() || !super.getRequest().getPrincipal().hasRealm(technician))
+				status = false;
+			else if (super.getRequest().getMethod().equals("GET"))
+				status = true;
+			else {
+				aircraftIdString = super.getRequest().getData("aircraft", String.class);
+				aircraftId = Integer.parseInt(aircraftIdString);
+				aircraft = this.repository.findAircraftById(aircraftId);
+				acStatus = aircraftId == 0 || aircraft != null;
+				status = acStatus;
+			}
+		} catch (NumberFormatException | AssertionError e) {
 			status = false;
-		else if (!mRecord.isDraftMode() || !super.getRequest().getPrincipal().hasRealm(technician))
-			status = false;
-		else if (method.equals("GET"))
-			status = tasksPublished;
-		else {
-			aircraftId = super.getRequest().getData("aircraft", int.class);
-			aircraft = this.repository.findAircraftById(aircraftId);
-			acStatus = aircraftId == 0 || aircraft != null;
-
-			status = acStatus;
 		}
 
 		super.getResponse().setAuthorised(status);

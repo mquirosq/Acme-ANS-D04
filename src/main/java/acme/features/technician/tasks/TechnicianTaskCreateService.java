@@ -20,7 +20,28 @@ public class TechnicianTaskCreateService extends AbstractGuiService<Technician, 
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status;
+		int masterId;
+		Technician technician;
+		Task task;
+		String masterIdString;
+
+		try {
+			masterIdString = super.getRequest().getData("id", String.class);
+			masterId = Integer.parseInt(masterIdString);
+			task = this.repository.findTaskById(masterId);
+			technician = task == null ? null : task.getTechnician();
+			if (task == null)
+				status = false;
+			else if (!task.getIsDraft() || !super.getRequest().getPrincipal().hasRealm(technician))
+				status = false;
+			else
+				status = true;
+		} catch (NumberFormatException | AssertionError e) {
+			status = false;
+		}
+
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
