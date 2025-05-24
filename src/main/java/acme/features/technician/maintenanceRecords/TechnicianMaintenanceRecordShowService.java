@@ -27,31 +27,32 @@ public class TechnicianMaintenanceRecordShowService extends AbstractGuiService<T
 		boolean status;
 		int masterId;
 		Technician technician;
-		MaintenanceRecord record;
+		MaintenanceRecord mRecord;
 
 		masterId = super.getRequest().getData("id", int.class);
-		record = this.repository.findMaintenanceRecordbyId(masterId);
-		technician = record == null ? null : record.getTechnician();
-		status = record != null && (!record.isDraftMode() || super.getRequest().getPrincipal().getActiveRealm().getId() == technician.getId());
+		mRecord = this.repository.findMaintenanceRecordbyId(masterId);
+		technician = mRecord == null ? null : mRecord.getTechnician();
+		status = mRecord != null && (!mRecord.isDraftMode() || super.getRequest().getPrincipal().getActiveRealm().getId() == technician.getId());
 
 		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
-		MaintenanceRecord record;
+		MaintenanceRecord mRecord;
 		int id;
 
 		id = super.getRequest().getData("id", int.class);
-		record = this.repository.findMaintenanceRecordbyId(id);
+		mRecord = this.repository.findMaintenanceRecordbyId(id);
 
-		super.getBuffer().addData(record);
+		super.getBuffer().addData(mRecord);
 	}
 
 	@Override
 	public void unbind(final MaintenanceRecord mRecord) {
 		Collection<Aircraft> aircrafts;
-		SelectChoices statusChoices, aircraftChoices;
+		SelectChoices statusChoices;
+		SelectChoices aircraftChoices;
 		Dataset dataset;
 		boolean publishable;
 		Collection<Task> tasks;
