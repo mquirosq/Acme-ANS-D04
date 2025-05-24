@@ -29,7 +29,7 @@ public class AirlineManagerFlightShowService extends AbstractGuiService<AirlineM
 			int flightId = Integer.parseInt(flightIdInput);
 			Flight flight = this.repository.findFlightById(flightId);
 			authorised = flight != null && super.getRequest().getPrincipal().hasRealm(flight.getManager());
-		} catch (NumberFormatException e) {
+		} catch (NumberFormatException | AssertionError e) {
 			authorised = false;
 		}
 

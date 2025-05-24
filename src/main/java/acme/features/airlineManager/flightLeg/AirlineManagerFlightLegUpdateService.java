@@ -39,7 +39,7 @@ public class AirlineManagerFlightLegUpdateService extends AbstractGuiService<Air
 			managerId = super.getRequest().getPrincipal().getActiveRealm().getId();
 			manager = this.repository.findManagerById(managerId);
 			authorised = leg != null && leg.getDraftMode() && leg.getParentFlight() != null && leg.getParentFlight().getManager() != null && leg.getParentFlight().getManager().equals(manager);
-		} catch (NumberFormatException e) {
+		} catch (NumberFormatException | AssertionError e) {
 			authorised = false;
 		}
 
