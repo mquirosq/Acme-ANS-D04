@@ -14,16 +14,28 @@ import acme.entities.Service;
 public class AdministratorServiceController extends AbstractGuiController<Administrator, Service> {
 
 	@Autowired
-	private AdministratorServiceListService	listService;
+	private AdministratorServiceListService		listService;
 
 	@Autowired
-	private AdministratorServiceShowService	showService;
+	private AdministratorServiceShowService		showService;
+
+	@Autowired
+	private AdministratorServiceCreateService	createService;
+
+	@Autowired
+	private AdministratorServiceUpdateService	updateService;
+
+	@Autowired
+	private AdministratorServiceDeleteService	deleteService;
 
 
 	@PostConstruct
 	protected void initialise() {
 		super.addBasicCommand("list", this.listService);
 		super.addBasicCommand("show", this.showService);
+		super.addBasicCommand("create", this.createService);
+		super.addBasicCommand("delete", this.deleteService);
+		super.addBasicCommand("update", this.updateService);
 	}
 
 }

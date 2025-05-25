@@ -32,15 +32,14 @@ public class AirlineManagerFlightLegDeleteService extends AbstractGuiService<Air
 		FlightLeg leg;
 		AirlineManager manager;
 
-		legIdInput = super.getRequest().getData("id", String.class);
-
 		try {
+			legIdInput = super.getRequest().getData("id", String.class);
 			legId = Integer.parseInt(legIdInput);
 			leg = this.repository.findFlightLegById(legId);
 			managerId = super.getRequest().getPrincipal().getActiveRealm().getId();
 			manager = this.repository.findManagerById(managerId);
 			authorised = leg != null && leg.getDraftMode() && leg.getParentFlight() != null && leg.getParentFlight().getManager() != null && leg.getParentFlight().getManager().equals(manager);
-		} catch (NumberFormatException e) {
+		} catch (NumberFormatException | AssertionError e) {
 			authorised = false;
 		}
 
