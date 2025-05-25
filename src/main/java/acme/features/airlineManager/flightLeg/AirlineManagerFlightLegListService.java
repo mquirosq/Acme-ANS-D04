@@ -10,6 +10,7 @@ import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.Flight;
 import acme.entities.FlightLeg;
+import acme.helpers.InternationalisationHelper;
 import acme.realms.AirlineManager;
 
 @GuiService
@@ -55,7 +56,8 @@ public class AirlineManagerFlightLegListService extends AbstractGuiService<Airli
 		String arrivalAirport = "";
 		Dataset dataset;
 
-		dataset = super.unbindObject(leg, "flightNumber", "draftMode");
+		dataset = super.unbindObject(leg, "flightNumber");
+		dataset.put("draftMode", InternationalisationHelper.internationalizeBoolean(leg.getDraftMode()));
 
 		departureAirport = leg.getDepartureAirport().getIATACode();
 		arrivalAirport = leg.getArrivalAirport().getIATACode();
