@@ -10,7 +10,7 @@ import acme.client.services.GuiService;
 import acme.entities.Service;
 
 @GuiService
-public class AdministratorServiceShowService extends AbstractGuiService<Administrator, Service> {
+public class AdministratorServiceCreateService extends AbstractGuiService<Administrator, Service> {
 
 	@Autowired
 	private AdministratorServiceRepository repository;
@@ -18,31 +18,31 @@ public class AdministratorServiceShowService extends AbstractGuiService<Administ
 
 	@Override
 	public void authorise() {
-		Boolean authorised;
-		String rawId;
-		int serviceId;
-		Service service;
-
-		try {
-			rawId = super.getRequest().getData("id", String.class);
-			serviceId = Integer.parseInt(rawId);
-			service = this.repository.findServiceById(serviceId);
-			authorised = service != null;
-		} catch (NumberFormatException e) {
-			authorised = false;
-		}
-		super.getResponse().setAuthorised(authorised);
+		super.getResponse().setAuthorised(true);
 	}
 
 	@Override
 	public void load() {
 		Service service;
-		int id;
 
-		id = super.getRequest().getData("id", int.class);
-		service = this.repository.findServiceById(id);
+		service = new Service();
 
 		super.getBuffer().addData(service);
+	}
+
+	@Override
+	public void bind(final Service service) {
+		super.bindObject(service, "name", "pictureLink", "avgDwellTime", "promotionCode", "promotionDiscount");
+	}
+
+	@Override
+	public void validate(final Service service) {
+		;
+	}
+
+	@Override
+	public void perform(final Service service) {
+		this.repository.save(service);
 	}
 
 	@Override

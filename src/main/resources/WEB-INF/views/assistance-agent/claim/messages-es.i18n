@@ -7,6 +7,8 @@ assistance-agent.claim.list.label.registrationMoment	= Momento de registro
 
 assistance-agent.claim.list.button.create				= Crear
 
+assistance-agent.claim.list.completed					= completada
+
 assistance-agent.claim.form.title						= Detalles de la reclamación
 
 assistance-agent.claim.form.label.registrationMoment	= Momento de registro	

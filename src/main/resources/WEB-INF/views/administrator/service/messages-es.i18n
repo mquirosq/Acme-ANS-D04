@@ -9,3 +9,8 @@ administrator.service.form.label.pictureLink = Enlace a la foto:
 administrator.service.form.label.avgDwellTime = Tiempo promedio de estancia:
 administrator.service.form.label.promotionCode = Código de promoción:
 administrator.service.form.label.promotionDiscount = Descuento de promoción:
+
+administrator.service.list.button.create = Crear
+
+administrator.service.form.button.update = Editar
+administrator.service.form.button.delete = Borrar
