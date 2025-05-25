@@ -4,12 +4,15 @@
 <%@taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
-<acme:form> 
-	<acme:input-moment code="technician.maintenance-record.form.label.maintenance-date" path="maintenanceDate"/>	
+<acme:form> 	
 	<acme:input-select code="technician.maintenance-record.form.label.status" path="status" choices="${statuses}" readonly="true"/>
 	<acme:input-select code="technician.maintenance-record.form.label.aircraft" path="aircraft" choices="${aircrafts}"/>
+	<acme:input-moment code="technician.maintenance-record.form.label.maintenance-date" path="maintenanceDate"/>
 	<acme:input-moment code="technician.maintenance-record.form.label.inspection-due" path="inspectionDue"/>
 	<acme:input-money code="technician.maintenance-record.form.label.cost" path="cost"/>
+		<jstl:if test="${systemPrice != null}">
+			<acme:input-money code="technician.maintenance-record.form.label.price-exchange" path="systemPrice"/>
+		</jstl:if>
 	<acme:input-textarea code="technician.maintenance-record.form.label.notes" path="notes"/>
 
 	<jstl:choose>	 

@@ -24,20 +24,26 @@ public class TechnicianMaintenanceRecordCreateService extends AbstractGuiService
 	@Override
 	public void authorise() {
 		boolean status;
-		String method;
 		int aircraftId;
 		Aircraft aircraft;
+		String aircraftIdString;
 
-		method = super.getRequest().getMethod();
+		status = true;
 
-		if (method.equals("GET"))
-			status = true;
-		else {
-			aircraftId = super.getRequest().getData("aircraft", int.class);
-			aircraft = this.repository.findAircraftById(aircraftId);
-			status = aircraftId == 0 || aircraft != null;
+		if (super.getRequest().hasData("aircraft")) {
+			aircraftIdString = super.getRequest().getData("aircraft", String.class);
+
+			try {
+				aircraftId = Integer.parseInt(aircraftIdString);
+			} catch (NumberFormatException e) {
+				aircraftId = -1;
+			}
+
+			if (aircraftId != 0) {
+				aircraft = this.repository.findAircraftById(aircraftId);
+				status = aircraft != null;
+			}
 		}
-
 		super.getResponse().setAuthorised(status);
 	}
 
@@ -84,11 +90,13 @@ public class TechnicianMaintenanceRecordCreateService extends AbstractGuiService
 
 		aircrafts = this.repository.findAllAircrafts();
 		aircraftChoices = SelectChoices.from(aircrafts, "registrationNumber", mRecord.getAircraft());
+		boolean draftMode = mRecord.isDraftMode();
 
 		dataset = super.unbindObject(mRecord, "maintenanceDate", "inspectionDue", "cost", "notes");
 		dataset.put("id", mRecord.getId());
 		dataset.put("aircraft", aircraftChoices.getSelected().getKey());
 		dataset.put("aircrafts", aircraftChoices);
+		dataset.put("draftMode", draftMode);
 
 		super.getResponse().addData(dataset);
 	}

@@ -15,9 +15,13 @@ import acme.realms.Customer;
 @GuiService
 public class CustomerBookingRecordListService extends AbstractGuiService<Customer, BookingRecord> {
 
-	@Autowired
-	private CustomerBookingRecordRepository repository;
+	private final CustomerBookingRecordRepository repository;
 
+
+	@Autowired
+	public CustomerBookingRecordListService(final CustomerBookingRecordRepository repository) {
+		this.repository = repository;
+	}
 
 	@Override
 	public void authorise() {

@@ -23,35 +23,29 @@ public class TechnicianTaskRecordShowService extends AbstractGuiService<Technici
 
 	@Override
 	public void authorise() {
-		int maintenanceRecordId;
-		MaintenanceRecord maintenanceRecord;
+		int taskRecordId;
+		TaskRecord taskRecord;
+		Technician technician;
 		boolean status;
-		int technicianId;
-		int taskId;
-		Task task;
-		boolean taskStatus;
-		boolean alreadyAddedToTheRecord;
-		Task alreadyAddedTask;
+		String taskRecordIdString;
 
-		maintenanceRecordId = super.getRequest().getData("maintenanceRecordId", int.class);
-		maintenanceRecord = this.repository.findMaintenanceRecordById(maintenanceRecordId);
-
-		if (maintenanceRecord == null)
+		try {
+			taskRecordIdString = super.getRequest().getData("id", String.class);
+			taskRecordId = Integer.parseInt(taskRecordIdString);
+			taskRecord = this.repository.findTaskRecordById(taskRecordId);
+			technician = taskRecord == null ? null : taskRecord.getRecord().getTechnician();
+			if (taskRecord == null)
+				status = false;
+			else if (!taskRecord.getRecord().isDraftMode())
+				status = true;
+			else if (!super.getRequest().getPrincipal().hasRealm(technician))
+				status = false;
+			else
+				status = true;
+		} catch (NumberFormatException | AssertionError e) {
 			status = false;
-		else {
-			if (super.getRequest().getMethod().equals("GET"))
-				taskStatus = true;
-			else {
-				technicianId = super.getRequest().getPrincipal().getActiveRealm().getId();
-
-				taskId = super.getRequest().getData("task", int.class);
-				task = this.repository.findTechniciansTaskByIds(taskId, technicianId);
-				alreadyAddedTask = this.repository.findValidTaskByIdAndMaintenanceRecord(taskId, maintenanceRecordId);
-				alreadyAddedToTheRecord = alreadyAddedTask != null;
-				taskStatus = taskId == 0 || task != null && !alreadyAddedToTheRecord;
-			}
-			status = maintenanceRecord.isDraftMode() && super.getRequest().getPrincipal().hasRealm(maintenanceRecord.getTechnician()) && taskStatus;
 		}
+
 		super.getResponse().setAuthorised(status);
 	}
 
@@ -61,10 +55,10 @@ public class TechnicianTaskRecordShowService extends AbstractGuiService<Technici
 		int id;
 		TaskRecord taskRecord;
 
-		id = super.getRequest().getData("maintenanceRecordId", int.class);
-		maintenanceRecord = this.repository.findMaintenanceRecordById(id);
+		id = super.getRequest().getData("id", int.class);
+		taskRecord = this.repository.findTaskRecordById(id);
 
-		taskRecord = new TaskRecord();
+		maintenanceRecord = taskRecord.getRecord();
 		taskRecord.setRecord(maintenanceRecord);
 
 		super.getBuffer().addData(taskRecord);

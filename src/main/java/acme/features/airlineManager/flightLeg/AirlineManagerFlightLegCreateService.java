@@ -64,8 +64,10 @@ public class AirlineManagerFlightLegCreateService extends AbstractGuiService<Air
 	@Override
 	public void validate(final FlightLeg leg) {
 		boolean departureIsInTheFuture = leg.getScheduledDeparture() != null && MomentHelper.isFuture(leg.getScheduledDeparture());
+		boolean arrivalIsInTheFuture = leg.getScheduledArrival() != null && MomentHelper.isFuture(leg.getScheduledArrival());
 
 		super.state(departureIsInTheFuture, "scheduledDeparture", "acme.validation.flightLeg.scheduledDeparture.message");
+		super.state(arrivalIsInTheFuture, "scheduledArrival", "acme.validation.flightLeg.scheduledArrival.message");
 	}
 
 	@Override

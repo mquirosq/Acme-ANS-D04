@@ -14,9 +14,13 @@ import acme.helpers.ValidatorHelper;
 @Validator
 public class RecommendationValidator extends AbstractValidator<ValidRecommendation, Recommendation> {
 
-	@Autowired
-	private RecommendationRepository repository;
+	private final RecommendationRepository repository;
 
+
+	@Autowired
+	public RecommendationValidator(final RecommendationRepository repository) {
+		this.repository = repository;
+	}
 
 	@Override
 	protected void initialise(final ValidRecommendation annotation) {

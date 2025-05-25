@@ -24,7 +24,7 @@ public class FlightCrewMemberFlightAssignmentShowService extends AbstractGuiServ
 
 	@Override
 	public void authorise() {
-		boolean authorised = true;
+		boolean authorised = false;
 
 		int flightAssignmentId;
 		String requestFlightAssignmentId;
@@ -35,7 +35,7 @@ public class FlightCrewMemberFlightAssignmentShowService extends AbstractGuiServ
 			try {
 				flightAssignmentId = Integer.parseInt(requestFlightAssignmentId);
 				flightAssignment = this.repository.findFlightAssignmentById(flightAssignmentId);
-				authorised = super.getRequest().getPrincipal().hasRealm(flightAssignment.getAllocatedFlightCrewMember());
+				authorised = flightAssignment != null && super.getRequest().getPrincipal().hasRealm(flightAssignment.getAllocatedFlightCrewMember());
 			} catch (NumberFormatException e) {
 				authorised = false;
 			}
