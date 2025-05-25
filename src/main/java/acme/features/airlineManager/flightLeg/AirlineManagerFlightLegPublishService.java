@@ -32,9 +32,8 @@ public class AirlineManagerFlightLegPublishService extends AbstractGuiService<Ai
 		FlightLeg leg;
 		AirlineManager manager;
 
-		legIdInput = super.getRequest().getData("id", String.class);
-
 		try {
+			legIdInput = super.getRequest().getData("id", String.class);
 			legId = Integer.parseInt(legIdInput);
 			leg = this.repository.findFlightLegById(legId);
 			managerId = super.getRequest().getPrincipal().getActiveRealm().getId();
@@ -70,8 +69,10 @@ public class AirlineManagerFlightLegPublishService extends AbstractGuiService<Ai
 	@Override
 	public void validate(final FlightLeg leg) {
 		boolean departureIsInTheFuture = leg.getScheduledDeparture() != null && MomentHelper.isFuture(leg.getScheduledDeparture());
+		boolean arrivalIsInTheFuture = leg.getScheduledArrival() != null && MomentHelper.isFuture(leg.getScheduledArrival());
 
 		super.state(departureIsInTheFuture, "scheduledDeparture", "acme.validation.flightLeg.scheduledDeparture.message");
+		super.state(arrivalIsInTheFuture, "scheduledArrival", "acme.validation.flightLeg.scheduledArrival.message");
 
 		boolean publishedLegsNotOverlapping = true;
 

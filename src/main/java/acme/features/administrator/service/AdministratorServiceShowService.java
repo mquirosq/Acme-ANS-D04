@@ -18,7 +18,20 @@ public class AdministratorServiceShowService extends AbstractGuiService<Administ
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		Boolean authorised;
+		String rawId;
+		int serviceId;
+		Service service;
+
+		try {
+			rawId = super.getRequest().getData("id", String.class);
+			serviceId = Integer.parseInt(rawId);
+			service = this.repository.findServiceById(serviceId);
+			authorised = service != null;
+		} catch (NumberFormatException e) {
+			authorised = false;
+		}
+		super.getResponse().setAuthorised(authorised);
 	}
 
 	@Override
@@ -37,6 +50,7 @@ public class AdministratorServiceShowService extends AbstractGuiService<Administ
 		Dataset dataset;
 
 		dataset = super.unbindObject(service, "name", "pictureLink", "avgDwellTime", "promotionCode", "promotionDiscount");
+		dataset.put("readonly", false);
 
 		super.getResponse().addData(dataset);
 	}

@@ -10,3 +10,8 @@ administrator.service.form.label.avgDwellTime = Average dwell time:
 administrator.service.form.label.promotionCode = Promotion code:
 administrator.service.form.label.promotionDiscount = Promotion discount:
 
+administrator.service.list.button.create = Create
+
+administrator.service.form.button.update = Update
+administrator.service.form.button.delete = Delete
+

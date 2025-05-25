@@ -10,6 +10,7 @@ import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.Flight;
 import acme.entities.FlightLeg;
+import acme.helpers.InternationalisationHelper;
 import acme.realms.AirlineManager;
 
 @GuiService
@@ -23,13 +24,12 @@ public class AirlineManagerFlightLegListService extends AbstractGuiService<Airli
 	public void authorise() {
 		Boolean authorised = true;
 
-		String flightIdInput = super.getRequest().getData("parentId", String.class);
-
 		try {
+			String flightIdInput = super.getRequest().getData("parentId", String.class);
 			int flightId = Integer.parseInt(flightIdInput);
 			Flight flight = this.repository.findFlightById(flightId);
 			authorised = flight != null && super.getRequest().getPrincipal().getActiveRealm().equals(flight.getManager());
-		} catch (NumberFormatException e) {
+		} catch (NumberFormatException | AssertionError e) {
 			authorised = false;
 		}
 
@@ -56,7 +56,8 @@ public class AirlineManagerFlightLegListService extends AbstractGuiService<Airli
 		String arrivalAirport = "";
 		Dataset dataset;
 
-		dataset = super.unbindObject(leg, "flightNumber", "draftMode");
+		dataset = super.unbindObject(leg, "flightNumber");
+		dataset.put("draftMode", InternationalisationHelper.internationalizeBoolean(leg.getDraftMode()));
 
 		departureAirport = leg.getDepartureAirport().getIATACode();
 		arrivalAirport = leg.getArrivalAirport().getIATACode();

@@ -7,6 +7,8 @@ assistance-agent.claim.list.label.registrationMoment	= Registration moment
 
 assistance-agent.claim.list.button.create				= Create
 
+assistance-agent.claim.list.completed					= completed
+
 assistance-agent.claim.form.title						= Claim details	
 
 assistance-agent.claim.form.label.registrationMoment	= Registration moment	
