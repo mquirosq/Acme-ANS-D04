@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import acme.client.components.models.Dataset;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
+import acme.entities.MaintenanceRecord;
 import acme.entities.TaskRecord;
 import acme.realms.Technician;
 
@@ -20,7 +21,27 @@ public class TechnicianTaskRecordListService extends AbstractGuiService<Technici
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		int maintenanceRecordId;
+		MaintenanceRecord maintenanceRecord;
+		boolean status;
+		String maintenanceRecordIdString;
+		Technician technician;
+
+		try {
+			maintenanceRecordIdString = super.getRequest().getData("id", String.class);
+			maintenanceRecordId = Integer.parseInt(maintenanceRecordIdString);
+			maintenanceRecord = this.repository.findMaintenanceRecordById(maintenanceRecordId);
+			technician = maintenanceRecord == null ? null : maintenanceRecord.getTechnician();
+
+			if (maintenanceRecord == null)
+				status = false;
+			else
+				status = !maintenanceRecord.isDraftMode() || super.getRequest().getPrincipal().hasRealm(technician);
+		} catch (NumberFormatException | AssertionError e) {
+			status = false;
+		}
+
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override

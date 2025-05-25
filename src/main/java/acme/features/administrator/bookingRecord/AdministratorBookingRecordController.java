@@ -15,14 +15,17 @@ public class AdministratorBookingRecordController extends AbstractGuiController<
 
 	// Internal state ---------------------------------------------------------
 
-	@Autowired
-	private AdministratorBookingRecordListService	listService;
+	private final AdministratorBookingRecordListService	listService;
+	private final AdministratorBookingRecordShowService	showService;
+
 
 	@Autowired
-	private AdministratorBookingRecordShowService	showService;
+	public AdministratorBookingRecordController(final AdministratorBookingRecordListService listService, final AdministratorBookingRecordShowService showService) {
+		this.listService = listService;
+		this.showService = showService;
+	}
 
 	// Constructors -----------------------------------------------------------
-
 
 	@PostConstruct
 	protected void initialise() {

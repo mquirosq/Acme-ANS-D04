@@ -22,11 +22,15 @@ public class CustomerBookingCreateService extends AbstractGuiService<Customer, B
 
 	// Internal state ---------------------------------------------------------
 
+	private final CustomerBookingRepository repository;
+
+
 	@Autowired
-	private CustomerBookingRepository repository;
+	public CustomerBookingCreateService(final CustomerBookingRepository repository) {
+		this.repository = repository;
+	}
 
 	// AbstractService<Customer, Booking> -------------------------------------
-
 
 	@Override
 	public void authorise() {
@@ -83,11 +87,6 @@ public class CustomerBookingCreateService extends AbstractGuiService<Customer, B
 	}
 
 	@Override
-	public void validate(final Booking booking) {
-		;
-	}
-
-	@Override
 	public void perform(final Booking booking) {
 		Money price;
 		Long numberPassengers;
@@ -100,6 +99,11 @@ public class CustomerBookingCreateService extends AbstractGuiService<Customer, B
 
 		booking.setPrice(price);
 		this.repository.save(booking);
+	}
+
+	@Override
+	public void validate(final Booking booking) {
+		// Intentionally left empty: no extra validation needed for Booking in this context.
 	}
 
 	@Override

@@ -9,6 +9,7 @@ import acme.client.components.models.Dataset;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.Flight;
+import acme.helpers.InternationalisationHelper;
 import acme.realms.AirlineManager;
 
 @GuiService
@@ -39,7 +40,8 @@ public class AirlineManagerFlightListService extends AbstractGuiService<AirlineM
 		String identifierCode = flight.getIdentifierCode();
 		Integer numberOfLayovers = flight.getNumberOfLayovers();
 
-		dataset = super.unbindObject(flight, "tag", "draftMode");
+		dataset = super.unbindObject(flight, "tag");
+		dataset.put("draftMode", InternationalisationHelper.internationalizeBoolean(flight.getDraftMode()));
 
 		dataset.put("identifierCode", identifierCode);
 		dataset.put("numberOfLayovers", numberOfLayovers);

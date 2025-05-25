@@ -41,8 +41,8 @@ acme.validation.trackingLog.creationMoment.message				= El momento de creación 
 acme.validation.trackingLog.reclaimed.status.message			= Un registro reclamado debe tener el mismo estado que el registro completado anterior
 acme.validation.trackingLog.completedNumber.message				= No pueden haber más de dos registros completados para la misma reclamación
 
-acme.validation.service.promotioncode.message 				= El código de la promoción debe correponder al año actual
-acme.validation.service.promotioncodeuniqueness.message 	= El código de la promoción no es unico
+acme.validation.service.promotioncode.message 				= El año del código de promoción debe correponder al año actual
+acme.validation.service.promotioncodeuniqueness.message 	= El código de promoción no es único
 acme.validation.flightcrewmember.employeecode.message       = Las primeras dos letras del código de empleado deben de coincidir con las iniciales del nombre y apellidos del mismo
 acme.validation.bannedPassenger.issuedAt.message 					= No se puede prohibir el acceso a un pasajero antes de su nacimiento
 acme.validation.bannedPassenger.liftedAt.message 					= No se puede levantar una prohibición antes de su fecha de creación
@@ -52,6 +52,7 @@ acme.validation.customer.liftedAt.message 					= No se puede levantar una prohib
 
 acme.validation.flightLeg.scheduledDates.message = La fecha de salida programada debe ser antes de la fecha de llegada programada
 acme.validation.flightLeg.scheduledDeparture.message = La fecha de salida programada debe ser en el futuro
+acme.validation.flightLeg.scheduledArrival.message = La fecha de llegada programada debe ser en el futuro
 acme.validation.flightLeg.flightNumber.message = El número de vuelo debe comenzar con el código IATA de la aerolinea
 acme.validation.flightLeg.flightNumberPattern.message = El número de vuelo debe contener 3 letras mayúsculas y 4 dígitos
 acme.validation.flightLeg.flightNumberUnique.message = El número de vuelo debe ser único
@@ -82,7 +83,7 @@ acme.validation.realm.identifierPattern.message = El identificador debe de inclu
 
 acme.validation.recommendation.uniquePlaceId.message = El identificador del lugar debe ser único
 
-acme.validation.service.promotionCodePattern.message = El código de promoción debe de contener de 3-4 letras, un guión y 2 números
+acme.validation.service.promotionCodePattern.message = El código de promoción debe de contener de 4 letras, un guión y 2 números
 
 acme.validation.systemConfiguration.systemCurrency.message = Las monedas deben estar representadas por 3 letras mayúsculas
 acme.validation.systemConfiguration.acceptedCurrencies.message = Debe ser una lista de monedas representadas con tres letras mayúsculas y separadas por comas seguidas de un espacio
@@ -90,5 +91,9 @@ acme.validation.systemConfiguration.acceptedCurrencies.repeated = Ninguna moneda
 acme.validation.systemConfiguration.acceptedCurrencies.contained = La moneda del sistema debe estar en la lista de monedas aceptadas
 
 acme.validation.activityLog.publishedAssignment.message = La asignación de vuelo para este registro de actividad no esta publicado
+
+acme.validation.maintenanceRecord.maintenanceDate.message = La fecha de mantenimiento debe ser anterior a la fecha de inspección
+acme.validation.maintenanceRecord.dueInspection.message = La fecha de inspección debe estar en el futuro
+acme.validation.taskRecord.task.message = Los registros publicados no pueden contener tareas no publicadas
 
 authenticated.money-exchange.api-error = Ha habido un error con la conversión. Intentelo de nuevo más tarde

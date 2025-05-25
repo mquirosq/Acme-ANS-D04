@@ -27,11 +27,15 @@ public class CustomerDashboardShowService extends AbstractGuiService<Customer, C
 
 	// Internal state ---------------------------------------------------------
 
+	private final CustomerDashboardRepository repository;
+
+
 	@Autowired
-	private CustomerDashboardRepository repository;
+	public CustomerDashboardShowService(final CustomerDashboardRepository repository) {
+		this.repository = repository;
+	}
 
 	// AbstractGuiService interface -------------------------------------------
-
 
 	@Override
 	public void authorise() {

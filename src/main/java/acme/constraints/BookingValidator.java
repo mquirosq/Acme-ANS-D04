@@ -14,9 +14,13 @@ import acme.helpers.ValidatorHelper;
 @Validator
 public class BookingValidator extends AbstractValidator<ValidBooking, Booking> {
 
-	@Autowired
-	private BookingRepository repository;
+	private final BookingRepository repository;
 
+
+	@Autowired
+	public BookingValidator(final BookingRepository repository) {
+		this.repository = repository;
+	}
 
 	@Override
 	protected void initialise(final ValidBooking annotation) {

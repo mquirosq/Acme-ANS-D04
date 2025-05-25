@@ -31,15 +31,14 @@ public class AirlineManagerFlightLegUpdateService extends AbstractGuiService<Air
 		FlightLeg leg;
 		AirlineManager manager;
 
-		legIdInput = super.getRequest().getData("id", String.class);
-
 		try {
+			legIdInput = super.getRequest().getData("id", String.class);
 			legId = Integer.parseInt(legIdInput);
 			leg = this.repository.findFlightLegById(legId);
 			managerId = super.getRequest().getPrincipal().getActiveRealm().getId();
 			manager = this.repository.findManagerById(managerId);
 			authorised = leg != null && leg.getDraftMode() && leg.getParentFlight() != null && leg.getParentFlight().getManager() != null && leg.getParentFlight().getManager().equals(manager);
-		} catch (NumberFormatException e) {
+		} catch (NumberFormatException | AssertionError e) {
 			authorised = false;
 		}
 
@@ -69,8 +68,10 @@ public class AirlineManagerFlightLegUpdateService extends AbstractGuiService<Air
 	@Override
 	public void validate(final FlightLeg leg) {
 		boolean departureIsInTheFuture = leg.getScheduledDeparture() != null && MomentHelper.isFuture(leg.getScheduledDeparture());
+		boolean arrivalIsInTheFuture = leg.getScheduledArrival() != null && MomentHelper.isFuture(leg.getScheduledArrival());
 
 		super.state(departureIsInTheFuture, "scheduledDeparture", "acme.validation.flightLeg.scheduledDeparture.message");
+		super.state(arrivalIsInTheFuture, "scheduledArrival", "acme.validation.flightLeg.scheduledArrival.message");
 	}
 
 	@Override

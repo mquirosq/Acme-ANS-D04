@@ -32,7 +32,7 @@ public class AirlineManagerFlightLegCreateService extends AbstractGuiService<Air
 			Flight flight = this.repository.findFlightById(flightId);
 
 			authorised = flight != null && flight.getDraftMode() && super.getRequest().getPrincipal().hasRealm(flight.getManager());
-		} catch (NumberFormatException e) {
+		} catch (NumberFormatException | AssertionError e) {
 			authorised = false;
 		}
 
@@ -64,8 +64,10 @@ public class AirlineManagerFlightLegCreateService extends AbstractGuiService<Air
 	@Override
 	public void validate(final FlightLeg leg) {
 		boolean departureIsInTheFuture = leg.getScheduledDeparture() != null && MomentHelper.isFuture(leg.getScheduledDeparture());
+		boolean arrivalIsInTheFuture = leg.getScheduledArrival() != null && MomentHelper.isFuture(leg.getScheduledArrival());
 
 		super.state(departureIsInTheFuture, "scheduledDeparture", "acme.validation.flightLeg.scheduledDeparture.message");
+		super.state(arrivalIsInTheFuture, "scheduledArrival", "acme.validation.flightLeg.scheduledArrival.message");
 	}
 
 	@Override

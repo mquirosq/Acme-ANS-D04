@@ -3,8 +3,6 @@ package acme.features.customer.bookingRecord;
 
 import java.util.Collection;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import acme.client.components.datatypes.Money;
 import acme.client.components.models.Dataset;
 import acme.client.components.views.SelectChoices;
@@ -20,11 +18,14 @@ public class CustomerBookingRecordDeleteService extends AbstractGuiService<Custo
 
 	// Internal state ---------------------------------------------------------
 
-	@Autowired
-	private CustomerBookingRecordRepository repository;
+	private final CustomerBookingRecordRepository repository;
+
+
+	public CustomerBookingRecordDeleteService(final CustomerBookingRecordRepository repository) {
+		this.repository = repository;
+	}
 
 	// AbstractGuiService interface -------------------------------------------
-
 
 	@Override
 	public void authorise() {
@@ -67,7 +68,7 @@ public class CustomerBookingRecordDeleteService extends AbstractGuiService<Custo
 
 	@Override
 	public void validate(final BookingRecord bookingRecord) {
-		;
+		// Intentionally left empty: no extra validation needed for BookingRecord in this context.
 	}
 
 	@Override
