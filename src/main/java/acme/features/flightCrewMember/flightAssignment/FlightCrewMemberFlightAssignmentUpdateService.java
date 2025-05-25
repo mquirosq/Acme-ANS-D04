@@ -52,12 +52,12 @@ public class FlightCrewMemberFlightAssignmentUpdateService extends AbstractGuiSe
 			try {
 				flightAssignmentId = Integer.parseInt(requestFlightAssignmentId);
 				flightAssignment = this.repository.findFlightAssignmentById(flightAssignmentId);
-
 				authorised &= flightAssignment != null && !flightAssignment.getPublished() && flightAssignment.getAllocatedFlightCrewMember() != null && super.getRequest().getPrincipal().hasRealm(flightAssignment.getAllocatedFlightCrewMember());
 			} catch (NumberFormatException e) {
 				authorised = false;
 			}
-		}
+		} else
+			authorised = false;
 		super.getResponse().setAuthorised(authorised);
 	}
 

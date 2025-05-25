@@ -59,7 +59,8 @@ public class FlightCrewMemberFlightAssignmentPublishService extends AbstractGuiS
 			} catch (NumberFormatException e) {
 				authorised = false;
 			}
-		}
+		} else
+			authorised = false;
 		super.getResponse().setAuthorised(authorised);
 	}
 

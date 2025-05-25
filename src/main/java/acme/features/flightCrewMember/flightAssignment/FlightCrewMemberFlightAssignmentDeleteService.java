@@ -61,7 +61,8 @@ public class FlightCrewMemberFlightAssignmentDeleteService extends AbstractGuiSe
 			} catch (NumberFormatException e) {
 				authorised = false;
 			}
-		}
+		} else
+			authorised = false;
 		super.getResponse().setAuthorised(authorised);
 	}
 
