@@ -14,21 +14,21 @@ import lombok.Setter;
 @Setter
 public class CustomerDashboard extends AbstractForm {
 
-	private static final long	serialVersionUID	= 1L;
+	private static final long		serialVersionUID	= 1L;
 
-	List<String>				lastFiveDestinations;
-	List<Money>					moneySpentInBookingsDuringLastYear;
-	Map<TravelClass, Long>		numberOfBookingsByTravelClass;
+	private List<String>			lastFiveDestinations;
+	private List<Money>				moneySpentInBookingsDuringLastYear;
+	private Map<TravelClass, Long>	numberOfBookingsByTravelClass;
 
-	List<Money>					totalCostOfBookings;
-	List<Money>					averageCostOfBookings;
-	List<Money>					minimumCostOfBookings;
-	List<Money>					maximumCostOfBookings;
-	List<Money>					standardDeviationOfCostOfBookings;
+	private List<Money>				totalCostOfBookings;
+	private List<Money>				averageCostOfBookings;
+	private List<Money>				minimumCostOfBookings;
+	private List<Money>				maximumCostOfBookings;
+	private List<Money>				standardDeviationOfCostOfBookings;
 
-	Long						totalNumberOfPassengersInBookings;
-	Double						averageNumberOfPassengerInBookings;
-	Long						minimumNumberOfPassengersInBookings;
-	Long						maximumNumberOfPassengersInBookings;
-	Double						standardDeviationOfPassengersInBookings;
+	private Long					totalNumberOfPassengersInBookings;
+	private Double					averageNumberOfPassengerInBookings;
+	private Long					minimumNumberOfPassengersInBookings;
+	private Long					maximumNumberOfPassengersInBookings;
+	private Double					standardDeviationOfPassengersInBookings;
 }

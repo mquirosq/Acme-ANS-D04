@@ -3,8 +3,6 @@ package acme.constraints;
 
 import javax.validation.ConstraintValidatorContext;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import acme.client.components.validation.AbstractValidator;
 import acme.client.components.validation.Validator;
 import acme.entities.CustomerRepository;
@@ -14,9 +12,12 @@ import acme.realms.Customer;
 @Validator
 public class CustomerValidator extends AbstractValidator<ValidCustomer, Customer> {
 
-	@Autowired
-	private CustomerRepository repository;
+	private final CustomerRepository repository;
 
+
+	public CustomerValidator(final CustomerRepository repository) {
+		this.repository = repository;
+	}
 
 	@Override
 	protected void initialise(final ValidCustomer annotation) {

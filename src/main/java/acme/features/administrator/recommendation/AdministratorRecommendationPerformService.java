@@ -1,6 +1,8 @@
 
 package acme.features.administrator.recommendation;
 
+import java.io.IOException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -22,11 +24,15 @@ import acme.entities.Recommendation;
 @GuiService
 public class AdministratorRecommendationPerformService extends AbstractGuiService<Administrator, Recommendation> {
 
+	private final AdministratorRecommendationRepository repository;
+
+
 	@Autowired
-	AdministratorRecommendationRepository repository;
+	public AdministratorRecommendationPerformService(final AdministratorRecommendationRepository repository) {
+		this.repository = repository;
+	}
 
 	// AbstractGuiService interface -------------------------------------------
-
 
 	@Override
 	public void authorise() {
@@ -49,7 +55,7 @@ public class AdministratorRecommendationPerformService extends AbstractGuiServic
 
 	@Override
 	public void validate(final Recommendation recommendation) {
-		;
+		// Intentionally left empty: no extra validation needed for Passenger in this context.
 	}
 
 	@Override
@@ -116,101 +122,81 @@ public class AdministratorRecommendationPerformService extends AbstractGuiServic
 		assert city != null;
 		assert country != null;
 
-		Recommendation result = null;
-		RestTemplate api;
-		HttpHeaders headers;
-		HttpEntity<String> parameters;
-		ResponseEntity<String> responsePlace;
-		String recordPlace;
-		String placeId = "None";
-		ResponseEntity<String> responseRecommend;
-		String apiKey;
-		boolean exception = false;
-		boolean notFound = false;
-
 		try {
-			apiKey = "b482bc544d994d7b909c1f3ddc806229";
-			headers = new HttpHeaders();
-			parameters = new HttpEntity<String>("parameters", headers);
-			api = new RestTemplate();
-			responsePlace = api.exchange( //	
-				"https://api.geoapify.com/v1/geocode/search?text={0}&format=json&apiKey={1}", //
-				HttpMethod.GET, //
-				parameters, //
-				String.class, city, //
-				apiKey //
-			);
-			assert responsePlace.getBody() != null;
-			recordPlace = responsePlace.getBody();
+			String placeId = this.findPlaceId(city, country);
+			if (placeId == null) {
+				super.state(false, "*", "administration.recommendation.form.label.not-found");
+				return null;
+			}
 
-			ObjectMapper mapper = new ObjectMapper();
-			JsonNode root = mapper.readTree(recordPlace);
-			JsonNode results = root.get("results");
+			Recommendation recommendation = this.fetchRecommendation(placeId);
+			if (recommendation == null)
+				super.state(false, "*", "administration.recommendation.form.label.not-found");
 
-			if (results.isArray())
-				for (JsonNode r : results) {
-					String rCity = r.path("city").asText();
-					String rCountry = r.path("country").asText();
+			MomentHelper.sleep(2000);
+			return recommendation;
 
-					if (city.equalsIgnoreCase(rCity) && country.equalsIgnoreCase(rCountry)) {
-						placeId = r.path("place_id").asText();
-						break;
-					}
-				}
-			if (placeId.equals("None")) {
-				result = null;
-				notFound = true;
-			} else {
-				headers = new HttpHeaders();
-				parameters = new HttpEntity<String>("parameters", headers);
-				api = new RestTemplate();
-				responseRecommend = api.exchange( //	
-					"https://api.geoapify.com/v2/places?apiKey={0}&categories=tourism&filter=place:{1}", //
-					HttpMethod.GET, //
-					parameters, //
-					String.class, apiKey, //
-					placeId //
-				);
+		} catch (Throwable oops) {
+			// Justified: Catching Throwable because the external API may behave unpredictably
+			super.state(false, "*", "administration.recommendation.form.label.api-error");
+			return null;
+		}
+	}
 
-				assert responseRecommend.getBody() != null;
+	private String findPlaceId(final String city, final String country) throws IOException {
+		String apiKey = "b482bc544d994d7b909c1f3ddc806229";
+		String url = "https://api.geoapify.com/v1/geocode/search?text={0}&format=json&apiKey={1}";
 
-				mapper = new ObjectMapper();
-				root = mapper.readTree(responseRecommend.getBody());
-				results = root.get("features");
+		String body = this.makeApiCall(url, city, apiKey);
+		JsonNode results = new ObjectMapper().readTree(body).get("results");
 
-				if (results.isArray()) {
-					for (JsonNode f : results) {
-						JsonNode properties = f.get("properties");
-						String recommendationId = properties.path("place_id").asText("None");
-						Recommendation inDB = this.repository.getRecommendationByPlaceId(recommendationId);
-						if (inDB == null) {
-							Recommendation recommendation = new Recommendation();
-							recommendation.setCity(properties.path("city").asText(null));
-							recommendation.setCountry(properties.path("country").asText(null));
-							recommendation.setName(properties.path("name").asText(null));
-							recommendation.setPlaceId(recommendationId);
-							recommendation.setWebsite(properties.path("website").asText(null));
+		if (results != null && results.isArray())
+			for (JsonNode r : results) {
+				String rCity = r.path("city").asText();
+				String rCountry = r.path("country").asText();
 
-							result = recommendation;
-							this.repository.save(result);
-							break;
-						}
-					}
-					if (result == null)
-						notFound = true;
-				} else {
-					result = null;
-					notFound = true;
+				if (city.equalsIgnoreCase(rCity) && country.equalsIgnoreCase(rCountry))
+					return r.path("place_id").asText();
+			}
+
+		return null;
+	}
+
+	private Recommendation fetchRecommendation(final String placeId) throws IOException {
+		String apiKey = "b482bc544d994d7b909c1f3ddc806229";
+		String url = "https://api.geoapify.com/v2/places?apiKey={0}&categories=tourism&filter=place:{1}";
+
+		String body = this.makeApiCall(url, apiKey, placeId);
+		JsonNode features = new ObjectMapper().readTree(body).get("features");
+
+		if (features != null && features.isArray())
+			for (JsonNode f : features) {
+				JsonNode properties = f.get("properties");
+				String recommendationId = properties.path("place_id").asText("None");
+
+				Recommendation inDB = this.repository.getRecommendationByPlaceId(recommendationId);
+				if (inDB == null) {
+					Recommendation recommendation = new Recommendation();
+					recommendation.setCity(properties.path("city").asText(null));
+					recommendation.setCountry(properties.path("country").asText(null));
+					recommendation.setName(properties.path("name").asText(null));
+					recommendation.setPlaceId(recommendationId);
+					recommendation.setWebsite(properties.path("website").asText(null));
+
+					this.repository.save(recommendation);
+					return recommendation;
 				}
 			}
-			MomentHelper.sleep(2000);
-		} catch (final Throwable oops) {
-			exception = true;
-			result = null;
-		}
-		super.state(!exception, "*", "administration.recommendation.form.label.api-error");
-		super.state(!notFound, "*", "administration.recommendation.form.label.not-found");
-		return result;
+
+		return null;
+	}
+
+	private String makeApiCall(final String url, final Object... uriVariables) {
+		RestTemplate api = new RestTemplate();
+		HttpHeaders headers = new HttpHeaders();
+		HttpEntity<String> parameters = new HttpEntity<>("parameters", headers);
+		ResponseEntity<String> response = api.exchange(url, HttpMethod.GET, parameters, String.class, uriVariables);
+		return response.getBody();
 	}
 
 }
