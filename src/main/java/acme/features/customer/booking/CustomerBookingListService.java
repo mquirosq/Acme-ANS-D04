@@ -9,6 +9,7 @@ import acme.client.components.models.Dataset;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.Booking;
+import acme.helpers.InternationalisationHelper;
 import acme.realms.Customer;
 
 @GuiService
@@ -39,7 +40,8 @@ public class CustomerBookingListService extends AbstractGuiService<Customer, Boo
 		Dataset dataset;
 		String flight;
 
-		dataset = super.unbindObject(booking, "locatorCode", "purchasedAt", "price", "draftMode");
+		dataset = super.unbindObject(booking, "locatorCode", "purchasedAt", "price");
+		dataset.put("draftMode", InternationalisationHelper.internationalizeBoolean(booking.isDraftMode()));
 
 		flight = booking.getFlight().getIdentifierCode();
 		dataset.put("flight", flight);
