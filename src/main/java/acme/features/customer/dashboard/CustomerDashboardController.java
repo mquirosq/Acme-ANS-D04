@@ -15,11 +15,15 @@ public class CustomerDashboardController extends AbstractGuiController<Customer,
 
 	// Internal state ---------------------------------------------------------
 
+	private final CustomerDashboardShowService showService;
+
+
 	@Autowired
-	private CustomerDashboardShowService showService;
+	public CustomerDashboardController(final CustomerDashboardShowService showService) {
+		this.showService = showService;
+	}
 
 	// Constructors -----------------------------------------------------------
-
 
 	@PostConstruct
 	protected void initialise() {

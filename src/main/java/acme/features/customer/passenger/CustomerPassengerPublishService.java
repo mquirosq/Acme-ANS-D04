@@ -14,11 +14,15 @@ public class CustomerPassengerPublishService extends AbstractGuiService<Customer
 
 	// Internal state ---------------------------------------------------------
 
+	private final CustomerPassengerRepository repository;
+
+
 	@Autowired
-	private CustomerPassengerRepository repository;
+	public CustomerPassengerPublishService(final CustomerPassengerRepository repository) {
+		this.repository = repository;
+	}
 
 	// AbstractGuiService interface -------------------------------------------
-
 
 	@Override
 	public void authorise() {
@@ -52,12 +56,12 @@ public class CustomerPassengerPublishService extends AbstractGuiService<Customer
 
 	@Override
 	public void bind(final Passenger passenger) {
-		;
+		// Intentionally left empty: no binding needed for Passenger in this context.
 	}
 
 	@Override
 	public void validate(final Passenger passenger) {
-		;
+		// Intentionally left empty: no extra validation needed for Passenger in this context.
 	}
 
 	@Override

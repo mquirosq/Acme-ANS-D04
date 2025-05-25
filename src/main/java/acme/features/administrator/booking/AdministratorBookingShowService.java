@@ -23,11 +23,15 @@ public class AdministratorBookingShowService extends AbstractGuiService<Administ
 
 	// Internal state ---------------------------------------------------------
 
+	private final AdministratorBookingRepository repository;
+
+
 	@Autowired
-	private AdministratorBookingRepository repository;
+	public AdministratorBookingShowService(final AdministratorBookingRepository repository) {
+		this.repository = repository;
+	}
 
 	// AbstractGuiService interface -------------------------------------------
-
 
 	@Override
 	public void authorise() {

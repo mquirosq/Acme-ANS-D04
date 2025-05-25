@@ -15,20 +15,27 @@ public class CustomerBookingRecordController extends AbstractGuiController<Custo
 
 	// Internal state ---------------------------------------------------------
 
-	@Autowired
-	private CustomerBookingRecordListService	listService;
+	private final CustomerBookingRecordListService		listService;
+
+	private final CustomerBookingRecordShowService		showService;
+
+	private final CustomerBookingRecordCreateService	createService;
+
+	private final CustomerBookingRecordDeleteService	deleteService;
+
 
 	@Autowired
-	private CustomerBookingRecordShowService	showService;
+	public CustomerBookingRecordController(final CustomerBookingRecordListService listService, final CustomerBookingRecordShowService showService, final CustomerBookingRecordCreateService createService,
+		final CustomerBookingRecordDeleteService deleteService) {
 
-	@Autowired
-	private CustomerBookingRecordCreateService	createService;
+		this.listService = listService;
+		this.showService = showService;
+		this.createService = createService;
+		this.deleteService = deleteService;
 
-	@Autowired
-	private CustomerBookingRecordDeleteService	deleteService;
+	}
 
 	// Constructors -----------------------------------------------------------
-
 
 	@PostConstruct
 	protected void initialise() {

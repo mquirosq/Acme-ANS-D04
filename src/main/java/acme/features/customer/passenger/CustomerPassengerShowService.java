@@ -14,11 +14,15 @@ public class CustomerPassengerShowService extends AbstractGuiService<Customer, P
 
 	// Internal state ---------------------------------------------------------
 
+	private final CustomerPassengerRepository repository;
+
+
 	@Autowired
-	private CustomerPassengerRepository repository;
+	public CustomerPassengerShowService(final CustomerPassengerRepository repository) {
+		this.repository = repository;
+	}
 
 	// AbstractGuiService interface -------------------------------------------
-
 
 	@Override
 	public void authorise() {

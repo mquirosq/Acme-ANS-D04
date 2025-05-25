@@ -18,11 +18,15 @@ public class CustomerRecommendationShowService extends AbstractGuiService<Custom
 
 	// Internal state ---------------------------------------------------------
 
+	private final CustomerRecommendationRepository repository;
+
+
 	@Autowired
-	private CustomerRecommendationRepository repository;
+	public CustomerRecommendationShowService(final CustomerRecommendationRepository repository) {
+		this.repository = repository;
+	}
 
 	// AbstractGuiService interface -------------------------------------------
-
 
 	@Override
 	public void authorise() {

@@ -16,11 +16,15 @@ public class AuthenticatedCustomerCreateService extends AbstractGuiService<Authe
 
 	// Internal state ---------------------------------------------------------
 
+	private final AuthenticatedCustomerRepository repository;
+
+
 	@Autowired
-	private AuthenticatedCustomerRepository repository;
+	public AuthenticatedCustomerCreateService(final AuthenticatedCustomerRepository repository) {
+		this.repository = repository;
+	}
 
 	// AbstractGuiService interface -------------------------------------------
-
 
 	@Override
 	public void authorise() {
@@ -52,15 +56,14 @@ public class AuthenticatedCustomerCreateService extends AbstractGuiService<Authe
 	}
 
 	@Override
-	public void validate(final Customer customer) {
-		;
+	public void perform(final Customer customer) {
+		if (customer != null)
+			this.repository.save(customer);
 	}
 
 	@Override
-	public void perform(final Customer customer) {
-		assert customer != null;
-
-		this.repository.save(customer);
+	public void validate(final Customer customer) {
+		// Intentionally left empty: no extra validation needed for Customer in this context.
 	}
 
 	@Override

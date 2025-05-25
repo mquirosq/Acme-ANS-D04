@@ -15,14 +15,18 @@ public class CustomerRecommendationController extends AbstractGuiController<Cust
 
 	// Internal state ---------------------------------------------------------
 
-	@Autowired
-	private CustomerRecommendationListService	listService;
+	private final CustomerRecommendationListService	listService;
+
+	private final CustomerRecommendationShowService	showService;
+
 
 	@Autowired
-	private CustomerRecommendationShowService	showService;
+	public CustomerRecommendationController(final CustomerRecommendationListService listService, final CustomerRecommendationShowService showService) {
+		this.listService = listService;
+		this.showService = showService;
+	}
 
 	// Constructors -----------------------------------------------------------
-
 
 	@PostConstruct
 	protected void initialise() {

@@ -14,11 +14,15 @@ public class CustomerPassengerUpdateService extends AbstractGuiService<Customer,
 
 	// Internal state ---------------------------------------------------------
 
+	private final CustomerPassengerRepository repository;
+
+
 	@Autowired
-	private CustomerPassengerRepository repository;
+	public CustomerPassengerUpdateService(final CustomerPassengerRepository repository) {
+		this.repository = repository;
+	}
 
 	// AbstractService<Customer, Passenger> -------------------------------------
-
 
 	@Override
 	public void authorise() {
@@ -59,7 +63,7 @@ public class CustomerPassengerUpdateService extends AbstractGuiService<Customer,
 
 	@Override
 	public void validate(final Passenger passenger) {
-		;
+		// Intentionally left empty: no extra validation needed for Passenger in this context.
 	}
 
 	@Override
