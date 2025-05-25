@@ -35,10 +35,12 @@ public class FlightCrewMemberFlightAssignmentCreateService extends AbstractGuiSe
 			requestFlightLegId = super.getRequest().getData("leg", String.class);
 			try {
 				flightLegId = Integer.parseInt(requestFlightLegId);
+			} catch (NumberFormatException e) {
+				flightLegId = -1;
+			}
+			if (flightLegId != 0) {
 				leg = this.repository.findByLegId(flightLegId);
 				authorised = leg != null && !leg.getDraftMode();
-			} catch (NumberFormatException e) {
-				authorised = false;
 			}
 		}
 		super.getResponse().setAuthorised(authorised);

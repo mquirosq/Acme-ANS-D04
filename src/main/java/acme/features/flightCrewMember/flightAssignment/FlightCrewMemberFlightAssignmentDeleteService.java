@@ -43,11 +43,12 @@ public class FlightCrewMemberFlightAssignmentDeleteService extends AbstractGuiSe
 			requestFlightLegId = super.getRequest().getData("leg", String.class);
 			try {
 				flightLegId = Integer.parseInt(requestFlightLegId);
-				leg = this.repository.findByLegId(flightLegId);
-
-				authorised = leg != null && !leg.getDraftMode();
 			} catch (NumberFormatException e) {
-				authorised = false;
+				flightLegId = -1;
+			}
+			if (flightLegId != 0) {
+				leg = this.repository.findByLegId(flightLegId);
+				authorised = leg != null && !leg.getDraftMode();
 			}
 		}
 

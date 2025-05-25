@@ -29,10 +29,10 @@ flight-assignment-20,PILOT,2012/07/02 0:00,CONFIRMED,<script>alert(‘Hacked!’
 flight-assignment-21,PILOT,2012/07/02 0:00,CONFIRMED,' or 'A' = 'A,flight-crew-member-01,flight-leg-14,false
 flight-assignment-22,PILOT,2012/07/02 0:00,CONFIRMED,null,flight-crew-member-01,flight-leg-14,false
 # Remarks - no singular values
-# Leg - standard variations
-flight-assignment-23,PILOT,2012/07/02 0:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",flight-crew-member-01,flight-leg-14,false
-flight-assignment-24,PILOT,2012/07/02 0:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",flight-crew-member-01,flight-leg-14,false
-# Leg - no singular values
+# Leg - standard variations,"","","","","","",""
+flight-assignment-23,PILOT,2012/07/02 0:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",flight-crew-member-01,flight-leg-16,false
+flight-assignment-24,PILOT,2012/07/02 0:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",flight-crew-member-01,flight-leg-17,false
+# Leg - no singular values,"","","","","",""
 # Published - standard variations,"","","","","",""
 flight-assignment-25,PILOT,2012/07/02 0:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",flight-crew-member-01,flight-leg-14,true
 # Published - no singular values
