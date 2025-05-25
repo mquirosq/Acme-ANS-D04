@@ -9,6 +9,7 @@ import acme.client.components.models.Dataset;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.Task;
+import acme.helpers.InternationalisationHelper;
 import acme.realms.Technician;
 
 @GuiService
@@ -39,7 +40,7 @@ public class TechnicianTaskListService extends AbstractGuiService<Technician, Ta
 		Dataset dataset;
 
 		dataset = super.unbindObject(task, "type", "priority", "hourEstimate");
-		super.addPayload(dataset, task, "isDraft");
+		dataset.put("payload", InternationalisationHelper.internationalizeBoolean(task.getIsDraft()));
 
 		super.getResponse().addData(dataset);
 	}

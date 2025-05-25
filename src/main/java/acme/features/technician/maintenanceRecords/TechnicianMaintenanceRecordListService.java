@@ -10,6 +10,7 @@ import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.Aircraft;
 import acme.entities.MaintenanceRecord;
+import acme.helpers.InternationalisationHelper;
 import acme.realms.Technician;
 
 @GuiService
@@ -48,7 +49,7 @@ public class TechnicianMaintenanceRecordListService extends AbstractGuiService<T
 
 		dataset = super.unbindObject(mRecord, "inspectionDue", "maintenanceDate");
 		dataset.put("aircraft", aircraft.getRegistrationNumber());
-		dataset.put("draftMode", isDraft);
+		dataset.put("draftMode", InternationalisationHelper.internationalizeBoolean(isDraft));
 		super.addPayload(dataset, mRecord, "cost");
 
 		super.getResponse().addData(dataset);
