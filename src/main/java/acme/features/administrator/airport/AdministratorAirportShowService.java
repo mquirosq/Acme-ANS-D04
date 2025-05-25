@@ -34,7 +34,7 @@ public class AdministratorAirportShowService extends AbstractGuiService<Administ
 			airportId = Integer.parseInt(rawId);
 			airport = this.repository.findAirportById(airportId);
 			authorised = airport != null;
-		} catch (NumberFormatException e) {
+		} catch (NumberFormatException | AssertionError e) {
 			authorised = false;
 		}
 		super.getResponse().setAuthorised(authorised);

@@ -33,7 +33,7 @@ public class AdministratorAircraftShowService extends AbstractGuiService<Adminis
 			aircraftId = Integer.parseInt(rawId);
 			aircraft = this.repository.findAircraftById(aircraftId);
 			authorised = aircraft != null;
-		} catch (NumberFormatException e) {
+		} catch (NumberFormatException | AssertionError e) {
 			authorised = false;
 		}
 		super.getResponse().setAuthorised(authorised);
