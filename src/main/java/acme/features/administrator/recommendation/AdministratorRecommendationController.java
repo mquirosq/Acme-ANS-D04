@@ -15,11 +15,15 @@ public class AdministratorRecommendationController extends AbstractGuiController
 
 	// Internal state ---------------------------------------------------------
 
+	private final AdministratorRecommendationPerformService recommendationService;
+
+
 	@Autowired
-	private AdministratorRecommendationPerformService recommendationService;
+	public AdministratorRecommendationController(final AdministratorRecommendationPerformService recommendationService) {
+		this.recommendationService = recommendationService;
+	}
 
 	// Constructors -----------------------------------------------------------
-
 
 	@PostConstruct
 	protected void initialise() {

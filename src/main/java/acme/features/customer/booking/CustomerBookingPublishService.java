@@ -24,11 +24,15 @@ public class CustomerBookingPublishService extends AbstractGuiService<Customer, 
 
 	// Internal state ---------------------------------------------------------
 
+	private final CustomerBookingRepository repository;
+
+
 	@Autowired
-	private CustomerBookingRepository repository;
+	public CustomerBookingPublishService(final CustomerBookingRepository repository) {
+		this.repository = repository;
+	}
 
 	// AbstractGuiService interface -------------------------------------------
-
 
 	@Override
 	public void authorise() {
@@ -62,7 +66,7 @@ public class CustomerBookingPublishService extends AbstractGuiService<Customer, 
 
 	@Override
 	public void bind(final Booking booking) {
-		;
+		// Intentionally left empty: no binding needed for Booking in this context.
 	}
 
 	@Override

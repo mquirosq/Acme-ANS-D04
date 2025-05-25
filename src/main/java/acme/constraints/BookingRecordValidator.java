@@ -3,8 +3,6 @@ package acme.constraints;
 
 import javax.validation.ConstraintValidatorContext;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import acme.client.components.validation.AbstractValidator;
 import acme.client.components.validation.Validator;
 import acme.entities.BookingRecord;
@@ -14,9 +12,12 @@ import acme.helpers.ValidatorHelper;
 @Validator
 public class BookingRecordValidator extends AbstractValidator<ValidBookingRecord, BookingRecord> {
 
-	@Autowired
-	private BookingRecordRepository repository;
+	private final BookingRecordRepository repository;
 
+
+	public BookingRecordValidator(final BookingRecordRepository repository) {
+		this.repository = repository;
+	}
 
 	@Override
 	protected void initialise(final ValidBookingRecord annotation) {
@@ -25,7 +26,7 @@ public class BookingRecordValidator extends AbstractValidator<ValidBookingRecord
 
 	@Override
 	public boolean isValid(final BookingRecord bookingRecord, final ConstraintValidatorContext context) {
-		assert context != null;
+		assert context != null; // Justification: this context should never be null here
 
 		boolean result;
 

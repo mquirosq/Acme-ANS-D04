@@ -15,9 +15,13 @@ import acme.entities.BookingRecord;
 @GuiService
 public class AdministratorBookingRecordListService extends AbstractGuiService<Administrator, BookingRecord> {
 
-	@Autowired
-	private AdministratorBookingRecordRepository repository;
+	private final AdministratorBookingRecordRepository repository;
 
+
+	@Autowired
+	public AdministratorBookingRecordListService(final AdministratorBookingRecordRepository repository) {
+		this.repository = repository;
+	}
 
 	@Override
 	public void authorise() {

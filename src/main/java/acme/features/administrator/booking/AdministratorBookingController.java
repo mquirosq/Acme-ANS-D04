@@ -13,12 +13,15 @@ import acme.entities.Booking;
 @GuiController
 public class AdministratorBookingController extends AbstractGuiController<Administrator, Booking> {
 
-	@Autowired
-	private AdministratorBookingListService	listService;
+	private final AdministratorBookingListService	listService;
+	private final AdministratorBookingShowService	showService;
+
 
 	@Autowired
-	private AdministratorBookingShowService	showService;
-
+	public AdministratorBookingController(final AdministratorBookingListService listService, final AdministratorBookingShowService showService) {
+		this.listService = listService;
+		this.showService = showService;
+	}
 
 	@PostConstruct
 	protected void initialise() {
