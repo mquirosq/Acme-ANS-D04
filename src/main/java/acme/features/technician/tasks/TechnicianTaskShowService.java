@@ -24,11 +24,22 @@ public class TechnicianTaskShowService extends AbstractGuiService<Technician, Ta
 		int masterId;
 		Technician technician;
 		Task task;
+		String masterIdString;
 
-		masterId = super.getRequest().getData("id", int.class);
-		task = this.repository.findTaskById(masterId);
-		technician = task == null ? null : task.getTechnician();
-		status = task != null && (!task.getIsDraft() || super.getRequest().getPrincipal().hasRealm(technician));
+		try {
+			masterIdString = super.getRequest().getData("id", String.class);
+			masterId = Integer.parseInt(masterIdString);
+			task = this.repository.findTaskById(masterId);
+			technician = task == null ? null : task.getTechnician();
+			if (task == null)
+				status = false;
+			else if (!super.getRequest().getPrincipal().hasRealm(technician))
+				status = false;
+			else
+				status = true;
+		} catch (NumberFormatException | AssertionError e) {
+			status = false;
+		}
 
 		super.getResponse().setAuthorised(status);
 	}

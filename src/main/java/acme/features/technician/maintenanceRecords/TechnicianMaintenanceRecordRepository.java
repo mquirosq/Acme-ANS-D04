@@ -15,6 +15,9 @@ import acme.entities.TaskRecord;
 @Repository
 public interface TechnicianMaintenanceRecordRepository extends AbstractRepository {
 
+	@Query("select sc.systemCurrency from SystemConfiguration sc")
+	String getSystemCurrency();
+
 	@Query("select m from MaintenanceRecord m where m.id = :id")
 	MaintenanceRecord findMaintenanceRecordbyId(int id);
 
@@ -35,5 +38,8 @@ public interface TechnicianMaintenanceRecordRepository extends AbstractRepositor
 
 	@Query("select a from Aircraft a where a.id = :aircraftId")
 	Aircraft findAircraftById(int aircraftId);
+
+	@Query("select mr from MaintenanceRecord mr where mr.status = 2")
+	Collection<MaintenanceRecord> findPublishedMaintenanceRecords();
 
 }
