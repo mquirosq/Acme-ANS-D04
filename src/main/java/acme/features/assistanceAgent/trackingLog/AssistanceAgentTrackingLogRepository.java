@@ -13,7 +13,7 @@ import acme.entities.TrackingLog;
 @Repository
 public interface AssistanceAgentTrackingLogRepository extends AbstractRepository {
 
-	@Query("select t from TrackingLog t where t.claim.id = :masterId")
+	@Query("select t from TrackingLog t where t.claim.id = :masterId order by t.id asc")
 	Collection<TrackingLog> findAllTrackingLogsByMasterId(int masterId);
 
 	@Query("select t from TrackingLog t where t.id = :id")
