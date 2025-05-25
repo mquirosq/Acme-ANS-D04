@@ -23,14 +23,17 @@ public class AdministratorServiceDeleteService extends AbstractGuiService<Admini
 		int serviceId;
 		Service service;
 
-		try {
-			rawId = super.getRequest().getData("id", String.class);
-			serviceId = Integer.parseInt(rawId);
-			service = this.repository.findServiceById(serviceId);
-			authorised = service != null;
-		} catch (NumberFormatException e) {
+		if (super.getRequest().hasData("id", String.class))
+			try {
+				rawId = super.getRequest().getData("id", String.class);
+				serviceId = Integer.parseInt(rawId);
+				service = this.repository.findServiceById(serviceId);
+				authorised = service != null;
+			} catch (NumberFormatException | AssertionError e) {
+				authorised = false;
+			}
+		else
 			authorised = false;
-		}
 		super.getResponse().setAuthorised(authorised);
 	}
 
