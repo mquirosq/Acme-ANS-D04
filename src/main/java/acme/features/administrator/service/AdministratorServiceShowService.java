@@ -28,7 +28,7 @@ public class AdministratorServiceShowService extends AbstractGuiService<Administ
 			serviceId = Integer.parseInt(rawId);
 			service = this.repository.findServiceById(serviceId);
 			authorised = service != null;
-		} catch (NumberFormatException e) {
+		} catch (NumberFormatException | AssertionError e) {
 			authorised = false;
 		}
 		super.getResponse().setAuthorised(authorised);

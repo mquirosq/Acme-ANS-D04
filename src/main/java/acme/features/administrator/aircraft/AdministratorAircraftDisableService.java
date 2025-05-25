@@ -37,13 +37,14 @@ public class AdministratorAircraftDisableService extends AbstractGuiService<Admi
 
 			try {
 				aircraftId = Integer.parseInt(aircraftIdRaw);
-			} catch (NumberFormatException e) {
+			} catch (NumberFormatException | AssertionError e) {
 				aircraftId = -1;
 				authorised = false;
 			}
 			aircraft = this.repository.findAircraftById(aircraftId);
 			authorised &= aircraft != null && !aircraft.getStatus().equals(AircraftStatus.UNDER_MAINTENANCE);
-		}
+		} else
+			authorised = false;
 
 		if (super.getRequest().hasData("airline")) {
 			airlineIdRaw = super.getRequest().getData("airline", String.class);
