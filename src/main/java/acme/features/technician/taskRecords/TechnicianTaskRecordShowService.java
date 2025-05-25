@@ -36,6 +36,8 @@ public class TechnicianTaskRecordShowService extends AbstractGuiService<Technici
 			technician = taskRecord == null ? null : taskRecord.getRecord().getTechnician();
 			if (taskRecord == null)
 				status = false;
+			else if (!taskRecord.getRecord().isDraftMode())
+				status = true;
 			else if (!super.getRequest().getPrincipal().hasRealm(technician))
 				status = false;
 			else

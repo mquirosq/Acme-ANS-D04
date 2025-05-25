@@ -36,6 +36,8 @@ public class TechnicianTaskRecordDeleteService extends AbstractGuiService<Techni
 			technician = taskRecord == null ? null : taskRecord.getRecord().getTechnician();
 			if (taskRecord == null)
 				status = false;
+			else if (!taskRecord.getRecord().isDraftMode())
+				status = false;
 			else if (!super.getRequest().getPrincipal().hasRealm(technician))
 				status = false;
 			else
@@ -69,14 +71,6 @@ public class TechnicianTaskRecordDeleteService extends AbstractGuiService<Techni
 
 	@Override
 	public void validate(final TaskRecord taskRecord) {
-		boolean exist;
-
-		if (taskRecord.getTask() != null) {
-			Collection<TaskRecord> checked = this.repository.findTaskRecordsByMaintenanceRecordId(taskRecord.getRecord().getId()).stream().filter(t -> t.getTask() == taskRecord.getTask()).toList();
-			exist = checked != null;
-			super.state(exist, "task", "technician.task-record.form.error.not-null");
-		} else
-			super.state(false, "task", "technician.task-record.form.error.not-null");
 	}
 
 	@Override
