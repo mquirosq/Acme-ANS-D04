@@ -25,9 +25,6 @@ public interface AssistanceAgentClaimRepository extends AbstractRepository {
 	@Query("select l from FlightLeg l where l.draftMode = false and l.scheduledArrival <= :moment")
 	Collection<FlightLeg> findAllPublishedLegsBefore(Date moment);
 
-	@Query("select a from AssistanceAgent a")
-	Collection<AssistanceAgent> findAllAssistanceAgents();
-
 	@Query("select l from FlightLeg l where l.id = :id")
 	FlightLeg findLegById(int id);
 
