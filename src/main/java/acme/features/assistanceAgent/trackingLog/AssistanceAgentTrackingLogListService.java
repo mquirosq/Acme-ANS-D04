@@ -11,6 +11,7 @@ import acme.client.services.GuiService;
 import acme.datatypes.ClaimStatus;
 import acme.entities.Claim;
 import acme.entities.TrackingLog;
+import acme.helpers.InternationalisationHelper;
 import acme.realms.AssistanceAgent;
 
 @GuiService
@@ -58,7 +59,8 @@ public class AssistanceAgentTrackingLogListService extends AbstractGuiService<As
 	public void unbind(final TrackingLog trackingLog) {
 		Dataset dataset;
 
-		dataset = super.unbindObject(trackingLog, "resolutionPercentage", "status", "isPublished");
+		dataset = super.unbindObject(trackingLog, "resolutionPercentage", "status");
+		dataset.put("isPublished", InternationalisationHelper.internationalizeBoolean(trackingLog.getIsPublished()));
 
 		super.addPayload(dataset, trackingLog, "lastUpdateMoment", "creationMoment", "resolution", "step", "claim.id");
 		super.getResponse().addData(dataset);
