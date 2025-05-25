@@ -33,7 +33,8 @@ public class FlightCrewMemberActivityLogShowService extends AbstractGuiService<F
 			} catch (NumberFormatException e) {
 				authorised = false;
 			}
-		}
+		} else
+			authorised = false;
 		super.getResponse().setAuthorised(authorised);
 	}
 
