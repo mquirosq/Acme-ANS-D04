@@ -9,7 +9,6 @@ import acme.client.components.models.Dataset;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.MaintenanceRecord;
-import acme.entities.Task;
 import acme.entities.TaskRecord;
 import acme.realms.Technician;
 
@@ -25,32 +24,23 @@ public class TechnicianTaskRecordListService extends AbstractGuiService<Technici
 		int maintenanceRecordId;
 		MaintenanceRecord maintenanceRecord;
 		boolean status;
-		int technicianId;
-		int taskId;
-		Task task;
-		boolean taskStatus;
-		boolean alreadyAddedToTheRecord;
-		Task alreadyAddedTask;
+		String maintenanceRecordIdString;
+		Technician technician;
 
-		maintenanceRecordId = super.getRequest().getData("maintenanceRecordId", int.class);
-		maintenanceRecord = this.repository.findMaintenanceRecordById(maintenanceRecordId);
+		try {
+			maintenanceRecordIdString = super.getRequest().getData("id", String.class);
+			maintenanceRecordId = Integer.parseInt(maintenanceRecordIdString);
+			maintenanceRecord = this.repository.findMaintenanceRecordById(maintenanceRecordId);
+			technician = maintenanceRecord == null ? null : maintenanceRecord.getTechnician();
 
-		if (maintenanceRecord == null)
+			if (maintenanceRecord == null)
+				status = false;
+			else
+				status = !maintenanceRecord.isDraftMode() || super.getRequest().getPrincipal().hasRealm(technician);
+		} catch (NumberFormatException | AssertionError e) {
 			status = false;
-		else {
-			if (super.getRequest().getMethod().equals("GET"))
-				taskStatus = true;
-			else {
-				technicianId = super.getRequest().getPrincipal().getActiveRealm().getId();
-
-				taskId = super.getRequest().getData("task", int.class);
-				task = this.repository.findTechniciansTaskByIds(taskId, technicianId);
-				alreadyAddedTask = this.repository.findValidTaskByIdAndMaintenanceRecord(taskId, maintenanceRecordId);
-				alreadyAddedToTheRecord = alreadyAddedTask != null;
-				taskStatus = taskId == 0 || task != null && !alreadyAddedToTheRecord;
-			}
-			status = maintenanceRecord.isDraftMode() && super.getRequest().getPrincipal().hasRealm(maintenanceRecord.getTechnician()) && taskStatus;
 		}
+
 		super.getResponse().setAuthorised(status);
 	}
 

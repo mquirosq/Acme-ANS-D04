@@ -24,39 +24,7 @@ public class TechnicianMaintenanceRecordCreateService extends AbstractGuiService
 
 	@Override
 	public void authorise() {
-		boolean status;
-		boolean acStatus;
-		int mRecordId;
-		int aircraftId;
-		MaintenanceRecord mRecord;
-		Technician technician;
-		Aircraft aircraft;
-		String mRecordIdString;
-		String aircraftIdString;
-
-		try {
-			mRecordIdString = super.getRequest().getData("id", String.class);
-			mRecordId = Integer.parseInt(mRecordIdString);
-			mRecord = this.repository.findMaintenanceRecordbyId(mRecordId);
-			technician = mRecord == null ? null : mRecord.getTechnician();
-			if (mRecord == null)
-				status = false;
-			else if (!mRecord.isDraftMode() || !super.getRequest().getPrincipal().hasRealm(technician))
-				status = false;
-			else if (super.getRequest().getMethod().equals("GET"))
-				status = true;
-			else {
-				aircraftIdString = super.getRequest().getData("aircraft", String.class);
-				aircraftId = Integer.parseInt(aircraftIdString);
-				aircraft = this.repository.findAircraftById(aircraftId);
-				acStatus = aircraftId == 0 || aircraft != null;
-				status = acStatus;
-			}
-		} catch (NumberFormatException | AssertionError e) {
-			status = false;
-		}
-
-		super.getResponse().setAuthorised(status);
+		super.getResponse().setAuthorised(true);
 	}
 
 	@Override

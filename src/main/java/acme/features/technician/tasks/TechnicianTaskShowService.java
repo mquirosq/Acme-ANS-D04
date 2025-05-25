@@ -33,7 +33,7 @@ public class TechnicianTaskShowService extends AbstractGuiService<Technician, Ta
 			technician = task == null ? null : task.getTechnician();
 			if (task == null)
 				status = false;
-			else if (!task.getIsDraft() || !super.getRequest().getPrincipal().hasRealm(technician))
+			else if (!super.getRequest().getPrincipal().hasRealm(technician))
 				status = false;
 			else
 				status = true;

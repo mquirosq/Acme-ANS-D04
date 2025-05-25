@@ -42,9 +42,12 @@ public class TechnicianMaintenanceRecordShowService extends AbstractGuiService<T
 			mRecordId = Integer.parseInt(mRecordIdString);
 			mRecord = this.repository.findMaintenanceRecordbyId(mRecordId);
 			technician = mRecord == null ? null : mRecord.getTechnician();
+
 			if (mRecord == null)
 				status = false;
-			else if (!mRecord.isDraftMode() || !super.getRequest().getPrincipal().hasRealm(technician))
+			else if (!mRecord.isDraftMode())
+				status = true;
+			else if (!super.getRequest().getPrincipal().hasRealm(technician))
 				status = false;
 			else if (super.getRequest().getMethod().equals("GET"))
 				status = true;
@@ -58,17 +61,18 @@ public class TechnicianMaintenanceRecordShowService extends AbstractGuiService<T
 		} catch (NumberFormatException | AssertionError e) {
 			status = false;
 		}
-
 		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
 		MaintenanceRecord mRecord;
-		int id;
+		int mRecordId;
+		String mRecordIdString;
 
-		id = super.getRequest().getData("id", int.class);
-		mRecord = this.repository.findMaintenanceRecordbyId(id);
+		mRecordIdString = super.getRequest().getData("id", String.class);
+		mRecordId = Integer.parseInt(mRecordIdString);
+		mRecord = this.repository.findMaintenanceRecordbyId(mRecordId);
 
 		super.getBuffer().addData(mRecord);
 	}
@@ -87,7 +91,7 @@ public class TechnicianMaintenanceRecordShowService extends AbstractGuiService<T
 
 		aircrafts = this.repository.findAllAircrafts();
 		statusChoices = SelectChoices.from(recordStatus.class, mRecord.getStatus());
-		aircraftChoices = SelectChoices.from(aircrafts, "model", mRecord.getAircraft());
+		aircraftChoices = SelectChoices.from(aircrafts, "registrationNumber", mRecord.getAircraft());
 		boolean draftMode = mRecord.isDraftMode();
 
 		dataset = super.unbindObject(mRecord, "maintenanceDate", "inspectionDue", "cost", "notes");

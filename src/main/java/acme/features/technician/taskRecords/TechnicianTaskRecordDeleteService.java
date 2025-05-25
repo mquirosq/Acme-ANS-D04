@@ -23,35 +23,27 @@ public class TechnicianTaskRecordDeleteService extends AbstractGuiService<Techni
 
 	@Override
 	public void authorise() {
-		int maintenanceRecordId;
-		MaintenanceRecord maintenanceRecord;
+		int taskRecordId;
+		TaskRecord taskRecord;
+		Technician technician;
 		boolean status;
-		int technicianId;
-		int taskId;
-		Task task;
-		boolean taskStatus;
-		boolean alreadyAddedToTheRecord;
-		Task alreadyAddedTask;
+		String taskRecordIdString;
 
-		maintenanceRecordId = super.getRequest().getData("maintenanceRecordId", int.class);
-		maintenanceRecord = this.repository.findMaintenanceRecordById(maintenanceRecordId);
-
-		if (maintenanceRecord == null)
+		try {
+			taskRecordIdString = super.getRequest().getData("id", String.class);
+			taskRecordId = Integer.parseInt(taskRecordIdString);
+			taskRecord = this.repository.findTaskRecordById(taskRecordId);
+			technician = taskRecord == null ? null : taskRecord.getRecord().getTechnician();
+			if (taskRecord == null)
+				status = false;
+			else if (!super.getRequest().getPrincipal().hasRealm(technician))
+				status = false;
+			else
+				status = true;
+		} catch (NumberFormatException | AssertionError e) {
 			status = false;
-		else {
-			if (super.getRequest().getMethod().equals("GET"))
-				taskStatus = true;
-			else {
-				technicianId = super.getRequest().getPrincipal().getActiveRealm().getId();
-
-				taskId = super.getRequest().getData("task", int.class);
-				task = this.repository.findTechniciansTaskByIds(taskId, technicianId);
-				alreadyAddedTask = this.repository.findValidTaskByIdAndMaintenanceRecord(taskId, maintenanceRecordId);
-				alreadyAddedToTheRecord = alreadyAddedTask != null;
-				taskStatus = taskId == 0 || task != null && !alreadyAddedToTheRecord;
-			}
-			status = maintenanceRecord.isDraftMode() && super.getRequest().getPrincipal().hasRealm(maintenanceRecord.getTechnician()) && taskStatus;
 		}
+
 		super.getResponse().setAuthorised(status);
 	}
 
@@ -61,10 +53,10 @@ public class TechnicianTaskRecordDeleteService extends AbstractGuiService<Techni
 		int id;
 		TaskRecord taskRecord;
 
-		id = super.getRequest().getData("maintenanceRecordId", int.class);
-		maintenanceRecord = this.repository.findMaintenanceRecordById(id);
+		id = super.getRequest().getData("id", int.class);
+		taskRecord = this.repository.findTaskRecordById(id);
 
-		taskRecord = new TaskRecord();
+		maintenanceRecord = taskRecord.getRecord();
 		taskRecord.setRecord(maintenanceRecord);
 
 		super.getBuffer().addData(taskRecord);
@@ -72,13 +64,7 @@ public class TechnicianTaskRecordDeleteService extends AbstractGuiService<Techni
 
 	@Override
 	public void bind(final TaskRecord taskRecord) {
-		int taskId;
-		Task task;
-
-		taskId = super.getRequest().getData("task", int.class);
-		task = this.repository.findTaskById(taskId);
-
-		taskRecord.setTask(task);
+		;
 	}
 
 	@Override
@@ -86,7 +72,7 @@ public class TechnicianTaskRecordDeleteService extends AbstractGuiService<Techni
 		boolean exist;
 
 		if (taskRecord.getTask() != null) {
-			TaskRecord checked = this.repository.findTaskRecordsByMaintenanceRecordId(taskRecord.getRecord().getId()).stream().filter(t -> t.getTask() == taskRecord.getTask()).toList().getFirst();
+			Collection<TaskRecord> checked = this.repository.findTaskRecordsByMaintenanceRecordId(taskRecord.getRecord().getId()).stream().filter(t -> t.getTask() == taskRecord.getTask()).toList();
 			exist = checked != null;
 			super.state(exist, "task", "technician.task-record.form.error.not-null");
 		} else
@@ -95,10 +81,7 @@ public class TechnicianTaskRecordDeleteService extends AbstractGuiService<Techni
 
 	@Override
 	public void perform(final TaskRecord taskRecord) {
-		TaskRecord tr = this.repository.findTaskRecordsByMaintenanceRecordId(taskRecord.getRecord().getId()).stream().filter(t -> t.getTask() == taskRecord.getTask()).toList().getFirst();
-
-		if (tr != null)
-			this.repository.delete(taskRecord);
+		this.repository.delete(taskRecord);
 	}
 
 	@Override

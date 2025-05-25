@@ -45,7 +45,7 @@ public class TechnicianMaintenanceRecordListService extends AbstractGuiService<T
 		isDraft = mRecord.isDraftMode();
 
 		dataset = super.unbindObject(mRecord, "inspectionDue", "maintenanceDate");
-		dataset.put("aircraft", aircraft.getModel());
+		dataset.put("aircraft", aircraft.getRegistrationNumber());
 		dataset.put("draftMode", isDraft);
 		super.addPayload(dataset, mRecord, "cost");
 
