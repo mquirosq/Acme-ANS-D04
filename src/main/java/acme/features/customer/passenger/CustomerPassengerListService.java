@@ -9,6 +9,7 @@ import acme.client.components.models.Dataset;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.Passenger;
+import acme.helpers.InternationalisationHelper;
 import acme.realms.Customer;
 
 @GuiService
@@ -57,7 +58,8 @@ public class CustomerPassengerListService extends AbstractGuiService<Customer, P
 		Dataset dataset;
 
 		dataset = super.unbindObject(passenger, "fullName", "passportNumber");
-		super.addPayload(dataset, passenger, "email", "birthDate", "draftMode");
+		super.addPayload(dataset, passenger, "email", "birthDate");
+		dataset.put("payload", dataset.get("payload") + "|" + InternationalisationHelper.internationalizeBoolean(passenger.isDraftMode()));
 
 		super.getResponse().addData(dataset);
 	}
