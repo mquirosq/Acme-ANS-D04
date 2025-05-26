@@ -34,6 +34,6 @@ booking-25,flight-32,customer-01,AQAAAAA,2012/07/02 0:00,BUSINESS,EUR 100.00,nul
 # draftMode - standard variations
 booking-28,flight-32,customer-01,ATAAAAA,2012/07/02 0:00,BUSINESS,EUR 100.00,1234,true
 # flight - standard variations
-booking-26,flight-33,customer-01,ARAAAAA,2012/07/02 0:00,BUSINESS,EUR 100.00,1234,false
+booking-26,flight-33,customer-01,ARAAAAA,2012/07/02 0:00,BUSINESS,USD 100.00,1234,false
 # customer - standard variations
 booking-27,flight-32,customer-02,ASAAAAA,2012/07/02 0:00,BUSINESS,EUR 100.00,1234,false

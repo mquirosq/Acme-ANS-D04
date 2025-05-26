@@ -35,21 +35,30 @@ public class FlightCrewMemberFlightAssignmentUpdateService extends AbstractGuiSe
 		String requestFlightAssignmentId;
 		FlightAssignment flightAssignment;
 
-		if (super.getRequest().hasData("leg") && super.getRequest().hasData("id")) {
+		if (super.getRequest().hasData("leg")) {
 			requestFlightLegId = super.getRequest().getData("leg", String.class);
-			requestFlightAssignmentId = super.getRequest().getData("id", String.class);
 			try {
 				flightLegId = Integer.parseInt(requestFlightLegId);
-				flightAssignmentId = Integer.parseInt(requestFlightAssignmentId);
+			} catch (NumberFormatException e) {
+				flightLegId = -1;
+			}
+			if (flightLegId != 0) {
 				leg = this.repository.findByLegId(flightLegId);
-				flightAssignment = this.repository.findFlightAssignmentById(flightAssignmentId);
+				authorised = leg != null && !leg.getDraftMode();
+			}
+		}
 
-				authorised = leg != null && flightAssignment != null && !flightAssignment.getPublished() && flightAssignment.getAllocatedFlightCrewMember() != null
-					&& super.getRequest().getPrincipal().hasRealm(flightAssignment.getAllocatedFlightCrewMember());
+		if (super.getRequest().hasData("id")) {
+			requestFlightAssignmentId = super.getRequest().getData("id", String.class);
+			try {
+				flightAssignmentId = Integer.parseInt(requestFlightAssignmentId);
+				flightAssignment = this.repository.findFlightAssignmentById(flightAssignmentId);
+				authorised &= flightAssignment != null && !flightAssignment.getPublished() && super.getRequest().getPrincipal().hasRealm(flightAssignment.getAllocatedFlightCrewMember());
 			} catch (NumberFormatException e) {
 				authorised = false;
 			}
-		}
+		} else
+			authorised = false;
 		super.getResponse().setAuthorised(authorised);
 	}
 
@@ -95,9 +104,9 @@ public class FlightCrewMemberFlightAssignmentUpdateService extends AbstractGuiSe
 		Dataset dataset;
 		SelectChoices legChoices, statusChoices, dutyChoices;
 
-		Collection<FlightLeg> flightLegs = this.repository.findAllLegs();
+		Collection<FlightLeg> flightLegs = this.repository.findAllPublishedLegs();
 
-		legChoices = SelectChoices.from(flightLegs, "flightNumber", flightAssignment.getLeg());
+		legChoices = SelectChoices.from(flightLegs, "identifier", flightAssignment.getLeg());
 		statusChoices = SelectChoices.from(CurrentStatus.class, flightAssignment.getCurrentStatus());
 		dutyChoices = SelectChoices.from(Duty.class, flightAssignment.getDuty());
 

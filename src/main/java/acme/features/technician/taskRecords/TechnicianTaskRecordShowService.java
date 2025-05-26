@@ -23,31 +23,52 @@ public class TechnicianTaskRecordShowService extends AbstractGuiService<Technici
 
 	@Override
 	public void authorise() {
+		int taskRecordId;
+		TaskRecord taskRecord;
+		Technician technician;
 		boolean status;
-		int id;
-		MaintenanceRecord record;
-		id = super.getRequest().getData("id", int.class);
-		record = this.repository.findMaintenanceRecordOfTaskRecordById(id);
-		status = record != null && super.getRequest().getPrincipal().hasRealm(record.getTechnician());
+		String taskRecordIdString;
+
+		try {
+			taskRecordIdString = super.getRequest().getData("id", String.class);
+			taskRecordId = Integer.parseInt(taskRecordIdString);
+			taskRecord = this.repository.findTaskRecordById(taskRecordId);
+			technician = taskRecord == null ? null : taskRecord.getRecord().getTechnician();
+			if (taskRecord == null)
+				status = false;
+			else if (!taskRecord.getRecord().isDraftMode())
+				status = true;
+			else if (!super.getRequest().getPrincipal().hasRealm(technician))
+				status = false;
+			else
+				status = true;
+		} catch (NumberFormatException | AssertionError e) {
+			status = false;
+		}
 
 		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
-		TaskRecord taskRecord;
+		MaintenanceRecord maintenanceRecord;
 		int id;
+		TaskRecord taskRecord;
 
 		id = super.getRequest().getData("id", int.class);
 		taskRecord = this.repository.findTaskRecordById(id);
+
+		maintenanceRecord = taskRecord.getRecord();
+		taskRecord.setRecord(maintenanceRecord);
+
 		super.getBuffer().addData(taskRecord);
-		super.getResponse().addGlobal("maintenanceRecordId", taskRecord.getRecord().getId());
 	}
 
 	@Override
 	public void unbind(final TaskRecord taskRecord) {
 		Collection<Task> tasks;
-		SelectChoices taskChoices, technicianChoices;
+		SelectChoices taskChoices;
+		SelectChoices technicianChoices;
 		Dataset dataset;
 
 		int id = super.getRequest().getData("id", int.class);

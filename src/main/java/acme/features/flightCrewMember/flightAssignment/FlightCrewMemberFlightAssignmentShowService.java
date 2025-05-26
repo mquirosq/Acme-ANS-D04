@@ -24,7 +24,7 @@ public class FlightCrewMemberFlightAssignmentShowService extends AbstractGuiServ
 
 	@Override
 	public void authorise() {
-		boolean authorised = true;
+		boolean authorised = false;
 
 		int flightAssignmentId;
 		String requestFlightAssignmentId;
@@ -35,7 +35,7 @@ public class FlightCrewMemberFlightAssignmentShowService extends AbstractGuiServ
 			try {
 				flightAssignmentId = Integer.parseInt(requestFlightAssignmentId);
 				flightAssignment = this.repository.findFlightAssignmentById(flightAssignmentId);
-				authorised = super.getRequest().getPrincipal().hasRealm(flightAssignment.getAllocatedFlightCrewMember());
+				authorised = flightAssignment != null && super.getRequest().getPrincipal().hasRealm(flightAssignment.getAllocatedFlightCrewMember());
 			} catch (NumberFormatException e) {
 				authorised = false;
 			}
@@ -59,9 +59,9 @@ public class FlightCrewMemberFlightAssignmentShowService extends AbstractGuiServ
 		Dataset dataset;
 		SelectChoices legChoices, statusChoices, dutyChoices;
 
-		Collection<FlightLeg> flightLegs = this.repository.findAllLegs();
+		Collection<FlightLeg> flightLegs = this.repository.findAllPublishedLegs();
 
-		legChoices = SelectChoices.from(flightLegs, "flightNumber", flightAssignment.getLeg());
+		legChoices = SelectChoices.from(flightLegs, "identifier", flightAssignment.getLeg());
 		statusChoices = SelectChoices.from(CurrentStatus.class, flightAssignment.getCurrentStatus());
 		dutyChoices = SelectChoices.from(Duty.class, flightAssignment.getDuty());
 

@@ -4,7 +4,9 @@ package acme.entities;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.Index;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
@@ -24,6 +26,9 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+@Table(indexes = {
+	@Index(columnList = "customer_id,draftMode")
+})
 public class Passenger extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
@@ -72,17 +77,5 @@ public class Passenger extends AbstractEntity {
 			identifierCode = this.getFullName() + " - " + this.getPassportNumber();
 
 		return identifierCode;
-	}
-
-	@Transient
-	public String getDraftModeString() {
-		String draftModeString;
-
-		if (this.isDraftMode())
-			draftModeString = "Draft";
-		else
-			draftModeString = "Published";
-
-		return draftModeString;
 	}
 }

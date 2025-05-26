@@ -9,6 +9,7 @@ import acme.client.components.models.Dataset;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.Flight;
+import acme.helpers.InternationalisationHelper;
 import acme.realms.AirlineManager;
 
 @GuiService
@@ -36,17 +37,12 @@ public class AirlineManagerFlightListService extends AbstractGuiService<AirlineM
 	@Override
 	public void unbind(final Flight flight) {
 		Dataset dataset;
-		String draftMode = "";
 		String identifierCode = flight.getIdentifierCode();
 		Integer numberOfLayovers = flight.getNumberOfLayovers();
 
 		dataset = super.unbindObject(flight, "tag");
+		dataset.put("draftMode", InternationalisationHelper.internationalizeBoolean(flight.getDraftMode()));
 
-		if (flight.getDraftMode())
-			draftMode = "Draft mode";
-		else
-			draftMode = "Published";
-		dataset.put("draftMode", draftMode);
 		dataset.put("identifierCode", identifierCode);
 		dataset.put("numberOfLayovers", numberOfLayovers);
 

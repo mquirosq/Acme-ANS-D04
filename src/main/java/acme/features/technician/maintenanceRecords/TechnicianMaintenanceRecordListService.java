@@ -10,6 +10,7 @@ import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.Aircraft;
 import acme.entities.MaintenanceRecord;
+import acme.helpers.InternationalisationHelper;
 import acme.realms.Technician;
 
 @GuiService
@@ -27,27 +28,29 @@ public class TechnicianMaintenanceRecordListService extends AbstractGuiService<T
 	@Override
 	public void load() {
 		Collection<MaintenanceRecord> records;
+		Collection<MaintenanceRecord> publishedRecords;
 		int technicianId;
 
 		technicianId = super.getRequest().getPrincipal().getActiveRealm().getId();
 		records = this.repository.findMaintenanceRecordsByTechnicianId(technicianId);
-
+		publishedRecords = this.repository.findPublishedMaintenanceRecords();
+		records.addAll(publishedRecords);
 		super.getBuffer().addData(records);
 	}
 
 	@Override
-	public void unbind(final MaintenanceRecord record) {
+	public void unbind(final MaintenanceRecord mRecord) {
 		Aircraft aircraft;
 		Dataset dataset;
 		Boolean isDraft;
 
-		aircraft = this.repository.findAircraftByRecordId(record.getId());
-		isDraft = record.isDraftMode();
+		aircraft = this.repository.findAircraftByRecordId(mRecord.getId());
+		isDraft = mRecord.isDraftMode();
 
-		dataset = super.unbindObject(record, "inspectionDue", "maintenanceDate");
-		dataset.put("aircraft", aircraft.getModel());
-		dataset.put("draftMode", isDraft);
-		super.addPayload(dataset, record, "cost");
+		dataset = super.unbindObject(mRecord, "inspectionDue", "maintenanceDate");
+		dataset.put("aircraft", aircraft.getRegistrationNumber());
+		dataset.put("draftMode", InternationalisationHelper.internationalizeBoolean(isDraft));
+		super.addPayload(dataset, mRecord, "cost");
 
 		super.getResponse().addData(dataset);
 	}

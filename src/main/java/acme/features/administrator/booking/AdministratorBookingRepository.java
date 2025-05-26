@@ -25,4 +25,7 @@ public interface AdministratorBookingRepository extends AbstractRepository {
 
 	@Query("select c from Customer c")
 	Collection<Customer> findAllCustomers();
+
+	@Query("select sc.systemCurrency from SystemConfiguration sc")
+	String getSystemCurrency();
 }

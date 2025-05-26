@@ -54,10 +54,12 @@ acme.validation.customer.liftedAt.message 					= The lifting date must be after 
 acme.validation.flightLeg.scheduledDates.message = The scheduled departure must be before the scheduled arrival
 acme.validation.flightLeg.scheduledDates.message = The scheduled departure must be before the scheduled arrival
 acme.validation.flightLeg.scheduledDeparture.message = The scheduled departure must be in the future
+acme.validation.flightLeg.scheduledArrival.message = The scheduled arrival must be in the future
 acme.validation.flightLeg.flightNumber.message = The flight number must begin with the airline's IATA code
 acme.validation.flightLeg.flightNumberPattern.message = The flight number must contain 3 upper case letters and 4 digits
 acme.validation.flightLeg.flightNumberUnique.message = The flight number must be unique
 acme.validation.flightLeg.overlappingDates.message = Dates of this leg overlap with other published legs
+acme.validation.flightLeg.sameAirports.message = The arrival airport cannot be the same as the departure airport
 
 acme.validation.flight.overlappingDates.message = This flight has legs with overlapping dates
 acme.validation.flight.notPublishedLeg.message = This flight has unpublished legs
@@ -83,9 +85,17 @@ acme.validation.realm.identifierPattern.message = The identifier must include 2-
 
 acme.validation.recommendation.uniquePlaceId.message = The place identifier must be unique
 
-acme.validation.service.promotionCodePattern.message = The promotion code must contain 3-4 letters, a hyphen and 2 numbers
+acme.validation.service.promotionCodePattern.message = The promotion code must contain 4 letters, a hyphen and 2 numbers
 
 acme.validation.systemConfiguration.systemCurrency.message = Should be a three-letters currency code
 acme.validation.systemConfiguration.acceptedCurrencies.message = Should be a list of three-letter currency codes, separated by commas followed by a space
+acme.validation.systemConfiguration.acceptedCurrencies.repeated = No currency should be repeated
+acme.validation.systemConfiguration.acceptedCurrencies.contained = The system currency must be in the list of accepted currencies
 
 acme.validation.activityLog.publishedAssignment.message = The assignment for this activity log is not published
+
+acme.validation.maintenanceRecord.maintenanceDate.message = The maintenance date must be before the inspection date of the record
+acme.validation.maintenanceRecord.dueInspection.message = The inspection date must be in the future
+acme.validation.taskRecord.task.message = Published records cannot contain non-published tasks
+
+authenticated.money-exchange.api-error = There was an error with the conversion. Try again later

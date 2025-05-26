@@ -2,6 +2,7 @@
 package acme.features.assistanceAgent.claim;
 
 import java.util.Collection;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -31,7 +32,7 @@ public class AssistanceAgentClaimShowService extends AbstractGuiService<Assistan
 		String claimIdRaw;
 		Claim claim;
 
-		authorised = true;
+		authorised = false;
 
 		if (super.getRequest().hasData("id")) {
 			claimIdRaw = super.getRequest().getData("id", String.class);
@@ -63,8 +64,13 @@ public class AssistanceAgentClaimShowService extends AbstractGuiService<Assistan
 		Dataset dataset;
 		SelectChoices typeChoices, statusChoices, legChoices;
 		Collection<FlightLeg> legs;
+		Date registrationMoment;
 
-		legs = this.repository.findAllPublishedLegsBefore(MomentHelper.getCurrentMoment());
+		registrationMoment = claim.getRegistrationMoment();
+
+		if (registrationMoment == null)
+			registrationMoment = MomentHelper.getCurrentMoment();
+		legs = this.repository.findAllPublishedLegsBefore(registrationMoment);
 
 		typeChoices = SelectChoices.from(ClaimType.class, claim.getType());
 		statusChoices = SelectChoices.from(ClaimStatus.class, claim.getStatus());

@@ -2,19 +2,20 @@
 package acme.features.administrator.booking;
 
 import java.util.Collection;
-import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import acme.client.components.datatypes.Money;
 import acme.client.components.models.Dataset;
 import acme.client.components.principals.Administrator;
 import acme.client.components.views.SelectChoices;
-import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
+import acme.components.MoneyExchangeHelper;
 import acme.datatypes.TravelClass;
 import acme.entities.Booking;
 import acme.entities.Flight;
+import acme.forms.MoneyExchange;
 import acme.realms.Customer;
 
 @GuiService
@@ -22,11 +23,15 @@ public class AdministratorBookingShowService extends AbstractGuiService<Administ
 
 	// Internal state ---------------------------------------------------------
 
+	private final AdministratorBookingRepository repository;
+
+
 	@Autowired
-	private AdministratorBookingRepository repository;
+	public AdministratorBookingShowService(final AdministratorBookingRepository repository) {
+		this.repository = repository;
+	}
 
 	// AbstractGuiService interface -------------------------------------------
-
 
 	@Override
 	public void authorise() {
@@ -65,11 +70,8 @@ public class AdministratorBookingShowService extends AbstractGuiService<Administ
 		SelectChoices travelChoices;
 		SelectChoices customerChoices;
 		Dataset dataset;
-		Date currentMoment;
 
-		currentMoment = MomentHelper.getCurrentMoment();
 		flights = this.repository.findAllNonDraftFlights();
-		flights = flights.stream().filter(f -> (f.getScheduledDeparture() != null && MomentHelper.isAfter(f.getScheduledDeparture(), currentMoment))).toList();
 
 		flightChoices = SelectChoices.from(flights, "identifierCode", booking.getFlight());
 		travelChoices = SelectChoices.from(TravelClass.class, booking.getTravelClass());
@@ -86,6 +88,21 @@ public class AdministratorBookingShowService extends AbstractGuiService<Administ
 		dataset.put("travelClass", travelChoices.getSelected().getKey());
 		dataset.put("travelClasses", travelChoices);
 
+		String systemCurrency = this.repository.getSystemCurrency();
+
+		Money exchangedPrice;
+		if (systemCurrency.equals(booking.getPrice().getCurrency()))
+			exchangedPrice = null;
+		else {
+			MoneyExchange exchange = new MoneyExchange();
+			exchange.setSource(booking.getPrice());
+			exchange.setTargetCurrency(systemCurrency);
+			exchange = MoneyExchangeHelper.performExchangeToSystemCurrency(exchange);
+			exchangedPrice = exchange.getTarget();
+			super.state(exchange.getOops() == null, "*", exchange.getMessage());
+		}
+
+		dataset.put("systemPrice", exchangedPrice);
 		super.getResponse().addData(dataset);
 	}
 

@@ -37,6 +37,8 @@ master.menu.administrator.recommendation = Add a recommendation
 =======
 master.menu.administrator.show-systemConfiguration = See system configuration
 >>>>>>> task057
+master.menu.administrator.show-dashboard = My dashboard
+master.menu.administrator.list-services = List services
 master.menu.administrator.populate-db-initial = Populate DB (initial)
 master.menu.administrator.populate-db-sample = Populate DB (samples)
 master.menu.administrator.shut-system-down = Shut system down

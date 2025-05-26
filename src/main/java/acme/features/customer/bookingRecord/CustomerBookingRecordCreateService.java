@@ -20,11 +20,15 @@ public class CustomerBookingRecordCreateService extends AbstractGuiService<Custo
 
 	// Internal state ---------------------------------------------------------
 
+	private final CustomerBookingRecordRepository repository;
+
+
 	@Autowired
-	private CustomerBookingRecordRepository repository;
+	public CustomerBookingRecordCreateService(final CustomerBookingRecordRepository repository) {
+		this.repository = repository;
+	}
 
 	// AbstractService<Customer, BookingRecord> -------------------------------------
-
 
 	@Override
 	public void authorise() {
@@ -65,7 +69,7 @@ public class CustomerBookingRecordCreateService extends AbstractGuiService<Custo
 
 			if (passengerId != 0) {
 				passenger = this.repository.findPassengerById(passengerId);
-				authorised &= passenger != null && legalPassengers.contains(passenger);
+				authorised &= passenger != null && legalPassengers != null && legalPassengers.contains(passenger);
 			}
 		}
 
@@ -94,7 +98,7 @@ public class CustomerBookingRecordCreateService extends AbstractGuiService<Custo
 
 	@Override
 	public void validate(final BookingRecord bookingRecord) {
-		;
+		// Intentionally left empty: no extra validation needed for BookingRecord in this context.
 	}
 
 	@Override

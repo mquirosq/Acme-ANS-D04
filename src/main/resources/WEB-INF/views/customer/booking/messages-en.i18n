@@ -12,10 +12,13 @@ customer.booking.form.label.flight = Flight:
 customer.booking.form.label.travelClass = Travel class:
 customer.booking.form.label.lastCardNibble = Last credit card nibble:
 customer.booking.form.label.price = Price:
+customer.booking.form.label.price-exchange = Price in system currency:
 customer.booking.form.label.purchasedAt = Purchase date:
 customer.booking.form.label.draft = Pending
 
 customer.booking.form.placeholder.lastCardNibble = Four last digits of the credit card used to pay
+
+customer.booking.form.inform.pastDeparture = This booking cannot be published or updated as this flight has already departed.
 
 customer.booking.list.button.create = Create
 

@@ -1,15 +1,18 @@
 
 package acme.features.airlineManager.flight;
 
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import acme.client.components.datatypes.Money;
 import acme.client.components.models.Dataset;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
+import acme.components.MoneyExchangeHelper;
 import acme.entities.Flight;
+import acme.forms.MoneyExchange;
+import acme.helpers.FlightHelper;
 import acme.helpers.ValidatorHelper;
 import acme.realms.AirlineManager;
 
@@ -27,14 +30,10 @@ public class AirlineManagerFlightPublishService extends AbstractGuiService<Airli
 			String flightIdInput = super.getRequest().getData("id", String.class);
 			int flightId = Integer.parseInt(flightIdInput);
 			Flight flight = this.repository.findFlightById(flightId);
-
-			AirlineManager manager = flight.getManager();
-
-			authorised = flight != null && flight.getDraftMode() && super.getRequest().getPrincipal().hasRealm(manager);
-		} catch (NumberFormatException e) {
+			authorised = flight != null && flight.getDraftMode() && super.getRequest().getPrincipal().hasRealm(flight.getManager());
+		} catch (NumberFormatException | AssertionError e) {
 			authorised = false;
 		}
-
 		super.getResponse().setAuthorised(authorised);
 	}
 
@@ -48,7 +47,7 @@ public class AirlineManagerFlightPublishService extends AbstractGuiService<Airli
 
 	@Override
 	public void bind(final Flight flight) {
-		;
+		super.bindObject(flight, "tag", "requiresSelfTransfer", "cost", "description");
 	}
 
 	@Override
@@ -72,20 +71,20 @@ public class AirlineManagerFlightPublishService extends AbstractGuiService<Airli
 
 	@Override
 	public void unbind(final Flight flight) {
-		Dataset dataset;
-		Date scheduledDeparture = flight.getScheduledDeparture();
-		Date scheduledArrival = flight.getScheduledArrival();
-		String originCity = flight.getOriginCity();
-		String destinationCity = flight.getDestinationCity();
-		Integer numberOfLayovers = flight.getNumberOfLayovers();
+		Dataset dataset = super.unbindObject(flight, "tag", "requiresSelfTransfer", "cost", "description", "draftMode");
+		dataset = FlightHelper.unbindFlightDerivatedProperties(dataset, flight);
+		String systemCurrency = this.repository.getSystemCurrency();
 
-		dataset = super.unbindObject(flight, "tag", "requiresSelfTransfer", "cost", "description", "draftMode");
-
-		dataset.put("scheduledDeparture", scheduledDeparture != null ? scheduledDeparture : "-");
-		dataset.put("scheduledArrival", scheduledArrival != null ? scheduledArrival : "-");
-		dataset.put("originCity", originCity != null ? originCity : "-");
-		dataset.put("destinationCity", destinationCity != null ? destinationCity : "-");
-		dataset.put("numberOfLayovers", numberOfLayovers);
+		Money exchangedCost = null;
+		if (flight.getCost() != null && !systemCurrency.equals(flight.getCost().getCurrency())) {
+			MoneyExchange exchange = new MoneyExchange();
+			exchange.setSource(flight.getCost());
+			exchange.setTargetCurrency(systemCurrency);
+			exchange = MoneyExchangeHelper.performExchangeToSystemCurrency(exchange);
+			exchangedCost = exchange.getTarget();
+			super.state(exchange.getOops() == null, "*", exchange.getMessage());
+		}
+		dataset.put("systemCost", exchangedCost);
 
 		super.getResponse().addData(dataset);
 	}

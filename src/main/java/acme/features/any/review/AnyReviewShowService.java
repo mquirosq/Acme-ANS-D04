@@ -22,13 +22,22 @@ public class AnyReviewShowService extends AbstractGuiService<Any, Review> {
 
 	@Override
 	public void authorise() {
+		boolean authorised;
+		String reviewIdInput;
+		int reviewId;
 		Review review;
-		int id;
 
-		id = super.getRequest().getData("id", int.class);
-		review = this.repository.findReviewById(id);
+		try {
+			reviewIdInput = super.getRequest().getData("id", String.class);
+			reviewId = Integer.parseInt(reviewIdInput);
+			review = this.repository.findReviewById(reviewId);
+			authorised = review != null;
+		} catch (NumberFormatException | AssertionError e) {
+			authorised = false;
+		}
 
-		super.getResponse().setAuthorised(review != null);
+		super.getResponse().setAuthorised(authorised);
+
 	}
 
 	@Override

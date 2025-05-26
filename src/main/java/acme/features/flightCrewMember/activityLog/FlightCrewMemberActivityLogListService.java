@@ -11,6 +11,7 @@ import acme.client.services.GuiService;
 import acme.entities.ActivityLog;
 import acme.entities.FlightAssignment;
 import acme.features.flightCrewMember.flightAssignment.FlightCrewMemberFlightAssignmentRepository;
+import acme.helpers.InternationalisationHelper;
 import acme.realms.FlightCrewMember;
 
 @GuiService
@@ -36,11 +37,12 @@ public class FlightCrewMemberActivityLogListService extends AbstractGuiService<F
 			try {
 				flightAssignmentId = Integer.parseInt(requestFlightAssignmentId);
 				flightAssignment = this.flightAssignmentRepository.findFlightAssignmentById(flightAssignmentId);
-				authorised = flightAssignment != null && flightAssignment.getAllocatedFlightCrewMember() != null && super.getRequest().getPrincipal().hasRealm(flightAssignment.getAllocatedFlightCrewMember());
+				authorised = flightAssignment != null && super.getRequest().getPrincipal().hasRealm(flightAssignment.getAllocatedFlightCrewMember());
 			} catch (NumberFormatException e) {
 				authorised = false;
 			}
-		}
+		} else
+			authorised = false;
 		super.getResponse().setAuthorised(authorised);
 	}
 
@@ -59,6 +61,7 @@ public class FlightCrewMemberActivityLogListService extends AbstractGuiService<F
 		Dataset dataset;
 		dataset = super.unbindObject(activityLog, "typeOfIncident", "registrationMoment", "severityLevel");
 		super.addPayload(dataset, activityLog, "description");
+		dataset.put("payload", dataset.get("payload") + "|" + InternationalisationHelper.internationalizeBoolean(activityLog.getPublished()));
 		super.getResponse().addData(dataset);
 	}
 

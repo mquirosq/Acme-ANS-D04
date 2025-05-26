@@ -12,9 +12,11 @@ import acme.client.components.views.SelectChoices;
 import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
+import acme.components.MoneyExchangeHelper;
 import acme.datatypes.TravelClass;
 import acme.entities.Booking;
 import acme.entities.Flight;
+import acme.forms.MoneyExchange;
 import acme.realms.Customer;
 
 @GuiService
@@ -22,11 +24,15 @@ public class CustomerBookingUpdateService extends AbstractGuiService<Customer, B
 
 	// Internal state ---------------------------------------------------------
 
+	private final CustomerBookingRepository repository;
+
+
 	@Autowired
-	private CustomerBookingRepository repository;
+	public CustomerBookingUpdateService(final CustomerBookingRepository repository) {
+		this.repository = repository;
+	}
 
 	// AbstractService<Customer, Booking> -------------------------------------
-
 
 	@Override
 	public void authorise() {
@@ -40,7 +46,7 @@ public class CustomerBookingUpdateService extends AbstractGuiService<Customer, B
 			bookingId = Integer.parseInt(rawId);
 			booking = this.repository.findBookingById(bookingId);
 
-			authorised = booking != null && booking.isDraftMode() && super.getRequest().getPrincipal().hasRealm(booking.getCustomer());
+			authorised = booking != null && booking.isDraftMode() && super.getRequest().getPrincipal().hasRealm(booking.getCustomer()) && MomentHelper.isAfter(booking.getFlight().getScheduledDeparture(), MomentHelper.getCurrentMoment());
 		} catch (NumberFormatException | AssertionError e) {
 			authorised = false;
 		}
@@ -86,7 +92,7 @@ public class CustomerBookingUpdateService extends AbstractGuiService<Customer, B
 
 	@Override
 	public void validate(final Booking booking) {
-		;
+		// Intentionally left empty: no extra validation needed for Booking in this context.
 	}
 
 	@Override
@@ -129,6 +135,21 @@ public class CustomerBookingUpdateService extends AbstractGuiService<Customer, B
 		dataset.put("travelClass", travelChoices.getSelected().getKey());
 		dataset.put("travelClasses", travelChoices);
 		dataset.put("readonly", false);
+
+		String systemCurrency = this.repository.getSystemCurrency();
+
+		Money exchangedPrice;
+		if (systemCurrency.equals(booking.getPrice().getCurrency()))
+			exchangedPrice = null;
+		else {
+			MoneyExchange exchange = new MoneyExchange();
+			exchange.setSource(booking.getPrice());
+			exchange.setTargetCurrency(systemCurrency);
+			exchange = MoneyExchangeHelper.performExchangeToSystemCurrency(exchange);
+			exchangedPrice = exchange.getTarget();
+			super.state(exchange.getOops() == null, "*", exchange.getMessage());
+		}
+		dataset.put("systemPrice", exchangedPrice);
 
 		super.getResponse().addData(dataset);
 	}

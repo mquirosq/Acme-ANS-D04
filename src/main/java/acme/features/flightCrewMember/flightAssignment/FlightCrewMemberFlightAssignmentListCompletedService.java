@@ -10,6 +10,7 @@ import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.datatypes.FlightLegStatus;
 import acme.entities.FlightAssignment;
+import acme.helpers.InternationalisationHelper;
 import acme.realms.FlightCrewMember;
 
 @GuiService
@@ -39,8 +40,10 @@ public class FlightCrewMemberFlightAssignmentListCompletedService extends Abstra
 		Dataset dataset;
 
 		dataset = super.unbindObject(flightAssignment, "duty", "moment", "currentStatus", "allocatedFlightCrewMember.employeeCode", "leg.flightNumber");
+		super.addPayload(dataset, flightAssignment, "remarks", "published");
 
-		super.addPayload(dataset, flightAssignment, "remarks");
+		dataset.put("payload", dataset.get("payload") + "|" + InternationalisationHelper.internationalizeBoolean(flightAssignment.getPublished()));
+
 		super.getResponse().addData(dataset);
 	}
 

@@ -7,6 +7,9 @@
 <acme:form> 
 	<acme:input-textbox code="airline-manager.flight.form.label.tag" path="tag"/>
 	<acme:input-money code="airline-manager.flight.form.label.cost" path="cost"/>
+	<jstl:if test="${systemCost != null}">
+		<acme:input-money code="airline-manager.flight.form.label.cost-exchange" path="systemCost" readonly = "${true}"/>
+	</jstl:if>
 	<acme:input-textbox code="airline-manager.flight.form.label.description" path="description"/>
 	<acme:input-checkbox code="airline-manager.flight.form.label.requiresSelfTransfer" path="requiresSelfTransfer"/>	
 	<jstl:if test="${_command != 'create'}">
@@ -27,7 +30,7 @@
 		<jstl:when test="${_command == 'show'}">
 			<acme:button code="airline-manager.flight.form.button.flight-legs" action="/airline-manager/flight-leg/list?parentId=${id}"/>			
 		</jstl:when>
-		<jstl:when test="${acme:anyOf(_command, 'update || publish')}">
+		<jstl:when test="${acme:anyOf(_command, 'update || publish || delete')}">
 			<acme:button code="airline-manager.flight.form.button.flight-legs" action="/airline-manager/flight-leg/list?parentId=${id}"/>
 			<acme:submit code="airline-manager.flight.form.button.update" action="/airline-manager/flight/update"/>
 			<acme:submit code="airline-manager.flight.form.button.publish" action="/airline-manager/flight/publish"/>

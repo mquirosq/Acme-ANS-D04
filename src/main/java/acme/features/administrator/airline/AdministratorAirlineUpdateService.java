@@ -34,7 +34,7 @@ public class AdministratorAirlineUpdateService extends AbstractGuiService<Admini
 			airlineId = Integer.parseInt(rawId);
 			airline = this.repository.findAirlineById(airlineId);
 			authorised = airline != null;
-		} catch (NumberFormatException e) {
+		} catch (NumberFormatException | AssertionError e) {
 			authorised = false;
 		}
 		super.getResponse().setAuthorised(authorised);

@@ -3,8 +3,6 @@ package acme.features.customer.bookingRecord;
 
 import java.util.Collection;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import acme.client.components.datatypes.Money;
 import acme.client.components.models.Dataset;
 import acme.client.components.views.SelectChoices;
@@ -20,11 +18,14 @@ public class CustomerBookingRecordDeleteService extends AbstractGuiService<Custo
 
 	// Internal state ---------------------------------------------------------
 
-	@Autowired
-	private CustomerBookingRecordRepository repository;
+	private final CustomerBookingRecordRepository repository;
+
+
+	public CustomerBookingRecordDeleteService(final CustomerBookingRecordRepository repository) {
+		this.repository = repository;
+	}
 
 	// AbstractGuiService interface -------------------------------------------
-
 
 	@Override
 	public void authorise() {
@@ -67,7 +68,7 @@ public class CustomerBookingRecordDeleteService extends AbstractGuiService<Custo
 
 	@Override
 	public void validate(final BookingRecord bookingRecord) {
-		;
+		// Intentionally left empty: no extra validation needed for BookingRecord in this context.
 	}
 
 	@Override
@@ -83,19 +84,19 @@ public class CustomerBookingRecordDeleteService extends AbstractGuiService<Custo
 
 	@Override
 	public void unbind(final BookingRecord bookingRecord) {
-		// There is no way to trigger this method in the actual implementation
 		Collection<Passenger> passengers;
 		SelectChoices choices;
 		Dataset dataset;
 
 		int customerId = super.getRequest().getPrincipal().getActiveRealm().getId();
-		int bookingId = bookingRecord.getBooking().getId();
-		passengers = this.repository.findMyPassengersNotAlreadyInBooking(customerId, bookingId);
+		passengers = this.repository.findMyPassengers(customerId);
 		choices = SelectChoices.from(passengers, "identifier", bookingRecord.getPassenger());
 
 		dataset = super.unbindObject(bookingRecord);
 		dataset.put("passenger", bookingRecord.getPassenger().getId());
 		dataset.put("passengers", choices);
+
+		super.getResponse().addGlobal("draft", bookingRecord.getBooking().isDraftMode());
 
 		super.getResponse().addData(dataset);
 	}

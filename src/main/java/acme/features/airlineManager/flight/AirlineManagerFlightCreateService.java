@@ -51,9 +51,7 @@ public class AirlineManagerFlightCreateService extends AbstractGuiService<Airlin
 	@Override
 	public void unbind(final Flight flight) {
 		Dataset dataset;
-
 		dataset = super.unbindObject(flight, "tag", "requiresSelfTransfer", "cost", "description");
-
 		super.getResponse().addData(dataset);
 	}
 
