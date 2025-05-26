@@ -1,0 +1,16 @@
+administrator.banned-passenger.list.title = Lista de pasajeros prohibidos
+administrator.banned-passenger.form.title = Detalles del pasajero prohibido
+
+administrator.bannedPassenger.list.label.fullName = Nombre completo
+administrator.bannedPassenger.list.label.passportNumber = Número de pasaporte
+administrator.bannedPassenger.list.label.issuedAt = Fecha de la prohibición
+administrator.bannedPassenger.list.label.liftedAt = Levantamiento de la prohibición
+	
+
+administrator.bannedPassenger.form.label.fullName = Nombre completo:
+administrator.bannedPassenger.form.label.dateOfBirth = Fecha de nacimiento:
+administrator.bannedPassenger.form.label.passportNumber = Número de pasaporte:
+administrator.bannedPassenger.form.label.nationality = Nacionalidad:
+administrator.bannedPassenger.form.label.reason = Razón:
+administrator.bannedPassenger.form.label.issuedAt = Fecha de la prohibición:
+administrator.bannedPassenger.form.label.liftedAt = Levantamiento de la prohibición:

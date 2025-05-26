@@ -1,0 +1,16 @@
+administrator.banned-passenger.list.title = Listing of banned passengers
+administrator.banned-passenger.form.title = Details of the banned passenger
+
+administrator.bannedPassenger.list.label.fullName = Full name
+administrator.bannedPassenger.list.label.passportNumber = Passport number
+administrator.bannedPassenger.list.label.issuedAt = Date of the ban
+administrator.bannedPassenger.list.label.liftedAt = Date of the lift
+	
+
+administrator.bannedPassenger.form.label.fullName = Full name:	
+administrator.bannedPassenger.form.label.dateOfBirth = Date of birth:	
+administrator.bannedPassenger.form.label.passportNumber = Passport number:	
+administrator.bannedPassenger.form.label.nationality = Nationality:	
+administrator.bannedPassenger.form.label.reason = Reason:
+administrator.bannedPassenger.form.label.issuedAt = Date of the ban:
+administrator.bannedPassenger.form.label.liftedAt = Date of the lift:
