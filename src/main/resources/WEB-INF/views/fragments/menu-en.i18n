@@ -32,11 +32,8 @@ master.menu.administrator.list-airports = List airports
 master.menu.administrator.list-airlines = List airlines
 master.menu.administrator.list-aircrafts = List aircrafts
 master.menu.administrator.list-bookings = List bookings
-<<<<<<< HEAD
 master.menu.administrator.recommendation = Add a recommendation
-=======
 master.menu.administrator.show-systemConfiguration = See system configuration
->>>>>>> task057
 master.menu.administrator.show-dashboard = My dashboard
 master.menu.administrator.list-services = List services
 master.menu.administrator.populate-db-initial = Populate DB (initial)
@@ -74,6 +71,8 @@ master.menu.user-account = Account
 master.menu.user-account.general-profile = General profile
 master.menu.user-account.become-customer = Become a customer
 master.menu.user-account.customer-profile = Customer profile
+master.menu.user-account.become-technician = Become a technician
+master.menu.user-account.technician-profile = Technician profile
 
 # master.menu.airline-manager ####################################################
 

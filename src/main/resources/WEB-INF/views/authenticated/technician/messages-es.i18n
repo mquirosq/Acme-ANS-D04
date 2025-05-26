@@ -1,0 +1,12 @@
+authenticated.technician.form.title = Formulario para técnicos
+
+authenticated.technician.form.label.license = Licencia:
+authenticated.technician.form.label.phoneNumber = Número de teléfono:
+authenticated.technician.form.label.specialisation = Especialización:
+authenticated.technician.form.label.healthPassed = ¿Ha pasado el test anual de salud?
+authenticated.technician.form.label.expYears = Años de experiencia:
+authenticated.technician.form.label.certifications = Títulos:
+authenticated.technician.form.placeholder.phoneNumber = De 6 a 15 dígitos opcionalmente precedidos de "+"
+
+authenticated.technician.form.button.create = Crear
+authenticated.technician.form.button.update = Actualizar
