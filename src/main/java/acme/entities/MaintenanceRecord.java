@@ -31,7 +31,7 @@ import lombok.Setter;
 @Setter
 @ValidMaintenanceRecord
 @Table(indexes = {
-	@Index(columnList = "id,technician_id, status")
+	@Index(columnList = "technician_id, status")
 })
 public class MaintenanceRecord extends AbstractEntity {
 

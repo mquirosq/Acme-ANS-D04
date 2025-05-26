@@ -23,7 +23,7 @@ import lombok.Setter;
 @Setter
 @ValidService
 @Table(indexes = {
-	@Index(columnList = "promotion_code")
+	@Index(columnList = "promotionCode", unique = true)
 })
 public class Service extends AbstractEntity {
 
