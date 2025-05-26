@@ -26,4 +26,24 @@ AdministratorDashboard
 bg=cyan</panel_attributes>
     <additional_attributes/>
   </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>690</x>
+      <y>150</y>
+      <w>480</w>
+      <h>230</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Form&gt;&gt;
+MoneyExchange
+--
++ source: Money {Mandatory, ValidMoney}
++ targetCurrency: String {Optional, ValidCurrency}
++ moment: Date {Optional, ValidMoment(past=true)}
++ target: Money {Optional, ValidMoney}
++ oops: Throwable {Optional, Valid}
++ message: String {Optional, Valid}
+bg=cyan</panel_attributes>
+    <additional_attributes/>
+  </element>
 </diagram>
