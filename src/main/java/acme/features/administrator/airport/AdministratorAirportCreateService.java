@@ -46,7 +46,7 @@ public class AdministratorAirportCreateService extends AbstractGuiService<Admini
 		boolean confirmation;
 
 		confirmation = super.getRequest().getData("confirmation", boolean.class);
-		super.state(confirmation, "confirmation", "acme.validation.confirmation.message");
+		super.state(!confirmation, "confirmation", "acme.validation.confirmation.message");
 	}
 
 	@Override
