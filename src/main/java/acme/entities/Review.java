@@ -24,7 +24,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Table(indexes = {
-	@Index(columnList = "id, moment")
+	@Index(columnList = "moment"), @Index(columnList = "score")
 })
 public class Review extends AbstractEntity {
 

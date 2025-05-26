@@ -30,7 +30,7 @@ import lombok.Setter;
 @Setter
 @ValidAirline
 @Table(indexes = {
-	@Index(columnList = "airline_id, IATA_code")
+	@Index(columnList = "IATA_code", unique = true), @Index(columnList = "type"), @Index(columnList = "email,phoneNumber")
 })
 public class Airline extends AbstractEntity {
 
