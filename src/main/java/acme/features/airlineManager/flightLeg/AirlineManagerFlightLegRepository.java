@@ -19,7 +19,7 @@ import acme.realms.AirlineManager;
 @Repository
 public interface AirlineManagerFlightLegRepository extends AbstractRepository {
 
-	@Query("select fl from FlightLeg fl where fl.parentFlight.id = :flightId")
+	@Query("select fl from FlightLeg fl where fl.parentFlight.id = :flightId order by fl.scheduledArrival asc")
 	Collection<FlightLeg> findAllLegsByFlightId(int flightId);
 
 	@Query("select fl from FlightLeg fl where (fl.parentFlight.id = :flightId and fl.draftMode = false) order by fl.scheduledArrival asc")
