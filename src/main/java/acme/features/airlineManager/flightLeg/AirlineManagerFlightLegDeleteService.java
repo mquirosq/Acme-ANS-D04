@@ -2,18 +2,14 @@
 package acme.features.airlineManager.flightLeg;
 
 import java.util.Collection;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import acme.client.components.models.Dataset;
-import acme.client.components.views.SelectChoices;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.ActivityLog;
 import acme.entities.FlightAssignment;
 import acme.entities.FlightLeg;
-import acme.helpers.FlightHelper;
 import acme.realms.AirlineManager;
 
 @GuiService
@@ -80,31 +76,7 @@ public class AirlineManagerFlightLegDeleteService extends AbstractGuiService<Air
 
 	@Override
 	public void unbind(final FlightLeg leg) {
-		Dataset dataset;
-		int managerId = super.getRequest().getPrincipal().getActiveRealm().getId();
-		SelectChoices statusChoices, arrivalAirportChoices, departureAirportChoices, aircraftChoices, parentFlightChoices;
-		List<SelectChoices> flightLegChoices = FlightHelper.getFlightLegFormChoices(leg, managerId);
 
-		statusChoices = flightLegChoices.get(0);
-		arrivalAirportChoices = flightLegChoices.get(1);
-		departureAirportChoices = flightLegChoices.get(2);
-		aircraftChoices = flightLegChoices.get(3);
-		parentFlightChoices = flightLegChoices.get(4);
-
-		dataset = super.unbindObject(leg, "flightNumber", "scheduledDeparture", "scheduledArrival", "draftMode");
-
-		dataset.put("statuses", statusChoices);
-		dataset.put("status", statusChoices.getSelected().getKey());
-		dataset.put("departureAirports", departureAirportChoices);
-		dataset.put("departureAirport", departureAirportChoices.getSelected().getKey());
-		dataset.put("arrivalAirports", arrivalAirportChoices);
-		dataset.put("arrivalAirport", arrivalAirportChoices.getSelected().getKey());
-		dataset.put("deployedAircrafts", aircraftChoices);
-		dataset.put("deployedAircraft", aircraftChoices.getSelected().getKey());
-		dataset.put("parentFlights", parentFlightChoices);
-		dataset.put("parentFlight", parentFlightChoices.getSelected().getKey());
-
-		super.getResponse().addData(dataset);
 	}
 
 }
