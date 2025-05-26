@@ -58,6 +58,10 @@
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.administrator.shut-system-down" action="/administrator/system/shut-down"/>
 		</acme:menu-option>
+		
+		<acme:menu-option code="master.menu.administrator.bannedPassengers" access="hasRealm('Administrator')">
+			<acme:menu-suboption code="master.menu.administrator.list-current" action="/administrator/banned-passenger/list-current"/>
+		</acme:menu-option>
 
 		<acme:menu-option code = "master.menu.assistance-agent" access = "hasRealm('AssistanceAgent')">
 			<acme:menu-suboption code = "master.menu.assistance-agent.list-claims" action = "/assistance-agent/claim/list"/>
