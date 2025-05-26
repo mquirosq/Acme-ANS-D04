@@ -2,6 +2,7 @@
 package acme.features.flightCrewMember.flightAssignment;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -96,7 +97,7 @@ public class FlightCrewMemberFlightAssignmentPublishService extends AbstractGuiS
 		boolean legHasOccured = flightAssignment.getLeg() != null && flightAssignment.getLeg().getStatus().equals(FlightLegStatus.LANDED);
 		super.state(!legHasOccured, "leg", "acme.validation.flightAssignment.pastLeg.message");
 
-		boolean flightCrewMemberIsAvailable = flightAssignment.getAllocatedFlightCrewMember() != null && flightAssignment.getAllocatedFlightCrewMember().getAvailabilityStatus().equals(AvailabilityStatus.AVAILABLE);
+		boolean flightCrewMemberIsAvailable = flightAssignment.getAllocatedFlightCrewMember().getAvailabilityStatus().equals(AvailabilityStatus.AVAILABLE);
 		super.state(flightCrewMemberIsAvailable, "*", "acme.validation.flightAssignment.unavailableFlightCrewMember.message");
 
 		FlightCrewMember fcm = flightAssignment.getAllocatedFlightCrewMember();
@@ -109,14 +110,15 @@ public class FlightCrewMemberFlightAssignmentPublishService extends AbstractGuiS
 			super.state(!simultaneousLegs, "leg", "acme.validation.flightAssignment.overlappingLegs.message");
 
 			Collection<FlightAssignment> flightAssignmentsForTheLeg = this.repository.findFlightAssignmentsByFlightLegId(flightAssignment.getLeg().getId());
-			boolean pilot = false;
-			boolean copilot = false;
 
-			pilot = flightAssignmentsForTheLeg.stream().anyMatch(x -> x.getDuty().equals(Duty.PILOT));
-			copilot = flightAssignmentsForTheLeg.stream().anyMatch(x -> x.getDuty().equals(Duty.COPILOT));
+			List<FlightAssignment> otherAssignments = flightAssignmentsForTheLeg.stream().filter(x -> x.getId() != flightAssignment.getId()).toList();
 
-			boolean extraPilot = pilot && flightAssignment.getDuty().equals(Duty.PILOT);
-			boolean extraCopilot = copilot && flightAssignment.getDuty().equals(Duty.COPILOT);
+			boolean otherPilot = otherAssignments.stream().anyMatch(x -> x.getDuty().equals(Duty.PILOT));
+			boolean otherCopilot = otherAssignments.stream().anyMatch(x -> x.getDuty().equals(Duty.COPILOT));
+
+			boolean extraPilot = otherPilot && flightAssignment.getDuty().equals(Duty.PILOT);
+			boolean extraCopilot = otherCopilot && flightAssignment.getDuty().equals(Duty.COPILOT);
+
 			super.state(!extraPilot, "duty", "acme.validation.flightAssignment.extraPilot.message");
 			super.state(!extraCopilot, "duty", "acme.validation.flightAssignment.extraCopilot.message");
 		}

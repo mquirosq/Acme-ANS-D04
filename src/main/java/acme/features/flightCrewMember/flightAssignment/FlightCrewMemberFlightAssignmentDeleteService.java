@@ -58,7 +58,7 @@ public class FlightCrewMemberFlightAssignmentDeleteService extends AbstractGuiSe
 				flightAssignmentId = Integer.parseInt(requestFlightAssignmentId);
 				flightAssignment = this.repository.findFlightAssignmentById(flightAssignmentId);
 
-				authorised &= flightAssignment != null && !flightAssignment.getPublished() && flightAssignment.getAllocatedFlightCrewMember() != null && super.getRequest().getPrincipal().hasRealm(flightAssignment.getAllocatedFlightCrewMember());
+				authorised &= flightAssignment != null && !flightAssignment.getPublished() && super.getRequest().getPrincipal().hasRealm(flightAssignment.getAllocatedFlightCrewMember());
 			} catch (NumberFormatException e) {
 				authorised = false;
 			}
