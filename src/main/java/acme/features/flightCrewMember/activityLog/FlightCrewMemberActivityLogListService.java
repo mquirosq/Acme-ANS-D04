@@ -37,7 +37,7 @@ public class FlightCrewMemberActivityLogListService extends AbstractGuiService<F
 			try {
 				flightAssignmentId = Integer.parseInt(requestFlightAssignmentId);
 				flightAssignment = this.flightAssignmentRepository.findFlightAssignmentById(flightAssignmentId);
-				authorised = flightAssignment != null && flightAssignment.getAllocatedFlightCrewMember() != null && super.getRequest().getPrincipal().hasRealm(flightAssignment.getAllocatedFlightCrewMember());
+				authorised = flightAssignment != null && super.getRequest().getPrincipal().hasRealm(flightAssignment.getAllocatedFlightCrewMember());
 			} catch (NumberFormatException e) {
 				authorised = false;
 			}
