@@ -24,10 +24,10 @@ public class ExchangeRate {
 
 	// Attributes -------------------------------------------------------------
 
-	public String				base;
-	public Date					date;
-	public Map<String, Double>	rates;
-	public boolean				success;
-	public long					timestamp;
+	private String				base;
+	private Date				date;
+	private Map<String, Double>	rates;
+	private boolean				success;
+	private long				timestamp;
 
 }

@@ -15,17 +15,21 @@ public class AnyReviewController extends AbstractGuiController<Any, Review> {
 
 	// Internal state ---------------------------------------------------------
 
-	@Autowired
-	private AnyReviewListService	listService;
+	private final AnyReviewListService		listService;
+
+	private final AnyReviewShowService		showService;
+
+	private final AnyReviewCreateService	createService;
+
 
 	@Autowired
-	private AnyReviewShowService	showService;
-
-	@Autowired
-	private AnyReviewCreateService	createService;
+	public AnyReviewController(final AnyReviewListService listService, final AnyReviewShowService showService, final AnyReviewCreateService createService) {
+		this.listService = listService;
+		this.showService = showService;
+		this.createService = createService;
+	}
 
 	// Constructors -----------------------------------------------------------
-
 
 	@PostConstruct
 	protected void initialise() {

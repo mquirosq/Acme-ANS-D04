@@ -16,11 +16,15 @@ public class AnyAirportListService extends AbstractGuiService<Any, Airport> {
 
 	// Internal state ---------------------------------------------------------
 
+	private final AnyAirportRepository repository;
+
+
 	@Autowired
-	private AnyAirportRepository repository;
+	public AnyAirportListService(final AnyAirportRepository repository) {
+		this.repository = repository;
+	}
 
 	// AbstractGuiService interface -------------------------------------------
-
 
 	@Override
 	public void authorise() {

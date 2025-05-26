@@ -15,20 +15,24 @@ public class AdministratorAirportController extends AbstractGuiController<Admini
 
 	// Internal state ---------------------------------------------------------
 
-	@Autowired
-	private AdministratorAirportListService		listService;
+	private final AdministratorAirportListService	listService;
+
+	private final AdministratorAirportShowService	showService;
+
+	private final AdministratorAirportUpdateService	updateService;
+
+	private final AdministratorAirportCreateService	createService;
+
 
 	@Autowired
-	private AdministratorAirportShowService		showService;
-
-	@Autowired
-	private AdministratorAirportUpdateService	updateService;
-
-	@Autowired
-	private AdministratorAirportCreateService	createService;
+	public AdministratorAirportController(final AdministratorAirportListService listService, final AdministratorAirportShowService showService, final AdministratorAirportUpdateService updateService, final AdministratorAirportCreateService createService) {
+		this.listService = listService;
+		this.showService = showService;
+		this.createService = createService;
+		this.updateService = updateService;
+	}
 
 	// Constructors -----------------------------------------------------------
-
 
 	@PostConstruct
 	protected void initialise() {

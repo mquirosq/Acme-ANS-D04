@@ -12,9 +12,13 @@ import acme.entities.Service;
 @GuiService
 public class AdministratorServiceShowService extends AbstractGuiService<Administrator, Service> {
 
-	@Autowired
-	private AdministratorServiceRepository repository;
+	private final AdministratorServiceRepository repository;
 
+
+	@Autowired
+	public AdministratorServiceShowService(final AdministratorServiceRepository repository) {
+		this.repository = repository;
+	}
 
 	@Override
 	public void authorise() {

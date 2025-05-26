@@ -12,9 +12,13 @@ import acme.entities.Service;
 @GuiService
 public class AdministratorServiceDeleteService extends AbstractGuiService<Administrator, Service> {
 
-	@Autowired
-	private AdministratorServiceRepository repository;
+	private final AdministratorServiceRepository repository;
 
+
+	@Autowired
+	public AdministratorServiceDeleteService(final AdministratorServiceRepository repository) {
+		this.repository = repository;
+	}
 
 	@Override
 	public void authorise() {
@@ -50,12 +54,12 @@ public class AdministratorServiceDeleteService extends AbstractGuiService<Admini
 
 	@Override
 	public void bind(final Service service) {
-		;
+		// Intentionally left empty: no extra validation needed for Service in this context.
 	}
 
 	@Override
 	public void validate(final Service service) {
-		;
+		// Intentionally left empty: no extra validation needed for Service in this context.
 	}
 
 	@Override

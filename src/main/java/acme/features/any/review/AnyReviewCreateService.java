@@ -13,9 +13,13 @@ import acme.entities.Review;
 @GuiService
 public class AnyReviewCreateService extends AbstractGuiService<Any, Review> {
 
-	@Autowired
-	private AnyReviewRepository repository;
+	private final AnyReviewRepository repository;
 
+
+	@Autowired
+	public AnyReviewCreateService(final AnyReviewRepository repository) {
+		this.repository = repository;
+	}
 
 	@Override
 	public void authorise() {

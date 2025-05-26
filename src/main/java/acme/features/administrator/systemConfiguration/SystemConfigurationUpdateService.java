@@ -14,11 +14,15 @@ public class SystemConfigurationUpdateService extends AbstractGuiService<Adminis
 
 	// Internal state ---------------------------------------------------------
 
+	private final SystemConfigurationRepository repository;
+
+
 	@Autowired
-	private SystemConfigurationRepository repository;
+	public SystemConfigurationUpdateService(final SystemConfigurationRepository repository) {
+		this.repository = repository;
+	}
 
 	// AbstractGuiService interface -------------------------------------------
-
 
 	@Override
 	public void authorise() {
@@ -41,7 +45,7 @@ public class SystemConfigurationUpdateService extends AbstractGuiService<Adminis
 
 	@Override
 	public void validate(final SystemConfiguration config) {
-		;
+		// Intentionally left empty: no extra validation needed for SystemConfiguration in this context.
 	}
 
 	@Override

@@ -17,6 +17,10 @@ import acme.forms.MoneyExchange;
 
 public class MoneyExchangeHelper {
 
+	private MoneyExchangeHelper() {
+		throw new UnsupportedOperationException("Utility class");
+	}
+
 	public static MoneyExchange performExchangeToSystemCurrency(final MoneyExchange exchange) {
 		Money source;
 		String targetCurrency;
@@ -81,9 +85,11 @@ public class MoneyExchangeHelper {
 		HttpHeaders headers;
 		HttpEntity<String> parameters;
 		ResponseEntity<ExchangeRate> response;
-		ExchangeRate record;
+		ExchangeRate exchangeRecord;
 		String sourceCurrency;
-		Double sourceAmount, targetAmount, rate;
+		Double sourceAmount;
+		Double targetAmount;
+		Double rate;
 		Money target;
 		Date moment;
 
@@ -93,7 +99,7 @@ public class MoneyExchangeHelper {
 
 			headers = new HttpHeaders();
 			headers.add("apikey", "Q8Bzt7rnuqtZiRHLQ2joPothdJaUSuX0");
-			parameters = new HttpEntity<String>("parameters", headers);
+			parameters = new HttpEntity<>("parameters", headers);
 			api = new RestTemplate();
 			response = api.exchange( //				
 				"https://api.apilayer.com/exchangerates_data/latest?base={0}&symbols={1}", //
@@ -103,10 +109,10 @@ public class MoneyExchangeHelper {
 				sourceCurrency, //
 				targetCurrency //
 			);
-			assert response != null && response.getBody() != null;
-			record = response.getBody();
-			assert record != null && record.getRates().containsKey(targetCurrency);
-			rate = record.getRates().get(targetCurrency);
+			assert response.getBody() != null;
+			exchangeRecord = response.getBody();
+			assert exchangeRecord != null && exchangeRecord.getRates().containsKey(targetCurrency);
+			rate = exchangeRecord.getRates().get(targetCurrency);
 
 			targetAmount = rate * sourceAmount;
 
@@ -114,7 +120,7 @@ public class MoneyExchangeHelper {
 			target.setAmount(targetAmount);
 			target.setCurrency(targetCurrency);
 
-			moment = record.getDate();
+			moment = exchangeRecord.getDate();
 
 			result = new MoneyExchange();
 			result.setSource(source);

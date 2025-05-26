@@ -26,7 +26,8 @@ public interface ServiceRepository extends AbstractRepository {
 
 	default Service findRandomService() {
 		Service result;
-		int count, index;
+		int count;
+		int index;
 		PageRequest page;
 		List<Service> list;
 

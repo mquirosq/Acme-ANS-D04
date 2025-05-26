@@ -15,14 +15,18 @@ public class AnyAirportController extends AbstractGuiController<Any, Airport> {
 
 	// Internal state ---------------------------------------------------------
 
-	@Autowired
-	private AnyAirportListService	listService;
+	private final AnyAirportListService	listService;
+
+	private final AnyAirportShowService	showService;
+
 
 	@Autowired
-	private AnyAirportShowService	showService;
+	public AnyAirportController(final AnyAirportListService listService, final AnyAirportShowService showService) {
+		this.listService = listService;
+		this.showService = showService;
+	}
 
 	// Constructors -----------------------------------------------------------
-
 
 	@PostConstruct
 	protected void initialise() {

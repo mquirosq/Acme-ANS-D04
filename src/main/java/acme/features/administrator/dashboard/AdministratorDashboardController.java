@@ -13,9 +13,13 @@ import acme.forms.AdministratorDashboard;
 @GuiController
 public class AdministratorDashboardController extends AbstractGuiController<Administrator, AdministratorDashboard> {
 
-	@Autowired
-	private AdministratorDashboardShowService showService;
+	private final AdministratorDashboardShowService showService;
 
+
+	@Autowired
+	public AdministratorDashboardController(final AdministratorDashboardShowService showService) {
+		this.showService = showService;
+	}
 
 	@PostConstruct
 	protected void initialise() {

@@ -14,9 +14,13 @@ import acme.helpers.ValidatorHelper;
 
 public class ServiceValidator extends AbstractValidator<ValidService, Service> {
 
-	@Autowired
-	private ServiceRepository repository;
+	private final ServiceRepository repository;
 
+
+	@Autowired
+	public ServiceValidator(final ServiceRepository repository) {
+		this.repository = repository;
+	}
 
 	@Override
 	protected void initialise(final ValidService annotation) {

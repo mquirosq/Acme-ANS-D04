@@ -13,19 +13,19 @@ import lombok.Setter;
 @Setter
 public class AdministratorDashboard extends AbstractForm {
 
-	private static final long	serialVersionUID	= 1L;
+	private static final long		serialVersionUID	= 1L;
 
-	Map<AirportScope, Long>		totalNumberOfAirportsByOperationalScope;
-	Map<AirlineType, Long>		numberOfAirlinesByType;
+	private Map<AirportScope, Long>	totalNumberOfAirportsByOperationalScope;
+	private Map<AirlineType, Long>	numberOfAirlinesByType;
 
-	Double						ratioOfAirlinesWithEmailAddressAndPhoneNumber;
-	Double						ratioOfActiveAircrafts;
-	Double						ratioOfNonActiveAircrafts;
-	Double						ratioOfReviewsWithScoreAboveFive;
+	private Double					ratioOfAirlinesWithEmailAddressAndPhoneNumber;
+	private Double					ratioOfActiveAircrafts;
+	private Double					ratioOfNonActiveAircrafts;
+	private Double					ratioOfReviewsWithScoreAboveFive;
 
-	Long						numberOfReviewsPostedInLastTenWeeks;
-	Double						averageNumberOfReviewsPostedInLastTenWeeks;
-	Long						minimumNumberOfReviewsPostedInLastTenWeeks;
-	Long						maximumNumberOfReviewsPostedInLastTenWeeks;
-	Double						standardDeviationOfNumberOfReviewsPostedInLastTenWeeks;
+	private Long					numberOfReviewsPostedInLastTenWeeks;
+	private Double					averageNumberOfReviewsPostedInLastTenWeeks;
+	private Long					minimumNumberOfReviewsPostedInLastTenWeeks;
+	private Long					maximumNumberOfReviewsPostedInLastTenWeeks;
+	private Double					standardDeviationOfNumberOfReviewsPostedInLastTenWeeks;
 }

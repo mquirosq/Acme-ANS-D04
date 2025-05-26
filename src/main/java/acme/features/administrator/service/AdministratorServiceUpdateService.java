@@ -12,9 +12,13 @@ import acme.entities.Service;
 @GuiService
 public class AdministratorServiceUpdateService extends AbstractGuiService<Administrator, Service> {
 
-	@Autowired
-	private AdministratorServiceRepository repository;
+	private final AdministratorServiceRepository repository;
 
+
+	@Autowired
+	public AdministratorServiceUpdateService(final AdministratorServiceRepository repository) {
+		this.repository = repository;
+	}
 
 	@Override
 	public void authorise() {
@@ -55,7 +59,7 @@ public class AdministratorServiceUpdateService extends AbstractGuiService<Admini
 
 	@Override
 	public void validate(final Service service) {
-		;
+		// Intentionally left empty: no extra validation needed for Service in this context.
 	}
 
 	@Override
