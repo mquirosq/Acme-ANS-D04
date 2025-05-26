@@ -1,6 +1,6 @@
 key,key:user-account,key:airline,employee-code,phone-number,language-skills,availability-status,salary,years-of-experience
 flight-crew-member-01,user-account-flight-crew-member-01,airline-01,MFA123456,123456,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut",AVAILABLE,EUR 500000.00,null
-flight-crew-member-02,user-account-flight-crew-member-02,airline-02,MFB123456,+123456,L,AVAILABLE,EUR 0.01,0
+flight-crew-member-02,user-account-flight-crew-member-02,airline-02,MFB123456,+123456,L,ON_LEAVE,EUR 0.01,0
 flight-crew-member-03,user-account-flight-crew-member-03,airline-03,MFC123456,123456789123456,Lo,AVAILABLE,EUR 0.00,1
 flight-crew-member-04,user-account-flight-crew-member-04,airline-04,MFD123456,+123456789123456,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor",AVAILABLE,EUR 999999.99,119
 flight-crew-member-05,user-account-flight-crew-member-05,airline-05,MFE123456,+987654321,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor*",AVAILABLE,EUR 1000000.00,120
