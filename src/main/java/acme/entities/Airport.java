@@ -3,6 +3,8 @@ package acme.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Index;
+import javax.persistence.Table;
 import javax.validation.Valid;
 
 import acme.client.components.basis.AbstractEntity;
@@ -22,6 +24,9 @@ import lombok.Setter;
 @Getter
 @Setter
 @ValidAirport
+@Table(indexes = {
+	@Index(columnList = "IATACode", unique = true), @Index(columnList = "scope")
+})
 public class Airport extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;

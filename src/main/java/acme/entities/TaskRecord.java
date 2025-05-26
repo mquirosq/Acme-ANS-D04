@@ -16,7 +16,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Table(indexes = {
-	@Index(columnList = "id,record_id,task_id")
+	@Index(columnList = "record_id,task_id")
 })
 public class TaskRecord extends AbstractEntity {
 
