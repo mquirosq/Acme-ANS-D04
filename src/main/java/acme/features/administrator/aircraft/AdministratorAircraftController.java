@@ -13,21 +13,26 @@ import acme.entities.Aircraft;
 @GuiController
 public class AdministratorAircraftController extends AbstractGuiController<Administrator, Aircraft> {
 
-	@Autowired
-	private AdministratorAircraftListService	listService;
+	private final AdministratorAircraftListService		listService;
+
+	private final AdministratorAircraftShowService		showService;
+
+	private final AdministratorAircraftCreateService	createService;
+
+	private final AdministratorAircraftUpdateService	updateService;
+
+	private final AdministratorAircraftDisableService	disableService;
+
 
 	@Autowired
-	private AdministratorAircraftShowService	showService;
-
-	@Autowired
-	private AdministratorAircraftCreateService	createService;
-
-	@Autowired
-	private AdministratorAircraftUpdateService	updateService;
-
-	@Autowired
-	private AdministratorAircraftDisableService	disableService;
-
+	public AdministratorAircraftController(final AdministratorAircraftListService listService, final AdministratorAircraftShowService showService, final AdministratorAircraftCreateService createService,
+		final AdministratorAircraftUpdateService updateService, final AdministratorAircraftDisableService disableService) {
+		this.listService = listService;
+		this.showService = showService;
+		this.createService = createService;
+		this.updateService = updateService;
+		this.disableService = disableService;
+	}
 
 	@PostConstruct
 	protected void initialise() {

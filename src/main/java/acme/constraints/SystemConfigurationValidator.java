@@ -29,7 +29,7 @@ public class SystemConfigurationValidator extends AbstractValidator<ValidSystemC
 			boolean contained = false;
 			String[] acceptedCurrencies = config.getAcceptedCurrencies().split(",");
 
-			Set<String> uniqueCurrencies = new HashSet<String>();
+			Set<String> uniqueCurrencies = new HashSet<>();
 
 			for (String currency : acceptedCurrencies) {
 				String trimmed = currency.trim();

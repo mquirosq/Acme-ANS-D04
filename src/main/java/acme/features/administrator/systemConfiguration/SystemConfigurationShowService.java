@@ -14,11 +14,15 @@ public class SystemConfigurationShowService extends AbstractGuiService<Administr
 
 	// Internal state ---------------------------------------------------------
 
+	private final SystemConfigurationRepository repository;
+
+
 	@Autowired
-	private SystemConfigurationRepository repository;
+	public SystemConfigurationShowService(final SystemConfigurationRepository repository) {
+		this.repository = repository;
+	}
 
 	// AbstractGuiService interface -------------------------------------------
-
 
 	@Override
 	public void authorise() {

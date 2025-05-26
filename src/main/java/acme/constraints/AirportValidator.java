@@ -14,9 +14,13 @@ import acme.helpers.ValidatorHelper;
 @Validator
 public class AirportValidator extends AbstractValidator<ValidAirport, Airport> {
 
-	@Autowired
-	private AirportRepository repository;
+	private final AirportRepository repository;
 
+
+	@Autowired
+	public AirportValidator(final AirportRepository repository) {
+		this.repository = repository;
+	}
 
 	@Override
 	protected void initialise(final ValidAirport annotation) {

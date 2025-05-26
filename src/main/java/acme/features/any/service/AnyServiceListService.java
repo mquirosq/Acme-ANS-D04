@@ -14,9 +14,13 @@ import acme.entities.Service;
 @GuiService
 public class AnyServiceListService extends AbstractGuiService<Any, Service> {
 
-	@Autowired
-	private AnyServiceRepository repository;
+	private final AnyServiceRepository repository;
 
+
+	@Autowired
+	public AnyServiceListService(final AnyServiceRepository repository) {
+		this.repository = repository;
+	}
 
 	@Override
 	public void authorise() {

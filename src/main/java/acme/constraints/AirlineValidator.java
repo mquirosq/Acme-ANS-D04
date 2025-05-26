@@ -14,9 +14,13 @@ import acme.helpers.ValidatorHelper;
 @Validator
 public class AirlineValidator extends AbstractValidator<ValidAirline, Airline> {
 
-	@Autowired
-	private AirlineRepository repository;
+	private final AirlineRepository repository;
 
+
+	@Autowired
+	public AirlineValidator(final AirlineRepository repository) {
+		this.repository = repository;
+	}
 
 	@Override
 	protected void initialise(final ValidAirline annotation) {

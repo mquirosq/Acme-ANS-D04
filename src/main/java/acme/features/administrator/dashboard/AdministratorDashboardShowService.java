@@ -22,9 +22,13 @@ import acme.forms.AdministratorDashboard;
 @GuiService
 public class AdministratorDashboardShowService extends AbstractGuiService<Administrator, AdministratorDashboard> {
 
-	@Autowired
-	private AdministratorDashboardRepository repository;
+	private final AdministratorDashboardRepository repository;
 
+
+	@Autowired
+	public AdministratorDashboardShowService(final AdministratorDashboardRepository repository) {
+		this.repository = repository;
+	}
 
 	@Override
 	public void authorise() {
@@ -35,9 +39,16 @@ public class AdministratorDashboardShowService extends AbstractGuiService<Admini
 	public void load() {
 		AdministratorDashboard dashboard;
 
-		Double ratioOfAirlinesWithEmailAddressAndPhoneNumber, ratioOfActiveAircrafts, ratioOfNonActiveAircrafts, ratioOfReviewsWithScoreAboveFive, averageNumberOfReviewsPostedInLastTenWeeks, varianceOfNumberOfReviewsPostedInLastTenWeeks,
-			standardDeviationOfNumberOfReviewsPostedInLastTenWeeks;
-		Long numberOfReviewsPostedInLastTenWeeks, minimumNumberOfReviewsPostedInLastTenWeeks, maximumNumberOfReviewsPostedInLastTenWeeks;
+		Double ratioOfAirlinesWithEmailAddressAndPhoneNumber;
+		Double ratioOfActiveAircrafts;
+		Double ratioOfNonActiveAircrafts;
+		Double ratioOfReviewsWithScoreAboveFive;
+		Double averageNumberOfReviewsPostedInLastTenWeeks;
+		Double varianceOfNumberOfReviewsPostedInLastTenWeeks;
+		Double standardDeviationOfNumberOfReviewsPostedInLastTenWeeks;
+		Long numberOfReviewsPostedInLastTenWeeks;
+		Long minimumNumberOfReviewsPostedInLastTenWeeks;
+		Long maximumNumberOfReviewsPostedInLastTenWeeks;
 
 		Map<AirportScope, Long> totalNumberOfAirportsByOperationalScope;
 		Map<AirlineType, Long> numberOfAirlinesByType;
@@ -56,9 +67,9 @@ public class AdministratorDashboardShowService extends AbstractGuiService<Admini
 
 		for (Integer i = 1; i <= 10; i++) {
 			Long numReviews;
-			Date start, end;
+			Date start;
+			Date end;
 
-			numReviews = 0L;
 			start = MomentHelper.deltaFromCurrentMoment(-i, ChronoUnit.WEEKS);
 			end = MomentHelper.deltaFromCurrentMoment(-i + 1L, ChronoUnit.WEEKS);
 

@@ -39,25 +39,24 @@ public abstract class ValidatorHelper {
 
 		List<FlightLeg> legsOfFlight = flightLegRepository.getLegsOfFlight(flight.getId());
 
-		if (legsOfFlight.size() <= 0)
+		if (legsOfFlight.isEmpty())
 			atLeastOneLeg = false;
-		else if (legsOfFlight.get(legsOfFlight.size() - 1).getDraftMode())
+		else if (Boolean.TRUE.equals(legsOfFlight.get(legsOfFlight.size() - 1).getDraftMode()))
 			allLegsPublished = false;
 
 		for (Integer i = 0; i < legsOfFlight.size() - 1; i++) {
-			{
-				Date scheduledArrivalFirst = legsOfFlight.get(i).getScheduledArrival();
-				Date scheduledDepartureSecond = legsOfFlight.get(i + 1).getScheduledDeparture();
-				if (MomentHelper.isAfterOrEqual(scheduledArrivalFirst, scheduledDepartureSecond))
-					isNotOverlapping = false;
-			}
-			{
-				if (legsOfFlight.get(i).getDraftMode())
-					allLegsPublished = false;
-			}
+
+			Date scheduledArrivalFirst = legsOfFlight.get(i).getScheduledArrival();
+			Date scheduledDepartureSecond = legsOfFlight.get(i + 1).getScheduledDeparture();
+			if (MomentHelper.isAfterOrEqual(scheduledArrivalFirst, scheduledDepartureSecond))
+				isNotOverlapping = false;
+
+			if (Boolean.TRUE.equals(legsOfFlight.get(i).getDraftMode()))
+				allLegsPublished = false;
 		}
 
 		return List.of(atLeastOneLeg, isNotOverlapping, allLegsPublished);
+
 	}
 
 	public static <T extends AbstractEntity> boolean isValidEntityReference(final String field, final Request request, final Collection<T> legalValues) {

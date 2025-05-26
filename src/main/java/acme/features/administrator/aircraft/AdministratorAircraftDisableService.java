@@ -17,16 +17,22 @@ import acme.entities.Airline;
 @GuiService
 public class AdministratorAircraftDisableService extends AbstractGuiService<Administrator, Aircraft> {
 
-	@Autowired
-	private AdministratorAircraftRepository repository;
+	private final AdministratorAircraftRepository repository;
 
+
+	@Autowired
+	public AdministratorAircraftDisableService(final AdministratorAircraftRepository repository) {
+		this.repository = repository;
+	}
 
 	@Override
 	public void authorise() {
 		boolean authorised;
 
-		int aircraftId, airlineId;
-		String aircraftIdRaw, airlineIdRaw;
+		int aircraftId;
+		int airlineId;
+		String aircraftIdRaw;
+		String airlineIdRaw;
 		Aircraft aircraft;
 		Airline airline;
 
@@ -106,7 +112,8 @@ public class AdministratorAircraftDisableService extends AbstractGuiService<Admi
 	public void unbind(final Aircraft aircraft) {
 		Dataset dataset;
 		Collection<Airline> airlines;
-		SelectChoices statusChoices, airlineChoices;
+		SelectChoices statusChoices;
+		SelectChoices airlineChoices;
 
 		airlines = this.repository.findAllAirlines();
 

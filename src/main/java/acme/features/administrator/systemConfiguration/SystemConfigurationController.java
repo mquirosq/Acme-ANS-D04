@@ -15,14 +15,18 @@ public class SystemConfigurationController extends AbstractGuiController<Adminis
 
 	// Internal state ---------------------------------------------------------
 
-	@Autowired
-	private SystemConfigurationShowService		showService;
+	private final SystemConfigurationShowService	showService;
+
+	private final SystemConfigurationUpdateService	updateService;
+
 
 	@Autowired
-	private SystemConfigurationUpdateService	updateService;
+	public SystemConfigurationController(final SystemConfigurationShowService showService, final SystemConfigurationUpdateService updateService) {
+		this.showService = showService;
+		this.updateService = updateService;
+	}
 
 	// Constructors -----------------------------------------------------------
-
 
 	@PostConstruct
 	protected void initialise() {

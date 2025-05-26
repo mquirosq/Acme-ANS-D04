@@ -16,11 +16,15 @@ public class AdministratorAirportListService extends AbstractGuiService<Administ
 
 	// Internal state ---------------------------------------------------------
 
+	private final AdministratorAirportRepository repository;
+
+
 	@Autowired
-	private AdministratorAirportRepository repository;
+	public AdministratorAirportListService(final AdministratorAirportRepository repository) {
+		this.repository = repository;
+	}
 
 	// AbstractGuiService interface -------------------------------------------
-
 
 	@Override
 	public void authorise() {

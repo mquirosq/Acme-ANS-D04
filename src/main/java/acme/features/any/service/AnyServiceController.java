@@ -13,12 +13,16 @@ import acme.entities.Service;
 @GuiController
 public class AnyServiceController extends AbstractGuiController<Any, Service> {
 
-	@Autowired
-	private AnyServiceListService	listService;
+	private final AnyServiceListService	listService;
+
+	private final AnyServiceShowService	showService;
+
 
 	@Autowired
-	private AnyServiceShowService	showService;
-
+	public AnyServiceController(final AnyServiceListService listService, final AnyServiceShowService showService) {
+		this.listService = listService;
+		this.showService = showService;
+	}
 
 	@PostConstruct
 	protected void initialise() {

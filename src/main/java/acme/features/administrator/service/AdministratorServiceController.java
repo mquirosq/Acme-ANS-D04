@@ -13,21 +13,28 @@ import acme.entities.Service;
 @GuiController
 public class AdministratorServiceController extends AbstractGuiController<Administrator, Service> {
 
-	@Autowired
-	private AdministratorServiceListService		listService;
+	private final AdministratorServiceListService	listService;
+
+	private final AdministratorServiceShowService	showService;
+
+	private final AdministratorServiceCreateService	createService;
+
+	private final AdministratorServiceUpdateService	updateService;
+
+	private final AdministratorServiceDeleteService	deleteService;
+
 
 	@Autowired
-	private AdministratorServiceShowService		showService;
+	public AdministratorServiceController(final AdministratorServiceListService listService, final AdministratorServiceShowService showService, final AdministratorServiceCreateService createService, final AdministratorServiceUpdateService updateService,
+		final AdministratorServiceDeleteService deleteService) {
 
-	@Autowired
-	private AdministratorServiceCreateService	createService;
+		this.listService = listService;
+		this.showService = showService;
+		this.createService = createService;
+		this.updateService = updateService;
+		this.deleteService = deleteService;
 
-	@Autowired
-	private AdministratorServiceUpdateService	updateService;
-
-	@Autowired
-	private AdministratorServiceDeleteService	deleteService;
-
+	}
 
 	@PostConstruct
 	protected void initialise() {

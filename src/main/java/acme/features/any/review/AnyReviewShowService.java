@@ -14,11 +14,15 @@ public class AnyReviewShowService extends AbstractGuiService<Any, Review> {
 
 	// Internal state ---------------------------------------------------------
 
+	private final AnyReviewRepository repository;
+
+
 	@Autowired
-	private AnyReviewRepository repository;
+	public AnyReviewShowService(final AnyReviewRepository repository) {
+		this.repository = repository;
+	}
 
 	// AbstractGuiService interface -------------------------------------------
-
 
 	@Override
 	public void authorise() {

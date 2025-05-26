@@ -13,11 +13,15 @@ public class ServiceAdvisor {
 
 	// Internal state --------------------------------------------------------
 
+	private final ServiceRepository repository;
+
+
 	@Autowired
-	private ServiceRepository repository;
+	public ServiceAdvisor(final ServiceRepository repository) {
+		this.repository = repository;
+	}
 
 	// Beans -----------------------------------------------------------------
-
 
 	@ModelAttribute("service")
 	public Service getService() {
