@@ -1,0 +1,67 @@
+
+package acme.features.any.airport;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import acme.client.components.models.Dataset;
+import acme.client.components.principals.Any;
+import acme.client.components.views.SelectChoices;
+import acme.client.services.AbstractGuiService;
+import acme.client.services.GuiService;
+import acme.datatypes.AirportScope;
+import acme.entities.Airport;
+
+@GuiService
+public class AnyAirportShowService extends AbstractGuiService<Any, Airport> {
+
+	// Internal state ---------------------------------------------------------
+
+	@Autowired
+	private AnyAirportRepository repository;
+
+	// AbstractGuiService interface -------------------------------------------
+
+
+	@Override
+	public void authorise() {
+		Boolean authorised;
+		String rawId;
+		int airportId;
+		Airport airport;
+
+		try {
+			rawId = super.getRequest().getData("id", String.class);
+			airportId = Integer.parseInt(rawId);
+			airport = this.repository.findAirportById(airportId);
+			authorised = airport != null;
+		} catch (NumberFormatException | AssertionError e) {
+			authorised = false;
+		}
+		super.getResponse().setAuthorised(authorised);
+	}
+
+	@Override
+	public void load() {
+		Airport airport;
+		int id;
+
+		id = super.getRequest().getData("id", int.class);
+		airport = this.repository.findAirportById(id);
+
+		super.getBuffer().addData(airport);
+	}
+
+	@Override
+	public void unbind(final Airport airport) {
+		Dataset dataset;
+		SelectChoices choices;
+
+		choices = SelectChoices.from(AirportScope.class, airport.getScope());
+
+		dataset = super.unbindObject(airport, "name", "IATACode", "scope", "website", "email", "phoneNumber", "city", "country");
+		dataset.put("scopes", choices);
+
+		super.getResponse().addData(dataset);
+	}
+
+}

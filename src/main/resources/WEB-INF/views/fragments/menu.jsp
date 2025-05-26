@@ -26,6 +26,8 @@
 			<acme:menu-suboption code="master.menu.anonymous.daniel-favourite-link" action="https://www.taylorswift.com"/>
 			<acme:menu-suboption code="master.menu.anonymous.ignacio-favourite-link" action="https://www.youtube.com"/>
 			<acme:menu-suboption code="master.menu.anonymous.list-reviews" action="/any/review/list" />
+			<acme:menu-suboption code="master.menu.anonymous.list-services" action="/any/service/list" />
+			<acme:menu-suboption code="master.menu.anonymous.list-airports" action="/any/airport/list" />
 		</acme:menu-option>
 		
 		<acme:menu-option code="master.menu.authenticated" access="isAuthenticated()">
@@ -89,6 +91,8 @@
 			<acme:menu-suboption code="master.menu.user-account.general-profile" action="/authenticated/user-account/update"/>
 			<acme:menu-suboption code="master.menu.user-account.become-customer" action="/authenticated/customer/create" access="!hasRealm('Customer')"/>
 			<acme:menu-suboption code="master.menu.user-account.customer-profile" action="/authenticated/customer/update" access="hasRealm('Customer')"/>
+			<acme:menu-suboption code="master.menu.user-account.become-technician" action="/authenticated/technician/create" access="!hasRealm('Technician')"/>
+			<acme:menu-suboption code="master.menu.user-account.technician-profile" action="/authenticated/technician/update" access="hasRealm('Technician')"/>
 		</acme:menu-option>
 	</acme:menu-right>
 </acme:menu-bar>
