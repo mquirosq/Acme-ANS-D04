@@ -53,7 +53,7 @@ public class AdministratorAirportUpdateService extends AbstractGuiService<Admini
 
 	@Override
 	public void bind(final Airport airport) {
-		super.bindObject(airport, "name", "IATACode", "scope", "website", "email", "phoneNumber", "city", "country");
+		super.bindObject(airport, "name", "IATACode", "scope", "website", "email", "phoneNumber", "city", "contry");
 	}
 
 	@Override
