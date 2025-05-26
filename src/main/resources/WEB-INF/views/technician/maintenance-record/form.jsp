@@ -11,7 +11,7 @@
 	<acme:input-moment code="technician.maintenance-record.form.label.inspection-due" path="inspectionDue"/>
 	<acme:input-money code="technician.maintenance-record.form.label.cost" path="cost"/>
 		<jstl:if test="${systemPrice != null}">
-			<acme:input-money code="technician.maintenance-record.form.label.price-exchange" path="systemPrice"/>
+			<acme:input-money code="technician.maintenance-record.form.label.price-exchange" path="systemPrice" readonly="true"/>
 		</jstl:if>
 	<acme:input-textarea code="technician.maintenance-record.form.label.notes" path="notes"/>
 
