@@ -25,7 +25,7 @@ import lombok.Setter;
 @Setter
 @ValidAirlineManager
 @Table(indexes = {
-	@Index(columnList = "identifier_number")
+	@Index(columnList = "identifierNumber")
 })
 public class AirlineManager extends AbstractRole {
 
