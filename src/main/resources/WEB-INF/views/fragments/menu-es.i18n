@@ -32,11 +32,8 @@ master.menu.administrator.list-airports = Ver aeropuertos
 master.menu.administrator.list-airlines = Ver aerolíneas
 master.menu.administrator.list-aircrafts = Ver aeronaves
 master.menu.administrator.list-bookings = Ver reservas
-<<<<<<< HEAD
 master.menu.administrator.recommendation = Nueva recomendación
-=======
 master.menu.administrator.show-systemConfiguration = Ver la configuración del sistema
->>>>>>> task057
 master.menu.administrator.show-dashboard = Mis estadísticas
 master.menu.administrator.list-services = Ver servicios
 master.menu.administrator.populate-db-initial = Poblar BD (inicial)
@@ -74,6 +71,8 @@ master.menu.user-account = Cuenta
 master.menu.user-account.general-profile = Perfil general
 master.menu.user-account.become-customer = Hazte cliente
 master.menu.user-account.customer-profile = Perfil de cliente
+master.menu.user-account.become-technician = Hazte técnico
+master.menu.user-account.technician-profile = Perfil de técnico
 
 # master.menu.airline-manager ####################################################
 
